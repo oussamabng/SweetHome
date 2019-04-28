@@ -58,8 +58,12 @@ res.send("room added succesfuly") //anglais mkwd laghlb
  // get rooms 
 
 router.get('/' , auth , async function(req,res) {
-
+let dev = [];
 const user = await User.find({ _id : req.userId});
+user.rooms.devices.dht.forEach(async function(element) {
+  const dht = await Dht.findOne({_id : element });
+ dev.push(dht)
+});
 res.send(_.pick(user.rooms,['name', 'typeRoom']), function(){
     console.log("rooms send succefully");
 });
