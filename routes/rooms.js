@@ -69,10 +69,10 @@ res.send("room added succesfuly") //anglais mkwd laghlb
  // get rooms 
 router.get('/' , auth , async function(req,res) {
 const rooms = await Rooms.find({ userId : req.userId });
-res.send(rooms, function(){
-    console.log("rooms send succefully");
+console.log(rooms);
+res.send(rooms);
 });
-});
+
  // ********************************************************// 
  //*****************************************************//
 
@@ -185,19 +185,24 @@ res.send(dev);
  //*****************************************************//
 
 //update room
- router.put('/:id' ,auth ,  async function(req,res){
-  const user = await User.findOne({ _id : req.userId});
-  const room = await Rooms.findOne({ _id : req.params._id});
-    room.name = req.body.name;
-    room.typeRoom = req.body.typeRoom;
+ router.put('/:id'  ,  async function(req,res){
+  //const user = await User.findOne({ _id : req.userId});*
+  console.log(req.params.id);
+  const room = await Rooms.findOne({_id :req.params.id});
+  console.log(room);
+  room.name = req.body.name;
+  room.typeRoom = req.body.typeRoom;
+  const result = await room.save();
+  console.log(result);
+ res.send(result); 
  }); 
 
+//delete room
+ router.delete('/:id' ,async function(req,res){
+const room = await Rooms.deleteOne({_id : req.params.id});
+res.send(room);
+ });
 
-
-router.get('/test' ,auth ,  async function(req,res){
-
-  const user = await User.findOne({ _id : req.userId});
-console.log(user);
-res.send(user);
-});
 module.exports = router; 
+
+
