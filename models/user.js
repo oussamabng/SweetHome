@@ -23,33 +23,31 @@ password : {
     required : true ,
     maxlength : 255 , 
     minlength : 5
-},
-
-rooms : [{
-name : { type : String , default : ""} ,
-typeRoom : {type : String , enum : ["kitchen","hallway","livingRoom","bedroom" , "office" ]},
-devices : {
-    dht : [{type : String}],
-    rgb : [{type : String}],
-    ultrason : [{type : String}],
-    alarm : [{type : String}],
-    gsense : [{type : String}],
-    light : [{type : String}]
 }
-
-}]
 ,
 resetPasswordToken : {type :String , default :""} , 
 
 resetPasswordExpires :{type : Date , default : Date.now()}, 
 tokenId : String
 
-
 });
 
 
 
+const roomsSchema = {
+    name : { type : String , default : ""} ,
+    userId : {type :String},
+typeRoom : {type : String , enum : ["kitchen","hallway","livingRoom","bedroom" , "office" ]},
+devices : {
+    dht : [{type : String , default : "bilama id "}],
+    rgb : [{type : String , default : "bilama id "}],
+    ultrason : [{type : String , default : "bilama id "}],
+    alarm : [{type : String , default : "bilama id "}],
+    gsense : [{type : String , default : "bilama id "}],
+    light : [{type : String , default : "bilama id "}]
 
+}
+}
 
 
 // Devices collection 
@@ -126,7 +124,7 @@ const Alarm = mongoose.model('alarms' , alarmSchema);
 const Rgb = mongoose.model('rgbs' , RGBSchema);
 const Gsense = mongoose.model('gsenses' , GSenseSchema);
 const Ultrason = mongoose.model('ultrasons' , UltrasonSchema);
-
+const Rooms = mongoose.model('rooms' , roomsSchema);
 
 
 
@@ -159,3 +157,4 @@ module.exports.Rgb = Rgb;
 module.exports.Ultrason = Ultrason;
 module.exports.Alarm = Alarm;
 module.exports.Gsense = Gsense;
+module.exports.Rooms = Rooms;

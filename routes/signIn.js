@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
-const {User , Dht , Light , Alarm , Rgb , Gsense , Ultrason , validate}  = require('../models/user');
+const {User , Dht , Light , Alarm , Rgb , Gsense , Ultrason , validate , Rooms}  = require('../models/user');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
@@ -80,7 +80,11 @@ let ultrason = new Ultrason({
 await ultrason.save();
 
 
-
+let room = new Rooms({
+  name : "chambra" , 
+  typeRoom : "livingRoom"
+});
+await room.save();
 //end
 
 const bndm = new User({

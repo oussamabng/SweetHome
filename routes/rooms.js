@@ -1,115 +1,203 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middlwares/auth');
-const {User , Dht , Light , Alarm , Rgb , Gsense , Ultrason}= require('../models/user');
+const {User , Dht , Light , Alarm , Rgb , Gsense , Ultrason , Rooms}= require('../models/user');
 const _ = require('lodash');
 
+
+
+
+
+ // ********************************************************// 
+ //*****************************************************//
 //add room
 router.post('/' ,auth,  async function(req, res){
-let user = await User.findOne({ _id : req.userId});
+const user = await User.findOne({ _id : req.userId});
+let room = new Rooms({
+name : req.body.name,
+userId : req.userId,
+typeRoom : req.body.typeRoom,
+devices : {
+  dht : [],
+  rgb : [],
+  ultrason : [],
+  alarm : [],
+  gsense : [],
+  light : []
 
-
-//devices
-let dht = await Dht.find({tokenId : "ouss"}); // a remplacer le token id // ghi bilama ni dyr ouss
-let light = await Light.find({tokenId : "ouss"});
-let alarm = await Alarm.find({tokenId : "ouss"});
-let rgb = await Rgb.find({tokenId : "ouss"});
-let gsense = await Gsense.find({tokenId : "ouss"});
-let ultrason = await Ultrason.find({tokenId : "ouss"});
-
-//name type 
-
-user.rooms.name = req.body.name;
-user.rooms.typeRoom = req.body.type;
-
-
-dht.forEach(element => {
-  user.rooms.devices.dht.push(element._id) ;
+}
+});
+// tableau li rslthoulak te3 Devices bsh ykoun user mkhyr manah li bgha ykhdem bihom
+let arrDevices = req.body.arrDevices;
+console.log(arrDevices);
+arrDevices.dhts.forEach(element => {
+  room.devices.dht.push(element._id) ;
 });
 
-alarm.forEach(element => {
-    user.rooms.devices.alarm.push(element._id) ;
+arrDevices.alarms.forEach(element => {
+  room.devices.alarm.push(element._id) ;
   });
   
-light.forEach(element => {
-    user.rooms.devices.light.push(element._id) ;
+arrDevices.lights.forEach(element => {
+  room.devices.light.push(element._id) ;
   });
   
    
-rgb.forEach(element => {
-    user.rooms.devices.rgb.push(element._id) ;
+arrDevices.rgbs.forEach(element => {
+   room.devices.rgb.push(element._id) ;
   });
   
-gsense.forEach(element => {
-    user.rooms.devices.gsense.push(element._id) ;
+arrDevices.gsenses.forEach(element => {
+ room.devices.gsense.push(element._id) ;
   });
   
-ultrason.forEach(element => {
-    user.rooms.devices.ultrason.push(element._id) ;
+arrDevices.ultrasons.forEach(element => {
+room.devices.ultrason.push(element._id) ;
   });
   
-      
+await room.save()      
 await user.save()
 res.send("room added succesfuly") //anglais mkwd laghlb 
 });
 
+ // ********************************************************// 
+ //*****************************************************//
+
+
 
 
  // get rooms 
-
 router.get('/' , auth , async function(req,res) {
-let dev = [];
-const user = await User.find({ _id : req.userId});
-user.rooms.devices.dht.forEach(async function(element) {
-  const dht = await Dht.findOne({_id : element });
- dev.push(dht)
-});
-res.send(_.pick(user.rooms,['name', 'typeRoom']), function(){
+const rooms = await Rooms.find({ userId : req.userId });
+res.send(rooms, function(){
     console.log("rooms send succefully");
 });
+});
+ // ********************************************************// 
+ //*****************************************************//
 
+
+
+ //get devices te3 kol room
+ router.get('/devices/:id'  , async function(req,res){
+  const room = await Rooms.find({ _id : req.params.id });
+
+  let dev = []
+    dev.dhts = []
+    dev.alarms = []
+    dev.ultrasons = []
+    dev.rgbs = []
+    dev.gsenses = []
+    dev.lights = []
+
+    room.dht.forEach(async function(element) {
+      let temp = await Dht.findOne({_id : element});
+      dev.dhts.push(temp);
+    });
+
+    room.alarm.forEach(async function(element){
+      let temp = await Alarm.findOne({_id : element});
+      dev.alarms.push(temp);
+    });
+    room.ultrason.forEach(async function(element){
+      let temp = await Ultrason.findOne({_id : element});
+      dev.ultrasons.push(temp);
+    });
+    room.rgb.forEach(async function(element){
+      let temp = await Rgb.findOne({_id : element});
+      dev.rgbs.push(temp);
+    });
+    room.light.forEach(async function(element){
+      let temp = await Light.findOne({_id : element});
+      dev.lights.push(temp);
+    });
+    room.gsense.forEach(async function(element){
+      let temp = await Gsense.findOne({_id : element});
+      dev.gsenses.push(temp);
+    });
+
+res.send(dev , function(){
+  console.log('devices getted');
 });
 
-//get devices 
 
-router.get('/devices' ,auth, async function(){
-    let device =  []
+ });
+
+
+//get devices for add room
+router.get('/devices' ,auth, async function(req,res){
+    let dev = {
+      "dhts" : [],
+      "alarms" : [],
+      "ultrasons" : [],
+      "rgbs" : [],
+      "gsenses" : [],
+      "lights" : []
+    }
+    
+
+
+
+     
     const user = await User.find({ _id : req.userId});
-
-
-user.rooms.devices.dht.forEach(element => {
-    device.push(Dht.findOne({_id : element}));
+    const dht = await Dht.find({tokenId : user[0].tokenId });
+   const light = await Light.find({tokenId : user[0].tokenId});
+   const ultrason = await Ultrason.find({tokenId : user[0].tokenId });
+    const alarm = await Alarm.find({tokenId : user[0].tokenId });
+    const rgb = await Rgb.find({tokenId : user[0].tokenId });
+    const gsense = await Gsense.find({tokenId : user[0].tokenId });
+dht.forEach(element => {
+dev.dhts.push(element);
 });
 
-user.rooms.devices.light.forEach(element => {
-    device.push(Light.findOne({_id : element}));
+light.forEach(element => {
+dev.lights.push(element);
 });
 
-user.rooms.devices.rgb.forEach(element => {
-    device.push(Rgb.findOne({_id : element}));
+ultrason.forEach(element => {
+dev.ultrasons.push(element);
 });
 
-user.rooms.devices.alarm.forEach(element => {
-    device.push(Alarm.findOne({_id : element}));
+alarm.forEach(element => {
+dev.alarms.push(element);
 });
 
-user.rooms.devices.gsense.forEach(element => {
-    device.push(Gsense.findOne({_id : element}));
+rgb.forEach(element => {
+dev.rgbs.push(element);
 });
 
-user.rooms.devices.ultrason.forEach(element => {
-    device.push(Ultrason.findOne({_id : element}));
+gsense.forEach(element => {
+dev.gsenses.push(element);
 });
 
 
-res.send(device); 
+
+res.send(dev); 
 //send array of devices
-
-
 });
 
 
 
 
 
+
+ // ********************************************************// 
+ //*****************************************************//
+
+//update room
+ router.put('/:id' ,auth ,  async function(req,res){
+  const user = await User.findOne({ _id : req.userId});
+  const room = await Rooms.findOne({ _id : req.params._id});
+    room.name = req.body.name;
+    room.typeRoom = req.body.typeRoom;
+ }); 
+
+
+
+router.get('/test' ,auth ,  async function(req,res){
+
+  const user = await User.findOne({ _id : req.userId});
+console.log(user);
+res.send(user);
+});
 module.exports = router; 

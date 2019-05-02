@@ -1,2 +1,6 @@
-<select id="menu">menu</select>
-<option value="id">name</option>
+arr = [{
+    "ok" : "wsh"
+}];
+
+const str = JSON.stringify(arr);
+console.log(str.ok);
