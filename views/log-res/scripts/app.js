@@ -41,9 +41,13 @@ $.ajax({
                 dataType : 'json',
                 url : '/api/auth',
                
-                success : function(data){
-                   console.log(data);
-                   console.log('c bn post mcha ')
+                success : function getrooms( success, error){
+                    jQuery.ajax({
+                        method: "GET",
+                        url: "/api/rooms",
+                        success: success,
+                        error: error
+                    });
                 }
                 });
         });
@@ -58,8 +62,13 @@ $.ajax({
                 contentType : 'application/json',
                 dataType : 'json',
                 url : '/api/signIn',
-                success : function(data){
-                    console.log(data);
+                success :  function getrooms( success, error){
+                    jQuery.ajax({
+                        method: "GET",
+                        url: "/api/rooms",
+                        success: success,
+                        error: error
+                    });
                 }
         
                 });
