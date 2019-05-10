@@ -25,6 +25,7 @@
     "mongoose": "^5.4.20",
     "nodemailer": "^6.1.0",
     "path": "^0.12.7",
+    "pusher": "^2.2.0",
     "req-flash": "0.0.3"
   }
 }

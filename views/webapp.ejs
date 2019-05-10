@@ -7,6 +7,7 @@
  <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script src="./log-res/scripts/app.js"></script>
+ <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
  <script>
                 function flip() {
                        $('.card').toggleClass('flipped');
@@ -27,7 +28,20 @@
                          
                         }, 1000);
                  </script>
+<script>
+    Pusher.logToConsole = true;
 
+var pusher = new Pusher('28874f2f3bdf02b787e5', {
+  cluster: 'eu',
+  forceTLS: true
+});
+
+var channel = pusher.subscribe('alarms');
+channel.bind('inserted', function(data) {
+  alert(JSON.stringify(data));
+  
+});
+</script>
 
                  
  <title>

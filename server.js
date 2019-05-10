@@ -8,10 +8,17 @@ const forgot = require('./routes/forgot');
 var bodyParser = require('body-parser');
 const reset = require('./routes/reset');
 const rooms = require('./routes/rooms');
+const notifications = require('./routes/notifications');
+//const {User , Dht , Light , Alarm , Rgb , Gsense , Ultrason , Rooms}= require('./models/user');
+var Pusher = require('pusher');
 
-
-
-
+var pusher = new Pusher({
+  appId: '779875',
+  key: '28874f2f3bdf02b787e5',
+  secret: 'bc020c336261d79ccb2e',
+  cluster: 'eu'
+//  encrypted: true
+});
 
 
 
@@ -40,17 +47,37 @@ app.all('*', function(req, res, next) {
 
 
 
-mongoose.connect('mongodb://localhost/login', {
+mongoose.connect('mongodb://localhost/SweetHome?replicaSet=rs', {
   useCreateIndex: true,
   useNewUrlParser: true
-})
-.then(()=> console.log('connected to mongodb'))
-.catch((err)=> console.error(`could not connect`));
+});
+const db = mongoose.connection;
 
-app.use(express.static('views'));
-app.get('/', function (req, res) {
-  
-  res.render('webapp');
+db.on('error', console.error.bind(console, 'Connection Error:'));
+
+db.once('open', () => {
+  app.listen(3000, () => {
+    console.log('Listening on port :  3000');
+  });
+
+  const alarmCollection = db.collection('alarms');
+  const changeStream = alarmCollection.watch();
+
+  changeStream.on('change', (change) => {
+
+    if ((change.operationType === 'replace') && (change.fullDocument.value == true)) {
+         
+      console.log("alarm tsoniii !!!!!!!");
+      pusher.trigger(
+        'alarms',
+        'inserted', 
+        {
+          "message": "Alarm is on .."
+        }
+      ); 
+      
+    }
+});
 });
 
 
@@ -58,11 +85,29 @@ app.get('/', function (req, res) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+app.use(express.static('views'));
+app.get('/', function (req, res) {
+  
+  res.render('webapp');
+});
 app.use('/api/auth' , auth);
 app.use('/api/signIn', signIn);
 app.use('/api/forgot', forgot);
 app.use('/reset' , reset);
 app.use('/api/rooms', rooms);
+app.use('/api/notifications', notifications);
+
 
 
 
@@ -84,8 +129,7 @@ app.post('/server', function(req,res){
 	res.status(200).send({name: req.body['name']});
 
 
-})
-
-app.listen(3000 , function(){
-console.log('listening...');
 });
+
+
+
