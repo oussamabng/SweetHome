@@ -29,6 +29,8 @@
                         }, 1000);
                  </script>
 <script>
+
+
     Pusher.logToConsole = true;
 
 var pusher = new Pusher('28874f2f3bdf02b787e5', {
@@ -38,8 +40,20 @@ var pusher = new Pusher('28874f2f3bdf02b787e5', {
 
 var channel = pusher.subscribe('alarms');
 channel.bind('inserted', function(data) {
-  alert(JSON.stringify(data));
-  
+
+ alert(JSON.stringify(data));
+  if(!("Notification" in window)){
+        alert("this browser does not support notif");
+    }else if (Notification.permission == "granted"){
+        var notification = new Notification(JSON.stringify(data));
+    } 
+    else if(Notification.permission!="denied"){
+        Notification.requestPermission(function(permission){
+            if("permission" == "granted"){
+                var notification = new Notification(JSON.stringify(data));
+            }
+        });
+    }
 });
 </script>
 

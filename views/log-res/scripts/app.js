@@ -172,14 +172,3 @@ function update_password(){
 
         });
 }
-Pusher.logToConsole = true;
-
-var pusher = new Pusher('28874f2f3bdf02b787e5', {
-  cluster: 'eu',
-  forceTLS: true
-});
-
-var channel = pusher.subscribe('alarms');
-channel.bind('inserted', function(data) {
-  alert(JSON.stringify(data));
-});
