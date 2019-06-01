@@ -24,7 +24,10 @@
     "loadash": "^1.0.0",
     "mongoose": "^5.4.20",
     "nodemailer": "^6.1.0",
+<<<<<<< HEAD
     "nodemon": "^1.19.1",
+=======
+>>>>>>> 0fe3e8a79177b66b7fa3deb209991f57c405f0f1
     "path": "^0.12.7",
     "pusher": "^2.2.0",
     "req-flash": "0.0.3"
