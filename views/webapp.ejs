@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+ <link rel="stylesheet" type="text/css" href="swacss.css">
+ <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+ <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="./log-res/scripts/app.js"></script>
+ <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+ <script>
+                function flip() {
+                       $('.card').toggleClass('flipped');
+                   }
+        </script>   
+         <script>    
+                        var doughnut = 0;
+                        var chawrma=1;
+                        window.setInterval(function () {
+                          doughnut = doughnut + 1;
+                          var pizza=0;
+                          pizza=doughnut%5;
+                          
+                          if(pizza==0){flip();
+                                chawrma=1;
+                         }
+                         else{if (chawrma==1){flip(); chawrma=0;}}
+                         
+                        }, 1000);
+                 </script>
+<script>
+
+
+    Pusher.logToConsole = true;
+
+var pusher = new Pusher('28874f2f3bdf02b787e5', {
+  cluster: 'eu',
+  forceTLS: true
+});
+
+var channel = pusher.subscribe('alarms');
+channel.bind('inserted', function(data) {
+
+ alert(JSON.stringify(data));
+  if(!("Notification" in window)){
+        alert("this browser does not support notif");
+    }else if (Notification.permission == "granted"){
+        var notification = new Notification(JSON.stringify(data));
+    } 
+    else if(Notification.permission!="denied"){
+        Notification.requestPermission(function(permission){
+            if("permission" == "granted"){
+                var notification = new Notification(JSON.stringify(data));
+            }
+        });
+    }
+});
+</script>
+
+                 
+ <title>
+    SWEET
+</title>
+
+
+</head>
+<body>
+        <!--- row 7akm nav bar kamla fi saf wa7ed, kichghl tableau fiha row wa7ed-->
+    <div class="row"  >
+            <!---hadi ga3 t3 animation t3 kol w7da -->
+            <section class="container2">
+                         <div class="card" onclick="flip()">
+                              <div class="front">
+                                      <div class="column">
+                                       <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="designs\login.png" title="logout" class="icon">
+                                      </div>                          
+                                </div>
+                        <div class="back"> 
+                                <div class="column">
+                                   <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="designs\login1.png" title="logout" class="icon">
+                          
+                                </div>
+                        </div>
+              </section>
+            <!--hna tkml lwla g3 t3 nav bar t3 login-->
+            <!--zwaja tbda hna-->
+            <section class="container2">
+                    <div class="card">
+                            <div class="front">
+                                    <div calss="column">
+                                        <img onclick="document.getElementById('id02').style.display='block'" src="designs\notifications.png" title="notification" class="icon">
+                                    </div>
+
+                            </div>
+                            <div class="back">
+                                    <div calss="column">
+                                         <img onclick="document.getElementById('id02').style.display='block'"  src="designs\notifications1.png" title="notification"class="icon">
+                                    </div>
+                               </div>
+                    </div>
+
+                </section>
+            <!--talta tbda hna-->
+            <section class="container2">
+                    <div class="card">
+                            <div class="front">
+                                    <div calss="column">
+                                        <img onclick="document.getElementById('id02').style.display='block'" src="designs\settings.png" title="settings" class="icon">
+                                    </div>
+
+                            </div>
+                            <div class="back">
+                                    <div calss="column">
+                                         <img onclick="document.getElementById('id02').style.display='block'"  src="designs\settings1.png" title="settings" class="icon">
+                                    </div>
+                               </div>
+                    </div>
+
+                </section>
+            <!--rab3a hna--> 
+            <section class="container2">
+                    <div class="card">
+                            <div class="front">
+                                    <div calss="column">
+                                        <img onclick="document.getElementById('id02').style.display='block'" src="designs\add.png" title="add romm" class="icon">
+                                    </div>
+
+                            </div>
+                            <div class="back">
+                                    <div calss="column">
+                                         <img onclick="document.getElementById('id02').style.display='block'"  src="designs\add1.png" title="add room" class="icon">
+                                    </div>
+                               </div>
+                    </div>
+
+                </section>
+            <!--talia ga3 hna-->
+            <section class="container2">
+                    <div class="card">
+                            <div class="front">
+                                    <div calss="column">
+                                        <img onclick="document.getElementById('id02').style.display='block'" src="designs\help.png" title="help" class="icon">
+                                    </div>
+
+                            </div>
+                            <div class="back">
+                                    <div calss="column">
+                                         <img onclick="document.getElementById('id02').style.display='block'"  src="designs\help1.png" title="help" class="icon">
+                                    </div>
+                               </div>
+                    </div>
+
+                </section>
+    </div>  
+   
+         
+    <div  class="modal1">
+            
+  
+     
+            
+                
+                
+        <div class="container" id="homeView" >
+            <div class="form-container sign-up-container">
+                    <form action="#">
+                            <h1>Create Account</h1>
+                           
+                            <input type="text" placeholder="Name" id="txtRegisterUsername" />
+                            <input type="email" placeholder="Email"  id="Registermail" />
+                            <input type="password" placeholder="Password" id="txtRegisterPassword" />
+                            <input type="text" placeholder="token Id" id="txtRegisterTokenId" />
+
+                            <button id="btnRegister" type="submit">Sign Up</button>
+                        </form>                    </div>
+
+                        
+            <div class="form-container sign-in-container">
+                <div >
+                                        <h1>Sign in</h1>
+                            
+                            <input type="text" placeholder="Username" id="txtLoginUsername" />
+                            <input type="password" placeholder="Password" id="txtLoginPassword"  />
+                            <a id="forgotPassword" href="/api/forgot"  >Forgot Password?</a>
+
+                            <button id="btnLoginLogin" type="submit" >Sign In</button>
+                        
+                </div>     
+                
+                                   </div>
+            <div class="overlay-container">
+                    <div class="overlay">
+                            <div class="overlay-panel overlay-left">
+                                <h1>Welcome Back!</h1>
+                                <p>
+                                    login and sweeten your home!
+                                </p>
+                                <button class="ghost" id="signIn">Sign In</button>
+                            </div>
+                            <div class="overlay-panel overlay-right">
+                                <h1>Hello, Friend!</h1>
+                                <p>add your home to be sweeter!</p>
+                                <button class="ghost" id="signUp">Sign Up</button>
+                            </div>
+                        </div> 
+                       
+                                       
+        </div>
+        
+
+
+        <script>const signUpButton = document.getElementById('signUp');
+            const signInButton = document.getElementById('signIn');
+            const container = document.getElementById('homeView');
+            const forgot = document.getElementById('forgotView');
+            signUpButton.addEventListener('click', () => {
+                container.classList.add('right-panel-active');
+            });
+            
+            signInButton.addEventListener('click', () => {
+                container.classList.remove('right-panel-active');
+            });</script> 
+
+                             
+        
+
+                          
+          
+          
+     
+           
+    </div>
+    
+    <div id="mailsend" class="modal">
+     
+        <legend>mail has been send </legend>
+        <div class="form-group">
+    </div>
+ 
+    
+    
+    <!--hadi l fenetre li tkhrjlk f login-->
+    <div id="id01" class="modal">
+            
+  
+            <form class="modal-content animate" action="/action_page.php">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="designs\sweet.png" width=75%>
+                <img src="designs\key.png" alt="Avatar" class="avatar">
+                <h1>your home will stay sweet when you're away!</h1>
+              
+          
+              <div class="container1">                  
+                <button type="submit">logout</button>
+                
+              </div>
+              
+              </div>   
+              <div class="container1"  >
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+         
+                </form>
+        </div>
+          <!--script hada t3 ki tclicki barra window youkhrj-->
+          
+         
+                
+            
+
+
+     <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
+     <div id="id02" class="modal">
+  
+        <form class="modal-content animate" action="/action_page.php">
+            
+              <div class="container1" style="background-color:#554269;color:white" >
+                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                notifications
+               </div>
+
+
+                <!--hna yji script-->
+
+
+
+            
+        </form>
+    </div>
+      <!-- hada tani ki tclicki barra window toukhrj-->
+      <script>
+      // Get the modal
+      var modal = document.getElementById('id02');
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+      </script>
+
+     <!--mzlou kyn des details na9ssin bzf w rani 3gabhum, w mm l'annimation kima goultili rani nchouflha f 7al :3 -->
+
+                
+    
+</body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta  charset="utf8">
+        <title>AJAX</title>
+    </head>
+
+    <body>
+
+            <input id="ok" name="name"   placeholder="text lower case" onkeyup=start()> text</input>
+            <input id="k" name="upper" readonly>
+
+            <input id="ok" name="name"   placeholder="text lower case" onkeyup=start()> text</input>
+            <input id="k" name="upper" readonly>
+            <button id="go" name="button">test</button>
+ 
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+            <script>
+function start(){
+                    let text ={name :  $('#ok').val() }
+                    
+
+                    $.ajax({
+                        type : 'POST',
+                        data : JSON.stringify(text),
+                        contentType : 'application/json',
+                        dataType : 'json',
+                        url : '/server',
+                        success : function(data){
+
+                            document.getElementById('k').value  = data.name;
+                            }
+                        });
+         
+            }
+            </script>
+    </body>
+</html>
