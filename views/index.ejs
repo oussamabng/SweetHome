@@ -7,19 +7,48 @@
 
     <body>
 
+<<<<<<< HEAD
             <input id="ok" name="name"   placeholder="text lower case" onkeyup=start()> text</input>
             <input id="k" name="upper" readonly>
 
             <input id="ok" name="name"   placeholder="text lower case" onkeyup=start()> text</input>
             <input id="k" name="upper" readonly>
             <button id="go" name="button">test</button>
+=======
+<<<<<<< HEAD
+            <input id="ok" name="name"   placeholder="text lower case" onkeyup=start()> text</input>
+            <input id="k" name="upper" readonly>
+=======
+<<<<<<< HEAD
+            <input id="ok" name="name"   placeholder="text lower case" onkeyup=start()> text</input>
+            <input id="k" name="upper" readonly>
+            <button id="go" name="button">test</button>
+>>>>>>> 25e073cdb4b3c8b267be7c30543812e886fed5a8
+>>>>>>> 67b4868981c6f20d9c44fdf12dd04b9f8cf364bc
  
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
             <script>
 function start(){
                     let text ={name :  $('#ok').val() }
                     
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+=======
+            <input id="ok" name="name"   placeholder="text lower case"> text</input>
+            <input id="k" name="upper" readonly>
+            <button id="go" name="button">test</button>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+            <script>
+               $('#go').on('click' , function(){
+
+                    const text ={name :  $('#ok').val() }
+>>>>>>> 3a29100ef49637cf7c326df911a27fcbbf3a37d5
+>>>>>>> 25e073cdb4b3c8b267be7c30543812e886fed5a8
+>>>>>>> 67b4868981c6f20d9c44fdf12dd04b9f8cf364bc
                     $.ajax({
                         type : 'POST',
                         data : JSON.stringify(text),
@@ -27,12 +56,32 @@ function start(){
                         dataType : 'json',
                         url : '/server',
                         success : function(data){
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 25e073cdb4b3c8b267be7c30543812e886fed5a8
+>>>>>>> 67b4868981c6f20d9c44fdf12dd04b9f8cf364bc
                             document.getElementById('k').value  = data.name;
                             }
                         });
          
             }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+                            console.log(data);
+                            }
+                        });
+         
+            });
+>>>>>>> 3a29100ef49637cf7c326df911a27fcbbf3a37d5
+>>>>>>> 25e073cdb4b3c8b267be7c30543812e886fed5a8
+>>>>>>> 67b4868981c6f20d9c44fdf12dd04b9f8cf364bc
             </script>
     </body>
 </html>
