@@ -2,8 +2,10 @@
  html {
     background:linear-gradient(to bottom ,#95A3EA ,#3D416C) no-repeat center fixed; 
     background-size: cover;
+    height:100%;
 }
-body {font-family: 'Roboto', sans-serif;
+body {  height:100%;
+      font-family: 'Roboto', sans-serif;
       font-weight:lighter
     }
 
@@ -446,6 +448,18 @@ a {
   margin: 15px 0;
 }
 
+/*btn a2hs*/
+.add-button {
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+}
+
+
+.enable-notifications {
+ display: none;
+ 
+}  
   
 
 
