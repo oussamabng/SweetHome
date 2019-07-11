@@ -44,28 +44,29 @@ var pusher = new Pusher('28874f2f3bdf02b787e5', {
 
 var channel = pusher.subscribe('alarms');
 channel.bind('inserted', function(data) {
-    VanillaToasts.create({
-        title: 'alert',
-        text:JSON.stringify(data),
-        type: 'warning', // success, info, warning, error
-        icon: 'designs/login.png',
-        timeout: 2000 ,
-        callback: function() {  } 
-      });
-
- alert(JSON.stringify(data));
-  if(!("Notification" in window)){
-        alert("this browser does not support notif");
-    }else if (Notification.permission == "granted"){
-        var notification = new Notification(JSON.stringify(data));
-    } 
-    else if(Notification.permission!="denied"){
-        Notification.requestPermission(function(permission){
-            if("permission" == "granted"){
-                var notification = new Notification(JSON.stringify(data));
-            }
-        });
-    }
+  //  VanillaToasts.create({
+    //    title: 'alert',
+      //  text:JSON.stringify(data),
+       // type: 'warning', // success, info, warning, error
+        //icon: 'designs/login.png',
+        //timeout: 2000 ,
+        //callback: function() {  } 
+     // });
+const saha  = document.getElementById("pushTest");
+saha.click();
+alert(JSON.stringify(data +" :ahay"));
+ // if(!("Notification" in window)){
+   //     alert("this browser does not support notif");
+    //}else if (Notification.permission == "granted"){
+      //  var notification = new Notification(JSON.stringify(data));
+    //} 
+    //else if(Notification.permission!="denied"){
+      //  Notification.requestPermission(function(permission){
+        //    if("permission" == "granted"){
+          //      var notification = new Notification(JSON.stringify(data));
+            //}
+        //});
+    //}
 });
 </script>
 
@@ -188,26 +189,22 @@ channel.bind('inserted', function(data) {
 
                         
             <div class="form-container sign-in-container">
-<<<<<<< HEAD
                 <div >
                                         <h1>Sign in</h1>
-=======
-                <form action="#">
-                    <h1>Sign in</h1>
->>>>>>> 67b4868981c6f20d9c44fdf12dd04b9f8cf364bc
                             
                             <input type="text" placeholder="Username" id="txtLoginUsername" />
                             <input type="password" placeholder="Password" id="txtLoginPassword"  />
                             <a id="forgotPassword" href="/api/forgot"  >Forgot Password?</a>
+                            <div style="display: none;">
+                                <button type="submit" id="pushTest" ></button>
+
+                            </div>
+
 
                             <button id="btnLoginLogin" type="submit" >Sign In</button>
                         
-<<<<<<< HEAD
                 </div>     
                 
-=======
-                 </form>     
->>>>>>> 67b4868981c6f20d9c44fdf12dd04b9f8cf364bc
                                    </div>
             <div class="overlay-container">
                     <div class="overlay">
@@ -329,7 +326,8 @@ channel.bind('inserted', function(data) {
 
 
      <script src="vanillatoasts.js"></script>
-     <link href="vanillatoasts.css" rel="stylesheet"></script>
+     <link href="vanillatoasts.css" rel="stylesheet">
+     
      <script type="text/javascript" src="main.js"></script>
      <script src="offline.js"></script>     
     

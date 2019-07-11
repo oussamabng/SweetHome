@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,12 +23,20 @@
     "loadash": "^1.0.0",
     "mongoose": "^5.4.20",
     "nodemailer": "^6.1.0",
-<<<<<<< HEAD
     "nodemon": "^1.19.1",
-=======
->>>>>>> 0fe3e8a79177b66b7fa3deb209991f57c405f0f1
     "path": "^0.12.7",
     "pusher": "^2.2.0",
-    "req-flash": "0.0.3"
-  }
+    "req-flash": "0.0.3",
+    "web-push": "^3.3.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oussamabng/SweetHome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oussamabng/SweetHome/issues"
+  },
+  "homepage": "https://github.com/oussamabng/SweetHome#readme",
+  "description": ""
 }

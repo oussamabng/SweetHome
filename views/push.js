@@ -1,16 +1,15 @@
-(function (window) {
-  'use strict';
-    
- var isEnable=false;   
- //var enableNotifaction = document.querySelector('.enable-notification');
+(function(window) {
+  "use strict";
 
- if ('Notification' in window){
-   console.log('push notification')
-   askForNotificationPermission();
-  }else{
-     console.log("no notification in browser")
+  var isEnable = false;
+  //var enableNotifaction = document.querySelector('.enable-notification');
+
+  if ("Notification" in window) {
+    console.log("push notification");
+    askForNotificationPermission();
+  } else {
+    console.log("no notification in browser");
   }
-
 
   /*enableNotifaction.addEventListener('click', function(){
     if (!isEnable){
@@ -23,108 +22,107 @@
     }
   });*/
 
- 
- function askForNotificationPermission(){
-    Notification.requestPermission()
-    .then((res)=>{
-     if (res!=='granted'){
-       console.log('notification '+res);
-       //change_btn_notif('incompatible');
-     } else{
-       console.log('notification '+res);
-       //checkSubscription();
-     }
-   })
-}
-
-/*function checkSubscription(){
-  if ( 'serviceWorker' in navigator){
-    navigator.serviceWorker.ready
-    .then(function(registration){
-      return registration.pushManager.getSubscription();
-    })
-    .then(function(sub){
-      console.log(sub);
-      if(sub===null){
-        subscribeUser();
-      } else{
-          updateSubscription();
+  function askForNotificationPermission() {
+    Notification.requestPermission().then(res => {
+      if (res !== "granted") {
+        console.log("notification " + res);
+        //change_btn_notif('incompatible');
+      } else {
+        console.log("notification " + res);
+        checkSubscription();
       }
-    }).catch(function(){
-        //change_btn_notif('disable')
-        console.log('erreur dans checkSubscription');
-    })
-   }
- }
+    });
+  }
 
+  function checkSubscription() {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.ready
+        .then(function(registration) {
+          return registration.pushManager.getSubscription();
+        })
+        .then(function(sub) {
+          console.log(sub);
+          if (sub === null) {
+            subscribeUser();
+          } else {
+            updateSubscription();
+          }
+        })
+        .catch(function() {
+          //change_btn_notif('disable')
+          console.log("erreur dans checkSubscription");
+        });
+    }
+  }
 
+  function subscribeUser() {
+    navigator.serviceWorker.ready
+      .then(function(reg) {
+        reg.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(
+            "BNgVIH_VpsHF842JrXSmCkHzS4NcVa-uUnLymg9FrQLGVhN3jrJxmmYZKt-swFaGksXpoMZxL8WmhqDyZXyiM9U"
+          )
+        });
+      })
+      .then(function(sub) {
+        console.log("subscribeUser " + JSON.stringify(sub));
+        saveSubscription();
+      })
+      .catch(function(err) {
+        console.log("error");
+        VanillaToasts.create({
+          title: "Subscription",
+          text: "error in subscription!!",
+          type: "error", // success, info, warning, error
+          icon: "designs/login.png",
+          timeout: 2000,
+          callback: function() {}
+        });
+        //change_btn_notif('disable');
+      });
+  }
 
-function subscribeUser(){
- navigator.serviceWorker.ready
-  .then(function(reg){
-     reg.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey:urlBase64ToUint8Array("BNgVIH_VpsHF842JrXSmCkHzS4NcVa-uUnLymg9FrQLGVhN3jrJxmmYZKt-swFaGksXpoMZxL8WmhqDyZXyiM9U" )
-     })
-   }).then(function(sub){
-     console.log('subscribeUser '+JSON.stringify(sub));
-     saveSubscription();
-   }).catch(function(err){
-     console.log('error');
-     VanillaToasts.create({
-        title: 'Subscription',
-        text: 'error in subscription!!',
-        type: 'error', // success, info, warning, error
-        icon: 'designs/login.png',
-        timeout: 2000 ,
-        callback: function() {  } 
-      }); 
-     //change_btn_notif('disable');
-   }) 
-}
+  function saveSubscription() {
+    console.log("save sub");
+    navigator.serviceWorker.ready.then(function(reg) {
+      reg.pushManager.getSubscription().then(function(sub) {
+        console.log("hhhh " + sub);
+        fetch("   ", {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify(sub)
+        })
+          .then(function(res) {
+            console.log(res.JSON);
+            VanillaToasts.create({
+              title: "Subscription",
+              text: "Subscribed to push notification successfully.",
+              type: "success", // success, info, warning, error
+              icon: "designs/login.png",
+              timeout: 2000,
+              callback: function() {}
+            });
+          })
+          .catch(function(err) {
+            VanillaToasts.create({
+              title: "Subscription",
+              text: "error in save subscription.",
+              type: "error", // success, info, warning, error
+              icon: "designs/login.png",
+              timeout: 2000,
+              callback: function() {}
+            });
+            //change_btn_notif('disable');
+          });
+      });
+    });
+  }
 
-
-
-function saveSubscription(){
- console.log('save sub');
- navigator.serviceWorker.ready
- .then(function(reg){
-   reg.pushManager.getSubscription()
-    .then(function(sub){
-     console.log('hhhh '+sub);
-     fetch('   ',{
-       method:'post',
-       headers: {
-         'Content-Type': 'application/json',
-         'Accept': 'application/json'
-       },
-       body: JSON.stringify(sub)
-     }).then(function(res){
-       console.log(res.JSON)
-       VanillaToasts.create({
-          title: 'Subscription',
-          text: 'Subscribed to push notification successfully.',
-          type: 'success', // success, info, warning, error
-          icon: 'designs/login.png',
-          timeout: 2000 ,
-          callback: function() {  } 
-        });   
-       }).catch(function(err){
-         VanillaToasts.create({
-            title: 'Subscription',
-            text: 'error in save subscription.',
-            type: 'error', // success, info, warning, error
-            icon: 'designs/login.png',
-            timeout: 2000 ,
-            callback: function() {  } 
-          });   
-         //change_btn_notif('disable');
-       })
-     })
- })
-}
-
-/*function unsubscribe(){
+  /*function unsubscribe(){
  navigator.serviceWorker.ready
  .then(function(reg){
      reg.pushManager.getSubscription()
@@ -182,11 +180,7 @@ function updateSubscription(){
 }
 */
 
-   
- 
-
-
- /*function displayConfirmNotification() {
+  /*function displayConfirmNotification() {
  if ('serviceWorker' in navigator) {
    var options = {
      body: 'You successfully subscribed to our Notification service!',
@@ -212,9 +206,11 @@ function updateSubscription(){
 
 */
 
-function urlBase64ToUint8Array(base64String) {
-    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-    const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+  function urlBase64ToUint8Array(base64String) {
+    const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding)
+      .replace(/\-/g, "+")
+      .replace(/_/g, "/");
 
     const rawData = window.atob(base64);
     const outputArray = new Uint8Array(rawData.length);
@@ -224,6 +220,4 @@ function urlBase64ToUint8Array(base64String) {
     }
     return outputArray;
   }
-
-
 })(window);
