@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="Chart.min.js"></script>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <title> Chart</title>
+</head>
+<body>
+  <div class="container">
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <script>
+   $.ajax({
+     url:'',
+     success:function(response){
+        var label=[];
+        var dataa=[];
+        for(var i=0;i<Response.length;i++){
+          label.push(response[i].temps); // x
+          dataa.push(Response[i].tepra); // y
+        }
+     }
+   })
+
+
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart = new Chart(myChart, {
+      type:'line', 
+      data:{
+        labels:label,
+        datasets:[{
+          label:'temperature',
+          data:dataa,
+          fill:false, 
+          //backgroundColor:'green',
+          backgroundColor:[
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+            'rgba(255, 99, 132, 0.6)'
+          ],
+          borderWidth:3,
+          borderColor:'#777',
+          hoverBorderWidth:3,
+          hoverBorderColor:'#000'
+        },
+               {
+                label: 'humidity', // Name the series 
+                data: [], // Specify the data values array 
+                fill: false,
+                 borderColor: '#4CAF50', // Add custom color border (Line) 
+                backgroundColor: '#4CAF50', // Add custom color background (Points and Fill) borderWidth: 1 // Specify bar border width }] }, options: { responsive: true, // Instruct chart js to respond nicely. maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height } });
+
+
+               }     
+      
+      
+      ]
+      },
+      options:{
+        title:{
+          display:true,
+          text:'your home now',
+          fontSize:25
+        },
+        legend:{
+          display:true,
+          position:'right',
+          labels:{
+            fontColor:'#000'
+          }
+        },
+        layout:{
+          padding:{
+            left:50,
+            right:0,
+            bottom:0,
+            top:0
+          }
+        },
+        tooltips:{
+          enabled:true
+        }
+      }
+    });
+    var getData = function() {
+  $.ajax({
+    url: '/' ,
+    success: function(data) {
+      // process your data to pull out what you plan to use to update the chart
+      // e.g. new label and a new data point
+      
+      // add new label and data point to chart's underlying data structures
+      myChart.data.labels.push("Post " + postId++);
+      myChart.data.datasets[0].data.push(getRandomIntInclusive(1, 25));
+      
+      // re-render the chart
+      myChart.update();
+    }
+  });
+};
+
+// get new data every 3 seconds
+setInterval(getData, 3000);
+
+
+
+
+  </script>
+</body>
+</html>

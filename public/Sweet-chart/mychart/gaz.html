@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: rgb(124, 185, 241);margin:-10">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="Chart.min.js"></script>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <style>
+
+      .row {
+        display: flex;
+        margin-right:auto;
+        margin-left: auto;
+        width:100%;
+      }
+      
+    .column {
+        column-gap: 0px;
+        flex: 50%;
+        margin:0px; 
+        left: 0px;
+        padding: 0px;
+      }
+
+
+  </style>
+</head>
+<body style="background-color: #554269;margin:0" >
+  <div class="row"  >
+  <div class="column"><img src="icons/gaz.png" width="30%" style="margin-top:40px; margin-bottom: auto;margin-left:40px" ></div>
+  <div class="container column" style="width: 100%;padding:0;background-color:#4671A3;margin-top:10px">
+    <canvas id="myChart" style="width:110%;height:auto;margin:0;"></canvas>
+  </div>
+
+  </div>
+
+  <script>
+    Chart.plugins.register({
+  beforeDraw: function(chartInstance) {
+    var ctx = chartInstance.chart.ctx;
+    ctx.fillStyle = "#554269";
+    ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+      
+  }
+  
+});
+    var myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#554269';
+    Chart.scaleService.updateScaleDefaults('linear', {
+    display:false
+});
+var ok = 2;
+    var massPopChart = new Chart(myChart, {
+      type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data:{
+        labels:[1,2,3,4,5,6],
+        datasets:[{
+          label:'',
+          data:[
+            600094,
+            381045,
+            953060,
+            906519,
+            105162,
+            65072
+          ],
+          fill:true, 
+          //backgroundColor:'green',
+          backgroundColor:'rgba(213, 88, 238,0.5)',
+         
+          borderWidth:0,
+          borderColor:'rgba(213, 88, 238,0.5)',
+          hoverBorderWidth:0,
+          hoverBorderColor:'#000'
+        },
+               {
+                label: '1,2,3,4,5,6', // Name the series 
+                data: [9288,100000,50,60000,309009], // Specify the data values array 
+                fill: true,
+                 borderColor: 'rgb(124, 185, 241)', // Add custom color border (Line) 
+                backgroundColor: 'rgb(124, 185, 241)', // Add custom color background (Points and Fill) borderWidth: 1 // Specify bar border width }] }, options: { responsive: true, // Instruct chart js to respond nicely. maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height } });
+
+
+               }     
+      
+      
+      ]
+      
+      },
+      
+      
+      options:{
+       // title:{
+         // display:true,
+          //text:'Largest Cities In Massachusetts',
+          //fontSize:2
+        //},
+        legend:{
+          display:false,
+          position:'right',
+          labels:{
+            fontColor:'#000'
+          }
+        },
+        layout:{
+          padding:{
+            left:0,
+            right:0,
+            bottom:0,
+            top:0
+          }
+        },
+        tooltips:{
+          enabled:true
+        }
+      }
+    });
+    
+  </script>
+</body>
+</html>
