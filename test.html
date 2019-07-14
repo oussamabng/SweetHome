@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TEST</title>
+
+  
+
+    <link
+      rel="stylesheet"
+      href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+    />
+  </head>
+  <body>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <button id="test">click me</button>
+  </body>
+  <script>
+    $(document).ready(function() {
+      toastr.options = {
+        closeButton: true,
+        debug: false,
+        newestOnTop: true,
+        progressBar: false,
+        positionClass: "toast-top-right",
+        preventDuplicates: false,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: 0,
+        extendedTimeOut: 0,
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut",
+        tapToDismiss: false,
+        onclick: function() {
+          console.log("test a zah");
+          toastr.remove();
+        }
+      };
+      document.getElementById("test").addEventListener("click", function() {
+        toastr["error"](
+          'Mouvement Detected on the room : " oussama room "    <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm </button>',
+          " alarm rings "
+        );
+      });
+    });
+  </script>
+</html>

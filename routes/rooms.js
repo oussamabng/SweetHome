@@ -75,6 +75,25 @@ router.post("/light", async function(req, res) {
 
   res.send("changes completed for the light ");
 });
+
+router.post("/notifications", async function(req, res) {
+  var arr = [];
+  const alarm = await Alarm.findOne({ _id: JSON.parse(req.body.id) });
+
+  alarm.value = false;
+  alarm.save();
+
+  const room = await Rooms.find();
+  room.forEach(function(data) {
+    data.devices.alarm.forEach(function(id) {
+      if (id == JSON.parse(req.body.id)) {
+        arr.push(data.name);
+      }
+    });
+  });
+  console.log("arr :" + arr);
+  res.status(200).send(arr);
+});
 // ********************************************************//
 router.get("/all", async function(req, res) {
   const dht = await Dht.find();

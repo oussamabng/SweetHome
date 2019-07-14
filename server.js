@@ -92,7 +92,8 @@ db.once("open", () => {
     ) {
       console.log("alarm tsoniii !!!!!!!");
       pusher.trigger("alarms", "inserted", {
-        message: "Alarm is on .."
+        message: "hello world",
+        id: change.fullDocument._id
       });
     }
   });

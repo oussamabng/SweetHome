@@ -1,303 +1,317 @@
-
- html {
-    background:linear-gradient(to bottom ,#95A3EA ,#3D416C) no-repeat center fixed; 
-    background-size: cover;
-    height:100%;
+html {
+  background: linear-gradient(to bottom, #95a3ea, #3d416c) no-repeat center
+    fixed;
+  background-size: cover;
+  height: 100%;
 }
-body {  height:100%;
-      font-family: 'Roboto', sans-serif;
-      font-weight:lighter
-    }
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+}
 
-h1{font-weight:lighter;}
+h1 {
+  font-weight: lighter;
+}
 /*menna 7atta ngolk rahi 7bsst ga3 t3 flip annimation :b */
-img{
-    width:75%;
-    height: auto;
+img {
+  width: 75%;
+  height: auto;
 }
 .container2 {
-    width: 200px;
-    height: 260px;
-    position: relative;
-    -webkit-perspective: 800px;
-    -moz-perspective: 800px;
-    -o-perspective: 800px;
-    perspective: 800px;
-    top:-50;
+  width: 200px;
+  height: 260px;
+  position: relative;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+  top: -50;
 }
 .card {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    -webkit-transition: -webkit-transform 1s;
-    -moz-transition: -moz-transform 1s;
-    -o-transition: -o-transform 1s;
-    transition: transform 1s;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transition: -webkit-transform 1s;
+  -moz-transition: -moz-transform 1s;
+  -o-transition: -o-transform 1s;
+  transition: transform 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 .card div {
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    position: absolute;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .card .back {
-    
-    -webkit-transform: rotateY( 180deg );
-    -moz-transform: rotateY( 180deg );
-    -o-transform: rotateY( 180deg );
-    transform: rotateY( 180deg );
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
-.front , .back{
-    margin-top:-50;
+.front,
+.back {
+  margin-top: -50;
 }
 .card.flipped {
-    -webkit-transform: rotateY( 180deg );
-    -moz-transform: rotateY( 180deg );
-    -o-transform: rotateY( 180deg );
-    transform: rotateY( 180deg );
-    transform-style: preserve-3d
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
 }
 
 /*sayi kmlt t3 animation*/
 .row {
-    display: flex;
-    justify-content: center;
-    margin-right:auto;
-    margin-left: auto;
-    width:50%;
-  }
-  
+  display: flex;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+}
 
-  /*hadi ga3 t3 l window li tkhrj*/
- 
-    /* Set a style for all buttons */
-    
-  /* Extra styles for the cancel button */
-  .cancelbtn {
-    width: 100%;
-    padding: 10px 18px;    
-    background-color: #4CAF50;
-    color: white;
-    border: 2px solid #4CAF50;
-    border-radius: 12px;
-  }
+/*hadi ga3 t3 l window li tkhrj*/
 
-  /* Center the image and position the close button */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-   
-  }
+/* Set a style for all buttons */
 
-  
-  img.avatar {
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: 100%;
+  padding: 10px 18px;
+  background-color: #4caf50;
+  color: white;
+  border: 2px solid #4caf50;
+  border-radius: 12px;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+}
+
+/*responsive options*/
+.modal-content {
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+.icon {
+  width: 180%;
+}
+.column {
+  column-gap: normal;
+  flex: auto;
+}
+@media only screen and (min-width: 600px) {
+  .modal-content {
+    width: 60%;
+  }
+  .modal-container {
+    width: 60%;
+  }
+  .icon {
+    width: 75%;
+  }
+  .column {
+    column-gap: 0px;
+    flex: auto;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .modal-content {
     width: 40%;
   }
-  
-  
-  /*responsive options*/
-  .modal-content{    width: 80%; /* Could be more or less, depending on screen size */
+  .modal-container {
+    width: 40%;
   }
-  .icon{width:180%;}
-  .column{    column-gap:normal;
-  flex:auto;}
-  @media only screen and (min-width: 600px) {
-    .modal-content{width:60%;
-    }
-    .modal-container{width:60%;
-    }
-    .icon{width: 75%;
+  .icon {
+    width: 75%;
+  }
+  .column {
+    column-gap: -50px;
+    flex: auto;
+  }
+}
+.container1 {
+  padding: 15px;
+}
 
-    }
-    .column{    column-gap: 0px;
-    flex:auto;}
-  }
-  @media only screen and (min-width: 768px) {
-    .modal-content{width:40%;
-    }
-    .modal-container{width:40%;
-    }
-    .icon{width: 75%;}
-    .column{    column-gap: -50px;
-    flex:auto;}
-  }
-  .container1 {
-    padding:15px;
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
 
-  
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+.modal1 {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  padding-top: 60px;
+  display: table;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #554269;
+  border-radius: 1%;
+  padding: 4%;
+  background-image: url("designs/web-designer-pune-background.jpg");
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
   }
-  
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
   span.psw {
-    float: right;
-    padding-top: 16px;
+    display: block;
+    float: none;
   }
-  
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+  .cancelbtn {
+    width: 100%;
   }
-  .modal1 {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-    display: table;
-    
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #554269;
-    border-radius:1%;
-    padding: 4%;
-    background-image: url('designs/web-designer-pune-background.jpg');
-  }
-  
-  
-  /* The Close Button (x) */
-  .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
-  
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-  }
-    
-  @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-  }
-  
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-  }
-  .modal-container{
-    display: table;
+}
+.modal-container {
+  display: table;
   height: 100%;
   width: 100%;
   height: 100%;
+}
 
-  }
-  
-  
-
-  /*login register form*/
-  span {
-    font-size: 12px;
+/*login register form*/
+span {
+  font-size: 12px;
 }
 
 a {
-    color: #333;
-    font-size: 14px;
-    text-decoration: none;
-    margin: 15px 0;
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
 }
 
 button {
-    border-radius: 20px;
-    border: 1px solid #554269;
-    background-color: #554269;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
+  border-radius: 20px;
+  border: 1px solid #554269;
+  background-color: #554269;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
 }
 
 button:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 button:focus {
-    outline: none;
+  outline: none;
 }
 
 button.ghost {
-    background-color: transparent;
-    border-color: #ffffff;
+  background-color: transparent;
+  border-color: #ffffff;
 }
 
 form {
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 50px;
-    height: 100%;
-    text-align: center;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
 }
 
 input {
-    background-color: #eee;
-    border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
-    width: 100%;
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
 }
 .container {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: absolute;
-  left:25%;
-  top:25%;
+  left: 25%;
+  top: 25%;
   overflow: hidden;
   width: 768px;
   max-width: 50%;
@@ -314,114 +328,116 @@ input {
   min-height: 480px;
 }
 .form-container {
-position: absolute;
-top: 0;
-height: 100%;
-transition: all 0.6s ease-in-out;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
 }
 
 .sign-in-container {
-left: 0;
-width: 50%;
-z-index: 2;
+  left: 0;
+  width: 50%;
+  z-index: 2;
+  text-align: center;
+  padding: 11% 0;
 }
 
 .sign-up-container {
-left: 0;
-width: 50%;
-opacity: 0;
-z-index: 1;
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
 }
 
 .container.right-panel-active .sign-in-container {
-transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 .container.right-panel-active .sign-up-container {
-transform: translateX(100%);
-opacity: 1;
-z-index: 5;
-animation: show 0.6s;
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
 }
 
 @keyframes show {
-0%,
-49.99% {
+  0%,
+  49.99% {
     opacity: 0;
     z-index: 1;
-}
+  }
 
-50%,
-100% {
+  50%,
+  100% {
     opacity: 1;
     z-index: 5;
-}
+  }
 }
 .overlay-container {
-position: absolute;
-top: 0;
-left: 50%;
-width: 50%;
-height: 100%;
-overflow: hidden;
-transition: transform 0.6s ease-in-out;
-z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
 }
 
 .container.right-panel-active .overlay-container {
-transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .overlay {
-background: #554269;
-background: -webkit-linear-gradient(to right, #595386, #52E0DD);
-background: linear-gradient(to right, #595386, #52E0DD);
-background-repeat: no-repeat;
-background-size: cover;
-background-position: 0 0;
-color: #ffffff;
-position: relative;
-left: -100%;
-height: 100%;
-width: 200%;
-transform: translateX(0);
-transition: transform 0.6s ease-in-out;
+  background: #554269;
+  background: -webkit-linear-gradient(to right, #595386, #52e0dd);
+  background: linear-gradient(to right, #595386, #52e0dd);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
 }
 
 .container.right-panel-active .overlay {
-transform: translateX(50%);
+  transform: translateX(50%);
 }
 
 .overlay-panel {
-position: absolute;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-padding: 0 40px;
-text-align: center;
-top: 0;
-height: 100%;
-width: 50%;
-transform: translateX(0);
-transition: transform 0.6s ease-in-out;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
 }
 
 .overlay-left {
-transform: translateX(-20%);
+  transform: translateX(-20%);
 }
 
 .container.right-panel-active .overlay-left {
-transform: translateX(0);
+  transform: translateX(0);
 }
 
 .overlay-right {
-right: 0;
-transform: translateX(0);
+  right: 0;
+  transform: translateX(0);
 }
 
 .container.right-panel-active .overlay-right {
-transform: translateX(20%);
+  transform: translateX(20%);
 }
 
 h1 {
@@ -455,15 +471,6 @@ a {
   left: 1px;
 }
 
-
 .enable-notifications {
- display: none;
- 
-}  
-  
-
-
- 
-
-
-  
+  display: none;
+}

@@ -40,6 +40,6 @@ async function triggerPushNotification() {
 }
 
 triggerPush.addEventListener("click", () => {
-  console.log("submita yarbk ");
+  console.log("submita  ");
   triggerPushNotification().catch(error => console.error(error));
 });

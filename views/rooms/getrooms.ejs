@@ -3,335 +3,222 @@
   <head>
     <title>Rooms!</title>
     <meta charset="UTF-8" />
+  
+   
+    <link
+    rel="stylesheet"
+    href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+  />
     <link rel="stylesheet" type="text/css" href="../../../slick/slick.css" />
     <link
       rel="stylesheet"
       type="text/css"
       href="../../../slick/slick-theme.css"
     />
+    <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+
     <link
       href="https://fonts.googleapis.com/css?family=Roboto"
       rel="stylesheet"
     />
-    <style type="text/css">
-      html,
-      body {
-        font-family: "Roboto", sans-serif;
-        font-weight: lighter;
-        color: black;
-        font-size: 500;
-        margin: 0;
-        padding: 0;
+    <link rel="stylesheet" href="../../../style.css" />
+    
+    <script>  
+      function flip() {
+        $(".card").toggleClass("flipped");
       }
-      body,
-      html {
-        background-color: #1d1c25;
-        margin: 0;
-        padding: 0;
-      }
-      iframe {
-        padding: 0;
-        width: 100%;
-        margin: 0;
-        height: auto;
-      }
+    </script>
+    <script>
+      var doughnut = 0;
+      var chawrma = 1;
+      window.setInterval(function() {
+        doughnut = doughnut + 1;
+        var pizza = 0;
+        pizza = doughnut % 20;
 
-      .range {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 200px;
-        margin-top: 10px;
-        transform: translate(-50%, -50%);
-      }
-
-      input[type="range"]::-webkit-slider-runnable-track {
-        -webkit-appearance: none;
-        background: rgba(59, 173, 227, 1);
-        background: -moz-linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        background: -webkit-gradient(
-          left bottom,
-          right top,
-          color-stop(0%, rgba(59, 173, 227, 1)),
-          color-stop(25%, rgba(87, 111, 230, 1)),
-          color-stop(51%, rgba(152, 68, 183, 1)),
-          color-stop(100%, rgba(255, 53, 127, 1))
-        );
-        background: -webkit-linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        background: -o-linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        background: -ms-linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        background: linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bade3 ', endColorstr='#ff357f ', GradientType=1 );
-        height: 2px;
-      }
-
-      input[type="range"]:focus {
-        outline: none;
-      }
-
-      input[type="range"]::-moz-range-track {
-        -moz-appearance: none;
-        background: rgba(59, 173, 227, 1);
-        background: -moz-linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        background: -webkit-gradient(
-          left bottom,
-          right top,
-          color-stop(0%, rgba(59, 173, 227, 1)),
-          color-stop(25%, rgba(87, 111, 230, 1)),
-          color-stop(51%, rgba(152, 68, 183, 1)),
-          color-stop(100%, rgba(255, 53, 127, 1))
-        );
-        background: -webkit-linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        background: -o-linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        background: -ms-linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        background: linear-gradient(
-          45deg,
-          rgba(59, 173, 227, 1) 0%,
-          rgba(87, 111, 230, 1) 25%,
-          rgba(152, 68, 183, 1) 51%,
-          rgba(255, 53, 127, 1) 100%
-        );
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bade3 ', endColorstr='#ff357f ', GradientType=1 );
-        height: 2px;
-      }
-
-      input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        border: 2px solid;
-        border-radius: 50%;
-        height: 25px;
-        width: 25px;
-        max-width: 80px;
-        position: relative;
-        bottom: 11px;
-        background-color: #1d1c25;
-        cursor: -webkit-grab;
-
-        -webkit-transition: border 1000ms ease;
-        transition: border 1000ms ease;
-      }
-
-      input[type="range"]::-moz-range-thumb {
-        -moz-appearance: none;
-        border: 2px solid;
-        border-radius: 50%;
-        height: 25px;
-        width: 25px;
-        max-width: 80px;
-        position: relative;
-        bottom: 11px;
-        background-color: #1d1c25;
-        cursor: -moz-grab;
-        -moz-transition: border 1000ms ease;
-        transition: border 1000ms ease;
-      }
-
-      .range.blue::-webkit-slider-thumb {
-        border-color: rgb(59, 173, 227);
-      }
-
-      .range.ltpurple::-webkit-slider-thumb {
-        border-color: rgb(87, 111, 230);
-      }
-
-      .range.purple::-webkit-slider-thumb {
-        border-color: rgb(152, 68, 183);
-      }
-
-      .range.pink::-webkit-slider-thumb {
-        border-color: rgb(255, 53, 127);
-      }
-
-      .range.blue::-moz-range-thumb {
-        border-color: rgb(59, 173, 227);
-      }
-
-      .range.ltpurple::-moz-range-thumb {
-        border-color: rgb(87, 111, 230);
-      }
-
-      .range.purple::-moz-range-thumb {
-        border-color: rgb(152, 68, 183);
-      }
-
-      .range.pink::-moz-range-thumb {
-        border-color: rgb(255, 53, 127);
-      }
-
-      input[type="range"]::-webkit-slider-thumb:active {
-        cursor: -webkit-grabbing;
-      }
-
-      input[type="range"]::-moz-range-thumb:active {
-        cursor: -moz-grabbing;
-      }
-      .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-        transition: 0.3s;
-        width: 500px;
-        display: inline-block;
-        margin: 25px;
-      }
-
-      .card:hover {
-        box-shadow: 0.5 8px 16px 0 rgba(0, 0, 0, 0.2);
-      }
-
-      .container-name {
-        text-align: center;
-        position: relative;
-        -webkit-perspective: 800px;
-        -moz-perspective: 800px;
-        -o-perspective: 800px;
-        perspective: 800px;
-        padding: 2px 16px;
-        border: 5;
-        box-shadow: 0 0px 0px 8px rgba(0, 0, 0, 0.4);
-        background-color: #52e0dd;
-      }
-      .container-rgb {
-        position: relative;
-        -webkit-perspective: 800px;
-        -moz-perspective: 800px;
-        -o-perspective: 800px;
-        perspective: 800px;
-        padding: 2px 16px;
-        border: 5;
-        background-color: #50add2;
-        white-space: nowrap;
-        overflow-x: hidden;
-        overflow-y: hidden;
-        box-shadow: 5px 0px 0px 0px rgba(0, 0, 0, 0.2);
-      }
-      .container-charts {
-        position: relative;
-        -webkit-perspective: 800px;
-        -moz-perspective: 800px;
-        -o-perspective: 800px;
-        perspective: 800px;
-        padding: 2px 16px;
-        border: 5;
-        background-color: #4671a3;
-        box-shadow: 5px 1px 0px 0px rgba(0, 0, 0, 0.2);
-      }
-      .container-secure {
-        position: relative;
-        -webkit-perspective: 800px;
-        -moz-perspective: 800px;
-        -o-perspective: 800px;
-        perspective: 800px;
-        padding: 2px 16px;
-        border: 5;
-        background-color: #595386;
-        box-shadow: 5px 0px 0px 0px rgba(0, 0, 0, 0.2);
-      }
-      .container-gaz {
-        position: relative;
-        -webkit-perspective: 800px;
-        -moz-perspective: 800px;
-        -o-perspective: 800px;
-        perspective: 800px;
-        padding: 2px 16px;
-        border: 5;
-        background-color: #554269;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      .slider {
-        width: 90%;
-        margin: 100px auto;
-      }
-
-      .slick-slide {
-        margin: 0px 20px;
-      }
-
-      .slick-slide {
-        width: 400px;
-      }
-
-      .slick-prev:before,
-      .slick-next:before {
-        color: black;
-      }
-
-      .slick-slide {
-        transition: all ease-in-out 0.3s;
-        opacity: 0.2;
-      }
-
-      .slick-active {
-        opacity: 0.5;
-      }
-
-      .slick-current {
-        opacity: 1;
-      }
-      .rgbview {
-        display: inline-block;
-      }
-    </style>
+        if (pizza == 0) {
+          flip();
+          chawrma = 1;
+        } else {
+          if (chawrma == 1) {
+            flip();
+            chawrma = 0;
+          }
+        }
+      }, 1000);
+    </script>
+   
+  
   </head>
   <body>
+      
+
+      <div class="row"  >
+          <!---hadi ga3 t3 animation t3 kol w7da -->
+          <section class="container">
+                       <div class="card" onclick="flip()">
+                            <div class="front">
+                                    <div class="column">
+                                     <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs\login.png" title="logout" >
+                                    </div>                          
+                              </div>
+                      <div class="back"> 
+                              <div class="column">
+                                 <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs\login1.png" title="logout" >
+                        
+                              </div>
+                      </div>
+            </section>
+          <!--hna tkml lwla g3 t3 nav bar t3 login-->
+          <!--zwaja tbda hna-->
+          <section class="container">
+                  <div class="card">
+                          <div class="front">
+                                  <div calss="column">
+                                      <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs\notifications.png" title="notification" >
+                                  </div>
+  
+                          </div>
+                          <div class="back">
+                                  <div calss="column">
+                                       <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs\notifications1.png" title="notification">
+                                  </div>
+                             </div>
+                  </div>
+  
+              </section>
+          <!--talta tbda hna-->
+          <section class="container">
+                  <div class="card">
+                          <div class="front">
+                                  <div calss="column">
+                                      <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs\settings.png" title="settings" >
+                                  </div>
+  
+                          </div>
+                          <div class="back">
+                                  <div calss="column">
+                                       <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs\settings1.png" title="settings" >
+                                  </div>
+                             </div>
+                  </div>
+  
+              </section>
+          <!--rab3a hna--> 
+          <section class="container">
+                  <div class="card">
+                          <div class="front">
+                                  <div calss="column">
+                                      <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs\add.png" title="add romm" >
+                                  </div>
+  
+                          </div>
+                          <div class="back">
+                                  <div calss="column">
+                                       <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs\add1.png" title="add room" >
+                                  </div>
+                             </div>
+                  </div>
+  
+              </section>
+          <!--talia ga3 hna-->
+          <section class="container">
+                  <div class="card">
+                          <div class="front">
+                                  <div calss="column">
+                                      <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs\help.png" title="help" >
+                                  </div>
+  
+                          </div>
+                          <div class="back">
+                                  <div calss="column">
+                                       <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs\help1.png" title="help" >
+                                  </div>
+                             </div>
+                  </div>
+  
+              </section>
+        
+  </div>  
+  
+       
+  
+  
+  
+  
+  
+  <!--hadi l fenetre li tkhrjlk f login-->
+  <div id="id01" class="modal">
+          
+  
+          <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <img src="../../../designs\sweet.png" width=75%>
+              <img src="../../../designs\key.png" alt="Avatar" class="avatar">
+              <h1>your home will stay sweet when you're away!</h1>
+            
+        
+            <div class="container1">                  
+              <button type="submit">logout</button>
+              
+            </div>
+            
+            </div>   
+            <div class="container1" style="background-color:#554269" >
+                      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              </div>
+       
+              </form>
+      </div>
+        <!--script hada t3 ki tclicki barra window youkhrj-->
+       
+       
+              
+          
+  
+  
+   <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
+   <div id="id02" class="modal">
+  
+      <form class="modal-content animate" action="/action_page.php">
+          
+            <div class="container1" style="background-color:#554269;color:white" >
+                      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+              notifications
+             </div>
+  
+  
+              <!--hna yji script-->
+  
+  
+  
+          
+      </form>
+
+  </div>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- hada tani ki tclicki barra window toukhrj-->
+    <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+    <section class="regular slider" id="test"></section>
+ <div style="display: none;">
+                                <button type="submit" id="pushTest" ></button>
+                            
+                            </div>
+
     <div style="display: none;">
       <h1 id="getrooms">
         <%= rooms %>
@@ -357,12 +244,8 @@
       </h1>
     </div>
 
-    <section class="regular slider" id="test"></section>
 
-    <script
-      src="https://code.jquery.com/jquery-2.2.0.min.js"
-      type="text/javascript"
-    ></script>
+
     <script
       src="../../../slick/slick.js"
       type="text/javascript"
@@ -380,46 +263,10 @@
       );
       var allalarm = JSON.parse(document.getElementById("alarm").innerHTML);
 
-      var kitchen = {
-        name: "couzina",
-        type: "kitchen",
-        dht: "skhana",
-        rgb: { exists: true, light: false },
-        dht: { exists: true },
-        gaz: { exists: true },
-        motion: { exists: true }
-      };
-      var chambrti = {
-        name: "chambrti",
-        type: "bedroom",
-        rgb: { exists: true, light: false },
-        dht: { exists: true },
-        gaz: { exists: true },
-        motion: { exists: true }
-      };
-      var sallon = {
-        name: "sallon",
-        type: "livingroom",
-        dht: "brd",
-        rgb: { exists: true, light: false },
-        dht: { exists: true },
-        gaz: { exists: true },
-        motion: { exists: true }
-      };
-      var couloire = {
-        name: "couloire",
-        type: "hallway",
-        dht: "brd",
-        rgb: { exists: true, light: false },
-        dht: { exists: true },
-        gaz: { exists: true },
-        motion: { exists: true }
-      };
-      var rooms = [kitchen, chambrti, sallon, sallon, couloire];
-
+     
       function showRooms(i) {
         document.getElementById("test").innerHTML +=
-          '<div class="card">' +
+          '<div class="cardroom">' +
           '<section class="container-name" id="type' +
           i +
           '" >' +
@@ -637,7 +484,7 @@
         a = false;
       }
       $(document).on("ready", function() {
-        $(".regular").slick({
+        $(".regular").  slick({
           dots: true,
           infinite: a,
           speed: 300,
@@ -667,5 +514,99 @@
         });
       });
     </script>
+    <script>
+
+
+      Pusher.logToConsole = true;
+  
+  var pusher = new Pusher('28874f2f3bdf02b787e5', {
+    cluster: 'eu',
+    forceTLS: true
+  });
+  
+  var channel = pusher.subscribe('alarms');
+  channel.bind('inserted', function(data) {
+    //  VanillaToasts.create({
+      //    title: 'alert',
+        //  text:JSON.stringify(data),
+         // type: 'warning', // success, info, warning, error
+          //icon: 'designs/login.png',
+          //timeout: 2000 ,
+          //callback: function() {  } 
+       // });
+
+       var id =  JSON.stringify(data.id) ;
+       const name = "haha";
+  const saha  = document.getElementById("pushTest");
+  saha.click();
+  toastr.options = {
+    closeButton: true,
+    debug: false,
+    newestOnTop: true,
+    progressBar: false,
+    positionClass: "toast-top-right",
+    preventDuplicates: false,
+    showDuration: "300",
+    hideDuration: "1000",
+    timeOut: 0,
+    extendedTimeOut: 0,
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+    tapToDismiss: false,
+    onclick: function() {
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({
+          id : id
+        }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/notifications",
+        success: function(name) {
+for(var i = 0 ; i < getrooms.length; i++){
+  if (getrooms[i].name == name[0]) {
+    document.getElementById("slick-slide0"+i).attributes["aria-hidden"].value = "true" ; 
+    console.log("darnaha true  slide hedi :"+ i);
+
+  }
+  else {
+    console.log("darnaha false slide hedi :"+ i);
+    document.getElementById("slick-slide0"+i).attributes["aria-hidden"].value = "false" ; 
+
+  }
+
+}
+
+   }
+
+      });
+      toastr.remove();
+    }
+  };
+ 
+    toastr["error"](
+      `Mouvement Detected on the room : "${name} ""     <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm </button>`,
+      " alarm rings "
+    );
+
+ // alert(JSON.stringify(data +" :ahay"));
+   // if(!("Notification" in window)){
+     //     alert("this browser does not support notif");
+      //}else if (Notification.permission == "granted"){
+        //  var notification = new Notification(JSON.stringify(data));
+      //} 
+      //else if(Notification.permission!="denied"){
+        //  Notification.requestPermission(function(permission){
+          //    if("permission" == "granted"){
+            //      var notification = new Notification(JSON.stringify(data));
+              //}
+          //});
+      //}
+  });
+  </script>
+ 
+
   </body>
 </html>
