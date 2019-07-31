@@ -86,7 +86,7 @@ self.addEventListener("push", function(e) {
     console.log(data);
   }
   var options = {
-    body: data.content,
+    body: data,
     icon: data.icon ? data.icon : "designs/login.png", //icon:'designs/login.png',
     dir: "ltr",
     vibrate: [200, 100, 200],
@@ -101,7 +101,7 @@ self.addEventListener("push", function(e) {
 
   e.waitUntil(
     console.log("notif"),
-    self.registration.showNotification(data.title, options)
+    self.registration.showNotification("notif", options)
   );
 });
 

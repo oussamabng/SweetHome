@@ -16,7 +16,7 @@
       }
   
     ],
-    "start_url": "webapp.html",
+    "start_url": ".",
     "background_color": "#95A3EA",
     "display": "standalone",
     "theme_color": "#808ABC",
