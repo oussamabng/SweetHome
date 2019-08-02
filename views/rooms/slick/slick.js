@@ -1644,11 +1644,13 @@
 
         var _ = this;
 
-        _.changeSlide({
-            data: {
-                message: 'next'
-            }
-        });
+    _.changeSlide({
+        data: {
+            message: 'next'
+        }
+    });
+
+       
 
     };
 

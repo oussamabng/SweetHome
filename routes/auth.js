@@ -8,7 +8,9 @@ const config = require("config");
 
 router.post("/", async (req, res) => {
   const { error } = validateUser(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
   const bndm = await User.findOne({ username: req.body.username });
 
   if (!bndm) return res.status(400).send("Invalid username or password ");
@@ -18,7 +20,6 @@ router.post("/", async (req, res) => {
   if (!validPassword) return res.status(400).send("Invalid email or password ");
   else {
     const token = jwt.sign({ _id: bndm._id }, config.get("jwtPrivateKey"));
-    console.log("token: " + token);
     res
       .status(200)
       .header("x-auth-token", token)

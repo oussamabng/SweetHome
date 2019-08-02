@@ -11,8 +11,13 @@ var bodyParser = require("body-parser");
 const reset = require("./routes/reset");
 const rooms = require("./routes/rooms");
 const notifications = require("./routes/notifications");
-//app.use(express.static(path.join(__dirname, "client")));
+//const csrf = require("csurf");
+//var bodyParser = require("body-parser");
+//const cookieParser = require("cookie-parser");
 
+//ok
+
+//var csrfProtection = csrf({ cookie: true });
 //const {User , Dht , Light , Alarm , Rgb , Gsense , Ultrason , Rooms}= require('./models/user');
 var Pusher = require("pusher");
 
@@ -100,9 +105,18 @@ db.once("open", () => {
 });
 
 app.use(express.static("views"));
-app.get("/", function(req, res) {
-  res.render("webapp");
-});
+app.get(
+  "/",
+  //, csrfProtection
+  function(req, res) {
+    console.log(req.csrfToken);
+    res.render(
+      "webapp"
+
+      //,{ csrfToken: req.csrfToken() }
+    );
+  }
+);
 app.use("/api/auth", auth);
 app.use("/api/signIn", signIn);
 app.use("/api/forgot", forgot);

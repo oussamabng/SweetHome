@@ -4,11 +4,21 @@
 
  <link rel="stylesheet" type="text/css" href="swacss.css">
  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+ <link
+ rel="stylesheet"
+ href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+/>
   <!---meta name="viewport" content="width=device-width, initial-scale=1.0" -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
  <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script src="./log-res/scripts/app.js"></script>
  <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+ <!---meta name="viewport" content="width=device-width, initial-scale=1.0" -->
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
  <link rel="icon" type="image/png" href="designs/favicon.png" sizes="32x32" />
  <link rel="manifest" href="manifest.json">
  <meta name="theme-color" content="#585f82">
@@ -299,6 +309,53 @@
      <script type="text/javascript" src="main.js"></script>
      <script src="offline.js"></script>     
     
-                
+              <script>
+                    toastr.options = {
+                        closeButton: false,
+                        debug: false,
+                        newestOnTop: true,
+                        progressBar: false,
+                        positionClass: "toast-top-center",
+                        preventDuplicates: false,
+                        onclick: null,
+                        showDuration: "300",
+                        hideDuration: "1000",
+                        timeOut: "5000",
+                        extendedTimeOut: "1000",
+                        showEasing: "swing",
+                        hideEasing: "linear",
+                        showMethod: "fadeIn",
+                        hideMethod: "fadeOut"
+                      };
+                $("#btnLoginLogin").click(function() {
+                    var user = document.getElementById("txtLoginUsername").value;
+                    var pass = document.getElementById("txtLoginPassword").value;
+                    console.log(user);
+                    $.ajax({
+                      method: "POST",
+                      data: JSON.stringify({ username: user, password: pass }),
+                      contentType: "application/json",
+                      dataType: "json",
+                      url: "/api/auth",
+              
+                      success: function(data) {
+                        $.ajaxSetup({
+                          headers: {
+                            "x-auth-token": data.token
+                          }
+                        });
+              
+                        console.log(data);
+                        window.location.replace(`/api/rooms/all?token=${data.token}`);
+              
+                        //hna
+                      },
+                      error: function(data) {
+                      
+                        toastr["error"](data.responseText, "Login failed");
+                      }
+                    });
+                  });
+              </script>  
     
 </body>

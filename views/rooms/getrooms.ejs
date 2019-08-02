@@ -429,8 +429,8 @@
         });
       }
       function addMotion(i) {
-        getrooms[i].devices.light.forEach(function(id) {
-          alllight.forEach(function(elm) {
+        getrooms[i].devices.ultrason.forEach(function(id) {
+          allultrason.forEach(function(elm) {
             if (id == elm._id) {
               if (elm.used == true) {
                 if (elm.value == true) {
@@ -498,7 +498,8 @@
                 arrows: false,
                 centerMode: true,
                 centerPadding: "40px",
-                slidesToShow: 1
+                slidesToShow: 1 , 
+                
               }
             },
             {
@@ -565,29 +566,87 @@
         dataType: "json",
         url: "/api/rooms/notifications",
         success: function(name) {
+console.log( " name[0]  : "+name[0] +"\n  name []: "+name );
+nombre = 0;
 for(var i = 0 ; i < getrooms.length; i++){
-  if (getrooms[i].name == name[0]) {
-    document.getElementById("slick-slide0"+i).attributes["aria-hidden"].value = "true" ; 
-    console.log("darnaha true  slide hedi :"+ i);
+  
+  console.log("i :"+i+ " valeur te3o : "+document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value);
 
+  if (document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value == "false"){ 
+    if (name[0] == document.getElementById("type"+i).children[1].innerHTML  ){
+      console.log(" i li 3ando t breakaa = "+i);
+
+      nombre = getrooms.length;
+      break;
+    }
+    else {
+      console.log("hahowa i li ando tabrika : "+i);
+      nombre = i  ;
+      //document.getElementsByClassName("slick-next")[0].click();
+      break ; 
+
+    }
+ 
   }
-  else {
-    console.log("darnaha false slide hedi :"+ i);
-    document.getElementById("slick-slide0"+i).attributes["aria-hidden"].value = "false" ; 
-
-  }
-
 }
+$('.regular').slick('slickSetOption', 'speed', 50, true);
+a =nombre; 
+b = getrooms.length - nombre 
+t = setInterval(function(){
+ if (a>getrooms.length){
+   a = 0 
+ }
+  if (name[0] == document.getElementById("type"+a).children[1].innerHTML ) {
+    console.log("WC == " +document.getElementById("type"+a).children[1].innerHTML  );
+    clearInterval(t);
+  }  
+  else{
+    console.log("WC != "+document.getElementById("type"+a).children[1].innerHTML );
+    document.getElementsByClassName("slick-next")[0].click();
+    a++;
+  }
 
-   }
 
-      });
+
+},100);
+
+
+
+
+console.log(nombre+1);
+
+//TODO doka ha ndir 
+
+
+
+        }
+
+
+    
+
+  // hna
+
+
+// TODO ok 
+
+  //document.getElementsByClassName("slick-next")[0].firstChild.data
+
+
+
+
+
+   
+
+      })
+      $('.regular').slick('slickSetOption', 'speed', 300, true);
+
       toastr.remove();
+
     }
   };
  
     toastr["error"](
-      `Mouvement Detected on the room : "${name} ""     <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm </button>`,
+      `Mouvement Detected,  :"     <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm and check the room </button>`,
       " alarm rings "
     );
 

@@ -24,30 +24,6 @@
     // console.log("nikmok");
     // });
 
-    $("#btnLoginLogin").click(function() {
-      var user = document.getElementById("txtLoginUsername").value;
-      var pass = document.getElementById("txtLoginPassword").value;
-      console.log(user);
-      $.ajax({
-        method: "POST",
-        data: JSON.stringify({ username: user, password: pass }),
-        contentType: "application/json",
-        dataType: "json",
-        url: "/api/auth",
-
-        success: function(data) {
-          $.ajaxSetup({
-            headers: {
-              "x-auth-token": data.token
-            }
-          });
-          console.log(data.token);
-          window.location.replace(`/api/rooms/all?token=${data.token}`);
-
-          //hna
-        }
-      });
-    });
     $("#btnRegister").click(function() {
       var email = document.getElementById("Registermail").value;
       var username = document.getElementById("txtRegisterUsername").value;
