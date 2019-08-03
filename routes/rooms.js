@@ -16,56 +16,120 @@ const {
 } = require("../models/user");
 const _ = require("lodash");
 
-router.get("/getdht", async function(req, res) {});
-
 // ********************************************************//
 //*****************************************************//
 //add room
-router.post("/", auth, async function(req, res) {
-  const user = await User.findOne({ _id: req.userId });
+router.post("/add", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const user = await User.findOne({ _id: decoded._id });
+  //const _rooms = await Rooms.find({ userId: decoded._id });
+  //const user = await User.findOne({ _id: decoded._id });
+  console.log("ahh");
+  console.log("ok " + decoded._id);
+  // tableau li rslthoulak te3 Devices bsh ykoun user mkhyr manah li bgha ykhdem bihom
+
+  var dhtId = "";
+  var rgbId = "";
+  var ultrasonId = "";
+  var alarmId = "";
+  var lightId = "";
+  var gsenseId = "";
+
+  if (req.body.devices.dht == true) {
+    var dht = new Dht({
+      name: "dht" + "-xx",
+      tokenId: user.tokenId,
+      used: true
+    });
+    dht.save();
+    dhtId = dht._id;
+  }
+
+  if (req.body.devices.rgb == true) {
+    console.log("hahahahahahahssss");
+    var rgb = new Rgb({
+      name: "rgb" + "-xx",
+      tokenId: user.tokenId,
+      used: true
+    });
+    rgb.save();
+    rgbId = rgb._id;
+  }
+
+  if (req.body.devices.alarm == true) {
+    var alarm = new Alarm({
+      name: "alarm" + "-xx",
+      tokenId: user.tokenId,
+      used: true
+    });
+    alarm.save();
+    alarmId = alarm._id;
+  }
+  if (req.body.devices.gsense == true) {
+    var gsense = new Gsense({
+      name: "gsense" + "-xx",
+      tokenId: user.tokenId,
+      used: true
+    });
+    gsense.save();
+    gsenseId = gsense._id;
+  }
+  if (req.body.devices.light == true) {
+    var light = new Light({
+      name: "light" + "-xx",
+      tokenId: user.tokenId,
+      used: true
+    });
+    light.save();
+    lightId = light._id;
+  }
+  if (req.body.devices.ultrason == true) {
+    var ultrason = new Ultrason({
+      name: "ultrason" + "-xx",
+      tokenId: user.tokenId,
+      used: true,
+      value: true
+    });
+    ultrason.save();
+    ultrasonId = ultrason._id;
+  }
+
   let room = new Rooms({
     name: req.body.name,
-    userId: req.userId,
-    typeRoom: req.body.typeRoom,
+    userId: decoded._id,
+    typeRoom: req.body.type,
     devices: {
-      dht: [],
-      rgb: [],
-      ultrason: [],
-      alarm: [],
-      gsense: [],
-      light: []
+      dht: [dhtId],
+      rgb: [rgbId],
+      ultrason: [ultrasonId],
+      alarm: [alarmId],
+      gsense: [gsenseId],
+      light: [lightId]
     }
   });
-  // tableau li rslthoulak te3 Devices bsh ykoun user mkhyr manah li bgha ykhdem bihom
-  let arrDevices = req.body.arrDevices;
-  console.log(arrDevices);
-  arrDevices.dhts.forEach(element => {
-    room.devices.dht.push(element._id);
-  });
-
-  arrDevices.alarms.forEach(element => {
-    room.devices.alarm.push(element._id);
-  });
-
-  arrDevices.lights.forEach(element => {
-    room.devices.light.push(element._id);
-  });
-
-  arrDevices.rgbs.forEach(element => {
-    room.devices.rgb.push(element._id);
-  });
-
-  arrDevices.gsenses.forEach(element => {
-    room.devices.gsense.push(element._id);
-  });
-
-  arrDevices.ultrasons.forEach(element => {
-    room.devices.ultrason.push(element._id);
-  });
+  if ((dhtId = "")) {
+    room.devices.dht = [];
+  }
+  if ((rgbId = "")) {
+    room.devices.rgb = [];
+  }
+  if ((lightId = "")) {
+    room.devices.light = [];
+  }
+  if ((gsenseId = "")) {
+    room.devices.gsense = [];
+  }
+  if ((ultrasonId = "")) {
+    room.devices.ultrason = [];
+  }
+  if ((alarmId = "")) {
+    room.devices.alarm = [];
+  }
 
   await room.save();
-  await user.save();
-  res.send("room added succesfuly"); //anglais mkwd laghlb
+  //await user.save();
+  res.status(200).send("room added succesfully"); //anglais mkwd laghlb
 });
 
 router.post("/light", async function(req, res) {

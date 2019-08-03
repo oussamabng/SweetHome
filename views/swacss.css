@@ -2,10 +2,8 @@ html {
   background: linear-gradient(to bottom, #95a3ea, #3d416c) no-repeat center
     fixed;
   background-size: cover;
-  height: 100%;
 }
 body {
-  height: 100%;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
 }
@@ -27,11 +25,14 @@ img {
   -o-perspective: 800px;
   perspective: 800px;
   top: -50;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .card {
   width: 100%;
   height: 100%;
   position: absolute;
+
   -webkit-transition: -webkit-transform 1s;
   -moz-transition: -moz-transform 1s;
   -o-transition: -o-transform 1s;
@@ -41,6 +42,7 @@ img {
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
+
 .card div {
   height: 100%;
   width: 100%;
@@ -60,23 +62,91 @@ img {
 }
 .front,
 .back {
-  margin-top: -50;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
+
 .card.flipped {
+  display: initial;
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
   transform-style: preserve-3d;
 }
+.container3 {
+  text-align: center;
+  position: relative;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+  align-items: center;
+  justify-content: center;
+  left: 20px;
+  width: 120%;
+  top: 50px;
+  background: -webkit-linear-gradient(to right, #595386, #52e0dd);
+}
+.front,
+.back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
+.container-login-flip {
+  background: -webkit-linear-gradient(to right, #595386, #52e0dd);
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: center;
+  overflow: hidden;
+  width: 768px;
+  max-width: 75%;
+  min-height: 480px;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+}
+.formcontainer {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 100%;
+  text-align: center;
+}
 
 /*sayi kmlt t3 animation*/
 .row {
   display: flex;
   justify-content: center;
-  margin-right: auto;
   margin-left: auto;
-  width: 50%;
+  margin-right: auto;
+  width: 90%;
+  margin-top: 5%;
 }
 
 /*hadi ga3 t3 l window li tkhrj*/
@@ -111,10 +181,7 @@ img.avatar {
 .icon {
   width: 180%;
 }
-.column {
-  column-gap: normal;
-  flex: auto;
-}
+
 @media only screen and (min-width: 600px) {
   .modal-content {
     width: 60%;
@@ -129,12 +196,24 @@ img.avatar {
     column-gap: 0px;
     flex: auto;
   }
+
+  .row {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
 @media only screen and (min-width: 768px) {
   .modal-content {
     width: 40%;
   }
   .modal-container {
+    width: 40%;
+  }
+  .container {
     width: 40%;
   }
   .icon {
@@ -144,8 +223,16 @@ img.avatar {
     column-gap: -50px;
     flex: auto;
   }
+  .row {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .container1 {
+  margin-top: 50px;
   padding: 15px;
 }
 
@@ -180,6 +267,9 @@ span.psw {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   padding-top: 60px;
   display: table;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Modal Content/Box */
@@ -309,13 +399,16 @@ input {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  position: absolute;
   left: 25%;
+  right: 25%;
   top: 25%;
   overflow: hidden;
   width: 768px;
-  max-width: 50%;
+  max-width: 100%;
   min-height: 480px;
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: absolute;
 }
 .container-login {
   background-color: #ffffff;
@@ -338,8 +431,6 @@ input {
   left: 0;
   width: 50%;
   z-index: 2;
-  text-align: center;
-  padding: 11% 0;
 }
 
 .sign-up-container {
@@ -390,8 +481,13 @@ input {
 
 .overlay {
   background: #554269;
-  background: -webkit-linear-gradient(to right, #595386, #52e0dd);
-  background: linear-gradient(to right, #595386, #52e0dd);
+  background: -webkit-linear-gradient(
+    to right,
+    #373357,
+    rgb(90, 137, 190),
+    #52e0dd
+  );
+  background: linear-gradient(to right, #373357, rgb(90, 137, 190), #52e0dd);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -463,14 +559,228 @@ a {
   text-decoration: none;
   margin: 15px 0;
 }
-
-/*btn a2hs*/
-.add-button {
-  position: absolute;
-  bottom: 1px;
-  left: 1px;
+/****************************************/
+ball {
+  background: #f45342;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 80px auto 0 auto;
 }
 
-.enable-notifications {
-  display: none;
+/* [BOUNCE WITH "GRAVITY"] */
+@keyframes gbounce {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.gbounce {
+  animation: gbounce 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+/* [SPRING EFFECT] */
+@keyframes spring {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  10% {
+    transform: scale(1.2, 0.6);
+  }
+  30% {
+    transform: scale(0.8, 1.1) translateY(-2px);
+  }
+  50% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.spring {
+  animation: spring 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+@keyframes gbounce1 {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.gbounce1 {
+  animation: gbounce 3.1s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+/* [SPRING EFFECT] */
+@keyframes spring1 {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  10% {
+    transform: scale(1.2, 0.6);
+  }
+  30% {
+    transform: scale(0.8, 1.1) translateY(-2px);
+  }
+  50% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.spring1 {
+  animation: spring 3.1s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+@keyframes gbounce2 {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.gbounce2 {
+  animation: gbounce 3.2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+/* [SPRING EFFECT] */
+@keyframes spring2 {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  10% {
+    transform: scale(1.2, 0.6);
+  }
+  30% {
+    transform: scale(0.8, 1.1) translateY(-2px);
+  }
+  50% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.spring2 {
+  animation: spring 3.2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+@keyframes gbounce3 {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.gbounce3 {
+  animation: gbounce 3.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+/* [SPRING EFFECT] */
+@keyframes spring3 {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  10% {
+    transform: scale(1.2, 0.6);
+  }
+  30% {
+    transform: scale(0.8, 1.1) translateY(-2px);
+  }
+  50% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.spring3 {
+  animation: spring 3.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+@keyframes gbounce4 {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.gbounce4 {
+  animation: gbounce 3.4s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+/* [SPRING EFFECT] */
+@keyframes spring4 {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  10% {
+    transform: scale(1.2, 0.6);
+  }
+  30% {
+    transform: scale(0.8, 1.1) translateY(-2px);
+  }
+  50% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.spring4 {
+  animation: spring 3.4s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
 }

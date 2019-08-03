@@ -19,21 +19,16 @@ iframe {
   margin: 0;
   height: auto;
 }
+img {
+  width: 500%;
+  height: auto;
+}
 
 /*------------------------------------*/
-.container {
-  width: 200px;
-  height: 260px;
-  position: relative;
-  -webkit-perspective: 800px;
-  -moz-perspective: 800px;
-  -o-perspective: 800px;
-  perspective: 800px;
-  top: -50;
-}
+
 .card {
-  width: 100%;
-  height: 100%;
+  width: 20%;
+  height: 20%;
   position: absolute;
   -webkit-transition: -webkit-transform 1s;
   -moz-transition: -moz-transform 1s;
@@ -55,10 +50,45 @@ iframe {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+  top: -50;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .card .back {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
   transform: rotateY(180deg);
 }
 .front,
@@ -79,13 +109,33 @@ iframe {
   margin-left: auto;
   width: 50%;
 }
-.column {
-  flex: 50%;
+img.bo {
+  width: 100%;
 }
+img.addimg {
+  width: 50%;
+  margin-top: -200px;
+  margin-right: -253px;
+}
+
+/*******************/
+
 @media only screen and (max-width: 600px) {
+  img {
+    width: 500%;
+    height: auto;
+  }
+  img.bo {
+    width: 100%;
+  }
+  img.addimg {
+    width: 50%;
+    margin-top: -100px;
+    margin-right: -253px;
+  }
   .card {
-    width: 300%;
-    height: 300%;
+    width: 20%;
+    height: 20%;
     position: absolute;
     -webkit-transition: -webkit-transform 1s;
     -moz-transition: -moz-transform 1s;
@@ -108,8 +158,8 @@ iframe {
     backface-visibility: hidden;
   }
   .container {
-    width: 100px;
-    height: 130px;
+    width: 100%;
+    height: 100%;
     position: relative;
     -webkit-perspective: 800px;
     -moz-perspective: 800px;
@@ -117,21 +167,23 @@ iframe {
     perspective: 800px;
     top: -50;
     margin-bottom: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .row {
     display: flex;
     margin-right: 0px;
     margin-left: 0px;
-    width: 80%;
+    width: 100%;
   }
   .back.front {
     margin-left: 10px;
     margin-right: 10px;
   }
 }
+
+/********************************************/
 
 /*hadi ga3 t3 l window li tkhrj*/
 
@@ -160,7 +212,7 @@ button:hover {
 /* Center the image and position the close button */
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: 0;
   position: relative;
 }
 
@@ -199,13 +251,14 @@ span.psw {
   border: 1px solid #554269;
   width: 40%; /* Could be more or less, depending on screen size */
   border-radius: 1%;
+  height: 75%;
 }
 
 /* The Close Button (x) */
 .close {
   position: absolute;
-  right: 25px;
-  top: 0;
+  right: 0%;
+  top: -50px;
   color: #000;
   font-size: 35px;
   font-weight: bold;
@@ -242,7 +295,7 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 600px) {
   span.psw {
     display: block;
     float: none;
@@ -250,9 +303,69 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #554269;
+    width: 90%; /* Could be more or less, depending on screen size */
+    border-radius: 1%;
+  }
+}
+a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid #554269;
+  background-color: #554269;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none;
+}
+
+button.ghost {
+  color: #554269;
+  background-color: transparent;
+  border-color: #554269;
+}
+
+form {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+
+input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
 }
 
 /*-------------------------------*/
+/***************************************/
 
 .range {
   -webkit-appearance: none;
@@ -546,4 +659,204 @@ input[type="range"]::-moz-range-thumb:active {
 }
 .rgbview {
   display: inline-block;
+}
+
+/************************************/
+
+@media only screen and (max-width: 600px) {
+  .container-name {
+    width: 90%;
+    height: auto;
+    text-align: center;
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    padding: 2px 16px;
+    border: 5;
+    box-shadow: 0 0px 0px 8px rgba(0, 0, 0, 0.4);
+    background-color: #52e0dd;
+  }
+  .container-rgb {
+    width: 90%;
+    height: auto;
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    padding: 2px 16px;
+    border: 5;
+    background-color: #50add2;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: 5px 0px 0px 0px rgba(0, 0, 0, 0.2);
+  }
+  .container-charts {
+    width: 90%;
+    height: auto;
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    padding: 2px 16px;
+    border: 5;
+    background-color: #4671a3;
+    box-shadow: 5px 1px 0px 0px rgba(0, 0, 0, 0.2);
+  }
+  .container-secure {
+    width: 90%;
+    height: auto;
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    padding: 2px 16px;
+    border: 5;
+    background-color: #595386;
+    box-shadow: 5px 0px 0px 0px rgba(0, 0, 0, 0.2);
+  }
+  .container-gaz {
+    width: 90%;
+    height: auto;
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    padding: 2px 16px;
+    border: 5;
+    background-color: #554269;
+  }
+}
+
+/************************************/
+
+select {
+  display: block;
+  width: auto;
+  padding: 3px 3px;
+}
+.button-sb {
+  padding: 8px 10px;
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #818181;
+  font-family: sans-serif;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+.button-sb:hover {
+  background: #818181;
+  color: #fff;
+}
+.button-sb-block {
+  display: block;
+  width: 100%;
+}
+.hide {
+  display: none;
+}
+.select-beauty {
+  position: relative;
+  display: block;
+}
+.select-beauty button {
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  color: #818181;
+  text-align: left;
+}
+.select-beauty ul {
+  position: absolute;
+  padding: 0 15px;
+  margin: 0;
+  list-style: none;
+  background: #f2f2f2;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0px 10px 10px 2px rgba(0, 0, 0, 0.09);
+  border: 1px solid #ccc;
+  border-top: none;
+  top: auto;
+}
+.select-beauty ul li {
+  float: left;
+  width: 33.333%;
+}
+.select-beauty ul li a {
+  display: block;
+  font-size: 12px;
+  padding: 10px 0;
+  color: #818181;
+  font-weight: 600;
+  /* text-align: center; */
+  font-family: sans-serif;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out;
+}
+.select-beauty ul li a:hover,
+.select-beauty ul li.active a {
+  color: #2aabe4;
+}
+
+/* Icon Work */
+.kitchen {
+  background-image: url("./icons/hat.png");
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  /* margin: 1px 10px 1px 0px; */
+  vertical-align: middle;
+}
+
+.hallway {
+  background-image: url("./icons/hallway.png");
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  /* margin: 1px 10px 1px 0px; */
+  vertical-align: middle;
+}
+.office {
+  background-image: url("./icons/office.png");
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  /* margin: 1px 10px 1px 0px; */
+  vertical-align: middle;
+}
+.bedroom {
+  background-image: url("./icons/bedroom.png");
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  /* margin: 1px 10px 1px 0px; */
+  vertical-align: middle;
+}
+.livingroom {
+  background-image: url("./icons/livingroom.png");
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  /* margin: 1px 10px 1px 0px; */
+  vertical-align: middle;
 }

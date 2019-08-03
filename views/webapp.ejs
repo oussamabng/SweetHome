@@ -2,52 +2,38 @@
 <html>
 <head>
 
- <link rel="stylesheet" type="text/css" href="swacss.css">
- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
- <link
- rel="stylesheet"
- href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
-/>
-  <!---meta name="viewport" content="width=device-width, initial-scale=1.0" -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
- <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script src="./log-res/scripts/app.js"></script>
- <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
- <!---meta name="viewport" content="width=device-width, initial-scale=1.0" -->
- <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
- <link rel="icon" type="image/png" href="designs/favicon.png" sizes="32x32" />
- <link rel="manifest" href="manifest.json">
- <meta name="theme-color" content="#585f82">
+        <link rel="stylesheet" type="text/css" href="swacss.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <meta name="viewport" content="width=360, initial-scale=1.0">
+         <link
+        rel="stylesheet"
+        href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+       />
+         <!---meta name="viewport" content="width=device-width, initial-scale=1.0" -->
+         <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       
+        <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="./log-res/scripts/app.js"></script>
+        <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+         <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="./log-res/scripts/app.js"></script>
  <script>
                 function flip() {
                        $('.card').toggleClass('flipped');
+                       $('.back').toggleClass('flipo');
+                       $('.front').toggleClass('flipo');
+
                    }
+
         </script>   
-         <script>    
-                        var doughnut = 0;
-                        var chawrma=1;
-                        window.setInterval(function () {
-                          doughnut = doughnut + 1;
-                          var pizza=0;
-                          pizza=doughnut%5;
-                          
-                          if(pizza==0){flip();
-                                chawrma=1;
-                         }
-                         else{if (chawrma==1){flip(); chawrma=0;}}
-                         
-                        }, 1000);
-                 </script>
 
-
-
- 
-
-                 
+        
+        
+                     
  <title>
     SWEET
 </title>
@@ -59,87 +45,63 @@
     <div class="row"  >
             <!---hadi ga3 t3 animation t3 kol w7da -->
             <section class="container2">
-                         <div class="card" onclick="flip()">
-                              <div class="front">
-                                      <div class="column">
+                    <div class="ball gbounce">
+                    <div class="ball spring">
+                               <div class="column">
                                        <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="designs\login.png" title="logout" class="icon">
-                                      </div>                          
-                                </div>
-                        <div class="back"> 
-                                <div class="column">
-                                   <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="designs\login1.png" title="logout" class="icon">
-                          
-                                </div>
-                        </div>
+                                      </div> 
+                    </div>  
+                    </div>                       
+                                
               </section>
             <!--hna tkml lwla g3 t3 nav bar t3 login-->
             <!--zwaja tbda hna-->
             <section class="container2">
-                    <div class="card">
-                            <div class="front">
+                   
+                    <div class="ball gbounce1">
+                            <div class="ball spring1">
                                     <div calss="column">
                                         <img onclick="document.getElementById('id02').style.display='block'" src="designs\notifications.png" title="notification" class="icon">
                                     </div>
-
-                            </div>
-                            <div class="back">
-                                    <div calss="column">
-                                         <img onclick="document.getElementById('id02').style.display='block'"  src="designs\notifications1.png" title="notification"class="icon">
-                                    </div>
-                               </div>
-                    </div>
+ 
+                   
+                                </div>  
+                            </div>              
+                                 
 
                 </section>
             <!--talta tbda hna-->
             <section class="container2">
-                    <div class="card">
-                            <div class="front">
+                    <div class="ball gbounce2">
+                            <div class="ball spring2">
                                     <div calss="column">
                                         <img onclick="document.getElementById('id02').style.display='block'" src="designs\settings.png" title="settings" class="icon">
                                     </div>
-
-                            </div>
-                            <div class="back">
-                                    <div calss="column">
-                                         <img onclick="document.getElementById('id02').style.display='block'"  src="designs\settings1.png" title="settings" class="icon">
-                                    </div>
-                               </div>
-                    </div>
-
+                                </div>  
+                            </div>    
+                            
                 </section>
             <!--rab3a hna--> 
             <section class="container2">
-                    <div class="card">
-                            <div class="front">
+                    <div class="ball gbounce3">
+                            <div class="ball spring3">
                                     <div calss="column">
                                         <img onclick="document.getElementById('id02').style.display='block'" src="designs\add.png" title="add romm" class="icon">
                                     </div>
-
-                            </div>
-                            <div class="back">
-                                    <div calss="column">
-                                         <img onclick="document.getElementById('id02').style.display='block'"  src="designs\add1.png" title="add room" class="icon">
-                                    </div>
-                               </div>
-                    </div>
-
+                                </div>  
+                            </div>    
+                            
                 </section>
             <!--talia ga3 hna-->
             <section class="container2">
-                    <div class="card">
-                            <div class="front">
+                    <div class="ball gbounce4">
+                            <div class="ball spring4">
                                     <div calss="column">
                                         <img onclick="document.getElementById('id02').style.display='block'" src="designs\help.png" title="help" class="icon">
                                     </div>
 
-                            </div>
-                            <div class="back">
-                                    <div calss="column">
-                                         <img onclick="document.getElementById('id02').style.display='block'"  src="designs\help1.png" title="help" class="icon">
-                                    </div>
-                               </div>
-                    </div>
-
+                                </div>  
+                            </div>    
                 </section>
     </div>  
    
@@ -151,39 +113,34 @@
             
                 
                 
-        <div class="container" id="homeView" >
+     <div class="container" id="homeView" >
+        
             <div class="form-container sign-up-container">
-                    <form action="#">
+            
+                
+                    <form>
                             <h1>Create Account</h1>
                            
                             <input type="text" placeholder="Name" id="txtRegisterUsername" />
                             <input type="email" placeholder="Email"  id="Registermail" />
                             <input type="password" placeholder="Password" id="txtRegisterPassword" />
-                            <input type="text" placeholder="token Id" id="txtRegisterTokenId" />
-
                             <button id="btnRegister" type="submit">Sign Up</button>
                         </form>                    </div>
-
-                        
+                 
             <div class="form-container sign-in-container">
-                <div >
-                    <form method="POST" action="/api/rooms" >
-                                        <h1>Sign in</h1>
+                
+                     <form action="#">
+                            <h1>Sign in</h1>
                             
                             <input type="text" placeholder="Username" id="txtLoginUsername" />
                             <input type="password" placeholder="Password" id="txtLoginPassword"  />
-                            <a id="forgotPassword" href="/api/forgot"  >Forgot Password?</a>
-                            <div style="display: none;">
-                                <button type="submit" id="pushTest" ></button>
-                            </form>
-                            </div>
-
+                            <a class="btn btn-link" href="/api/forgot">Forgot Password?</a>
 
                             <button id="btnLoginLogin" type="submit" >Sign In</button>
-                        
-                </div>     
-                
-                                   </div>
+                        </form>                    </div>
+                    
+                   
+                  
             <div class="overlay-container">
                     <div class="overlay">
                             <div class="overlay-panel overlay-left">
@@ -199,16 +156,129 @@
                                 <button class="ghost" id="signUp">Sign Up</button>
                             </div>
                         </div> 
-                       
+                        
                                        
         </div>
+       
         
+       
 
+</div>
+<div class="container3" id="phoneView" >
+        <div class="card">
+                <div class="front" >
+                        <div class="container-login-flip">
+                            <div class="formcontainer">
+                                   
+                                           <button id="signup-flipper" style="margin-top: 30px">sign up!</button> 
+                                   
+                           <form >
+                               <h1>Sign in</h1>
+                               
+                               <input type="text" placeholder="Username" id="txtLoginUsername" />
+                               <input type="password" placeholder="Password" id="txtLoginPassword"  />
+                               <a class="btn btn-link" href="/forgot">Forgot Password?</a>
+    
+                               <button id="btnLoginLogin" type="submit" >Sign In</button>
+                               <br>   
+                                                    
+                               
+                           </form>
+                         
+                   </div> 
+                </div>         
+                    
+            </div>
+                
+                        
+                        
+                   
+               <div class="back">
+                <div class="container-login-flip">
 
-        <script>const signUpButton = document.getElementById('signUp');
+                            <div class="formcontainer">
+                               
+                                        <button id="signup1-flipper"style="margin-top: 30px">sign in!</button>
+                                      
+                                <form>
+                                    <h1>Create Account</h1>
+                                   
+                                    <input type="text" placeholder="Name" id="txtRegisterUsername" />
+                                    <input type="email" placeholder="Email"  id="Registermail" />
+                                    <input type="password" placeholder="Password" id="txtRegisterPassword" />
+                                    <button id="btnRegister" type="submit">Sign Up</button>
+                                    <br>
+                                    
+                                </form> 
+                               
+                       </div>
+                    </div> 
+             </div>
+            
+        </div>
+        
+</div>
+<script>
+const flipperButton = document.getElementById('signup-flipper');
+const flipper1Button = document.getElementById('signup1-flipper');
+          flipperButton.addEventListener('click' , () =>{flip();});
+          flipper1Button.addEventListener('click' , () =>{flip();});
+
+</script>
+<script>
+        toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: true,
+            progressBar: false,
+            positionClass: "toast-top-center",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
+    $("#btnLoginLogin").click(function() {
+        console.log("ok")
+        var user = document.getElementById("txtLoginUsername").value;
+        var pass = document.getElementById("txtLoginPassword").value;
+        console.log(user);
+        $.ajax({
+          method: "POST",
+          data: JSON.stringify({ username: user, password: pass }),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/auth",
+  
+          success: function(data) {
+            $.ajaxSetup({
+              headers: {
+                "x-auth-token": data.token
+              }
+            });
+  
+            console.log(data);
+            window.location.replace(`/api/rooms/all?token=${data.token}`);
+  
+            //hna
+          },
+          error: function(data) {
+          
+            toastr["error"](data.responseText, "Login failed");
+          }
+        });
+      });
+  </script>  
+        <script>
+        const signUpButton = document.getElementById('signUp');
             const signInButton = document.getElementById('signIn');
             const container = document.getElementById('homeView');
-            const forgot = document.getElementById('forgotView');
+            
             signUpButton.addEventListener('click', () => {
                 container.classList.add('right-panel-active');
             });
@@ -229,133 +299,47 @@
     
     <div id="mailsend" class="modal">
      
-        <legend>mail has been send </legend>
+        <legend>mail has been sent </legend>
         <div class="form-group">
     </div>
- 
     
+    <div id="resetView" class="modal">
     
-    <!--hadi l fenetre li tkhrjlk f login-->
-    <div id="id01" class="modal">
-            
-  
-            <form class="modal-content animate" action="/action_page.php">
-              <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="designs\sweet.png" width=75%>
-                <img src="designs\key.png" alt="Avatar" class="avatar">
-                <h1>your home will stay sweet when you're away!</h1>
-              
-          
-              <div class="container1">                  
-                <button type="submit">logout</button>
-                
-              </div>
-              
-              </div>   
-              <div class="container1"  >
-                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <legend>Reset Password</legend>
+                <div class="form-group">
+                  <label for="password">New Password</label>
+                  <input class="form-control" type="password" name="password" value="" placeholder="New password" autofocus="autofocus"/>
                 </div>
-         
-                </form>
-        </div>
-          <!--script hada t3 ki tclicki barra window youkhrj-->
-          
-         
-                
-            
-
-
-     <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
-     <div id="id02" class="modal">
-  
-        <form class="modal-content animate" action="/action_page.php">
-            
-              <div class="container1" style="background-color:#554269;color:white" >
-                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-                notifications
-               </div>
-
-
-                <!--hna yji script-->
-
-
-
-            
-        </form>
+                <div class="form-group">
+                  <label for="confirm">Confirm Password</label>
+                  <input class="form-control" type="password" name="confirm" value="" placeholder="Confirm password"/>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit">Update Password</button>
+                </div>
     </div>
-      <!-- hada tani ki tclicki barra window toukhrj-->
-      <script>
-      // Get the modal
-      var modal = document.getElementById('id02');
-      
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-      </script>
-
-     <!--mzlou kyn des details na9ssin bzf w rani 3gabhum, w mm l'annimation kima goultili rani nchouflha f 7al :3 -->
-
-     <button class="add-button">Add to home screen</button>
-     <button class="enable-notification ">  Enable Notifications </button>
-
-
-     <script src="vanillatoasts.js"></script>
-     <link href="vanillatoasts.css" rel="stylesheet">
-     
-     <script type="text/javascript" src="main.js"></script>
-     <script src="offline.js"></script>     
     
-              <script>
-                    toastr.options = {
-                        closeButton: false,
-                        debug: false,
-                        newestOnTop: true,
-                        progressBar: false,
-                        positionClass: "toast-top-center",
-                        preventDuplicates: false,
-                        onclick: null,
-                        showDuration: "300",
-                        hideDuration: "1000",
-                        timeOut: "5000",
-                        extendedTimeOut: "1000",
-                        showEasing: "swing",
-                        hideEasing: "linear",
-                        showMethod: "fadeIn",
-                        hideMethod: "fadeOut"
-                      };
-                $("#btnLoginLogin").click(function() {
-                    var user = document.getElementById("txtLoginUsername").value;
-                    var pass = document.getElementById("txtLoginPassword").value;
-                    console.log(user);
-                    $.ajax({
-                      method: "POST",
-                      data: JSON.stringify({ username: user, password: pass }),
-                      contentType: "application/json",
-                      dataType: "json",
-                      url: "/api/auth",
-              
-                      success: function(data) {
-                        $.ajaxSetup({
-                          headers: {
-                            "x-auth-token": data.token
-                          }
-                        });
-              
-                        console.log(data);
-                        window.location.replace(`/api/rooms/all?token=${data.token}`);
-              
-                        //hna
-                      },
-                      error: function(data) {
-                      
-                        toastr["error"](data.responseText, "Login failed");
-                      }
-                    });
-                  });
-              </script>  
+    
+    <script>
+        
+        $(window).resize(function() {
+            if (document.documentElement.clientWidth >=1024){
+                $("#phoneView").hide();
+                $("#homeView").show();
+            }
+            else{
+                $("#homeView").hide();
+                $("#phoneView").show();
+                
+            };
+        }).resize()
+        
+    
+       
+    
+    
+    </script>
+
+                
     
 </body>

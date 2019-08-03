@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,6 +29,11 @@
         $(".card").toggleClass("flipped");
       }
     </script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
       var doughnut = 0;
       var chawrma = 1;
@@ -109,13 +115,13 @@
                   <div class="card">
                           <div class="front">
                                   <div calss="column">
-                                      <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs\add.png" title="add romm" >
+                                      <img onclick="document.getElementById('id03').style.display='block'" src="../../../designs\add.png" title="add romm" >
                                   </div>
   
                           </div>
                           <div class="back">
                                   <div calss="column">
-                                       <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs\add1.png" title="add room" >
+                                       <img onclick="document.getElementById('id03').style.display='block'"  src="../../../designs\add1.png" title="add room" >
                                   </div>
                              </div>
                   </div>
@@ -142,8 +148,7 @@
   </div>  
   
        
-  
-  
+<section></section>  
   
   
   
@@ -197,10 +202,49 @@
       </form>
 
   </div>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <div id="id03" class="modal">
+        
+
+    <form class="modal-content animate" action="javascript:;" onsubmit="myFunction(this)">
+      <div class="imgcontainer">
+        <h1>Add a new room</h1>
+
+        <input id="nameRoom" type="text" placeholder="choose a name for the room"  />
+        <div class="selectcontainer">
+        <select name="select-type" id="select-type" class="form-control">
+            <option value="1" icon="kitchen">kitchen</option>
+            <option value="2" icon="hallway">hallway</option>
+            <option value="3" icon="office">office</option>
+            <option value="4" icon="bedroom">bedroom</option>
+            <option value="5" icon="livingroom">livingRoom</option>
+            
+    
+          </select>
+        </div> 
+        <select name="select-devices" id="select-devices" class="form-control">
+            <option value="0" >dht</option>
+            <option value="1" >rgb</option>
+            <option value="2" >gsense</option>
+            <option value="3" >light</option>
+            <option value="4">ultrason</option>
+            <option value="5">alarm</option>
+
+            
+    
+          </select>
+        </div> 
+        
+        
+        <button id="createRoom" type="submit">Create Room</button>
+         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="ghost">Cancel</button>
+       
+              </div> 
+        </form>
+</div>
+
+
     <!-- hada tani ki tclicki barra window toukhrj-->
     <script>
     // Get the modal
@@ -218,6 +262,7 @@
                                 <button type="submit" id="pushTest" ></button>
                             
                             </div>
+
 
     <div style="display: none;">
       <h1 id="getrooms">
@@ -570,17 +615,14 @@ console.log( " name[0]  : "+name[0] +"\n  name []: "+name );
 nombre = 0;
 for(var i = 0 ; i < getrooms.length; i++){
   
-  console.log("i :"+i+ " valeur te3o : "+document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value);
 
   if (document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value == "false"){ 
     if (name[0] == document.getElementById("type"+i).children[1].innerHTML  ){
-      console.log(" i li 3ando t breakaa = "+i);
 
       nombre = getrooms.length;
       break;
     }
     else {
-      console.log("hahowa i li ando tabrika : "+i);
       nombre = i  ;
       //document.getElementsByClassName("slick-next")[0].click();
       break ; 
@@ -597,11 +639,9 @@ t = setInterval(function(){
    a = 0 
  }
   if (name[0] == document.getElementById("type"+a).children[1].innerHTML ) {
-    console.log("WC == " +document.getElementById("type"+a).children[1].innerHTML  );
     clearInterval(t);
   }  
   else{
-    console.log("WC != "+document.getElementById("type"+a).children[1].innerHTML );
     document.getElementsByClassName("slick-next")[0].click();
     a++;
   }
@@ -651,19 +691,73 @@ console.log(nombre+1);
     );
 
  // alert(JSON.stringify(data +" :ahay"));
-   // if(!("Notification" in window)){
-     //     alert("this browser does not support notif");
-      //}else if (Notification.permission == "granted"){
-        //  var notification = new Notification(JSON.stringify(data));
-      //} 
-      //else if(Notification.permission!="denied"){
-        //  Notification.requestPermission(function(permission){
-          //    if("permission" == "granted"){
-            //      var notification = new Notification(JSON.stringify(data));
-              //}
-          //});
-      //}
+   if(!("Notification" in window)){
+          alert("this browser does not support notif");
+      }else if (Notification.permission == "granted"){
+          var notification = new Notification(JSON.stringify(data));
+      } 
+      else if(Notification.permission!="denied"){
+         Notification.requestPermission(function(permission){
+            if("permission" == "granted"){
+                  var notification = new Notification(JSON.stringify(("ok")));
+              }
+          });
+      }
   });
+  </script>
+  <script src="../../../select-beauty.js"></script>
+<script>
+		var selectType = new SelectBeauty({
+			el: '#select-type',
+			length: 6,
+      placeholder:"choose type",
+			max: 1
+		});
+    var selectDevices = new SelectBeauty({
+			el: '#select-devices',
+			length: 20,
+      placeholder:"choose the divices used in the room",
+			max:6
+		});
+  </script>
+  <script>
+    function myFunction(){
+const type = Object.entries(selectType.selected)[0][1].text
+const name = document.getElementById("nameRoom").value ; 
+var dev = {
+  dht : false,
+  gsense : false,
+  rgb : false,
+  ultrason : false,
+  light : false ,
+  alarm :false
+}
+
+ 
+
+Object.entries(selectDevices.selected).forEach(function(elm){
+  if (elm) {var text = elm[1].text ; 
+  dev[text] = true;
+  }
+})
+
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ type: type , name : name , devices : dev }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/add"+document.location.search,
+  success: function(data) {
+    console.log(data);
+
+  }
+});
+setTimeout(function(){
+  location.reload()
+
+},400)
+
+   }
   </script>
  
 
