@@ -61,7 +61,7 @@
         reg.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(
-            "BNgVIH_VpsHF842JrXSmCkHzS4NcVa-uUnLymg9FrQLGVhN3jrJxmmYZKt-swFaGksXpoMZxL8WmhqDyZXyiM9U"
+            "BJV-kW194n9pPboPEBQAmwW3L7bbH3GFDcBiYmYqjvJFFIz6i8CuZXJfjUqrrzgYI5hM_ZYkGVEYlKKKHkQ9BuI"
           )
         });
       })
@@ -88,7 +88,7 @@
     navigator.serviceWorker.ready.then(function(reg) {
       reg.pushManager.getSubscription().then(function(sub) {
         console.log("hhhh " + sub);
-        fetch("   ", {
+        fetch(" /subscribe  ", {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -151,12 +151,21 @@
             console.error('Failed to unsubscribe push notification.');
         })
  })
-}
+}*/
 
 function updateSubscription(){
-
-}
-
+  fetch(" /subscribe  ", {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify(sub)
+  })
+    .then(
+     console.log("user update")
+    )
+  }
 /*function change_btn_notif(state){
     switch (state){
         case 'enable':{

@@ -34,7 +34,12 @@ window.addEventListener("beforeinstallprompt", e => {
   });
 });
 
+<<<<<<< HEAD
 function urlBase64ToUint8Array(base64String) {
+=======
+
+/*function urlBase64ToUint8Array(base64String) {
+>>>>>>> 29081bbdba414472f7e3934f2bcf1dcc670ab671
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
 
@@ -79,3 +84,4 @@ triggerPush.addEventListener("click", () => {
   console.log("submita  ");
   triggerPushNotification().catch(error => console.error(error));
 });
+*/
