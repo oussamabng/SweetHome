@@ -76,17 +76,12 @@ self.addEventListener("fetch", function(event) {
 });
 
 self.addEventListener("push", function(e) {
-  console.log("push event " + e);
-  var data = { title: "notification", content: "new notification" }; //******************************************* */
-  //console.log(JSON.stringify(data));
-  console.log("data " + e.data);
-
+  console.log("push event " + e.data.JSON);
   if (e.data) {
     data = JSON.parse(e.data.text());
-    console.log(data);
   }
   var options = {
-    body: data,
+    body: data.message,
     icon: data.icon ? data.icon : "designs/login.png", //icon:'designs/login.png',
     dir: "ltr",
     vibrate: [200, 100, 200],
@@ -101,7 +96,7 @@ self.addEventListener("push", function(e) {
 
   e.waitUntil(
     console.log("notif"),
-    self.registration.showNotification("notif", options)
+    self.registration.showNotification("Alarm ring", options)
   );
 });
 
