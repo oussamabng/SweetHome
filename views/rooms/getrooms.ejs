@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,10 +34,10 @@
       }
     </script>
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
       var doughnut = 0;
       var chawrma = 1;
@@ -46,7 +45,6 @@
         doughnut = doughnut + 1;
         var pizza = 0;
         pizza = doughnut % 20;
-
         if (pizza == 0) {
           flip();
           chawrma = 1;
@@ -249,20 +247,127 @@
         </form>
 </div>
 
+<div id="id05" class="modal">
+        
 
-    <!-- hada tani ki tclicki barra window toukhrj-->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <h1>Modify this room</h1>
+
+      <input type="text" placeholder="oussama 7at old name t3 room hna"  />
+      <div class="selectcontainer">
+      <select name="select-devicesdelet" id="select-devicesdelet" class="form-control">
+          <option value="1" >dht1</option>
+          <option value="2" >RGB</option>
+          <option value="3" >gaz</option>
+          <option value="4" >motion</option>
+          <option value="5">dht2</option>
+          
+  
+        </select>
+      </div> 
+      <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
+          <option value="1" >dht1</option>
+          <option value="2" >RGB</option>
+          <option value="3" >gaz</option>
+          <option value="4" >motion</option>
+          <option value="5">dht2</option>
+          
+  
+        </select>
+      </div> 
+      
+      
+      <button type="submit">Modify Room</button>
+       <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
+     
+            </div> 
+      </form>
+</div>
+
+
+<div id="id06" class="modal">
+        
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <h1>Modify this room</h1>
+
+      <input type="text" placeholder="oussama 7at old name t3 room hna"  />
+      <div class="selectcontainer">
+      <select name="select-devicesdelet" id="select-devicesdelet" class="form-control">
+          <option value="1" >dht1</option>
+          <option value="2" >RGB</option>
+          <option value="3" >gaz</option>
+          <option value="4" >motion</option>
+          <option value="5">dht2</option>
+          
+  
+        </select>
+      </div> 
+      <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
+          <option value="1" >dht1</option>
+          <option value="2" >RGB</option>
+          <option value="3" >gaz</option>
+          <option value="4" >motion</option>
+          <option value="5">dht2</option>
+          
+  
+        </select>
+      </div> 
+      
+      
+      <button type="submit">Modify Room</button>
+       <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
+     
+            </div> 
+      </form>
+</div>
+
+
+    <!-- hada tanmodal1 ki tclicki barra window toukhrj-->
     <script>
     // Get the modal
-    var modal = document.getElementById('id01');
+    var modal1 = document.getElementById('id01');
+    var modal2 = document.getElementById('id02');
+    var modal3 = document.getElementById('id03');
+    var modal4 = document.getElementById('id04');
+    var modal5 = document.getElementById('id05');
+    var modal6 = document.getElementById('id06');
     
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+        }
+        if (event.target == modal4) {
+            modal4.style.display = "none";
+        }
+        if (event.target == modal5) {
+            modal5.style.display = "none";
+        }
+        if (event.target == modal6) {
+            modal6.style.display = "none";
         }
     }
     </script>
     <section class="regular slider" id="test"></section>
+
+    <div class="dropdown">
+      <div id="myDropdown" class="dropdown-content">
+        <a href="#home">Delete this room</a>
+        <a href="#about">Modify this room</a>
+       
+      </div>
+    </div>
+
+
  <div style="display: none;">
                                 <button type="submit" id="pushTest" ></button>
                             
@@ -312,9 +417,13 @@
         document.getElementById("ultrason").innerHTML
       );
       var allalarm = JSON.parse(document.getElementById("alarm").innerHTML);
-
      
       function showRooms(i) {
+
+
+
+        
+
         document.getElementById("test").innerHTML +=
           '<div class="cardroom">' +
           '<section class="container-name" id="type' +
@@ -339,8 +448,8 @@
           "</iframe>" +
           "</div>";
       }
-
       function addType(i) {
+        
         if (getrooms[i].typeRoom == "kitchen") {
           document.getElementById("type" + i).innerHTML +=
             '<img src="../../../icons/hat.png" style="width:50px;margin-left:160px;margin-top:10px;">';
@@ -377,9 +486,11 @@
           alllight.forEach(function(elm) {
             if (id == elm._id) {
               if (elm.used == true) {
+                console.log("okdddddddddddddd")
+                document.getElementById('rgb'+i).src = '../../../rgb.html';    
+
                 b = elm.value;
                 console.log(b);
-
                 if (elm.value == true) {
                   document.getElementById("rgb" + i).innerHTML +=
                     '<section id="OnOff"><img title="' +
@@ -411,7 +522,6 @@
             .childNodes[0].getElementsByTagName("img")[0].title;
           var b = false;
           console.log("id haho: " + id);
-
           $.ajax({
             url: "/api/rooms/light",
             method: "POST",
@@ -422,9 +532,8 @@
               console.log(data);
             }
           });
-
           document.getElementById("rgb" + i).innerHTML =
-            '<section id="OnOff"><img title="' +
+            '<section id="  "><img title="' +
             id +
             '"  onclick="OnOff(' +
             i +
@@ -434,10 +543,9 @@
         } else {
           var id = document
             .getElementById("rgb" + i)
-            .childNodes[0].getElementsByTagName("img")[0].title;
+            .childNodes[0].getElements  ByTagName("img")[0].title;
           var b = true;
           console.log("id haho: " + id);
-
           $.ajax({
             url: "/api/rooms/light",
             method: "POST",
@@ -458,7 +566,6 @@
             ')" src="../../icons/on.png" style="width:13%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
         }
       }
-
       function addCharts(i) {
         getrooms[i].devices.dht.forEach(function(id) {
           alldht.forEach(function(elm) {
@@ -492,7 +599,6 @@
           });
         });
       }
-
       function addGaz(i) {
         getrooms[i].devices.gsense.forEach(function(id) {
           allgsense.forEach(function(elm) {
@@ -504,7 +610,6 @@
                   // ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
                   // elm.value;
                 }, 5000);
-
                 document.getElementById("gaz" + i).src +=
                   "../../Sweet-chart/mychart/gaz.html";
               }
@@ -565,151 +670,9 @@
         });
       });
     </script>
-    <script>
-
-
-      Pusher.logToConsole = true;
-  
-  var pusher = new Pusher('28874f2f3bdf02b787e5', {
-    cluster: 'eu',
-    forceTLS: true
-  });
-  
-  var channel = pusher.subscribe('alarms');
-  channel.bind('inserted', function(data) {
-    //  VanillaToasts.create({
-      //    title: 'alert',
-        //  text:JSON.stringify(data),
-         // type: 'warning', // success, info, warning, error
-          //icon: 'designs/login.png',
-          //timeout: 2000 ,
-          //callback: function() {  } 
-       // });
-
-       var id =  JSON.stringify(data.id) ;
-       const name = "haha";
-  const saha  = document.getElementById("pushTest");
-  saha.click();
-  toastr.options = {
-    closeButton: true,
-    debug: false,
-    newestOnTop: true,
-    progressBar: false,
-    positionClass: "toast-top-right",
-    preventDuplicates: false,
-    showDuration: "300",
-    hideDuration: "1000",
-    timeOut: 0,
-    extendedTimeOut: 0,
-    showEasing: "swing",
-    hideEasing: "linear",
-    showMethod: "fadeIn",
-    hideMethod: "fadeOut",
-    tapToDismiss: false,
-    onclick: function() {
-      $.ajax({
-        type: "POST",
-        data: JSON.stringify({
-          id : id
-        }),
-        contentType: "application/json",
-        dataType: "json",
-        url: "/api/rooms/notifications",
-        success: function(name) {
-console.log( " name[0]  : "+name[0] +"\n  name []: "+name );
-nombre = 0;
-for(var i = 0 ; i < getrooms.length; i++){
-  
-
-  if (document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value == "false"){ 
-    if (name[0] == document.getElementById("type"+i).children[1].innerHTML  ){
-
-      nombre = getrooms.length;
-      break;
-    }
-    else {
-      nombre = i  ;
-      //document.getElementsByClassName("slick-next")[0].click();
-      break ; 
-
-    }
- 
-  }
-}
-$('.regular').slick('slickSetOption', 'speed', 50, true);
-a =nombre; 
-b = getrooms.length - nombre 
-t = setInterval(function(){
- if (a>getrooms.length){
-   a = 0 
- }
-  if (name[0] == document.getElementById("type"+a).children[1].innerHTML ) {
-    clearInterval(t);
-  }  
-  else{
-    document.getElementsByClassName("slick-next")[0].click();
-    a++;
-  }
-
-
-
-},100);
-
-
-
-
-console.log(nombre+1);
-
-//TODO doka ha ndir 
-
-
-
-        }
-
-
+   
     
 
-  // hna
-
-
-// TODO ok 
-
-  //document.getElementsByClassName("slick-next")[0].firstChild.data
-
-
-
-
-
-   
-
-      })
-      $('.regular').slick('slickSetOption', 'speed', 300, true);
-
-      toastr.remove();
-
-    }
-  };
- 
-    toastr["error"](
-      `Mouvement Detected,  :"     <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm and check the room </button>`,
-      " alarm rings "
-    );
-
- // alert(JSON.stringify(data +" :ahay"));
-   if(!("Notification" in window)){
-          alert("this browser does not support notif");
-      }else if (Notification.permission == "granted"){
-          var notification = new Notification(JSON.stringify(data));
-      } 
-      else if(Notification.permission!="denied"){
-         Notification.requestPermission(function(permission){
-            if("permission" == "granted"){
-                  var notification = new Notification(JSON.stringify(("ok")));
-              }
-          });
-      }
-  });
-  </script>
   <script src="../../../select-beauty.js"></script>
 <script>
 		var selectType = new SelectBeauty({
@@ -722,6 +685,19 @@ console.log(nombre+1);
 			el: '#select-devices',
 			length: 20,
       placeholder:"choose the divices used in the room",
+			max:6
+    });
+    var selectdevicestodelelet = new SelectBeauty({
+			el: '#select-devicesdelet',
+			length: 6,
+      placeholder:"choose devices to delete from the room",
+			max:6
+    });
+  
+    var selectdevicestoadd = new SelectBeauty({
+			el: '#select-devicestoadd',
+			length: 6,
+      placeholder:"choose new devices to add to the room",
 			max:6
 		});
   </script>
@@ -737,15 +713,12 @@ var dev = {
   light : false ,
   alarm :false
 }
-
  
-
 Object.entries(selectDevices.selected).forEach(function(elm){
   if (elm) {var text = elm[1].text ; 
   dev[text] = true;
   }
 })
-
 $.ajax({
   type: "POST",
   data: JSON.stringify({ type: type , name : name , devices : dev }),
@@ -754,14 +727,11 @@ $.ajax({
   url: "/api/rooms/add"+document.location.search,
   success: function(data) {
     console.log(data);
-
   }
 });
 setTimeout(function(){
   location.reload()
-
 },400)
-
    }
   </script>
  

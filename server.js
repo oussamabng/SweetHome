@@ -97,6 +97,7 @@ db.once("open", () => {
     ) {
       console.log("alarm tsoniii !!!!!!!");
       pusher.trigger("alarms", "inserted", {
+        //TODO to add //data : change.fullDocument.data
         message: "hello world",
         id: change.fullDocument._id
       });

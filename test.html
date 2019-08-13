@@ -1,54 +1,73 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>TEST</title>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
 
-  
-
-    <link
-      rel="stylesheet"
-      href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
-    />
-  </head>
-  <body>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <button id="test">click me</button>
-  </body>
-  <script>
-    $(document).ready(function() {
-      toastr.options = {
-        closeButton: true,
-        debug: false,
-        newestOnTop: true,
-        progressBar: false,
-        positionClass: "toast-top-right",
-        preventDuplicates: false,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: 0,
-        extendedTimeOut: 0,
-        showEasing: "swing",
-        hideEasing: "linear",
-        showMethod: "fadeIn",
-        hideMethod: "fadeOut",
-        tapToDismiss: false,
-        onclick: function() {
-          console.log("test a zah");
-          toastr.remove();
+<div id="container" style="height: 400px; min-width: 310px"></div>
+<script>
+  // Create the chart
+  Highcharts.stockChart("container", {
+    chart: {
+      events: {
+        load: function() {
+          // set up the updating of the chart each second
+          var series = this.series[0];
+          setInterval(function() {
+            var x = new Date().getTime(), // current time
+              y = Math.round(Math.random() * 100);
+            series.addPoint([x, y], true, true);
+          }, 1000);
         }
-      };
-      document.getElementById("test").addEventListener("click", function() {
-        toastr["error"](
-          'Mouvement Detected on the room : " oussama room "    <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm </button>',
-          " alarm rings "
-        );
-      });
-    });
-  </script>
-</html>
+      }
+    },
+
+    time: {
+      useUTC: false
+    },
+
+    rangeSelector: {
+      buttons: [
+        {
+          count: 1,
+          type: "minute",
+          text: "1M"
+        },
+        {
+          count: 5,
+          type: "minute",
+          text: "5M"
+        },
+        {
+          type: "all",
+          text: "All"
+        }
+      ],
+      inputEnabled: false,
+      selected: 0
+    },
+
+    title: {
+      text: "Live random data"
+    },
+
+    exporting: {
+      enabled: false
+    },
+
+    series: [
+      {
+        name: "Random data",
+        data: (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() * 100)]);
+          }
+          return data;
+        })()
+      }
+    ]
+  });
+</script>

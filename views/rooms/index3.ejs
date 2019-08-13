@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rooms!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../../../jquery-3.3.1.js"></script> 
+  <link rel="stylesheet" type="text/css" href="../../../slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="../../../slick/slick-theme.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="../../../style.css">
+  <script>  
+      function flip() {
+        $(".card").toggleClass("flipped");
+      }
+    </script>
+    <script>
+      var doughnut = 0;
+      var chawrma = 1;
+      window.setInterval(function() {
+        doughnut = doughnut + 1;
+        var pizza = 0;
+        pizza = doughnut % 20;
+
+        if (pizza == 0) {
+          flip();
+          chawrma = 1;
+        } else {
+          if (chawrma == 1) {
+            flip();
+            chawrma = 0;
+          }
+        }
+      }, 1000);
+    </script>
+</head>
+<body>
+
+
+<!--------------------------------------------------------------->
+
+
+
+
+
+    <div class="row"  >
+        <!---hadi ga3 t3 animation t3 kol w7da -->
+        <section class="container">
+                     <div class="card" >
+                          <div class="front">
+                                  <div class="column">
+                                   <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs/login.png" title="logout" >
+                                  </div>                          
+                            </div>
+                    <div class="back"> 
+                            <div class="column">
+                               <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs/login1.png" title="logout" >
+                      
+                            </div>
+                    </div>
+          </section>
+        <!--hna tkml lwla g3 t3 nav bar t3 login-->
+        <!--zwaja tbda hna-->
+        <section class="container">
+                <div class="card">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/notifications.png" title="notification" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/notifications1.png" title="notification">
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--talta tbda hna-->
+        <section class="container">
+                <div class="card">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/settings.png" title="settings" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/settings1.png" title="settings" >
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--rab3a hna--> 
+        <section class="container">
+                <div class="card">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id03').style.display='block'" src="../../../designs/add.png" title="add romm" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="document.getElementById('id03').style.display='block'"  src="../../../designs/add1.png" title="add room" >
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--talia ga3 hna-->
+        <section class="container">
+                <div class="card">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/help.png" title="help" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/help1.png" title="help" >
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+      
+</div>  
+<!------------------------------------------------------------>
+
+
+
+     <!--hadi l fenetre li tkhrjlk f login-->
+<div id="id01" class="modal">
+        
+
+        <form class="modal-content animate" action="/action_page.php">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="../../../designs/sweet.png" class="bo">
+            <img src="../../../sdesigns/key.png" alt="Avatar" class="avatar">
+            <h1>your home will stay sweet when you're away!</h1>
+          
+                
+            <button type="submit">logout</button>
+            
+          
+          
+            
+          
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="ghost">Cancel</button>
+           
+                  </div> 
+            </form>
+    </div>
+      <!--script hada t3 ki tclicki barra window youkhrj-->
+     
+     
+            
+        
+
+
+ <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
+ <div id="id02" class="modal">
+
+    <form class="modal-content animate" action="/action_page.php">
+        
+          <div class="container1" style="background-color:#554269;color:white" >
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            notifications
+           </div>
+    </form>
+   </div>
+
+
+
+
+
+   <div id="id03" class="modal">
+        
+
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <h1>Add a new room</h1>
+
+          <input type="text" placeholder="choose a name for the room"  />
+          <div class="selectcontainer">
+          <select name="select-type" id="select-type" class="form-control">
+              <option value="1" icon="kitchen">kitchen</option>
+              <option value="2" icon="hallway">hallway</option>
+              <option value="3" icon="office">office</option>
+              <option value="4" icon="bedroom">bedroom</option>
+              <option value="5" icon="livingroom">livingroom</option>
+              
+      
+            </select>
+          </div> 
+          <select name="select-devices" id="select-devices" class="form-control">
+              <option value="1" >dht1</option>
+              <option value="2" >RGB</option>
+              <option value="3" >gaz</option>
+              <option value="4" >motion</option>
+              <option value="5">dht2</option>
+              
+      
+            </select>
+          </div> 
+          
+          
+          <button type="submit">Create Room</button>
+           <button type="button" onclick="document.getElementById('id03').style.display='none'" class="ghost">Cancel</button>
+         
+                </div> 
+          </form>
+  </div>
+
+
+
+
+
+
+
+
+  <div id="id05" class="modal">
+        
+
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <h1>Modify this room</h1>
+
+          <input type="text" placeholder="oussama 7at old name t3 room hna"  />
+          <div class="selectcontainer">
+          <select name="select-devicesdelet" id="select-devicesdelet" class="form-control">
+              <option value="1" >dht1</option>
+              <option value="2" >RGB</option>
+              <option value="3" >gaz</option>
+              <option value="4" >motion</option>
+              <option value="5">dht2</option>
+              
+      
+            </select>
+          </div> 
+          <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
+              <option value="1" >dht1</option>
+              <option value="2" >RGB</option>
+              <option value="3" >gaz</option>
+              <option value="4" >motion</option>
+              <option value="5">dht2</option>
+              
+      
+            </select>
+          </div> 
+          
+          
+          <button type="submit">Modify Room</button>
+           <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
+         
+                </div> 
+          </form>
+  </div>
+
+
+
+
+
+  <div id="id06" class="modal">
+        
+
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <h1>Modify this room</h1>
+
+          <input type="text" placeholder="oussama 7at old name t3 room hna"  />
+          <div class="selectcontainer">
+          <select name="select-devicesdelet" id="select-devicesdelet" class="form-control">
+              <option value="1" >dht1</option>
+              <option value="2" >RGB</option>
+              <option value="3" >gaz</option>
+              <option value="4" >motion</option>
+              <option value="5">dht2</option>
+              
+      
+            </select>
+          </div> 
+          <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
+              <option value="1" >dht1</option>
+              <option value="2" >RGB</option>
+              <option value="3" >gaz</option>
+              <option value="4" >motion</option>
+              <option value="5">dht2</option>
+              
+      
+            </select>
+          </div> 
+          
+          
+          <button type="submit">Modify Room</button>
+           <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
+         
+                </div> 
+          </form>
+  </div>
+
+
+
+           <script>
+                // Get the modal
+                var modal1 = document.getElementById('id01');
+              var modal2 = document.getElementById('id02');
+              var modal3 = document.getElementById('id03');
+              var modal4 = document.getElementById('id04');
+              var modal5 = document.getElementById('id05');
+              var modal6 = document.getElementById('id06');
+              
+              // When the user clicks anywhere outside of the modal, close it
+              window.onclick = function(event) {
+                  if (event.target == modal1) {
+                      modal1.style.display = "none";
+                  }
+                  if (event.target == modal2) {
+                      modal2.style.display = "none";
+                  }
+                  if (event.target == modal3) {
+                      modal3.style.display = "none";
+                  }
+                  if (event.target == modal4) {
+                      modal4.style.display = "none";
+                  }
+                  if (event.target == modal5) {
+                      modal5.style.display = "none";
+                  }
+                  if (event.target == modal6) {
+                      modal6.style.display = "none";
+                  }
+              }
+              </script>
+<!----------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <section class="regular slider" id="test"></section>
+
+  <div class="dropdown">
+      <div id="myDropdown" class="dropdown-content">
+        <a href="#home">Delete this room</a>
+        <a href="#about">Modify this room</a>
+       
+      </div>
+    </div>
+
+  
+
+<div style="display: none;">
+                              <button type="submit" id="pushTest" ></button>
+                          
+                          </div>
+
+
+  <div style="display: none;">
+    <h1 id="slata">
+      <%= rooms %>
+    </h1>
+    <h1 id="dht">
+      <%= dht %>
+    </h1>
+    <h1 id="rgb">
+      <%= rgb %>
+    </h1>
+    <h1 id="alarm">
+      <%= alarm %>
+    </h1>
+
+    <h1 id="gsense">
+      <%= gsense %>
+    </h1>
+    <h1 id="ultrason">
+      <%= ultrason %>
+    </h1>
+    <h1 id="light">
+      <%= light %>
+    </h1>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+  <script src="../../../slick/slick.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+      var allrgb = JSON.parse(document.getElementById("rgb").innerHTML);
+      var getrooms = JSON.parse(document.getElementById("slata").innerHTML);
+
+      var alldht = JSON.parse(document.getElementById("dht").innerHTML);
+      var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
+      var alllight = JSON.parse(document.getElementById("light").innerHTML);
+      var allultrason = JSON.parse(
+        document.getElementById("ultrason").innerHTML
+      );  
+      console.log(getrooms[0].name);
+
+    var kitchen={name:"couzina", type:"kitchen", dht:"skhana", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
+          var chambrti={name:"chambrti",type:"bedroom", rgb:{exists:true,light:false}, dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
+          var sallon={name:"sallon",type:"livingroom", dht:"brd", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
+          var couloire={name:"couloire",type:"hallway", dht:"brd", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
+        var rooms=[kitchen, chambrti,sallon,sallon,couloire];
+        var b=("'block'")
+    function showRooms(i) {
+      var v=("'id06'");
+      b=("'block'")
+          
+              document.getElementById('test').innerHTML+=
+              
+              '<div class="cardroom">'+
+                  '<section class="container-name" id="type'+i+'" >'+
+                   
+                  '</section>'+
+                 '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
+                  
+                  '</iframe>'+
+                  '<iframe onclick="document.getElementById('+v+').style.display='+b+'"  class="container-charts" id="charts'+i+'" frameBorder="0" scrolling="no">'+
+                  
+                  '</iframe>'+
+                  '<section class="container-secure" id="motion'+i+'">'+
+                  
+                  '</section>'+
+                  '<iframe class="container-gaz" id="gaz'+i+'" frameBorder="0" scrolling="no">'+
+                  
+                  '</iframe>'+
+              '</div>'
+              ;
+              
+                
+                
+            }
+      
+      function addType(i){
+        var a=("'id05'");
+        b=("'block'")
+
+
+        document.getElementById('type'+i).innerHTML+=  '<div class="dropdown">'+
+                                                      '<div class="dropbtn">'+
+                                                     '<img src="../../../icons/settings.png"  onclick="myFunction('+i+')" class="dropbtn">'+
+                                                     '</div>'+
+                                                     '<div id="myDropdown'+i+'" class="dropdown-content">'+
+                                                       ' <a href="#home">Delete this room</a>'+
+                                                        '<a onclick="document.getElementById('+a+').style.display='+b+'" >Modify this room</a>'+
+       
+                                                      '</div>'+
+                                                        '</div>';
+
+
+        
+          if(rooms[i].type=="kitchen"){
+           
+          document.getElementById('type'+i).innerHTML+='<img src="../../../icons/hat.png" style="width:50px;margin-left:45%;margin-top:10px;">';
+          document.getElementById('type'+i).innerHTML+="<p>"+rooms[i].name+"</p>";        
+        }
+        if(rooms[i].type=="bedroom"){
+          document.getElementById('type'+i).innerHTML+='<img src="../../../icons/bedroom.png" style="width:50px;margin-left:45%;margin-top:10px;">';
+          document.getElementById('type'+i).innerHTML+="<p>"+rooms[i].name+"</p>";        
+        }
+        if(rooms[i].type=="livingroom"){
+          document.getElementById('type'+i).innerHTML+='<img src="../../../icons/livingroom.png" style="width:50px;margin-left:45%;margin-top:10px;">';
+          document.getElementById('type'+i).innerHTML+="<p>"+rooms[i].name+"</p>";        
+        }
+        if(rooms[i].type=="office"){
+          document.getElementById('type'+i).innerHTML+='<img src="icons/office.png" style="width:50px;margin-left:45%;margin-top:10px;">';
+          document.getElementById('type'+i).innerHTML+="<p>"+rooms[i].name+"</p>";        
+        }
+        if(rooms[i].type=="hallway"){
+          document.getElementById('type'+i).innerHTML+='<img src="icons/hallway.png" style="width:50px;margin-left:45%;margin-top:10px;">';
+          document.getElementById('type'+i).innerHTML+="<p>"+rooms[i].name+"</p>";        
+        }
+          
+      }
+      function addRGB(i){
+        b= rooms[i].rgb.light;
+          if(rooms[i].rgb.exists==true){
+
+            document.getElementById('rgb'+i).src = './rgb/rgb.html';    
+        
+        }}
+      
+
+
+    function  addCharts(i){
+     
+          if(rooms[i].dht.exists==true){
+            document.getElementById('charts'+i).src = 'Sweet-chart/mychart/dht.html';
+
+    }}
+    function addMotion(i){
+     
+          if(rooms[i].motion.exists==true){
+            document.getElementById('motion'+i).innerHTML += '<img src="icons/motion.png" style="width:25%; margin-left:25px;margin-top:10px; margin-bottom:10px">';}}
+    
+    function  addGaz(i){
+      
+          if(rooms[i].gaz.exists==true){
+            document.getElementById('gaz'+i).src = 'Sweet-chart/mychart/gaz.html';
+
+    }}
+    
+      
+    </script>
+    <script>
+    $(document).on('ready', function() {
+      for (i = 0; i < rooms.length; i++){
+        a= rooms[i].rgb.light;
+      showRooms(i);
+      addType(i); 
+      addRGB(i);  
+      addCharts(i); 
+      addGaz(i);
+      addMotion(i);
+    }})
+   
+    </script>
+    
+    <script>
+         function myFunction(i) {
+          document.getElementById("myDropdown"+i).classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }       
+        </script>
+
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+     
+  $(".regular").slick({
+    dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  centerMode: true,
+  variableWidth: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+      });
+      
+  
+</script>
+<script src="select-beauty.js"></script>
+<script>
+		var selectType = new SelectBeauty({
+			el: '#select-type',
+			length: 6,
+      placeholder:"choose type",
+			max: 1
+		});
+
+    var selectType = new SelectBeauty({
+			el: '#select-devices',
+			length: 20,
+      placeholder:"choose the divices used in the room",
+			max:6
+    });
+  </script>
+  <script>
+    var selectdevicestodelelet = new SelectBeauty({
+			el: '#select-devicesdelet',
+			length: 6,
+      placeholder:"choose devices to delete from the room",
+			max:6
+    });
+  
+    var selectdevicestoadd = new SelectBeauty({
+			el: '#select-devicestoadd',
+			length: 6,
+      placeholder:"choose new devices to add to the room",
+			max:6
+		});
+	</script>
+
+</body>
+</html>

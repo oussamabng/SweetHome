@@ -132,12 +132,86 @@ router.post("/add", async function(req, res) {
   res.status(200).send("room added succesfully"); //anglais mkwd laghlb
 });
 
-router.post("/light", async function(req, res) {
-  var light = await Light.findOne({ _id: req.body.id });
-  light.value = req.body.value;
-  light.save();
+//teh RGB ROute ^^
+router.post("/rgb", async function(req, res) {
+  console.log(req.body);
 
-  res.send("changes completed for the light ");
+  const room = await Rooms.findOne({ name: req.body.name });
+
+  room.devices.rgb.forEach(async function(elm) {
+    console;
+    var rgb = await Rgb.findOne({ _id: elm });
+    console.log("rgb :" + rgb);
+    rgb.used = true;
+    rgb.color = new Array(); // rgb.color = [];  bah nkhawouh lawla ,,,, psk ykoun dima fiha ghi 3 val rgb ..
+    rgb.color.push(req.body.red);
+    rgb.color.push(req.body.green);
+    rgb.color.push(req.body.blue);
+    rgb.save();
+  });
+
+  res.status(200).send("succes rgb ^^");
+});
+// TODO modify devices ................................................................;
+
+router.post("/modify", async function(req, res) {
+  var room = await Rooms.findOne({ name: req.body.name });
+
+  if (req.body.devDel.rgb == true) {
+    room.devices.rgb.forEach(async function(elm) {
+      var rgb = await Rgb.deleteOne({ _id: elm });
+      rgb.save();
+    });
+    room.dev.rgb = new Array();
+  }
+
+  if (req.body.devDel.dht == true) {
+    room.devices.dht.forEach(async function(elm) {
+      var dht = await Dht.deleteOne({ _id: elm });
+      dht.save();
+    });
+    room.dev.dht = new Array();
+  }
+  if (req.body.devDel.light == true) {
+    room.devices.light.forEach(async function(elm) {
+      var light = await Light.deleteOne({ _id: elm });
+      light.save();
+    });
+    room.dev.light = new Array();
+  }
+  if (req.body.devDel.ultrason == true) {
+    room.devices.ultrason.forEach(async function(elm) {
+      var ultrason = await Ultrason.deleteOne({ _id: elm });
+      ultrason.save();
+    });
+    room.dev.ultrason = new Array();
+  }
+  if (req.body.devDel.gsense == true) {
+    room.devices.gsense.forEach(async function(elm) {
+      var gsense = await Gsense.deleteOne({ _id: elm });
+      gsense.save();
+    });
+    room.dev.gsense = new Array();
+  }
+  if (req.body.devDel.alarm == true) {
+    room.devices.alarm.forEach(async function(elm) {
+      var alarm = await Alarm.deleteOne({ _id: elm });
+      alarm.save();
+    });
+    room.dev.alarm = new Array();
+  }
+});
+
+//**************************************** */
+router.post("/light", async function(req, res) {
+  const room = await Rooms.findOne({ name: req.body.name });
+  room.devices.light.forEach(async function(id) {
+    var light = await Light.findOne({ _id: id });
+    light.value = req.body.value;
+    light.save();
+  });
+
+  res.status(200).send("changes completed for the light ");
 });
 // ********************************************************//
 // ********************************************************//
@@ -189,7 +263,7 @@ router.get("/all", async function(req, res) {
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   const _rooms = await Rooms.find({ userId: decoded._id });
-  res.render("rooms/getrooms.ejs", {
+  res.render("rooms/index2.ejs", {
     rooms: JSON.stringify(_rooms),
     dht: JSON.stringify(dht),
     rgb: JSON.stringify(rgb),

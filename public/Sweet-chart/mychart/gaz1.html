@@ -1,0 +1,157 @@
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+<div id="container" style="height: 400px; min-width: 310px"></div>
+<script>
+  // Create the chart
+  Highcharts.stockChart("container", {
+    chart: {
+      events: {
+        load: function() {
+          // set up the updating of the chart each second
+            var series = this.series[0];
+                  var series2 = this.series[1];
+                  setInterval(function() {
+                    var x = new Date().getTime(), // current time
+                      y = Math.random();
+                    z = Math.random();
+                    series.addPoint([x, y], false, true);
+                    series2.addPoint([x, z], true, true);
+                  }, 1000);
+        }
+      }
+    },
+
+    time: {
+      useUTC: false
+    },
+
+    rangeSelector: {
+      buttons: [
+        {
+          count: 1,
+          type: "minute",
+          text: "1M"
+        },
+        {
+          count: 5,
+          type: "minute",
+          text: "5M"
+        },
+        {
+          type: "all",
+          text: "All"
+        }
+      ],
+      inputEnabled: false,
+      selected: 0
+    },
+
+    title: {
+      text: "Temperature and Humidity Chart"
+    }, yAxis: [
+                {
+                    opposite:false , 
+                  title: {
+                    text: "Temperature (C°)'"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#8c1531"
+                    }
+                  ]
+                },
+                {
+                  title: {
+                    text: "Humidity (%)"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#808080"
+                    }
+                  ]
+                }
+              ],
+
+    exporting: {
+      enabled: false
+    },
+
+    series: [
+      {
+        name: "Temperature",  marker: {
+                  enabled: true,
+                  radius: 5,
+                  fillColor: "#0cc9c6"
+                },
+        data: (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+          }
+          return data;
+        })()
+      } , 
+      {
+        name : "Humidity" ,
+          marker: {
+                  enabled: true,
+                  radius: 5,
+                  fillColor: "#b904d1"
+                },
+                            yAxis: 1,
+        data : (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() * 800) + 150]);
+          }
+          return data;
+        })()
+
+      }
+    ] , 
+     responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal'
+                },
+                yAxis: {
+                    labels: {
+                        align: 'left',
+                        x: 0,
+                        y: -5
+                    },
+                    title: {
+                        text: null
+                    }
+                },
+                subtitle: {
+                    text: null
+                },
+                credits: {
+                    enabled: false
+                }
+            }
+        }]
+    }
+  });
+</script>

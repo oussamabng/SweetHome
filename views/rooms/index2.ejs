@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rooms!</title>
+  <meta charset="UTF-8">  
+ 
+  <link
+  rel="stylesheet"
+  href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+/>
+  <link rel="stylesheet" type="text/css" href="../../../slick/slick.css" />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="../../../slick/slick-theme.css"
+  />
+ 
+  
+  
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+  <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto"
+    rel="stylesheet"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <link rel="stylesheet" href="../../../style.css" />
+  <link rel="icon" type="image/png" href="/views/designs/favicon.png" sizes="32x32" />
+  <link rel="manifest" href="/views/manifest.json">  
+  <meta name="theme-color" content="#585f82">
+  <link rel="apple-touch-icon" href="/views/designs/touch-apple.png">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+
+  <script>  
+
+      function flip() {
+        $(".card").toggleClass("flipped");
+      }
+    </script>
+
+
+    <script>
+      var doughnut = 0;
+      var chawrma = 1;
+      window.setInterval(function() {
+        doughnut = doughnut + 1;
+        var pizza = 0;
+        pizza = doughnut % 20;
+
+        if (pizza == 0) {
+          flip();
+          chawrma = 1;
+        } else {
+          if (chawrma == 1) {
+            flip();
+            chawrma = 0;
+          }
+        }
+      }, 1000);
+    </script>
+</head>
+<body>
+
+
+<!--------------------------------------------------------------->
+
+
+
+
+
+    <div class="row"  >
+        <!---hadi ga3 t3 animation t3 kol w7da -->
+        <section class="container">
+                     <div class="card" >
+                          <div class="front">
+                                  <div class="column">
+                                   <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs/login.png" title="logout" >
+                                  </div>                          
+                            </div>
+                    <div class="back"> 
+                            <div class="column">
+                               <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs/login1.png" title="logout" >
+                      
+                            </div>
+                    </div>
+          </section>
+        <!--hna tkml lwla g3 t3 nav bar t3 login-->
+        <!--zwaja tbda hna-->
+        <section class="container">
+                <div class="card">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/notifications.png" title="notification" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/notifications1.png" title="notification">
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--talta tbda hna-->
+        <section class="container">
+                <div class="card">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/settings.png" title="settings" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/settings1.png" title="settings" >
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--rab3a hna--> 
+        <section class="container">
+                <div class="card">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id03').style.display='block'" src="../../../designs/add.png" title="add romm" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="document.getElementById('id03').style.display='block'"  src="../../../designs/add1.png" title="add room" >
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--talia ga3 hna-->
+        <section class="container">
+                <div class="card">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/help.png" title="help" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/help1.png" title="help" >
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+      
+</div>  
+<!------------------------------------------------------------>
+
+
+
+     <!--hadi l fenetre li tkhrjlk f login-->
+<div id="id01" class="modal">
+        
+
+        <form class="modal-content animate" action="/action_page.php">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="../../../designs/sweet.png" class="bo">
+            <img src="../../../designs/key.png" alt="Avatar" class="avatar">
+            <h1>your home will stay sweet when you're away!</h1>
+          
+                
+            <button type="submit">logout</button>
+            
+          
+          
+            
+          
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="ghost">Cancel</button>
+           
+                  </div> 
+            </form>
+    </div>
+      <!--script hada t3 ki tclicki barra window youkhrj-->
+     
+     
+            
+        
+
+
+ <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
+ <div id="id02" class="modal">
+
+    <form class="modal-content animate" action="/action_page.php">
+        
+          <div class="container1" style="background-color:#554269;color:white" >
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            notifications
+           </div>
+    </form>
+   </div>
+
+
+
+
+
+   <div id="id03" class="modal">
+        
+
+      <form class="modal-content animate" action="javascript:;" onsubmit="create(this)">
+          <div class="imgcontainer">
+          <h1>Add a new room</h1>
+
+          <input id="nameRoom" type="text" placeholder="choose a name for the room"  />
+          <div class="selectcontainer">
+          <select name="select-type" id="select-type" class="form-control">
+              <option value="1" icon="kitchen">kitchen</option>
+              <option value="2" icon="hallway">hallway</option>
+              <option value="3" icon="office">office</option>
+              <option value="4" icon="bedroom">bedroom</option>
+              <option value="5" icon="livingroom">livingRoom</option>
+              
+      
+            </select>
+          </div> 
+          <select name="select-devices" id="select-devices" class="form-control">
+            <option value="0" >dht</option>
+            <option value="1" >rgb</option>
+            <option value="2" >gsense</option>
+            <option value="3" >ultrason</option>
+            <option value="4">alarm</option>
+            <option value="5">light
+            </option>
+
+              
+      
+            </select>
+          </div> 
+          
+          
+          <button id="createRoom" type="submit">Create Room</button>
+           <button type="button" onclick="document.getElementById('id03').style.display='none'" class="ghost">Cancel</button>
+         
+                </div> 
+          </form>
+  </div>
+
+
+
+
+
+
+
+
+  <div id="id05" class="modal">
+        
+
+    <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoom(this)">
+      <div class="imgcontainer">  
+          <h1>Modify this room</h1>
+
+          <input id="modify" type="text" placeholder="oussama 7at old name t3 room hna"  />
+          <div class="selectcontainer">
+          <select name="select-devicesdelet" id="select-devicesdelet" class="form-control">
+            <option value="0" >dht</option>
+            <option value="1" >rgb</option>
+            <option value="2" >gsense</option>
+            <option value="3" >ultrason</option>
+            <option value="4">alarm</option>
+            <option value="5">light
+            </option>
+              
+      
+            </select>
+          </div> 
+          <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
+            <option value="0" >dht</option>
+              <option value="1" >rgb</option>
+              <option value="2" >gsense</option>
+              <option value="3" >ultrason</option>
+              <option value="4">alarm</option>
+              <option value="5">light
+              </option>
+              
+      
+            </select>
+          </div> 
+          
+          
+          <button  type="submit">Modify Room</button>
+           <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
+         
+                </div> 
+          </form>
+  </div>
+
+
+
+  <div id="dialogBox" style="display: none;">
+      <div id="chartContainer" class="dialog" style="height: 500px; width: 100%;"></div>
+  </div>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <div id="id06" class="modal">
+        
+
+    <form class="modal-content animate detailed" action="/action_page.php" >
+     <form>
+      <iframe src="../../../Sweet-chart/mychart/temperature.html" class="detailed-graph" frameBorder="0" scrolling="no" id=" "></iframe>
+     </form>
+    </form>
+
+</div>
+
+
+
+
+
+<div id="id07" class="modal">
+      
+
+  <form class="modal-content animate detailed" action="/action_page.php" >
+   <form>
+    <iframe src="../../../Sweet-chart/mychart/gaz1.html" class="detailed-graph" frameBorder="0" scrolling="no" id="detailed"></iframe>
+   </form>
+  </form>
+
+</div>
+
+
+
+           <script>
+                // Get the modal
+                var modal1 = document.getElementById('id01');
+              var modal2 = document.getElementById('id02');
+              var modal3 = document.getElementById('id03');
+              var modal4 = document.getElementById('id04');
+              var modal5 = document.getElementById('id05');
+              var modal6 = document.getElementById('id06');
+              var modal7 = document.getElementById('id07');
+
+              
+              // When the user clicks anywhere outside of the modal, close it
+              window.onclick = function(event) {
+                  if (event.target == modal1) {
+                      modal1.style.display = "none";
+                  }
+                  if (event.target == modal2) {
+                      modal2.style.display = "none";
+                  }
+                  if (event.target == modal3) {
+                      modal3.style.display = "none";
+                  }
+                  if (event.target == modal4) {
+                      modal4.style.display = "none";
+                  }
+                  if (event.target == modal5) {
+                      modal5.style.display = "none";
+                  }
+                  if (event.target == modal6) {
+                      modal6.style.display = "none";
+                  }
+                  if (event.target == modal6) {
+                    modal7.style.display = "none";
+                }
+              }
+              </script>
+<!----------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <section class="regular slider" id="test"></section>
+
+  
+  <div class="dropdown">
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#home">Delete this room</a>
+      <a href="#about">Modify this room</a>
+     
+    </div>
+  </div>
+
+
+<div style="display: none;">
+                              <button type="submit" id="pushTest" ></button>
+                          
+                          </div>
+
+
+  <div style="display: none;">
+    <h1 id="getrooms">
+      <%= rooms %>
+    </h1>
+    <h1 id="dht">
+      <%= dht %>
+    </h1>
+    <h1 id="rgb">
+      <%= rgb %>
+    </h1>
+    <h1 id="alarm">
+      <%= alarm %>
+    </h1>
+
+    <h1 id="gsense">
+      <%= gsense %>
+    </h1>
+    <h1 id="ultrason">
+      <%= ultrason %>
+    </h1>
+    <h1 id="light">
+      <%= light %>
+    </h1>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+  <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+   <script src="../../../slick/slick.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+      var getrooms = JSON.parse(document.getElementById("getrooms").innerHTML);
+      console.log(getrooms);
+      var allrgb = JSON.parse(document.getElementById("rgb").innerHTML);
+      var alldht = JSON.parse(document.getElementById("dht").innerHTML);
+      var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
+      var alllight = JSON.parse(document.getElementById("light").innerHTML);
+      var allultrason = JSON.parse(
+        document.getElementById("ultrason").innerHTML
+      );
+
+      var allalarm = JSON.parse(document.getElementById("alarm").innerHTML);
+    var kitchen={name:"couzina", type:"kitchen", dht:"skhana", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
+          var chambrti={name:"chambrti",type:"bedroom", rgb:{exists:true,light:false}, dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
+          var sallon={name:"sallon",type:"livingroom", dht:"brd", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
+          var couloire={name:"couloire",type:"hallway", dht:"brd", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
+        var rooms=[kitchen, chambrti,sallon,sallon,couloire];
+        var b=("'block'")
+    function showRooms(i) {
+          var v=("'id06'");
+        b=("'block'")
+        var w=("'id07'");
+
+              
+        document.getElementById('test').innerHTML+=
+                
+        '<div class="cardroom">'+
+            '<section class="container-name" id="type'+i+'" >'+
+             
+            '</section>'+
+           '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
+            
+            '</iframe>'+
+            '<div style="position:relative;">'+
+                '<div id="overlay-charts" onclick="showChartTemp(this)" > '+
+              '</div>'+
+          
+            '<iframe   id="charts'+i+'" frameBorder="0" scrolling="no" class="iframechart" >'+
+            
+            '</iframe>'+
+            '</div>'+
+            
+            '<section class="container-secure" id="motion'+i+'">'+
+            
+            '</section>'+
+            '<div style="position:relative;">'+
+                '<div id="overlay-charts" onclick="showChartGaz(this)" > '+
+                    '</div>'+
+            '<iframe class="container-gaz" id="gaz'+i+'" frameBorder="0" scrolling="no" class="iframechart">'+
+            
+            '</iframe>'+
+            '</div>'+
+        '</div>'
+        ;
+                
+                
+            }
+      
+      function addType(i){
+          var a=("'id05'");
+          b=("'block'")
+
+          document.getElementById('type'+i).innerHTML+=  '<div class="dropdown">'+
+                                                        '<div class="dropbtn">'+
+                                                      '<img src="../../../icons/settings.png"  onclick="myFunction('+i+')" class="dropbtn">'+
+                                                      '</div>'+
+                                                      '<div id="myDropdown'+i+'" class="dropdown-content">'+
+                                                        ' <a href="#home">Delete this room</a>'+
+                                                          '<a onclick="document.getElementById('+a+').style.display='+b+'" >Modify this room</a>'+
+        
+                                                        '</div>'+
+                                                          '</div>';
+
+
+                                                          if (getrooms[i].typeRoom == "kitchen") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/hat.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "bedroom") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/bedroom.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "livingRoom") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/livingroom.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "office") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/office.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "hallway") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/hallway.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+          
+      }
+      function addRGB(i){
+        getrooms[i].devices.light.forEach(function(id) {
+          alllight.forEach(function(elm) {
+            if (id == elm._id) {
+              if (elm.used == true) {
+                document.getElementById('rgb'+i).src = '../../../rgb.html';    
+
+                setTimeout(function(){
+
+//console.log( document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name)
+document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name =  document.getElementById("type"+i).children[2].innerHTML;
+               //   document.getElementById("rgb0").contentDocument.defaultView.window.document.getElementById("hihi").name= document.getElementById("type"+i).children[1].innerHTML ;
+
+                },4000); 
+
+                b = elm.value;
+                console.log(b);
+                if (elm.value == true) {
+                  document.getElementById("rgb" + i).innerHTML +=
+                    '<section id="OnOff"><img title="' +
+                    id +
+                    '"  onclick="OnOff(' +
+                    i +
+                    ", " +
+                    b +
+                    ')" src="../../../icons/on.png"  class="rgbview"></section>';
+                } else if (elm.value == false) {
+                  document.getElementById("rgb" + i).innerHTML +=
+                    '<section id="OnOff"><img title="' +
+                    id +
+                    '"   onclick="OnOff(' +
+                    i +
+                    ", " +
+                    b +
+                    ')" src="../../../icons/off.png" style="width:13%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
+                }
+              }
+            }
+          });
+        });
+        
+        }
+      
+
+
+        function addCharts(i) {
+          getrooms[i].devices.dht.forEach(function(id) {
+            alldht.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  setTimeout(function() {
+                    document.getElementById(
+                      "charts" + i
+                    ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
+                      elm.value;
+                  }, 1500);
+                  document.getElementById("charts" + i).src =
+                    "../../../Sweet-chart/mychart/dht.html";
+                }
+                b = elm.value;
+              }
+            });
+          });
+        }
+        function addMotion(i) {
+          getrooms[i].devices.ultrason.forEach(function(id) {
+            allultrason.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  if (elm.value == true) {
+                    document.getElementById("motion" + i).innerHTML +=
+                      '<img id="motion" src="../../icons/motion.png" style="width:25%; margin-left:25px;margin-top:10px; margin-bottom:10px">';
+                  }
+                }
+              }
+            });
+          });
+        }
+        function addGaz(i) {
+          getrooms[i].devices.gsense.forEach(function(id) {
+            allgsense.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  setTimeout(function() {
+                    // document.getElementById(
+                    // "gaz" + i
+                    // ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
+                    // elm.value;
+                  }, 5000);
+                  document.getElementById("gaz" + i).src +=
+                    "../../Sweet-chart/mychart/gaz.html";
+                }
+              }
+            });
+          });
+        }
+    
+      
+    </script>
+    <script>
+    $(document).on('ready', function() {
+      for (i = 0; i < getrooms.length; i++){
+        a= rooms[i].rgb.light;
+      showRooms(i);
+      addType(i); 
+      addRGB(i);  
+      addCharts(i); 
+      addGaz(i);
+      addMotion(i);
+    }})
+   
+    </script>
+    
+    <script>
+         function myFunction(i) {
+          document.getElementById("myDropdown"+i).classList.toggle("show");
+         document.getElementById("modify").placeholder =  document.getElementById("type"+i).children[2].innerHTML;
+          //console.log(document.getElementsByClassName("dropbtn")[])   ;     // Close the dropdown if the user clicks outside of it
+
+        }
+        
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }       
+        </script>
+
+  <script>
+
+    $(document).on('ready', function() {
+     
+  $(".regular").slick({
+    dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  centerMode: true,
+  variableWidth: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+      });
+      
+  
+</script>
+<script>
+    Pusher.logToConsole = true;
+
+var pusher = new Pusher('28874f2f3bdf02b787e5', {
+  cluster: 'eu',
+  forceTLS: true
+});
+
+var channel = pusher.subscribe('alarms');
+channel.bind('inserted', function(data) {
+  //  VanillaToasts.create({
+    //    title: 'alert',
+      //  text:JSON.stringify(data),
+       // type: 'warning', // success, info, warning, error
+        //icon: 'designs/login.png',
+        //timeout: 2000 ,
+        //callback: function() {  } 
+     // });
+     var id =  JSON.stringify(data.id) ;
+     const name = "haha";
+const saha  = document.getElementById("pushTest");
+saha.click();
+toastr.options = {
+  closeButton: true,
+  debug: false,
+  newestOnTop: true,
+  progressBar: false,
+  positionClass: "toast-top-right",
+  preventDuplicates: false,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: 0,
+  extendedTimeOut: 0,
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+  tapToDismiss: false,
+  onclick: function() {
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({
+        id : id
+      }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/notifications",
+      success: function(name) {
+nombre = 0;
+for(var i = 0 ; i < getrooms.length; i++){
+
+if (document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value == "false"){ 
+  if (name[0] == document.getElementById("type"+i).children[1].innerHTML  ){
+    nombre = getrooms.length;
+    break;
+  }
+  else {
+    nombre = i  ;
+    //document.getElementsByClassName("slick-next")[0].click();
+    break ; 
+  }
+
+}
+}
+$('.regular').slick('slickSetOption', 'speed', 50, true);
+a =nombre; 
+b = 10;
+
+console.log("length : "+ getrooms.length);
+t = setInterval(function(){
+  console.log(a);
+  
+    if (a < getrooms.length )  {
+      console.log(document.getElementById("type"+a).children[2].innerHTML) ; 
+
+      if (name[0] == document.getElementById("type"+a).children[2].innerHTML )
+    {
+    document.getElementById("motion").src = "http://localhost:3000/icons/motion.gif" ; 
+    document.getElementById("motion").onclick = function (){
+      document.getElementById("motion").src = "http://localhost:3000/icons/motion.png" ; 
+
+    }
+    clearInterval(t);
+  } 
+
+
+  else{ 
+    console.log("machi matsawyin");
+    document.getElementsByClassName("slick-next")[0].click();
+    a++;
+  }} else {
+    a = 0 ; 
+    }
+
+  
+
+
+
+},200);
+console.log(nombre+1);
+//TODO doka ha ndir 
+      }
+  
+// hna
+// TODO ok 
+//document.getElementsByClassName("slick-next")[0].firstChild.data
+ 
+    })
+    $('.regular').slick('slickSetOption', 'speed', 300, true);
+    toastr.remove();
+  }
+};
+
+  toastr["error"](
+    `Mouvement Detected,  :"     <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm and check the room </button>`,
+    " alarm rings "
+  );
+// alert(JSON.stringify(data +" :ahay"));
+ if(!("Notification" in window)){
+        alert("this browser does not support notif");
+    }else if (Notification.permission == "granted"){
+        var notification = new Notification(JSON.stringify(data));
+    } 
+    else if(Notification.permission!="denied"){
+       Notification.requestPermission(function(permission){
+          if("permission" == "granted"){
+                var notification = new Notification(JSON.stringify(("ok")));
+            }
+        });
+    }
+});
+</script>
+<script src="../../../select-beauty.js"></script>
+<script>
+		var selectType = new SelectBeauty({
+			el: '#select-type',
+			length: 6,
+      placeholder:"choose type",
+			max: 1
+		});
+
+    var selectDevices = new SelectBeauty({
+			el: '#select-devices',
+			length: 20,
+      placeholder:"choose the divices used in the room",
+			max:6
+    });
+ 
+    var selectdevicestodelelet = new SelectBeauty({
+			el: '#select-devicesdelet',
+			length: 6,
+      placeholder:"choose devices to delete from the room",
+			max:6
+    });
+  
+    var selectdevicestoadd = new SelectBeauty({
+			el: '#select-devicestoadd',
+			length: 6,
+      placeholder:"choose new devices to add to the room",
+			max:6
+		});
+  </script>
+  <script>
+      function create(){
+        console.log("arjaaaaaaaa")
+        selectdevicestoadd.tempData  =  selectdevicestodelelet.selected ; 
+        
+  const type = Object.entries(selectType.selected)[0][1].text
+  const name = document.getElementById("nameRoom").value ; 
+  var dev = {
+    dht : false,
+    gsense : false,
+    rgb : false,
+    ultrason : false,
+    light : false ,
+    alarm :false
+  }
+   
+  Object.entries(selectDevices.selected).forEach(function(elm){
+    if (elm) {var text = elm[1].text ; 
+    dev[text] = true;
+    }
+  })
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({ type: type , name : name , devices : dev }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/add"+document.location.search,
+    success: function(data) {
+      console.log(data);
+    }
+  });
+  setTimeout(function(){
+    location.reload()
+  },400)
+    }
+
+    function getName(){
+      i = 0 ;
+while (document.getElementById("slick-slide0"+i)) {
+  if (document.getElementById("slick-slide0"+i).attributes["aria-hidden"].value == "false"){
+    return document.getElementById("slick-slide02").children[0].children[0].innerText
+  }
+}
+    }
+   
+
+
+    function showChartTemp() {
+
+	$("#dialogBox").dialog({
+		open: function(event,ui) {
+			$(".ui-widget-overlay").bind("click", function(event,ui) {         
+				$("#dialogBox").dialog("close");
+			});
+		},
+		closeOnEscape: true,
+		draggable: false,
+		resizable: false,
+		title: "Temperature and Humidity",
+    width: 900,
+    high : 700,
+		modal: true,
+		show: 500
+	});
+	$(".ui-widget-overlay").css({"background-color": "#ef7ef7"});
+    // Create the chart
+  Highcharts.stockChart("chartContainer", {
+    chart: {
+      events: {
+        load: function() {
+          // set up the updating of the chart each second
+            var series = this.series[0];
+                  var series2 = this.series[1];
+                  setInterval(function() {
+                    var x = new Date().getTime(), // current time
+                      y = Math.random();
+                    z = Math.random();
+                    series.addPoint([x, y], false, true);
+                    series2.addPoint([x, z], true, true);
+                  }, 1000);
+        }
+      }
+    },
+
+    time: {
+      useUTC: false
+    },
+
+    rangeSelector: {
+      buttons: [
+        {
+          count: 1,
+          type: "minute",
+          text: "1M"
+        },
+        {
+          count: 5,
+          type: "minute",
+          text: "5M"
+        },
+        {
+          type: "all",
+          text: "All"
+        }
+      ],
+      inputEnabled: false,
+      selected: 0
+    },
+
+    title: {
+      text: "Temperature and Humidity Chart"
+    }, yAxis: [
+                {
+                    opposite:false , 
+                  title: {
+                    text: "Temperature (C°)'"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#8c1531"
+                    }
+                  ]
+                },
+                {
+                  title: {
+                    text: "Humidity (%)"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#808080"
+                    }
+                  ]
+                }
+              ],
+
+    exporting: {
+      enabled: false
+    },
+
+    series: [
+      {
+        name: "Temperature",  marker: {
+                  enabled: true,
+                  radius: 5,
+                  fillColor: "#0cc9c6"
+                },
+        data: (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+          }
+          return data;
+        })()
+      } , 
+      {
+        name : "Humidity" ,
+          marker: {
+                  enabled: true,
+                  radius: 5,
+                  fillColor: "#b904d1"
+                },
+                            yAxis: 1,
+        data : (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() * 800) + 150]);
+          }
+          return data;
+        })()
+
+      }
+    ] , 
+     responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal'
+                },
+                yAxis: {
+                    labels: {
+                        align: 'left',
+                        x: 0,
+                        y: -5
+                    },
+                    title: {
+                        text: null
+                    }
+                },
+                subtitle: {
+                    text: null
+                },
+                credits: {
+                    enabled: false
+                }
+            }
+        }]
+    }
+  });
+
+    }
+
+
+    function showChartGaz() {
+
+      $("#dialogBox").dialog({
+        open: function(event,ui) {
+          $(".ui-widget-overlay").bind("click", function(event,ui) {         
+            $("#dialogBox").dialog("close");
+          });
+        },
+        closeOnEscape: true,
+        draggable: false,
+        resizable: false,
+        title: "Temperature and Humidity",
+        width: 900,
+        high : 700,
+        modal: true,
+        show: 500
+      });
+      $(".ui-widget-overlay").css({"background-color": "#ef7ef7"});
+        // Create the chart
+      Highcharts.stockChart("chartContainer", {
+        chart: {
+          events: {
+            load: function() {
+              // set up the updating of the chart each second
+                var series = this.series[0];
+                      var series2 = this.series[1];
+                      setInterval(function() {
+                        var x = new Date().getTime(), // current time
+                          y = Math.random();
+                        z = Math.random();
+                        series.addPoint([x, y], false, true);
+                        series2.addPoint([x, z], true, true);
+                      }, 1000);
+            }
+          }
+        },
+    
+        time: {
+          useUTC: false
+        },
+    
+        rangeSelector: {
+          buttons: [
+            {
+              count: 1,
+              type: "minute",
+              text: "1M"
+            },
+            {
+              count: 5,
+              type: "minute",
+              text: "5M"
+            },
+            {
+              type: "all",
+              text: "All"
+            }
+          ],
+          inputEnabled: false,
+          selected: 0
+        },
+    
+        title: {
+          text: "Temperature and Humidity Chart"
+        }, yAxis: [
+                    {
+                        opposite:false , 
+                      title: {
+                        text: "Temperature (C°)'"
+                      },
+                      plotLines: [
+                        {
+                          value: 0,
+                          width: 1,
+                          color: "#8c1531"
+                        }
+                      ]
+                    },
+                    {
+                      title: {
+                        text: "Humidity (%)"
+                      },
+                      plotLines: [
+                        {
+                          value: 0,
+                          width: 1,
+                          color: "#808080"
+                        }
+                      ]
+                    }
+                  ],
+    
+        exporting: {
+          enabled: false
+        },
+    
+        series: [
+          {
+            name: "Temperature",  marker: {
+                      enabled: true,
+                      radius: 5,
+                      fillColor: "#0cc9c6"
+                    },
+            data: (function() {
+              // generate an array of random data
+              var data = [],
+                time = new Date().getTime(),
+                i;
+    
+              for (i = -999; i <= 0; i += 1) {
+                data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+              }
+              return data;
+            })()
+          } , 
+          {
+            name : "Humidity" ,
+              marker: {
+                      enabled: true,
+                      radius: 5,
+                      fillColor: "#b904d1"
+                    },
+                                yAxis: 1,
+            data : (function() {
+              // generate an array of random data
+              var data = [],
+                time = new Date().getTime(),
+                i;
+    
+              for (i = -999; i <= 0; i += 1) {
+                data.push([time + i * 1000, Math.round(Math.random() * 800) + 150]);
+              }
+              return data;
+            })()
+    
+          }
+        ] , 
+         responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        align: 'center',
+                        verticalAlign: 'bottom',
+                        layout: 'horizontal'
+                    },
+                    yAxis: {
+                        labels: {
+                            align: 'left',
+                            x: 0,
+                            y: -5
+                        },
+                        title: {
+                            text: null
+                        }
+                    },
+                    subtitle: {
+                        text: null
+                    },
+                    credits: {
+                        enabled: false
+                    }
+                }
+            }]
+        }
+      });
+    
+        }
+
+
+   function modifyRoom(){
+
+
+const name =  document.getElementById("modify").placeholder
+
+    
+    var devAdd = {
+      dht : false,
+      gsense : false,
+      rgb : false,
+      ultrason : false,
+      light : false ,
+      alarm :false
+    }
+    var devDel = {
+      dht : false,
+      gsense : false,
+      rgb : false,
+      ultrason : false,
+      light : false ,
+      alarm :false
+    }
+Object.entries(selectdevicestoadd.selected).forEach(function(elm){
+if (elm){
+  var text = elm[1].text ; 
+  devAdd[text] = true ; 
+}
+
+}); 
+Object.entries(selectdevicestodelelet.selected).forEach(function(elm){
+  if (elm){
+    var text = elm[1].text ; 
+    devDel[text] = true ; 
+  }
+});
+
+//$.ajax({
+  //  type: "POST",
+    //data: JSON.stringify({ name : name , devAdd : devAdd , devDel : devDel }),
+    //contentType: "application/json",
+    //dataType: "json",
+    //url: "/api/rooms/modify"+document.location.search,
+   // success: function(data) {
+    //  console.log(data);
+   // }
+  //});
+}
+  
+
+  
+  </script>
+ 
+
+</body>
+</html>
