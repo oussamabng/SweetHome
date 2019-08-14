@@ -233,8 +233,8 @@
             <option value="2" >gsense</option>
             <option value="3" >ultrason</option>
             <option value="4">alarm</option>
-            <option value="5">light
-            </option>
+            <option value="5">light</option>
+
 
               
       
@@ -271,27 +271,26 @@
             <option value="2" >gsense</option>
             <option value="3" >ultrason</option>
             <option value="4">alarm</option>
-            <option value="5">light
-            </option>
+            <option value="5">light</option>
               
       
             </select>
           </div> 
+          <div class="selectcontainer">
           <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
             <option value="0" >dht</option>
               <option value="1" >rgb</option>
               <option value="2" >gsense</option>
               <option value="3" >ultrason</option>
               <option value="4">alarm</option>
-              <option value="5">light
-              </option>
+              <option value="5">light</option>
               
       
             </select>
           </div> 
           
           
-          <button  type="submit">Modify Room</button>
+          <button id="modifi"  type="submit">Modify Room</button>
            <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
          
                 </div> 
@@ -429,10 +428,11 @@
   </div>
 
 
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
-  <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>  <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
    <script src="../../../slick/slick.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   <script>
       var getrooms = JSON.parse(document.getElementById("getrooms").innerHTML);
       console.log(getrooms);
@@ -445,12 +445,7 @@
       );
 
       var allalarm = JSON.parse(document.getElementById("alarm").innerHTML);
-    var kitchen={name:"couzina", type:"kitchen", dht:"skhana", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
-          var chambrti={name:"chambrti",type:"bedroom", rgb:{exists:true,light:false}, dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
-          var sallon={name:"sallon",type:"livingroom", dht:"brd", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
-          var couloire={name:"couloire",type:"hallway", dht:"brd", rgb:{exists:true,light:false},dht:{exists:true},gaz:{exists:true},motion:{exists:true}};
-        var rooms=[kitchen, chambrti,sallon,sallon,couloire];
-        var b=("'block'")
+   
     function showRooms(i) {
           var v=("'id06'");
         b=("'block'")
@@ -500,7 +495,7 @@
                                                       '<img src="../../../icons/settings.png"  onclick="myFunction('+i+')" class="dropbtn">'+
                                                       '</div>'+
                                                       '<div id="myDropdown'+i+'" class="dropdown-content">'+
-                                                        ' <a href="#home">Delete this room</a>'+
+                                                        ' <a onclick="deleteRoom('+i+')">Delete this room</a>'+
                                                           '<a onclick="document.getElementById('+a+').style.display='+b+'" >Modify this room</a>'+
         
                                                         '</div>'+
@@ -641,7 +636,6 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
     <script>
     $(document).on('ready', function() {
       for (i = 0; i < getrooms.length; i++){
-        a= rooms[i].rgb.light;
       showRooms(i);
       addType(i); 
       addRGB(i);  
@@ -854,7 +848,7 @@ console.log(nombre+1);
     var selectDevices = new SelectBeauty({
 			el: '#select-devices',
 			length: 20,
-      placeholder:"choose the divices used in the room",
+      placeholder:"choose the devices used in the room",
 			max:6
     });
  
@@ -869,13 +863,18 @@ console.log(nombre+1);
 			el: '#select-devicestoadd',
 			length: 6,
       placeholder:"choose new devices to add to the room",
-			max:6
-		});
+      max:6
+    
+      
+    });
+    
+
+  
+
   </script>
+
   <script>
       function create(){
-        console.log("arjaaaaaaaa")
-        selectdevicestoadd.tempData  =  selectdevicestodelelet.selected ; 
         
   const type = Object.entries(selectType.selected)[0][1].text
   const name = document.getElementById("nameRoom").value ; 
@@ -884,8 +883,8 @@ console.log(nombre+1);
     gsense : false,
     rgb : false,
     ultrason : false,
-    light : false ,
-    alarm :false
+    alarm :false, 
+    light :false
   }
    
   Object.entries(selectDevices.selected).forEach(function(elm){
@@ -893,6 +892,7 @@ console.log(nombre+1);
     dev[text] = true;
     }
   })
+  console.log(dev);
   $.ajax({
     type: "POST",
     data: JSON.stringify({ type: type , name : name , devices : dev }),
@@ -904,7 +904,7 @@ console.log(nombre+1);
     }
   });
   setTimeout(function(){
-    location.reload()
+   location.reload()
   },400)
     }
 
@@ -1263,12 +1263,27 @@ while (document.getElementById("slick-slide0"+i)) {
         }
 
 
+        function deleteRoom(i){
+        var name =   document.getElementById("type"+i).children[2].innerHTML ; 
+        $.ajax({
+          type: "DELETE",
+          data: JSON.stringify({ name : name }),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/rooms/delete"+document.location.search,
+          success: function(data) {
+            location.reload();
+        }
+      });
+    }
+
    function modifyRoom(){
 
+var name = document.getElementById("modify").placeholder ;
+if (document.getElementById("modify").value != ""){
+  name = document.getElementById("modify").value
+}
 
-const name =  document.getElementById("modify").placeholder
-
-    
     var devAdd = {
       dht : false,
       gsense : false,
@@ -1287,6 +1302,7 @@ const name =  document.getElementById("modify").placeholder
     }
 Object.entries(selectdevicestoadd.selected).forEach(function(elm){
 if (elm){
+  
   var text = elm[1].text ; 
   devAdd[text] = true ; 
 }
@@ -1298,17 +1314,54 @@ Object.entries(selectdevicestodelelet.selected).forEach(function(elm){
     devDel[text] = true ; 
   }
 });
+console.log(devDel + "ffffff" + devAdd)
+$.ajax({
+    type: "POST",
+    data: JSON.stringify({ name : name , devAdd : devAdd , devDel : devDel }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/modify"+document.location.search,
+    success: function(data) {
+      console.log(data.err);
+   var tab = new Array(); 
+   var str ="";
+      if (data.err.dht == true){
+     tab.push("dht")
+   }
+   if (data.err.rgb == true){
+    tab.push("rgb")
+  }
+  if (data.err.alarm == true){
+    tab.push("alarm")
+  }
+  if (data.err.light == true){
+    tab.push("light")
+  }
+  if (data.err.ultrason == true){
+    tab.push("ultrason")
+  }
+  if (data.err.gsense == true){
+    tab.push("gsense")
+  }
 
-//$.ajax({
-  //  type: "POST",
-    //data: JSON.stringify({ name : name , devAdd : devAdd , devDel : devDel }),
-    //contentType: "application/json",
-    //dataType: "json",
-    //url: "/api/rooms/modify"+document.location.search,
-   // success: function(data) {
-    //  console.log(data);
-   // }
-  //});
+
+  if (tab.length != 0 ){
+ str = tab[0] +",";
+ for(var i=1 ; i<tab.length ; i++){
+   str = str + tab[i] + ','
+ } 
+ str = str.substring(0,(str.length-1))
+  }
+  if (str.length != 0){
+    swal("can't add multiple devices", str+" already exist")
+  } else {
+    location.reload();
+
+  }
+
+    }
+  });
+  
 }
   
 
