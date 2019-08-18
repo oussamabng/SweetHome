@@ -122,6 +122,20 @@ img.addimg {
 /*******************/
 
 @media only screen and (max-width: 600px) {
+  .closenoti {
+    position: absolute;
+    right: 40px;
+
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  .closenoti:hover,
+  .closenoti:focus {
+    color: red;
+    cursor: pointer;
+  }
+
   img {
     width: 500%;
     height: auto;
@@ -229,6 +243,14 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
+.iconify {
+  background: url("https://api.iconify.design/mdi-thermometer.svg") no-repeat
+    center center / contain;
+  content: url("https://api.iconify.design/mdi-thermometer.svg?height=24");
+  vertical-align: -0.125em;
+  width: 100px;
+  height: 100px;
+}
 
 /* The Modal (background) */
 .modal {
@@ -263,12 +285,6 @@ span.psw {
   color: #000;
   font-size: 35px;
   font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
 }
 
 /* Add Zoom Animation */
@@ -958,4 +974,68 @@ select {
   display: inline-block;
   /* margin: 1px 10px 1px 0px; */
   vertical-align: middle;
+}
+
+.closenoti {
+  position: absolute;
+
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.closenoti:hover,
+.closenoti:focus {
+  color: red;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+.imgcontainernotif {
+  text-align: center;
+  margin: 0;
+  position: relative;
+  align-content: center;
+}
+.cardnoti {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+  width: 75%;
+  display: inline-block;
+}
+
+.motion {
+  list-style-image: url("icons/motion2.png");
+  margin-top: 5px;
+  padding: 30px;
+  border-radius: 1%;
+  margin-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: thick;
+  border-bottom-color: rgba(15, 13, 13, 0.1);
+}
+
+.temperature {
+  list-style-image: url("icons/temperature.png");
+  margin-top: 5px;
+  padding: 30px;
+  border-radius: 1%;
+  margin-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: thick;
+  border-bottom-color: rgba(15, 13, 13, 0.1);
+}
+
+.gaz {
+  list-style-image: url("icons/gaz2.png");
+  margin-top: 5px;
+  padding: 30px;
+  border-radius: 1%;
+  margin-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: thick;
+  border-bottom-color: rgba(15, 13, 13, 0.1);
 }

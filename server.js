@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const webPush = require("web-push");
+const jwt = require("jsonwebtoken");
+
 //const path = require("path");
 const config = require("config");
 const mongoose = require("mongoose");
@@ -11,6 +13,7 @@ var bodyParser = require("body-parser");
 const reset = require("./routes/reset");
 const rooms = require("./routes/rooms");
 const notifications = require("./routes/notifications");
+
 //const csrf = require("csurf");
 //var bodyParser = require("body-parser");
 //const cookieParser = require("cookie-parser");
@@ -106,8 +109,12 @@ db.once("open", () => {
 });
 
 app.use(express.static("views"));
+app.get("/", function(req, res) {
+  res.redirect("/home");
+});
+
 app.get(
-  "/",
+  "/home",
   //, csrfProtection
   function(req, res) {
     console.log(req.csrfToken);
@@ -121,7 +128,6 @@ app.get(
 app.use("/api/auth", auth);
 app.use("/api/signIn", signIn);
 app.use("/api/forgot", forgot);
-
 app.use("/reset", reset);
 app.use("/api/rooms", rooms);
 app.use("/api/notifications", notifications);

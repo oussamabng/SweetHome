@@ -101,6 +101,26 @@ const LightSchema = new mongoose.Schema({
   tokenId: String
 });
 
+const ScenarioSchema = new mongoose.Schema({
+  name: { type: String, require: true },
+  devices: {
+    all: { type: Boolean },
+    name: { type: String },
+    actions: { type: Boolean },
+    time: { type: Date }
+  }
+});
+
+const NotificationSchema = new mongoose.Schema({
+  type: { type: String, enum: ["motion", "temperature", "gaz"] },
+  content: { type: String },
+  time: { type: String },
+  userId: { type: String },
+  showed: { type: Boolean }
+});
+
+const Notification = mongoose.model("notifications", NotificationSchema);
+const Scenario = mongoose.model("scenarios", ScenarioSchema);
 const User = mongoose.model("users", userSchema);
 const Dht = mongoose.model("dhts", DHTSchema);
 const Light = mongoose.model("lights", LightSchema);
@@ -132,6 +152,8 @@ function validate(user) {
   return Joi.validate(user, schema);
 }
 
+module.exports.Notification = Notification;
+module.exports.Scenario = Scenario;
 module.exports.User = User;
 module.exports.validate = validate;
 module.exports.Dht = Dht;

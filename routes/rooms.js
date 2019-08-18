@@ -12,7 +12,8 @@ const {
   Rgb,
   Gsense,
   Ultrason,
-  Rooms
+  Rooms,
+  Notification
 } = require("../models/user");
 const _ = require("lodash");
 
@@ -343,9 +344,39 @@ router.post("/notifications", async function(req, res) {
 // ********************************************************//
 // ********************************************************//
 // ********************************************************//
+
+router.post("/getnotifications", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const notification = new Notification({
+    type: req.body.type,
+    content: req.body.content,
+    time: req.body.time,
+    userId: decoded._id
+  });
+  await notification.save();
+  console.log("okbb : " + notification);
+
+  res.status(200).send({
+    notification: JSON.stringify(notification)
+  });
+});
+
+router.post("/deleteNot", async function(req, res) {
+  //const token = req.query.token;
+
+  //const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const notification = await Notification.deleteOne({ _id: req.body.id });
+  console.log("type delete notif :" + req.body.type);
+  var type = req.body.type;
+  var i = req.body.i;
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({ i: i, type: type }));
+});
+
 // ********************************************************//
 // ********************************************************//
-// ********************************************************//
+
 // ********************************************************//
 // ********************************************************//
 
@@ -357,7 +388,7 @@ router.get("/all", async function(req, res) {
   const ultrason = await Ultrason.find();
   const gsense = await Gsense.find();
   const light = await Light.find();
-
+  const notification = await Notification.find();
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   const _rooms = await Rooms.find({ userId: decoded._id });
@@ -368,7 +399,8 @@ router.get("/all", async function(req, res) {
     light: JSON.stringify(light),
     gsense: JSON.stringify(gsense),
     alarm: JSON.stringify(alarm),
-    ultrason: JSON.stringify(ultrason)
+    ultrason: JSON.stringify(ultrason),
+    notification: JSON.stringify(notification)
   });
 });
 // get rooms

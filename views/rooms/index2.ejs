@@ -32,6 +32,8 @@
   <link rel="manifest" href="/views/manifest.json">  
   <meta name="theme-color" content="#585f82">
   <link rel="apple-touch-icon" href="/views/designs/touch-apple.png">
+  <script src="//code.jquery.com/jquery.min.js"></script> 
+
   <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
 
   <script>  
@@ -74,8 +76,8 @@
     <div class="row"  >
         <!---hadi ga3 t3 animation t3 kol w7da -->
         <section class="container">
-                     <div class="card" >
-                          <div class="front">
+          <div class="card">
+                                      <div class="front">
                                   <div class="column">
                                    <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs/login.png" title="logout" >
                                   </div>                          
@@ -90,17 +92,15 @@
         <!--hna tkml lwla g3 t3 nav bar t3 login-->
         <!--zwaja tbda hna-->
         <section class="container">
-                <div class="card">
+                <div class="card"  id="notify">
                         <div class="front">
                                 <div calss="column">
-                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/notifications.png" title="notification" >
-                                </div>
+                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/notifications.png" title="notification" id="notify">                                </div>
 
                         </div>
                         <div class="back">
                                 <div calss="column">
-                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/notifications1.png" title="notification">
-                                </div>
+                                    <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/notifications1.png" title="notification" id="notify">                                </div>
                            </div>
                 </div>
 
@@ -166,7 +166,7 @@
 <div id="id01" class="modal">
         
 
-        <form class="modal-content animate" action="/action_page.php">
+        <form class="modal-content animate"  action="/"  >
           <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src="../../../designs/sweet.png" class="bo">
@@ -174,7 +174,7 @@
             <h1>your home will stay sweet when you're away!</h1>
           
                 
-            <button type="submit">logout</button>
+            <button id="logout" type="submit">logout</button>
             
           
           
@@ -194,15 +194,19 @@
 
  <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
  <div id="id02" class="modal">
+    <div class="imgcontainernotif">
+            <form class="modal-content animate">
+                <h1>notifications</h1>
+                <ul id="notifi">
+               
+               </ul>
+               
+               
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="ghost">Cancel</button>
+                          </form>
+                        </div>
+  </div>
 
-    <form class="modal-content animate" action="/action_page.php">
-        
-          <div class="container1" style="background-color:#554269;color:white" >
-                    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-            notifications
-           </div>
-    </form>
-   </div>
 
 
 
@@ -308,10 +312,15 @@
   <div id="id06" class="modal">
         
 
-    <form class="modal-content animate detailed" action="/action_page.php" >
+    <form class="modal-content animate detailed" action="/action_page.php" > <!---   temperature.html----->
      <form>
       <iframe src="../../../Sweet-chart/mychart/temperature.html" class="detailed-graph" frameBorder="0" scrolling="no" id=" "></iframe>
-     </form>
+      <br>
+      <br> 
+      <br>
+      <button type="button" onclick="document.getElementById('id06').style.display='none'" class="ghost" style="width:25%;">Exit</button>
+
+    </form>
     </form>
 
 </div>
@@ -326,47 +335,50 @@
   <form class="modal-content animate detailed" action="/action_page.php" >
    <form>
     <iframe src="../../../Sweet-chart/mychart/gaz1.html" class="detailed-graph" frameBorder="0" scrolling="no" id="detailed"></iframe>
-   </form>
+
+    <br>
+    <br>
+    <br>
+    <button type="button" onclick="document.getElementById('id07').style.display='none'" class="ghost" style="width:25%;">Exit</button>
   </form>
 
 </div>
+</div>
 
+<!--confirmation pop up-->
+<div id="id08" class="modal">
+
+
+    <form class="modal-content animate detailed" action="/action_page.php" style="width:25%;height:25%">
+     <form >
+        <br>
+        <br>
+       Delete this room?
+     <br>
+     <br>
+        <button type="submit">Delete</button>
+        <button type="button" onclick="document.getElementById('id08').style.display='none'" class="ghost">Cancel</button>
+        <br>
+        <br>
+        <br> 
+  
+     </form>
+    </form>
+  
+  </div>
 
 
            <script>
                 // Get the modal
                 var modal1 = document.getElementById('id01');
-              var modal2 = document.getElementById('id02');
-              var modal3 = document.getElementById('id03');
-              var modal4 = document.getElementById('id04');
-              var modal5 = document.getElementById('id05');
-              var modal6 = document.getElementById('id06');
-              var modal7 = document.getElementById('id07');
+            
 
               
               // When the user clicks anywhere outside of the modal, close it
               window.onclick = function(event) {
-                  if (event.target == modal1) {
-                      modal1.style.display = "none";
-                  }
-                  if (event.target == modal2) {
-                      modal2.style.display = "none";
-                  }
-                  if (event.target == modal3) {
-                      modal3.style.display = "none";
-                  }
-                  if (event.target == modal4) {
-                      modal4.style.display = "none";
-                  }
-                  if (event.target == modal5) {
-                      modal5.style.display = "none";
-                  }
-                  if (event.target == modal6) {
-                      modal6.style.display = "none";
-                  }
-                  if (event.target == modal6) {
-                    modal7.style.display = "none";
-                }
+                if (event.target =! modal1) {
+                  modal1.style.display = "none";
+              }
               }
               </script>
 <!----------------------------------------------------------------------------------------------------------------->
@@ -425,10 +437,13 @@
     <h1 id="light">
       <%= light %>
     </h1>
+    <h1 id="notifications">
+      <%= notification %>
+    </h1>
   </div>
 
+</div>
 
-<script src="//code.jquery.com/jquery.min.js"></script>  <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
    <script src="../../../slick/slick.js" type="text/javascript" charset="utf-8"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
@@ -440,6 +455,8 @@
       var alldht = JSON.parse(document.getElementById("dht").innerHTML);
       var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
       var alllight = JSON.parse(document.getElementById("light").innerHTML);
+      var notifications = JSON.parse(document.getElementById("notifications").innerHTML);
+
       var allultrason = JSON.parse(
         document.getElementById("ultrason").innerHTML
       );
@@ -450,19 +467,18 @@
           var v=("'id06'");
         b=("'block'")
         var w=("'id07'");
-
               
         document.getElementById('test').innerHTML+=
                 
-        '<div class="cardroom">'+
+        '<div class="cardroom" style="margin-top: 50px">'+
             '<section class="container-name" id="type'+i+'" >'+
              
             '</section>'+
            '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
             
             '</iframe>'+
-            '<div style="position:relative;">'+
-                '<div id="overlay-charts" onclick="showChartTemp(this)" > '+
+            '<div id="temp" style="position:relative;">'+
+                '<div id="overlay-charts" onclick="showTemp(this)" > '+
               '</div>'+
           
             '<iframe   id="charts'+i+'" frameBorder="0" scrolling="no" class="iframechart" >'+
@@ -470,11 +486,11 @@
             '</iframe>'+
             '</div>'+
             
-            '<section class="container-secure" id="motion'+i+'">'+
+            '<section class="container-secure" id="motions'+i+'">'+
             
             '</section>'+
-            '<div style="position:relative;">'+
-                '<div id="overlay-charts" onclick="showChartGaz(this)" > '+
+            '<div id="gazz" style="position:relative;">'+
+                '<div id="overlay-charts" onclick="showGaz(this)" > '+
                     '</div>'+
             '<iframe class="container-gaz" id="gaz'+i+'" frameBorder="0" scrolling="no" class="iframechart">'+
             
@@ -488,14 +504,15 @@
       
       function addType(i){
           var a=("'id05'");
-          b=("'block'")
+          b=("'block'");
+          var y=("'id08'");
 
           document.getElementById('type'+i).innerHTML+=  '<div class="dropdown">'+
                                                         '<div class="dropbtn">'+
                                                       '<img src="../../../icons/settings.png"  onclick="myFunction('+i+')" class="dropbtn">'+
                                                       '</div>'+
                                                       '<div id="myDropdown'+i+'" class="dropdown-content">'+
-                                                        ' <a onclick="deleteRoom('+i+')">Delete this room</a>'+
+                                                        ' <a  onclick="deleteRoom('+i+')">Delete this room</a>'+
                                                           '<a onclick="document.getElementById('+a+').style.display='+b+'" >Modify this room</a>'+
         
                                                         '</div>'+
@@ -535,19 +552,37 @@
           
       }
       function addRGB(i){
+        
+        if (getrooms[i].devices.light.length == 0){
+          document.getElementById("rgb"+i).style.display = "none"
+          
+        } else {
+         
         getrooms[i].devices.light.forEach(function(id) {
           alllight.forEach(function(elm) {
             if (id == elm._id) {
               if (elm.used == true) {
+                if (getrooms[i].devices.rgb.length == 0){
+
+                document.getElementById('rgb'+i).style.display = "none";
+                }
                 document.getElementById('rgb'+i).src = '../../../rgb.html';    
 
                 setTimeout(function(){
+                  if (getrooms[i].devices.rgb.length == 0){
+                    document.getElementById('rgb'+i).style.display = "block";
+                    document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[1].children[1].style.display = "none"      ;   
 
+                    console.log("samaykom");
+              document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[1].children[0].children[0].style.width ="15%"   ;  
+
+      
+                   }
 //console.log( document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name)
 document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name =  document.getElementById("type"+i).children[2].innerHTML;
                //   document.getElementById("rgb0").contentDocument.defaultView.window.document.getElementById("hihi").name= document.getElementById("type"+i).children[1].innerHTML ;
 
-                },4000); 
+                },500); 
 
                 b = elm.value;
                 console.log(b);
@@ -575,11 +610,24 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
           });
         });
         
+      }
+    
+     
+      
         }
       
 
 
         function addCharts(i) {
+          if (getrooms[i].devices.dht.length == 0){
+            document.getElementById("charts"+i).style.display = "none";
+            document.getElementById("motions"+i).style.marginTop = 0;
+
+          
+
+            document.getElementById("temp").children[0].style.display = "none"
+            
+          } else {
           getrooms[i].devices.dht.forEach(function(id) {
             alldht.forEach(function(elm) {
               if (id == elm._id) {
@@ -598,21 +646,36 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
             });
           });
         }
+        
+        }
         function addMotion(i) {
+          if (getrooms[i].devices.ultrason.length == 0){
+            document.getElementById("motions"+i).style.display = "none"
+            
+          } else {
           getrooms[i].devices.ultrason.forEach(function(id) {
             allultrason.forEach(function(elm) {
               if (id == elm._id) {
                 if (elm.used == true) {
                   if (elm.value == true) {
-                    document.getElementById("motion" + i).innerHTML +=
-                      '<img id="motion" src="../../icons/motion.png" style="width:25%; margin-left:25px;margin-top:10px; margin-bottom:10px">';
+                    document.getElementById("motions" + i).innerHTML +=
+                      '<img id="motions" src="../../icons/motion.png" style="width:25%; margin-left:25px;margin-top:10px; margin-bottom:10px">';
                   }
                 }
               }
             });
           });
         }
+      }
         function addGaz(i) {
+          if (getrooms[i].devices.gsense.length == 0){
+            document.getElementById("gaz"+i).style.display = "none"
+
+          
+
+            document.getElementById("gazz").children[0].style.display = "none"
+            
+          } else {
           getrooms[i].devices.gsense.forEach(function(id) {
             allgsense.forEach(function(elm) {
               if (id == elm._id) {
@@ -630,9 +693,45 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
             });
           });
         }
+        }
     
+
+
       
     </script>
+    <script>
+        var notifications1={type:"motion",content:"a movement was detected in office"};
+        var notifications2={type:"temperature",content:"a high temprature was detected in couzina"};
+        var notifications3={type:"gaz",content:"a high level of gaz was detected in the shower"};
+        var notifications4={type:"motion",content:"a movement was detected when u were away"};
+           var notification=[notifications1,notifications2,notifications3,notifications4];
+
+          document.getElementById("notify").addEventListener("click", function() {
+            document.getElementById('notifi').innerHTML ="";
+            for (i=0;i<notifications.length;i++){
+              showntifications(i);
+            }
+          });    
+  function showntifications(i){
+        if(notifications[i].type=="motion") {
+        document.getElementById('notifi').innerHTML += '<li id="mouvement'+i+'"   class="motion">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+        
+  }
+        if(notifications[i].type=="temperature"){
+          document.getElementById('notifi').innerHTML += '<li  id="tmp'+i+'"  class="temperature">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+      
+      
+      }
+        
+        
+        if(notifications[i].type=="gaz") {
+          document.getElementById('notifi').innerHTML += '<li id="gz'+i+'" class="gaz">' +notifications[i].content+ '<a    title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+       
+      }
+      
+      
+  }
+      </script>
     <script>
     $(document).on('ready', function() {
       for (i = 0; i < getrooms.length; i++){
@@ -669,12 +768,18 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
         </script>
 
   <script>
-
+    var a;
+    if (getrooms.length > 3) {
+      a = true;
+    } else {
+      a = false;
+    }
+   
     $(document).on('ready', function() {
      
   $(".regular").slick({
     dots: true,
-  infinite: true,
+  infinite: a,
   speed: 300,
   slidesToShow: 1,
   centerMode: true,
@@ -745,12 +850,25 @@ toastr.options = {
   onclick: function() {
     $.ajax({
       type: "POST",
+      data: JSON.stringify({ type: "motion" , content : "Mouvement Detected" , time : new Date().toString().substring(0,24)  }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/getnotifications"+document.location.search,
+      success: function(data) {
+
+console.log("test khay !" +data);
+            }
+    });
+  
+    
+    $.ajax({
+      type: "POST",
       data: JSON.stringify({
         id : id
       }),
       contentType: "application/json",
       dataType: "json",
-      url: "/api/rooms/notifications",
+      url: "/api/rooms/notifications"+document.location.search,
       success: function(name) {
 nombre = 0;
 for(var i = 0 ; i < getrooms.length; i++){
@@ -781,9 +899,9 @@ t = setInterval(function(){
 
       if (name[0] == document.getElementById("type"+a).children[2].innerHTML )
     {
-    document.getElementById("motion").src = "http://localhost:3000/icons/motion.gif" ; 
-    document.getElementById("motion").onclick = function (){
-      document.getElementById("motion").src = "http://localhost:3000/icons/motion.png" ; 
+    document.getElementById("motions").src = "http://localhost:3000/icons/motion.gif" ; 
+    document.getElementById("motions").onclick = function (){
+      document.getElementById("motions").src = "http://localhost:3000/icons/motion.png" ; 
 
     }
     clearInterval(t);
@@ -811,7 +929,9 @@ console.log(nombre+1);
 // TODO ok 
 //document.getElementsByClassName("slick-next")[0].firstChild.data
  
-    })
+    }) ; 
+    
+    
     $('.regular').slick('slickSetOption', 'speed', 300, true);
     toastr.remove();
   }
@@ -821,6 +941,7 @@ console.log(nombre+1);
     `Mouvement Detected,  :"     <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm and check the room </button>`,
     " alarm rings "
   );
+
 // alert(JSON.stringify(data +" :ahay"));
  if(!("Notification" in window)){
         alert("this browser does not support notif");
@@ -874,6 +995,33 @@ console.log(nombre+1);
   </script>
 
   <script>
+
+function deleteNot(j){
+
+var id  = notifications[j]._id ; 
+var type  = notifications[j].type ; 
+
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ id: id , type : type , i :j }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/deleteNot"+document.location.search,
+  success: function(data) {
+ if (data.type == "motion") {
+   document.getElementById("mouvement"+data.i).style.display = "none";
+ } else if (data.type == "temperature") {
+  document.getElementById("tmp"+data.i).style.display = "none";
+} else if (data.type == "gaz") {
+  document.getElementById("gz"+data.i).style.display = "none";
+} 
+
+}
+});
+
+
+}
+
       function create(){
         
   const type = Object.entries(selectType.selected)[0][1].text
@@ -919,7 +1067,8 @@ while (document.getElementById("slick-slide0"+i)) {
    
 
 
-    function showChartTemp() {
+    function  showTemp() {
+      console.log("libya 1");
 
 	$("#dialogBox").dialog({
 		open: function(event,ui) {
@@ -1091,7 +1240,9 @@ while (document.getElementById("slick-slide0"+i)) {
     }
 
 
-    function showChartGaz() {
+    function showGaz() {
+      console.log("libya")
+
 
       $("#dialogBox").dialog({
         open: function(event,ui) {
@@ -1344,7 +1495,6 @@ $.ajax({
     tab.push("gsense")
   }
 
-
   if (tab.length != 0 ){
  str = tab[0] +",";
  for(var i=1 ; i<tab.length ; i++){
@@ -1354,7 +1504,9 @@ $.ajax({
   }
   if (str.length != 0){
     swal("can't add multiple devices", str+" already exist")
-  } else {
+}
+
+   else {
     location.reload();
 
   }
@@ -1362,10 +1514,8 @@ $.ajax({
     }
   });
   
-}
-  
+   }
 
-  
   </script>
  
 

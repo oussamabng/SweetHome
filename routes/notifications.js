@@ -1,16 +1,17 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {User , Alarm } = require('../models/user');
-const config = require('config');
+const { User, Alarm, Notification } = require("../models/user");
+const config = require("config");
 
-router.get('/' , function(req,res){
-
-const changeStream = Alarm.watch( { readConcern: { level: "majority" } });
-
-
-changeStream.on('change', (change) => {
-
-    console.log("alarm changed : "+change); // You could parse out the needed info and send only that data. 
-}); 
+router.post("/getnotifications", async function(req, res) {
+  console.log("notiiff bb");
+  const notification = new Notification({
+    type: req.body.type,
+    content: req.body.content,
+    time: req.body.time,
+    userId: req.body.userId
+  });
+  await notification();
+  res.status(200).send({ message: "notifications push success" });
 });
 module.exports = router;
