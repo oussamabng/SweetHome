@@ -161,21 +161,6 @@ router.post("/rgb", async function(req, res) {
 });
 // TODO modify devices ................................................................;
 
-
-router.post("/modifyRoutine", async function(req, res) {
-  const routine = await Scenario.findOne({ name: req.body.name });
-
-
-  res.status(200).send("succes rgb ^^");
-});
-
-
-
-
-
-
-
-
 router.post("/modify", async function(req, res) {
   const sa3af = req.body.devDel.light;
   var room = await Rooms.findOne({ name: req.body.name });
@@ -449,7 +434,21 @@ router.post("/addRoutine", async function(req, res) {
   res.status(200).send({ message: "add routine  succesfully" }); //anglais mkwd laghlb
 });
 // ********************************************************//
+router.post("/modifyRoutine", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const sc = await Scenario.findOne({ _id: req.body.id });
 
+  sc.name = req.body.name;
+  sc.rooms = req.body.rooms;
+  sc.color = req.body.color;
+  sc.devicesOff = req.body.devicesOff;
+  sc.devicesOn = req.body.devicesOn;
+
+  await sc.save();
+
+  res.status(200).send({ message: "modify routine  succesfully" }); //anglais mkwd laghlb
+});
 // ********************************************************//
 
 router.post("/activeRoutine", async function(req, res) {
@@ -700,13 +699,12 @@ router.get("/devices", auth, async function(req, res) {
 });
 
 router.post("/deleteRoutine", async function(req, res) {
-    const token = req.query.token;
+  const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
-const i = req.body.i ; 
-  const routine = await Scenario.deleteOne( {name : req.body.name}) ; 
+  const i = req.body.i;
+  const routine = await Scenario.deleteOne({ name: req.body.name });
 
- 
-  res.status(200).send({ message: "delete routine  succesfully"  , i : i}); //anglais mkwd laghlb
+  res.status(200).send({ message: "delete routine  succesfully", i: i }); //anglais mkwd laghlb
 });
 // ********************************************************//
 //*****************************************************//

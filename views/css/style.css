@@ -8200,6 +8200,7 @@ h1, h2, h3, h4, h5,
   color: #6c63ff !important; }
 .logo{
   width:20%;
+  margin-left : 420px ;
 }
 .ftco-navbar-light {
   background: #1d1c25;
@@ -8215,6 +8216,8 @@ h1, h2, h3, h4, h5,
       top: 0; }
       .logo{
         width:80%;
+        margin-left: 15% ;
+
       } }
   .ftco-navbar-light .navbar-brand {
     color: #1d1c25; }

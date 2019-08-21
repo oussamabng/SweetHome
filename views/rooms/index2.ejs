@@ -494,7 +494,7 @@
     </div>
   
   
-    <div id="id12" class="modal">
+    <div lang="test" id="id12" class="modal">
   
   
         <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoutine(this)">
@@ -1365,7 +1365,6 @@ console.log(nombre+1);
   </script>
 
   <script>
-window.lili = 0 ; 
 function activeRoutine(){
   for (var i =0 ; i<scenario.length ; i ++){
     if (document.getElementById("toggle"+i).checked == true){
@@ -1412,13 +1411,13 @@ function activeRoutine(){
        
       }
       function okBb(j){
+        document.getElementById("nameRoutineMod").placeholder = scenario[Number(j)].name ; 
                 document.getElementById('id12').style.display='block' ; 
+                document.getElementById('id12').lang = j ;
 
         for (var i = getrooms.length ;  i<document.getElementsByClassName("select-beauty")[9].children[1].children.length ; i++){
           document.getElementsByClassName("select-beauty")[9].children[1].children[i].innerText = "" ; 
         }
-  window.lili =  document.getElementById("namrRoutine"+j) ; 
- console.log("lili khay "+window.lili); 
       }
       function deleteConf(i){
         document.getElementById("id11").style.display='block' ; 
@@ -1487,13 +1486,22 @@ $.ajax({
 
 }
 function modifyRoutine(){
-  console.log('hhhhhh '+window.lili);
     var devicesOn = new Object();
  var devicesOff = new Object();
  var rooms = new Array() ; 
 
+ const i = Number(document.getElementById("id12").lang) ; 
+ const id = scenario[i]._id ; 
+
+
+
+
 var name = document.getElementById("nameRoutineMod").value ;
 
+if ( name == ""){
+  name = document.getElementById("nameRoutineMod").placeholder
+
+} 
 
  const color = Object.entries(modifycolorsroutines.selected)[0][1].text ;
  Object.entries(modifyroomsroutines.selected).forEach(function(elm){
@@ -1509,7 +1517,22 @@ rooms.push(elm[1].text) ;
     devicesOff[ok] = false ; 
      });
    //  document.getElementsByClassName("container-routines 0")[0].children[0].innerHTML
-    
+ 
+   $.ajax({
+    type: "POST",
+    data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , id : id }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/modifyRoutine"+document.location.search,
+    success: function(data) {
+      setTimeout(function(){
+        location.reload()
+       },400)}
+  });
+  
+
+
+
 }
 
 function addRoutine(){
