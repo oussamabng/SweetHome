@@ -10104,3 +10104,13 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+    .kitchen{
+      background-image: url('../../../icons/hat.png');
+      width: 40px;
+      height: 40px;
+      background-size: 40px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      /* margin: 1px 10px 1px 0px; */
+      vertical-align: middle;
+    }

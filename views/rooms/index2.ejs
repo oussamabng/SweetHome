@@ -133,7 +133,7 @@
                         </div>
                         <div class="back">
                                 <div calss="column">
-                                     <img onclick="document.getElementById('id03').style.display='block'"  src="../../../designs/add1.png" title="add room" >
+                                     <img onclick="addRoom(this)"  src="../../../designs/add1.png" title="add room" >
                                 </div>
                            </div>
                 </div>
@@ -231,12 +231,16 @@
             </select>
           </div> 
           <select name="select-devices" id="select-devices" class="form-control">
-            <option value="0" >dht</option>
-            <option value="1" >rgb</option>
-            <option value="2" >gsense</option>
-            <option value="3" >ultrason</option>
-            <option value="4">alarm</option>
-            <option value="5">light</option>
+            <option  style="display: none;"  value="0" >dht</option>
+            <option  style="display: none;"  value="1" >rgb</option>
+            <option  style="display: none;"  value="2" >gsense</option>
+            <option  style="display: none;"  value="3" >ultrason</option>
+            <option  style="display: none;"  value="4">alarm</option>
+            <option  style="display: none;"  value="5">light</option>
+            <option  style="display: none;"  value="6">light</option>
+            <option  style="display: none;"  value="7">light</option>
+            <option  style="display: none;"  value="8">light</option>
+            <option  style="display: none;"  value="9">light</option>
 
 
               
@@ -275,6 +279,16 @@
             <option value="3" >ultrason</option>
             <option value="4">alarm</option>
             <option value="5">light</option>
+            <option value="6">light</option>
+            <option value="7">light</option>
+            <option value="8">light</option>
+            <option value="9">light</option>
+            <option value="10">light</option>
+            <option value="11">light</option>
+            <option value="12">light</option>
+            <option value="13">light</option>
+            <option value="14">light</option>
+
               
       
             </select>
@@ -287,7 +301,15 @@
               <option value="3" >ultrason</option>
               <option value="4">alarm</option>
               <option value="5">light</option>
-              
+              <option value="6">light</option>
+              <option value="7">light</option>
+              <option value="8">light</option>
+              <option value="9">light</option>
+              <option value="10">light</option>
+              <option value="11">light</option>
+              <option value="12">light</option>
+              <option value="13">light</option>
+              <option value="14">light</option>
       
             </select>
           </div> 
@@ -753,6 +775,11 @@
     <h1 id="scz">
         <%= routine %>
       </h1>
+      <h1 id="devx">
+          <%= devices %>
+        </h1>
+
+       
   </div>
 
 </div>
@@ -775,7 +802,7 @@
       );
 
       var allalarm = JSON.parse(document.getElementById("alarm").innerHTML);
-   
+      var devicesX = JSON.parse(document.getElementById("devx").innerHTML);
     function showRooms(i) {
           var v=("'id06'");
         b=("'block'")
@@ -826,7 +853,7 @@
                                                       '</div>'+
                                                       '<div id="myDropdown'+i+'" class="dropdown-content">'+
                                                         ' <a  onclick="deleteRoom('+i+')">Delete this room</a>'+
-                                                          '<a onclick="document.getElementById('+a+').style.display='+b+'" >Modify this room</a>'+
+                                                          '<a onclick="modeR('+i+')" >Modify this room</a>'+
         
                                                         '</div>'+
                                                           '</div>';
@@ -866,7 +893,7 @@
       }
       function addRGB(i){
         
-        if (getrooms[i].devices.light.length == 0){
+        if (getrooms[i].devices.light[0] == ""){
           document.getElementById("rgb"+i).style.display = "none"
           
         } else {
@@ -875,14 +902,14 @@
           alllight.forEach(function(elm) {
             if (id == elm._id) {
               if (elm.used == true) {
-                if (getrooms[i].devices.rgb.length == 0){
+                if (getrooms[i].devices.rgb[0] == ""){
 
                 document.getElementById('rgb'+i).style.display = "none";
                 }
                 document.getElementById('rgb'+i).src = '../../../rgb.html';    
 
                 setTimeout(function(){
-                  if (getrooms[i].devices.rgb.length == 0){
+                  if (getrooms[i].devices.rgb[0] == ""){
                     document.getElementById('rgb'+i).style.display = "block";
                     document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[1].children[1].style.display = "none"      ;   
 
@@ -936,7 +963,7 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
 
 
         function addCharts(i) {
-          if (getrooms[i].devices.dht.length == 0){
+          if (getrooms[i].devices.dht[0] == ""){
             document.getElementById("charts"+i).style.display = "none";
             document.getElementById("motions"+i).style.marginTop = 0;
 
@@ -966,7 +993,7 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
         
         }
         function addMotion(i) {
-          if (getrooms[i].devices.ultrason.length == 0){
+          if (getrooms[i].devices.ultrason[0] == ""){
             document.getElementById("motions"+i).style.display = "none"
             
           } else {
@@ -987,7 +1014,7 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
         }
       }
         function addGaz(i) {
-          if (getrooms[i].devices.gsense.length == 0){
+          if (getrooms[i].devices.gsense[0] == ""){
             document.getElementById("gaz"+i).style.display = "none"
 
           
@@ -1062,7 +1089,10 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
       addMotion(i);
       rek(i) ;
 
-    }})
+    }
+    
+    
+  });
    
     </script>
     
@@ -1365,6 +1395,81 @@ console.log(nombre+1);
   </script>
 
   <script>
+
+    function modeR(i){
+      document.getElementById('id05').style.display='block' ; 
+      id = getrooms[i]._id ; 
+$.ajax({
+  method : "POST"  ,
+  data : JSON.stringify ({ id : id }),
+  "url" : "/api/rooms/modeR"+document.location.search,
+  contentType: "application/json",
+  dataType: "json",
+  success : function(data){
+
+    console.log({
+      data : data,
+    })
+    for (var j = 0; j < data.devicesToDelete.length; j++){
+    
+      document.getElementsByClassName("select-beauty")[2].children[1].children[j].children[0].dataset.value = j ;
+      document.getElementsByClassName("select-beauty")[2].children[1].children[j].children[0].innerText = data.devicesToDelete[j] ;
+      selectdevicestodelelet.tempData[j].text = data.devicesToDelete[j] ; 
+  
+    }
+    for (var k = data.devicesToDelete.length ;   k< Object.entries(selectdevicestodelelet.tempData).length  ; k++){
+
+      document.getElementsByClassName("select-beauty")[2].children[1].children[k].innerText = "" ; 
+
+
+
+    }
+    for (var j = 0; j < data.devicesToAdd.length; j++){
+    
+      document.getElementsByClassName("select-beauty")[3].children[1].children[j].children[0].dataset.value = j ;
+      document.getElementsByClassName("select-beauty")[3].children[1].children[j].children[0].innerText = data.devicesToAdd[j] ;
+      selectdevicestoadd.tempData[j].text = data.devicesToAdd[j] ; 
+  
+    }
+    for (var k = data.devicesToAdd.length ;   k< Object.entries(selectdevicestoadd.tempData).length  ; k++){
+
+      document.getElementsByClassName("select-beauty")[3].children[1].children[k].innerText = "" ; 
+
+
+
+    }
+
+
+
+
+
+  }
+})
+
+
+    }
+
+
+function addRoom(){
+  
+
+  document.getElementById('id03').style.display='block' ;
+  for (j = 0; j < devicesX.devices.length; j++){
+
+    document.getElementsByClassName("select-beauty")[1].children[1].children[j].children[0].dataset.value = j ;
+    document.getElementsByClassName("select-beauty")[1].children[1].children[j].children[0].innerText = devicesX.devices[j] ;
+    selectDevices.tempData[j].text = devicesX.devices[j] ; 
+
+  }
+  for(k  = devicesX.devices.length ; k < Object.entries(selectDevices.tempData).length ; k++){
+    document.getElementsByClassName("select-beauty")[1].children[1].children[k].innerText = "" ; 
+
+
+  }
+
+
+}
+
 function activeRoutine(){
   for (var i =0 ; i<scenario.length ; i ++){
     if (document.getElementById("toggle"+i).checked == true){
@@ -1452,6 +1557,8 @@ $.ajax({
       document.getElementsByClassName("select-beauty")[5].children[1].children[i].children[0].innerText = getrooms[i].name ;
       selectroomsroutines.tempData[i].text = getrooms[i].name ; 
 
+
+      
 
  
     }
@@ -1603,12 +1710,11 @@ $.ajax({
     dataType: "json",
     url: "/api/rooms/add"+document.location.search,
     success: function(data) {
-      console.log(data);
-    }
+      setTimeout(function(){
+        location.reload()
+       },400)    }
   });
-  setTimeout(function(){
-   location.reload()
-  },400)
+
     }
 
     function getName(){
@@ -1991,37 +2097,22 @@ if (document.getElementById("modify").value != ""){
   name = document.getElementById("modify").value
 }
 
-    var devAdd = {
-      dht : false,
-      gsense : false,
-      rgb : false,
-      ultrason : false,
-      light : false ,
-      alarm :false
-    }
-    var devDel = {
-      dht : false,
-      gsense : false,
-      rgb : false,
-      ultrason : false,
-      light : false ,
-      alarm :false
-    }
+    var devAdd = new Array() ; 
+    var devDel = new Array() ; 
 Object.entries(selectdevicestoadd.selected).forEach(function(elm){
 if (elm){
   
-  var text = elm[1].text ; 
-  devAdd[text] = true ; 
+  var name = elm[1].text ; 
+  devAdd.push(name) ; 
 }
 
 }); 
 Object.entries(selectdevicestodelelet.selected).forEach(function(elm){
   if (elm){
-    var text = elm[1].text ; 
-    devDel[text] = true ; 
+    var name = elm[1].text ; 
+    devDel.push(name)  
   }
 });
-console.log(devDel + "ffffff" + devAdd)
 $.ajax({
     type: "POST",
     data: JSON.stringify({ name : name , devAdd : devAdd , devDel : devDel }),
@@ -2029,46 +2120,13 @@ $.ajax({
     dataType: "json",
     url: "/api/rooms/modify"+document.location.search,
     success: function(data) {
-      console.log(data.err);
-   var tab = new Array(); 
-   var str ="";
-      if (data.err.dht == true){
-     tab.push("dht")
-   }
-   if (data.err.rgb == true){
-    tab.push("rgb")
-  }
-  if (data.err.alarm == true){
-    tab.push("alarm")
-  }
-  if (data.err.light == true){
-    tab.push("light")
-  }
-  if (data.err.ultrason == true){
-    tab.push("ultrason")
-  }
-  if (data.err.gsense == true){
-    tab.push("gsense")
-  }
-
-  if (tab.length != 0 ){
- str = tab[0] +",";
- for(var i=1 ; i<tab.length ; i++){
-   str = str + tab[i] + ','
- } 
- str = str.substring(0,(str.length-1))
-  }
-  if (str.length != 0){
-    swal("can't add multiple devices", str+" already exist")
-}
-
-   else {
+     
     setTimeout(function(){
       location.reload()
      },400)
   }
 
-    }
+    
   });
   
    }

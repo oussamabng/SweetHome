@@ -144,7 +144,13 @@ router.post("/add", async function(req, res) {
 
 //teh RGB ROute ^^
 router.post("/rgb", async function(req, res) {
-  const room = await Rooms.findOne({ name: req.body.name });
+  var token = req.query.token;
+
+  var decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const room = await Rooms.findOne({
+    name: req.body.name,
+    userId: decoded._id
+  });
 
   room.devices.rgb.forEach(async function(elm) {
     console;
@@ -162,8 +168,10 @@ router.post("/rgb", async function(req, res) {
 // TODO modify devices ................................................................;
 
 router.post("/modify", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   const sa3af = req.body.devDel.light;
-  var room = await Rooms.findOne({ name: req.body.name });
+  var room = await Rooms.findOne({ name: req.body.name, userId: decoded._id });
   var user = await User.findOne({ _id: room.userId });
   var error = {
     dht: false,
@@ -173,136 +181,128 @@ router.post("/modify", async function(req, res) {
     light: false,
     alarm: false
   };
+//delete
+  req.body.devDel.forEach(function(e) {
+    if (e[0] == "l") {
+      room.devices.light.forEach(async function(elm) {
+        var light = await Light.findOne({ _id :  elm  });
+        light.used = false;
+        await light.save() ; 
 
-  if (sa3af == true) {
-    room.devices.light.forEach(async function(elm) {
-      var light = await Light.deleteOne({ _id: elm });
-    });
-    room.devices.light = new Array();
-  }
-  if (req.body.devDel.rgb == true) {
-    room.devices.rgb.forEach(async function(elm) {
-      var rgb = await Rgb.deleteOne({ _id: elm });
-    });
-    room.devices.rgb = new Array();
-  }
-
-  if (req.body.devDel.dht == true) {
-    room.devices.dht.forEach(async function(elm) {
-      var dht = await Dht.deleteOne({ _id: elm });
-    });
-    room.devices.dht = new Array();
-  }
-
-  if (req.body.devDel.ultrason == true) {
-    room.devices.ultrason.forEach(async function(elm) {
-      var ultrason = await Ultrason.deleteOne({ _id: elm });
-    });
-    room.devices.ultrason = new Array();
-  }
-  if (req.body.devDel.gsense == true) {
-    room.devices.gsense.forEach(async function(elm) {
-      var gsense = await Gsense.deleteOne({ _id: elm });
-    });
-    room.devices.gsense = new Array();
-  }
-  if (req.body.devDel.alarm == true) {
-    room.devices.alarm.forEach(async function(elm) {
-      var alarm = await Alarm.deleteOne({ _id: elm });
-    });
-    room.devices.alarm = new Array();
-  }
-  // doka lal ADD
-  if (req.body.devAdd.dht == true) {
-    if (room.devices.dht.length == 0) {
-      var dht = new Dht({
-        name: "dht-" + req.body.name,
-        tokenId: user.tokenId,
-        used: true
       });
+      room.devices.light[0] = "";
+    } else if (e[0] == "r") {
+      room.devices.rgb.forEach(async function(elm) {
+        var rgb = await Rgb.findOne({  _id :  elm  });
+        rgb.used = false;
+        await rgb.save() ; 
+      });
+      room.devices.rgb[0] = "";
+    } else if (e[0] == "d") {
+      room.devices.dht.forEach(async function(elm) {
+        var dht = await Dht.findOne({ _id :  elm });
+        dht.used = false;
+        await dht.save();
+      });
+      room.devices.dht[0] = "";
+    } else if (e[0] == "u") {
+      room.devices.ultrason.forEach(async function(elm) {
+        var ultrason = await Ultrason.findOne({  _id :  elm });
+        ultrason.used = false;
+          await ultrason.save() ; 
+      });
+      room.devices.ultrason[0] = "";
+    } else if (e[0] == "g") {
+      room.devices.gsense.forEach(async function(elm) {
+        var gsense = await Gsense.findOne({  _id :  elm  });
+        gsense.used = false;
+        await gsense.save() ; 
+
+      });
+      room.devices.gsense[0] = "";
+    } else if (e[0] == "a") {
+      room.devices.alarm.forEach(async function(elm) {
+        var alarm = await Alarm.findOne({  _id :  elm  });
+        alarm.used = false;
+        await alarm.save();
+      });
+      room.devices.alarm[0] = "";
+    }
+  });
+
+
+
+
+
+
+
+//doka l add 
+  req.body.devAdd.forEach(function(e) {
+    if (e[0] == "l") {
+      var light = Light.findOne({ name: e });
+      light.used = true;
+      room.devices.light[0] = light._id;
+      await light.save() ; 
+
+    }
+
+
+     else if (e[0] == "r") {
+        var rgb = await Rgb.findOne({ name :  e });
+        rgb.used = true ;
+      room.devices.rgb[0] = rgb._id;
+      await rgb.save() ; 
+
+    } 
+    
+    
+    else if (e[0] == "d") {
+        var dht = await Dht.findOne({ name :  e  });
+    dht.used = true ; 
+      room.devices.dht[0] = dht._id;
       await dht.save();
-      room.devices.dht.push(dht._id);
-    } else {
-      error.dht = true;
+
     }
-  }
-  if (req.body.devAdd.rgb == true) {
-    if (room.devices.rgb.length == 0) {
-      var rgb = new Rgb({
-        name: "rgb-" + req.body.name,
-        tokenId: user.tokenId,
-        used: true
-      });
-      await rgb.save();
-      room.devices.rgb.push(rgb._id);
-    } else {
-      error.rgb = true;
-    }
-  }
-  if (req.body.devAdd.alarm == true) {
-    if (room.devices.alarm.length == 0) {
-      var alarm = new Alarm({
-        name: "alarm-" + req.body.name,
-        tokenId: user.tokenId,
-        used: true,
-        value: false
-      });
+    
+    
+    
+    
+    
+    else if (e[0] == "u") {
+        var ultrason = await Ultrason.findOne({ name :  e  });
+        ultrason.used = true ; 
+      room.devices.ultrason[0] = ultrason._id;
+      await ultrason.save() ; 
+
+    } else if (e[0] == "g") {
+        var gsense = await Gsense.findOne({ name :  e  });
+        gsense.used = true ; 
+      room.devices.gsense[0] = gsense._id;
+      await gsense.save() ; 
+
+    } else if (e[0] == "a") {
+        var alarm = await Alarm.findOne({ name :  e  });
+
+      alarm.used = true
+      room.devices.alarm[0] = alarm._id;
       await alarm.save();
-      room.devices.alarm.push(alarm._id);
-    } else {
-      error.alarm = true;
+
     }
-  }
-  if (req.body.devAdd.gsense == true) {
-    if (room.devices.gsense.length == 0) {
-      var gsense = new Gsense({
-        name: "gsense-" + req.body.name,
-        tokenId: user.tokenId,
-        used: true
-      });
-      await gsense.save();
-      room.devices.gsense.push(gsense._id);
-    } else {
-      error.gsense = true;
-    }
-  }
-  if (req.body.devAdd.ultrason == true) {
-    if (room.devices.ultrason.length == 0) {
-      var ultrason = new Ultrason({
-        name: "ultrason-" + req.body.name,
-        tokenId: user.tokenId,
-        used: true
-      });
-      await ultrason.save();
-      room.devices.ultrason.push(ultrason._id);
-    } else {
-      error.ultrason = true;
-    }
-  }
-  if (req.body.devAdd.light == true) {
-    if (room.devices.light.length == 0) {
-      var light = new Light({
-        name: "light-" + req.body.name,
-        tokenId: user.tokenId,
-        used: true,
-        value: false
-      });
-      await light.save();
-      room.devices.light.push(light._id);
-    } else {
-      error.light = true;
-    }
-  }
+  });
+ 
   await room.save();
-  res.status(200).send({ message: "modify succesfully", err: error });
+
+  res.status(200).send({ message: "modify succesfully" });
 });
 
 //**************************************** */
 router.post("/light", async function(req, res) {
-  console.log(req.body);
-
-  const room = await Rooms.findOne({ name: req.body.name });
-  console.log(room);
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const room = await Rooms.findOne({
+    name: req.body.name,
+    userId: decoded._id
+  });
   room.devices.light.forEach(async function(id) {
     var light = await Light.findOne({ _id: id });
     light.value = req.body.value;
@@ -316,10 +316,13 @@ router.post("/light", async function(req, res) {
 // ********************************************************//
 
 router.post("/desactiveRoutine", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+
   const scenario = await Scenario.findOne({ _id: req.body.id });
 
   scenario.rooms.forEach(async function(elm) {
-    var room = await Rooms.findOne({ name: elm });
+    var room = await Rooms.findOne({ name: elm, userId: decoded._id });
     room.devices.light.forEach(async function(id) {
       var light = await Light.findOne({ _id: id });
       light.used = true;
@@ -366,6 +369,8 @@ router.post("/desactiveRoutine", async function(req, res) {
 // ********************************************************//
 // TODO a changer plus tard arr
 router.post("/notifications", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   var arr = [];
   const alarm = await Alarm.findOne({ _id: JSON.parse(req.body.id) });
 
@@ -404,6 +409,8 @@ router.post("/getnotifications", async function(req, res) {
 });
 
 router.post("/deleteNot", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   //const token = req.query.token;
 
   //const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
@@ -457,7 +464,7 @@ router.post("/activeRoutine", async function(req, res) {
   const scenario = await Scenario.findOne({ _id: req.body.id });
 
   scenario.rooms.forEach(async function(elm) {
-    const room = await Rooms.findOne({ name: elm });
+    const room = await Rooms.findOne({ name: elm, userId: decoded._id });
 
     Object.entries(scenario.devicesOn).forEach(async function(r) {
       if (r[0] == "dht") {
@@ -579,15 +586,66 @@ router.get("/all", async function(req, res) {
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
 
-  const dht = await Dht.find();
-  const rgb = await Rgb.find();
-  const alarm = await Alarm.find();
-  const ultrason = await Ultrason.find();
-  const gsense = await Gsense.find();
-  const light = await Light.find();
+  const user = await User.findOne({ _id: decoded._id });
+  var devices = new Array();
+
+  const dht = await Dht.find({
+    tokenId: user.tokenId
+  });
+  const rgb = await Rgb.find({
+    tokenId: user.tokenId
+  });
+  const alarm = await Alarm.find({
+    tokenId: user.tokenId
+  });
+  const ultrason = await Ultrason.find({
+    tokenId: user.tokenId
+  });
+  const gsense = await Gsense.find({
+    tokenId: user.tokenId
+  });
+  const light = await Light.find({
+    tokenId: user.tokenId
+  });
   const routine = await Scenario.find({ userId: decoded._id });
   const notification = await Notification.find({ _id: decoded._id });
   const _rooms = await Rooms.find({ userId: decoded._id });
+
+  _rooms.forEach(function(elm) {
+    elm.devices.dht.forEach(function(e) {});
+  });
+
+  rgb.forEach(function(elm) {
+    if (elm.used == false) {
+      devices.push(elm.name);
+    }
+  });
+  dht.forEach(function(elm) {
+    if (elm.used == false) {
+      devices.push(elm.name);
+    }
+  });
+  gsense.forEach(function(elm) {
+    if (elm.used == false) {
+      devices.push(elm.name);
+    }
+  });
+  light.forEach(function(elm) {
+    if (elm.used == false) {
+      devices.push(elm.name);
+    }
+  });
+  alarm.forEach(function(elm) {
+    if (elm.used == false) {
+      devices.push(elm.name);
+    }
+  });
+  ultrason.forEach(function(elm) {
+    if (elm.used == false) {
+      devices.push(elm.name);
+    }
+  });
+
   res.render("rooms/index2.ejs", {
     rooms: JSON.stringify(_rooms),
     dht: JSON.stringify(dht),
@@ -597,7 +655,8 @@ router.get("/all", async function(req, res) {
     alarm: JSON.stringify(alarm),
     ultrason: JSON.stringify(ultrason),
     notification: JSON.stringify(notification),
-    routine: JSON.stringify(routine)
+    routine: JSON.stringify(routine),
+    devices: JSON.stringify({ devices: devices })
   });
 });
 // get rooms
@@ -611,49 +670,121 @@ router.get("/all", async function(req, res) {
 // ********************************************************//
 //*****************************************************//
 
-//get devices te3 kol room
-router.get("/devices/:id", async function(req, res) {
-  const room = await Rooms.find({ _id: req.params.id });
+router.post("/modeR", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const user = await User.findOne({ _id: decoded._id });
+  let dev = new Array();
+  let devA = new Array();
 
-  let dev = [];
-  dev.dhts = [];
-  dev.alarms = [];
-  dev.ultrasons = [];
-  dev.rgbs = [];
-  dev.gsenses = [];
-  dev.lights = [];
+  const room = await Rooms.findOne({ _id: req.body.id });
 
-  room.dht.forEach(async function(element) {
-    let temp = await Dht.findOne({ _id: element });
-    dev.dhts.push(temp);
+  room.devices.dht.forEach(async function(elm) {
+    if (elm != "") {
+      const dht = await Dht.findOne({ _id: elm });
+      dev.push(dht.name);
+    }
+  });
+  room.devices.rgb.forEach(async function(elm) {
+    if (elm != "") {
+      const rgb = await Rgb.findOne({ _id: elm });
+      dev.push(rgb.name);
+    }
+  });
+  room.devices.alarm.forEach(async function(elm) {
+    if (elm != "") {
+      const alarm = await Alarm.findOne({ _id: elm });
+      dev.push(alarm.name);
+    }
+  });
+  room.devices.light.forEach(async function(elm) {
+    if (elm != "") {
+      const light = await Light.findOne({ _id: elm });
+      dev.push(light.name);
+    }
+  });
+  room.devices.ultrason.forEach(async function(elm) {
+    if (elm != "") {
+      const ultrason = await Ultrason.findOne({ _id: elm });
+      dev.push(ultrason.name);
+    }
+  });
+  room.devices.gsense.forEach(async function(elm) {
+    if (elm != "") {
+      const gsense = await Gsense.findOne({ _id: elm });
+      dev.push(gsense.name);
+    }
   });
 
-  room.alarm.forEach(async function(element) {
-    let temp = await Alarm.findOne({ _id: element });
-    dev.alarms.push(temp);
-  });
-  room.ultrason.forEach(async function(element) {
-    let temp = await Ultrason.findOne({ _id: element });
-    dev.ultrasons.push(temp);
-  });
-  room.rgb.forEach(async function(element) {
-    let temp = await Rgb.findOne({ _id: element });
-    dev.rgbs.push(temp);
-  });
-  room.light.forEach(async function(element) {
-    let temp = await Light.findOne({ _id: element });
-    dev.lights.push(temp);
-  });
-  room.gsense.forEach(async function(element) {
-    let temp = await Gsense.findOne({ _id: element });
-    dev.gsenses.push(temp);
-  });
+  if (room.devices.dht[0] == "") {
+    const dht = await Dht.find({ tokenId: user.tokenId });
 
-  res.send(dev, function() {});
+    dht.forEach(function(elm) {
+      if (elm.used == false) {
+        devA.push(elm.name);
+      }
+    });
+  }
+
+  if (room.devices.gsense[0] == "") {
+    const gsense = await Gsense.find({ tokenId: user.tokenId });
+
+    gsense.forEach(function(elm) {
+      if (elm.used == false) {
+        devA.push(elm.name);
+      }
+    });
+  }
+
+  if (room.devices.alarm[0] == "") {
+    const alarm = await Alarm.find({ tokenId: user.tokenId });
+
+    alarm.forEach(function(elm) {
+      if (elm.used == false) {
+        devA.push(elm.name);
+      }
+    });
+  }
+
+  if (room.devices.rgb[0] == "") {
+    const rgb = await Rgb.find({ tokenId: user.tokenId });
+
+    rgb.forEach(function(elm) {
+      if (elm.used == false) {
+        devA.push(elm.name);
+      }
+    });
+  }
+
+  if (room.devices.light[0] == "") {
+    const light = await Light.find({ tokenId: user.tokenId });
+
+    light.forEach(function(elm) {
+      if (elm.used == false) {
+        devA.push(elm.name);
+      }
+    });
+  }
+
+  if (room.devices.ultrason[0] == "") {
+    const ultrason = await Ultrason.find({ tokenId: user.tokenId });
+
+    ultrason.forEach(function(elm) {
+      if (elm.used == false) {
+        devA.push(elm.name);
+      }
+    });
+  }
+
+  setTimeout(function() {
+    res.end(JSON.stringify({ devicesToDelete: dev, devicesToAdd: devA }));
+  }, 500);
 });
 
 //get devices for add room
 router.get("/devices", auth, async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   let dev = {
     dhts: [],
     alarms: [],
@@ -722,9 +853,10 @@ router.put("/:id", async function(req, res) {
 
 //delete room
 router.delete("/delete", async function(req, res) {
-  var room = await Rooms.findOne({ name: req.body.name });
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
 
-  const user = await User.findOne({ _id: room.userId });
+  var room = await Rooms.findOne({ name: req.body.name, userId: decoded._id });
 
   const dht = await Dht.deleteOne({ _id: room.devices.dht[0] });
   const rgb = await Rgb.deleteOne({ _id: room.devices.rgb[0] });
