@@ -13,7 +13,8 @@ const {
   Gsense,
   Ultrason,
   Rooms,
-  Notification
+  Notification,
+  Scenario
 } = require("../models/user");
 const _ = require("lodash");
 
@@ -26,7 +27,6 @@ router.post("/add", async function(req, res) {
   const user = await User.findOne({ _id: decoded._id });
   //const _rooms = await Rooms.find({ userId: decoded._id });
 
-  console.log("ok " + decoded._id);
   // tableau li rslthoulak te3 Devices bsh ykoun user mkhyr manah li bgha ykhdem bihom
 
   var dhtId = new String();
@@ -144,14 +144,11 @@ router.post("/add", async function(req, res) {
 
 //teh RGB ROute ^^
 router.post("/rgb", async function(req, res) {
-  console.log(req.body);
-
   const room = await Rooms.findOne({ name: req.body.name });
 
   room.devices.rgb.forEach(async function(elm) {
     console;
     var rgb = await Rgb.findOne({ _id: elm });
-    console.log("rgb :" + rgb);
     rgb.used = true;
     rgb.color = new Array(); // rgb.color = [];  bah nkhawouh lawla ,,,, psk ykoun dima fiha ghi 3 val rgb ..
     rgb.color.push(req.body.red);
@@ -163,6 +160,21 @@ router.post("/rgb", async function(req, res) {
   res.status(200).send("succes rgb ^^");
 });
 // TODO modify devices ................................................................;
+
+
+router.post("/modifyRoutine", async function(req, res) {
+  const routine = await Scenario.findOne({ name: req.body.name });
+
+
+  res.status(200).send("succes rgb ^^");
+});
+
+
+
+
+
+
+
 
 router.post("/modify", async function(req, res) {
   const sa3af = req.body.devDel.light;
@@ -179,7 +191,6 @@ router.post("/modify", async function(req, res) {
 
   if (sa3af == true) {
     room.devices.light.forEach(async function(elm) {
-      console.log(elm + "     dddd");
       var light = await Light.deleteOne({ _id: elm });
     });
     room.devices.light = new Array();
@@ -303,19 +314,66 @@ router.post("/modify", async function(req, res) {
 
 //**************************************** */
 router.post("/light", async function(req, res) {
+  console.log(req.body);
+
   const room = await Rooms.findOne({ name: req.body.name });
+  console.log(room);
   room.devices.light.forEach(async function(id) {
     var light = await Light.findOne({ _id: id });
     light.value = req.body.value;
     light.save();
   });
-
-  res.status(200).send("changes completed for the light ");
+  res.status(200).send({ message: "activate routine succesfully" }); //anglais mkwd laghlb
 });
 // ********************************************************//
 // ********************************************************//
 // ********************************************************//
 // ********************************************************//
+
+router.post("/desactiveRoutine", async function(req, res) {
+  const scenario = await Scenario.findOne({ _id: req.body.id });
+
+  scenario.rooms.forEach(async function(elm) {
+    var room = await Rooms.findOne({ name: elm });
+    room.devices.light.forEach(async function(id) {
+      var light = await Light.findOne({ _id: id });
+      light.used = true;
+      light.save();
+    });
+
+    room.devices.dht.forEach(async function(id) {
+      var dht = await Dht.findOne({ _id: id });
+      dht.used = true;
+      dht.save();
+    });
+
+    room.devices.rgb.forEach(async function(id) {
+      var rgb = await Rgb.findOne({ _id: id });
+      rgb.used = true;
+      rgb.save();
+    });
+    room.devices.ultrason.forEach(async function(id) {
+      var ultrason = await Ultrason.findOne({ _id: id });
+      ultrason.used = true;
+      ultrason.save();
+    });
+    room.devices.gsense.forEach(async function(id) {
+      var gsense = await Gsense.findOne({ _id: id });
+      gsense.used = true;
+      gsense.save();
+    });
+    room.devices.alarm.forEach(async function(id) {
+      var alarm = await Alarm.findOne({ _id: id });
+      alarm.used = true;
+      alarm.save();
+    });
+  });
+
+  scenario.checked = false;
+  scenario.save();
+
+  res.status(200).send({ message: "desactivate routine  succesfully" }); //anglais mkwd laghlb
+});
 // ********************************************************//
 // ********************************************************//
 // ********************************************************//
@@ -337,7 +395,6 @@ router.post("/notifications", async function(req, res) {
       }
     });
   });
-  console.log("arr :" + arr);
   res.status(200).send(arr);
 });
 
@@ -355,7 +412,6 @@ router.post("/getnotifications", async function(req, res) {
     userId: decoded._id
   });
   await notification.save();
-  console.log("okbb : " + notification);
 
   res.status(200).send({
     notification: JSON.stringify(notification)
@@ -367,7 +423,6 @@ router.post("/deleteNot", async function(req, res) {
 
   //const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   const notification = await Notification.deleteOne({ _id: req.body.id });
-  console.log("type delete notif :" + req.body.type);
   var type = req.body.type;
   var i = req.body.i;
   res.writeHead(200, { "Content-Type": "application/json" });
@@ -376,21 +431,163 @@ router.post("/deleteNot", async function(req, res) {
 
 // ********************************************************//
 // ********************************************************//
+router.post("/addRoutine", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+
+  const routine = new Scenario({
+    name: req.body.name,
+    rooms: req.body.rooms,
+    color: req.body.color,
+    devicesOn: req.body.devicesOn,
+    devicesOff: req.body.devicesOff,
+    userId: decoded._id,
+    checked: false
+  });
+  await routine.save();
+
+  res.status(200).send({ message: "add routine  succesfully" }); //anglais mkwd laghlb
+});
+// ********************************************************//
 
 // ********************************************************//
-// ********************************************************//
+
+router.post("/activeRoutine", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const scenario = await Scenario.findOne({ _id: req.body.id });
+
+  scenario.rooms.forEach(async function(elm) {
+    const room = await Rooms.findOne({ name: elm });
+
+    Object.entries(scenario.devicesOn).forEach(async function(r) {
+      if (r[0] == "dht") {
+        room.devices.dht.forEach(async function(e) {
+          const dht = await Dht.findOne({ _id: e });
+          if (r[1] == true) {
+            dht.used = true;
+            await dht.save();
+          }
+        });
+      } else if (r[0] == "rgb") {
+        room.devices.rgb.forEach(async function(e) {
+          const rgb = await Rgb.findOne({ _id: e });
+          if (r[1] == true) {
+            rgb.used = true;
+            await rgb.save();
+          }
+        });
+      } else if (r[0] == "light") {
+        room.devices.light.forEach(async function(e) {
+          const light = await Light.findOne({ _id: e });
+          if (r[1] == true) {
+            light.used = true;
+            light.value = true;
+            await light.save();
+          }
+        });
+      } else if (r[0] == "ultrason") {
+        room.devices.ultrason.forEach(async function(e) {
+          const ultrason = await Ultrason.findOne({ _id: e });
+          if (r[1] == true) {
+            ultrason.used = true;
+            await ultrason.save();
+          }
+        });
+      } else if (r[0] == "alarm") {
+        room.devices.alarm.forEach(async function(e) {
+          const alarm = await Alarm.findOne({ _id: e });
+          if (r[1] == true) {
+            alarm.used = true;
+            await alarm.save();
+          }
+        });
+      } else if (r[0] == "gsense") {
+        room.devices.gsense.forEach(async function(e) {
+          const gsense = await Gsense.findOne({ _id: e });
+          if (r[1] == true) {
+            gsense.used = true;
+            await gsense.save();
+          }
+        });
+      }
+    });
+    Object.entries(scenario.devicesOff).forEach(async function(r) {
+      if (r[0] == "dht") {
+        room.devices.dht.forEach(async function(e) {
+          const dht = await Dht.findOne({ _id: e });
+          if (r[1] == false) {
+            dht.used = false;
+            await dht.save();
+          }
+        });
+      } else if (r[0] == "rgb") {
+        room.devices.rgb.forEach(async function(e) {
+          const rgb = await Rgb.findOne({ _id: e });
+          if (r[1] == false) {
+            console.log("rgb");
+            rgb.used = false;
+            await rgb.save();
+            console.log(rgb);
+          }
+        });
+      } else if (r[0] == "light") {
+        console.log("daaaa light");
+
+        room.devices.light.forEach(async function(e) {
+          const light = await Light.findOne({ _id: e });
+          if (r[1] == false) {
+            console.log("light");
+            light.used = false;
+            await light.save();
+          }
+        });
+      } else if (r[0] == "ultrason") {
+        room.devices.ultrason.forEach(async function(e) {
+          const ultrason = await Ultrason.findOne({ _id: e });
+          if (r[1] == false) {
+            ultrason.used = false;
+            await ultrason.save();
+          }
+        });
+      } else if (r[0] == "alarm") {
+        room.devices.alarm.forEach(async function(e) {
+          const alarm = await Alarm.findOne({ _id: e });
+          if (r[1] == false) {
+            alarm.used = false;
+            await alarm.save();
+          }
+        });
+      } else if (r[0] == "gsense") {
+        room.devices.gsense.forEach(async function(e) {
+          const gsense = await Gsense.findOne({ _id: e });
+          if (r[1] == false) {
+            gsense.used = false;
+            await gsense.save();
+          }
+        });
+      }
+    });
+  });
+  scenario.checked = true;
+  await scenario.save();
+
+  res.status(200).send({ message: "activate routine  succesfully" }); //anglais mkwd laghlb
+});
 
 // ********************************************************//
 router.get("/all", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+
   const dht = await Dht.find();
   const rgb = await Rgb.find();
   const alarm = await Alarm.find();
   const ultrason = await Ultrason.find();
   const gsense = await Gsense.find();
   const light = await Light.find();
-  const notification = await Notification.find();
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const routine = await Scenario.find({ userId: decoded._id });
+  const notification = await Notification.find({ _id: decoded._id });
   const _rooms = await Rooms.find({ userId: decoded._id });
   res.render("rooms/index2.ejs", {
     rooms: JSON.stringify(_rooms),
@@ -400,7 +597,8 @@ router.get("/all", async function(req, res) {
     gsense: JSON.stringify(gsense),
     alarm: JSON.stringify(alarm),
     ultrason: JSON.stringify(ultrason),
-    notification: JSON.stringify(notification)
+    notification: JSON.stringify(notification),
+    routine: JSON.stringify(routine)
   });
 });
 // get rooms
@@ -452,9 +650,7 @@ router.get("/devices/:id", async function(req, res) {
     dev.gsenses.push(temp);
   });
 
-  res.send(dev, function() {
-    console.log("devices getted");
-  });
+  res.send(dev, function() {});
 });
 
 //get devices for add room
@@ -503,19 +699,25 @@ router.get("/devices", auth, async function(req, res) {
   //send array of devices
 });
 
+router.post("/deleteRoutine", async function(req, res) {
+    const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+const i = req.body.i ; 
+  const routine = await Scenario.deleteOne( {name : req.body.name}) ; 
+
+ 
+  res.status(200).send({ message: "delete routine  succesfully"  , i : i}); //anglais mkwd laghlb
+});
 // ********************************************************//
 //*****************************************************//
 
 //update room
 router.put("/:id", async function(req, res) {
   //const user = await User.findOne({ _id : req.userId});*
-  console.log(req.params.id);
   const room = await Rooms.findOne({ _id: req.params.id });
-  console.log(room);
   room.name = req.body.name;
   room.typeRoom = req.body.typeRoom;
   const result = await room.save();
-  console.log(result);
 
   res.send(result);
 });

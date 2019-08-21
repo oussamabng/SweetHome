@@ -107,17 +107,17 @@
             </section>
         <!--talta tbda hna-->
         <section class="container">
-                <div class="card">
-                        <div class="front">
+          <div class="card" id="showRoutines">
+            
+            <div class="front">
                                 <div calss="column">
-                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/settings.png" title="settings" >
-                                </div>
+                                    <img onclick="document.getElementById('id09').style.display='block'" src="../../../designs/settings.png" title="settings" >
+                                  </div>
 
                         </div>
                         <div class="back">
                                 <div calss="column">
-                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/settings1.png" title="settings" >
-                                </div>
+                                    <img onclick="document.getElementById('id09').style.display='block'"  src="../../../designs/settings1.png" title="settings" >                                </div>
                            </div>
                 </div>
 
@@ -168,7 +168,6 @@
 
         <form class="modal-content animate"  action="/"  >
           <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src="../../../designs/sweet.png" class="bo">
             <img src="../../../designs/key.png" alt="Avatar" class="avatar">
             <h1>your home will stay sweet when you're away!</h1>
@@ -349,8 +348,7 @@
 <div id="id08" class="modal">
 
 
-    <form class="modal-content animate detailed" action="/action_page.php" style="width:25%;height:25%">
-     <form >
+    <form class="modal-content animate detailed delete-confirmation" >     <form >
         <br>
         <br>
        Delete this room?
@@ -366,6 +364,324 @@
     </form>
   
   </div>
+
+
+
+  <!---------------------------------------------->
+<div id="id09" class="modal">
+
+    <div class="imgcontainerroutines">
+  <form class="modal-content animate">
+  
+    <h1>Routines</h1>
+    <section id="routines"></section>
+  
+    <img src="../../../icons/addroutine.png" onclick="clickBb(this)" style="width:40px">
+  <br>
+  <br>
+    <button type="button" onclick="document.getElementById('id09').style.display='none'" class="ghost">Cancel</button>
+    <br>
+    <br>
+    <br>
+  </form>
+  
+  </div>
+  </div>
+  
+  
+  
+  <div id="id10" class="modal">
+  
+  
+      <form class="modal-content animate"   action="javascript:;" onsubmit="addRoutine(this)">
+        <div class="imgcontainer">
+          <h1>Add a new routine</h1>
+  
+          <input id="nameRoutine" type="text" placeholder="choose a name for the routine"  />
+          <div class="selectcontainer">
+              <select name="select-type" id="select-color-routines" class="form-control">
+                  <option value="1" icon="red-icon">red</option>
+                  <option value="2" icon="purple-icon">purple</option>
+                  <option value="3" icon="yellow-icon">yellow</option>
+                  <option value="4" icon="green-icon">green</option>
+                  <option value="5" icon="bleu-icon">bleu</option>
+  
+  
+                </select>
+          </div>
+          <div class="selectcontainer">
+          <select name="select-type" id="select-room-routines" class="form-control">
+           <option value="0">bleu</option>
+            <option style="display: none;" value="1">bleu</option>
+            <option style="display: none;" value="2">bleu</option>
+            <option style="display: none;" value="3">bleu</option>
+            <option style="display: none;" value="4">bleu</option>
+            <option style="display: none;" value="5">bleu</option>
+            <option style="display: none;" value="6">bleu</option>
+            <option style="display: none;" value="7">bleu</option>
+            <option style="display: none;" value="8">bleu</option>
+            <option style="display: none;" value="9">bleu</option>
+            <option style="display: none;" value="10">bleu</option>
+            <option style="display: none;" value="11">bleu</option>
+            <option style="display: none;" value="12">bleu</option>
+            <option style="display: none;" value="13">bleu</option>
+            <option style="display: none;" value="14">bleu</option>
+            <option style="display: none;" value="15">bleu</option>
+            <option style="display: none;" value="16">bleu</option>
+            <option style="display: none;" value="17">x</option> 
+
+
+              
+             </select>
+          </div>
+          <div class="selectcontainer">
+          <select name="select-devices" id="select-devices-routines-on" class="form-control">
+              <option value="1" >dht</option>
+              <option value="2" >rgb</option>
+              <option value="3" >gsense</option>
+              <option value="4" >ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+
+
+  
+  
+            </select>
+          </div>
+          <div class="selectcontainer">
+            <select name="select-devices" id="select-devices-routines-off" class="form-control">
+              <option value="1" >dht</option>
+              <option value="2" >rgb</option>
+              <option value="3" >gsense</option>
+              <option value="4" >ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+              </select>
+          </div> 
+  
+  
+          <button id="routine" >Add routine</button>
+           <button type="button" onclick="document.getElementById('id10').style.display='none'" class="ghost">Cancel</button>
+  
+                </div> 
+          </form>
+  </div>
+  
+  
+  
+  
+  <div name="" id="id11" class="modal">
+  
+  
+      <form class="modal-content animate detailed delete-confirmation"  action="javascript:;" onsubmit="deleteRoutine(this)">
+       <form >
+          <br>
+          <br>
+         Delete this routine?
+       <br>
+       <br>
+          <button  type="submit">Delete</button>
+          <button type="button" onclick="document.getElementById('id11').style.display='none'" class="ghost">Cancel</button>
+          <br>
+          <br>
+          <br> 
+  
+       </form>
+      </form>
+  
+    </div>
+  
+  
+    <div id="id12" class="modal">
+  
+  
+        <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoutine(this)">
+          <div class="imgcontainer">
+            <h1>Modify this routine</h1>
+  
+            <input id="nameRoutineMod" type="text" placeholder=""  />
+            <div class="selectcontainer">
+                <select name="select-type" id="modify-color-routines" class="form-control">
+                    <option value="1" icon="red-icon">brick red  </option>
+                    <option value="2" icon="purple-icon">purple</option>
+                    <option value="3" icon="yellow-icon">yellow</option>
+                    <option value="4" icon="green-icon">green</option>
+                    <option value="5" icon="bleu-icon">bleu</option>
+  
+  
+  
+                  </select>
+            </div>
+            <div class="selectcontainer">
+            <select name="select-type" id="modify-room-routines" class="form-control">
+                <option value="0">bleu</option>
+            <option style="display: none;" value="1">bleu</option>
+            <option style="display: none;" value="2">bleu</option>
+            <option style="display: none;" value="3">bleu</option>
+            <option style="display: none;" value="4">bleu</option>
+            <option style="display: none;" value="5">bleu</option>
+            <option style="display: none;" value="6">bleu</option>
+            <option style="display: none;" value="7">bleu</option>
+            <option style="display: none;" value="8">bleu</option>
+            <option style="display: none;" value="9">bleu</option>
+            <option style="display: none;" value="10">bleu</option>
+            <option style="display: none;" value="11">bleu</option>
+            <option style="display: none;" value="12">bleu</option>
+            <option style="display: none;" value="13">bleu</option>
+            <option style="display: none;" value="14">bleu</option>
+            <option style="display: none;" value="15">bleu</option>
+            <option style="display: none;" value="16">bleu</option>
+            <option style="display: none;" value="17">x</option>
+  
+  
+              </select>
+            </div>
+            <div class="selectcontainer">
+            <select name="select-devices" id="modify-devices-routines-on" class="form-control">
+                <option value="1" >dht</option>
+                <option value="2" >rgb</option>
+                <<option value="3" >gsense</option>
+              <option value="4" >ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+              </select>
+            </div>
+            <div class="selectcontainer">
+              <select name="select-devices" id="modify-devices-routines-off" class="form-control">
+                   <option value="1" >dht</option>
+                <option value="2" >rgb</option>
+                <<option value="3" >gsense</option>
+              <option value="4" >ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+                </select>
+            </div> 
+  
+  
+            <button type="submit">Modify Routine</button>
+             <button type="button" onclick="document.getElementById('id12').style.display='none'" class="ghost">Cancel</button>
+  
+                  </div> 
+            </form>
+    </div>
+  
+  <script>
+     
+      document.getElementById("showRoutines").addEventListener("click", function() {
+            for (i=0;i<scenario.length;i++){
+              showroutines(i);
+
+              document.getElementById("toggle"+i).checked = scenario[i].checked ; 
+            }
+          });    
+  function showroutines(i){
+    var b=("'block'"); 
+    var a=("'id12'");
+    var y=("'id11'");
+    var check = scenario[i].checked ;
+ var id = scenario[i]._id ; 
+ var name = scenario[i].name ; 
+    document.getElementById('routines').innerHTML +='<div class="dropdown-routine">'+
+                                                        '<div class="dropbtnroutine">'+
+                                                       '<img  src="../../../icons/settings2.png"  onclick="myFunctionRoutine('+i+')" class="dropbtnroutine">'+
+                                                       '</div>'+
+                                                       '<div id="myDropdownroutine'+i+'" class="dropdown-content-routine">'+
+                                                         ' <a onclick="deleteConf('+i+')">Delete this routine</a>'+
+                                                          '<a onclick="okBb('+i+')" >Modify this routine</a>'+
+         
+                                                        '</div>'+
+                                                          '</div>'+
+                                                          '<div>';
+                                                           
+                                                      
+    if(scenario[i].color=="red"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container red">'+
+                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
+                                                              '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="bleu"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container bleu">'+
+                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
+                                                          '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="yellow"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container yellow">'+
+                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
+                                                              '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="purple"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container purple">'+
+                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
+                                                          '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="green"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                             '<div class="checkbox-container green">'+
+                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
+                                                          '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  }
+  </script>
+  <script>
+  function myFunctionRoutine(i) {
+            document.getElementById("myDropdownroutine"+i).classList.toggle("show");
+          }
+          
+          // Close the dropdown if the user clicks outside of it
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtnroutine')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }       
+  </script>
+  
+  
+  
+  
+  
+  
 
 
            <script>
@@ -399,13 +715,7 @@
   <section class="regular slider" id="test"></section>
 
   
-  <div class="dropdown">
-    <div id="myDropdown" class="dropdown-content">
-      <a href="#home">Delete this room</a>
-      <a href="#about">Modify this room</a>
-     
-    </div>
-  </div>
+
 
 
 <div style="display: none;">
@@ -440,6 +750,9 @@
     <h1 id="notifications">
       <%= notification %>
     </h1>
+    <h1 id="scz">
+        <%= routine %>
+      </h1>
   </div>
 
 </div>
@@ -456,7 +769,7 @@
       var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
       var alllight = JSON.parse(document.getElementById("light").innerHTML);
       var notifications = JSON.parse(document.getElementById("notifications").innerHTML);
-
+      var scenario = JSON.parse(document.getElementById("scz").innerHTML);
       var allultrason = JSON.parse(
         document.getElementById("ultrason").innerHTML
       );
@@ -582,7 +895,7 @@
 document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name =  document.getElementById("type"+i).children[2].innerHTML;
                //   document.getElementById("rgb0").contentDocument.defaultView.window.document.getElementById("hihi").name= document.getElementById("type"+i).children[1].innerHTML ;
 
-                },500); 
+                },1000); 
 
                 b = elm.value;
                 console.log(b);
@@ -605,6 +918,10 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
                     b +
                     ')" src="../../../icons/off.png" style="width:13%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
                 }
+              }
+              else{
+                                document.getElementById('rgb'+i).style.display = "none";
+
               }
             }
           });
@@ -661,6 +978,8 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
                     document.getElementById("motions" + i).innerHTML +=
                       '<img id="motions" src="../../icons/motion.png" style="width:25%; margin-left:25px;margin-top:10px; margin-bottom:10px">';
                   }
+                }else {
+                  document.getElementById("motions"+i).style.display = "none"
                 }
               }
             });
@@ -688,6 +1007,8 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
                   }, 5000);
                   document.getElementById("gaz" + i).src +=
                     "../../Sweet-chart/mychart/gaz.html";
+                } else {
+                  document.getElementById("gaz"+i).style.display = "none";
                 }
               }
             });
@@ -700,11 +1021,7 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
       
     </script>
     <script>
-        var notifications1={type:"motion",content:"a movement was detected in office"};
-        var notifications2={type:"temperature",content:"a high temprature was detected in couzina"};
-        var notifications3={type:"gaz",content:"a high level of gaz was detected in the shower"};
-        var notifications4={type:"motion",content:"a movement was detected when u were away"};
-           var notification=[notifications1,notifications2,notifications3,notifications4];
+      
 
           document.getElementById("notify").addEventListener("click", function() {
             document.getElementById('notifi').innerHTML ="";
@@ -740,7 +1057,11 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
       addRGB(i);  
       addCharts(i); 
       addGaz(i);
+            biz(i); 
+
       addMotion(i);
+      rek(i) ;
+
     }})
    
     </script>
@@ -990,12 +1311,156 @@ console.log(nombre+1);
     });
     
 
+    var selectdeviceoffsroutines = new SelectBeauty({
+      el: '#select-devices-routines-off',
+      length: 6,
+      placeholder:"choose devices to go off when this routine is activated",
+      max:6
+    });
+    var selectdevicesonroutines = new SelectBeauty({
+      el: '#select-devices-routines-on',
+      length: 6,
+      placeholder:"choose devices to go on when this routine is activated",
+      max:6
+    });
   
+    var selectroomsroutines= new SelectBeauty({
+      el: '#select-room-routines',
+      length: 1,
+      placeholder:"choose rooms that will follow this routine",
+      max:10
+    });
+    var selectcolorsroutines= new SelectBeauty({
+      el: '#select-color-routines',
+      length: 6,
+      placeholder:"choose a color for the routine card",
+      max:1
+    });
+    var modifydeviceoffsroutines = new SelectBeauty({
+      el: '#modify-devices-routines-off',
+      length: 6,
+      placeholder:"modify devices to go off when this routine is activated",
+      max:6
+    });
+    var modifydevicesonroutines = new SelectBeauty({
+      el: '#modify-devices-routines-on',
+      length: 6,
+      placeholder:"modify devices to go on when this routine is activated",
+      max:6
+    });
+  
+    var modifyroomsroutines= new SelectBeauty({
+      el: '#modify-room-routines',
+      length: 6,
+      placeholder:"modify the rooms that will follow this routine",
+      max:10
+    });
+    var modifycolorsroutines= new SelectBeauty({
+      el: '#modify-color-routines',
+      length: 6,
+      placeholder:"modify the color for the routine card",
+      max:1
+    });
 
   </script>
 
   <script>
+window.lili = 0 ; 
+function activeRoutine(){
+  for (var i =0 ; i<scenario.length ; i ++){
+    if (document.getElementById("toggle"+i).checked == true){
 
+
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ id: scenario[i]._id }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/activeRoutine"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },400)      }
+      });
+
+
+
+
+
+    } else {
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ id: scenario[i]._id }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/desactiveRoutine"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },400)      }
+      });    }
+  }
+
+}
+
+
+      function clickBb(){
+        document.getElementById('id10').style.display='block' ; 
+        for (var i = getrooms.length ;  i<document.getElementsByClassName("select-beauty")[5].children[1].children.length ; i++){
+          document.getElementsByClassName("select-beauty")[5].children[1].children[i].innerText = "" ; 
+        }
+       
+      }
+      function okBb(j){
+                document.getElementById('id12').style.display='block' ; 
+
+        for (var i = getrooms.length ;  i<document.getElementsByClassName("select-beauty")[9].children[1].children.length ; i++){
+          document.getElementsByClassName("select-beauty")[9].children[1].children[i].innerText = "" ; 
+        }
+  window.lili =  document.getElementById("namrRoutine"+j) ; 
+ console.log("lili khay "+window.lili); 
+      }
+      function deleteConf(i){
+        document.getElementById("id11").style.display='block' ; 
+        document.getElementById("id11").name = i ; 
+      }
+  
+ function deleteRoutine(){
+
+  var i =  document.getElementById("id11").name ; 
+var name = document.getElementsByClassName("container-routines "+i)[0].children[0].innerHTML ;
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ name : name  , i : i }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/deleteRoutine"+document.location.search,
+  success: function(data) {
+  document.getElementsByClassName("container-routines "+data.i)[0].style.display = "none" ; 
+  document.getElementById("id11").style.display='none' ; 
+
+ setTimeout(function(){
+      location.reload()
+     },400)
+     }
+  
+});
+
+ }
+    function rek(i){
+   
+      document.getElementsByClassName("select-beauty")[5].children[1].children[i].children[0].dataset.value = i ;
+      document.getElementsByClassName("select-beauty")[5].children[1].children[i].children[0].innerText = getrooms[i].name ;
+      selectroomsroutines.tempData[i].text = getrooms[i].name ; 
+
+
+ 
+    }
+    function biz(i){
+       document.getElementsByClassName("select-beauty")[9].children[1].children[i].children[0].dataset.value = i ;
+      document.getElementsByClassName("select-beauty")[9].children[1].children[i].children[0].innerText = getrooms[i].name ;
+      modifyroomsroutines.tempData[i].text = getrooms[i].name ; 
+    }
 function deleteNot(j){
 
 var id  = notifications[j]._id ; 
@@ -1021,6 +1486,73 @@ $.ajax({
 
 
 }
+function modifyRoutine(){
+  console.log('hhhhhh '+window.lili);
+    var devicesOn = new Object();
+ var devicesOff = new Object();
+ var rooms = new Array() ; 
+
+var name = document.getElementById("nameRoutineMod").value ;
+
+
+ const color = Object.entries(modifycolorsroutines.selected)[0][1].text ;
+ Object.entries(modifyroomsroutines.selected).forEach(function(elm){
+rooms.push(elm[1].text) ; 
+ });
+
+ Object.entries(modifydevicesonroutines.selected).forEach(function(elm){
+  var ok = elm[1].text ; 
+  devicesOn[ok] = true ; 
+   });
+   Object.entries(modifydeviceoffsroutines.selected).forEach(function(elm){
+    var ok = elm[1].text ; 
+    devicesOff[ok] = false ; 
+     });
+   //  document.getElementsByClassName("container-routines 0")[0].children[0].innerHTML
+    
+}
+
+function addRoutine(){
+ var devicesOn = new Object();
+ var devicesOff = new Object();
+
+
+  const rooms = new Array() ; 
+ const name =  document.getElementById("nameRoutine").value; 
+ const color = Object.entries(selectcolorsroutines.selected)[0][1].text ;
+ Object.entries(selectroomsroutines.selected).forEach(function(elm){
+rooms.push(elm[1].text) ; 
+ });
+
+ Object.entries(selectdevicesonroutines.selected).forEach(function(elm){
+  var ok = elm[1].text ; 
+  devicesOn[ok] = true ; 
+   });
+   Object.entries(selectdeviceoffsroutines.selected).forEach(function(elm){
+    var ok = elm[1].text ; 
+    devicesOff[ok] = false ; 
+     });
+
+     // TODO problem teh devices...........................................
+
+
+
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/addRoutine"+document.location.search,
+  success: function(data) {
+    setTimeout(function(){
+      location.reload()
+     },400)}
+});
+
+
+}
+
+
 
       function create(){
         
@@ -1040,7 +1572,7 @@ $.ajax({
     dev[text] = true;
     }
   })
-  console.log(dev);
+
   $.ajax({
     type: "POST",
     data: JSON.stringify({ type: type , name : name , devices : dev }),
@@ -1423,8 +1955,9 @@ while (document.getElementById("slick-slide0"+i)) {
           dataType: "json",
           url: "/api/rooms/delete"+document.location.search,
           success: function(data) {
-            location.reload();
-        }
+            setTimeout(function(){
+              location.reload()
+             },400)        }
       });
     }
 
@@ -1507,8 +2040,9 @@ $.ajax({
 }
 
    else {
-    location.reload();
-
+    setTimeout(function(){
+      location.reload()
+     },400)
   }
 
     }

@@ -119,7 +119,7 @@ app.get(
   function(req, res) {
     console.log(req.csrfToken);
     res.render(
-      "webapp"
+      "index"
 
       //,{ csrfToken: req.csrfToken() }
     );
@@ -131,13 +131,3 @@ app.use("/api/forgot", forgot);
 app.use("/reset", reset);
 app.use("/api/rooms", rooms);
 app.use("/api/notifications", notifications);
-
-app.post("/server", function(req, res) {
-  let str = "ok";
-  str = req.body["name"];
-  const result = str.toUpperCase();
-
-  res.status(200).send({ name: result });
-
-  res.status(200).send({ name: req.body["name"] });
-});

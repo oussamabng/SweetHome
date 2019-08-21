@@ -102,12 +102,27 @@ const LightSchema = new mongoose.Schema({
 });
 
 const ScenarioSchema = new mongoose.Schema({
-  name: { type: String, require: true },
-  devices: {
-    all: { type: Boolean },
-    name: { type: String },
-    actions: { type: Boolean },
-    time: { type: Date }
+  name: { type: String },
+  checked: { type: Boolean },
+  color: { type: String },
+  rooms: { type: [String] },
+  userId: { type: String },
+
+  devicesOn: {
+    rgb: { type: Boolean },
+    dht: { type: Boolean },
+    light: { type: Boolean },
+    ultrason: { type: Boolean },
+    gsense: { type: Boolean },
+    alarm: { type: Boolean }
+  },
+  devicesOff: {
+    rgb: { type: Boolean },
+    dht: { type: Boolean },
+    light: { type: Boolean },
+    ultrason: { type: Boolean },
+    gsense: { type: Boolean },
+    alarm: { type: Boolean }
   }
 });
 
