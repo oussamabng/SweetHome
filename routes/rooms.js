@@ -181,48 +181,46 @@ router.post("/modify", async function(req, res) {
     light: false,
     alarm: false
   };
-//delete
+  //delete
   req.body.devDel.forEach(function(e) {
     if (e[0] == "l") {
       room.devices.light.forEach(async function(elm) {
-        var light = await Light.findOne({ _id :  elm  });
+        var light = await Light.findOne({ _id: elm });
         light.used = false;
-        await light.save() ; 
-
+        await light.save();
       });
       room.devices.light[0] = "";
     } else if (e[0] == "r") {
       room.devices.rgb.forEach(async function(elm) {
-        var rgb = await Rgb.findOne({  _id :  elm  });
+        var rgb = await Rgb.findOne({ _id: elm });
         rgb.used = false;
-        await rgb.save() ; 
+        await rgb.save();
       });
       room.devices.rgb[0] = "";
     } else if (e[0] == "d") {
       room.devices.dht.forEach(async function(elm) {
-        var dht = await Dht.findOne({ _id :  elm });
+        var dht = await Dht.findOne({ _id: elm });
         dht.used = false;
         await dht.save();
       });
       room.devices.dht[0] = "";
     } else if (e[0] == "u") {
       room.devices.ultrason.forEach(async function(elm) {
-        var ultrason = await Ultrason.findOne({  _id :  elm });
+        var ultrason = await Ultrason.findOne({ _id: elm });
         ultrason.used = false;
-          await ultrason.save() ; 
+        await ultrason.save();
       });
       room.devices.ultrason[0] = "";
     } else if (e[0] == "g") {
       room.devices.gsense.forEach(async function(elm) {
-        var gsense = await Gsense.findOne({  _id :  elm  });
+        var gsense = await Gsense.findOne({ _id: elm });
         gsense.used = false;
-        await gsense.save() ; 
-
+        await gsense.save();
       });
       room.devices.gsense[0] = "";
     } else if (e[0] == "a") {
       room.devices.alarm.forEach(async function(elm) {
-        var alarm = await Alarm.findOne({  _id :  elm  });
+        var alarm = await Alarm.findOne({ _id: elm });
         alarm.used = false;
         await alarm.save();
       });
@@ -230,66 +228,42 @@ router.post("/modify", async function(req, res) {
     }
   });
 
-
-
-
-
-
-
-//doka l add 
-  req.body.devAdd.forEach(function(e) {
+  //doka l add
+  req.body.devAdd.forEach(async function(e) {
     if (e[0] == "l") {
       var light = Light.findOne({ name: e });
       light.used = true;
       room.devices.light[0] = light._id;
-      await light.save() ; 
-
-    }
-
-
-     else if (e[0] == "r") {
-        var rgb = await Rgb.findOne({ name :  e });
-        rgb.used = true ;
+      await light.save();
+    } else if (e[0] == "r") {
+      var rgb = await Rgb.findOne({ name: e });
+      rgb.used = true;
       room.devices.rgb[0] = rgb._id;
-      await rgb.save() ; 
-
-    } 
-    
-    
-    else if (e[0] == "d") {
-        var dht = await Dht.findOne({ name :  e  });
-    dht.used = true ; 
+      await rgb.save();
+    } else if (e[0] == "d") {
+      var dht = await Dht.findOne({ name: e });
+      dht.used = true;
       room.devices.dht[0] = dht._id;
       await dht.save();
-
-    }
-    
-    
-    
-    
-    
-    else if (e[0] == "u") {
-        var ultrason = await Ultrason.findOne({ name :  e  });
-        ultrason.used = true ; 
+    } else if (e[0] == "u") {
+      var ultrason = await Ultrason.findOne({ name: e });
+      ultrason.used = true;
       room.devices.ultrason[0] = ultrason._id;
-      await ultrason.save() ; 
-
+      await ultrason.save();
     } else if (e[0] == "g") {
-        var gsense = await Gsense.findOne({ name :  e  });
-        gsense.used = true ; 
+      var gsense = await Gsense.findOne({ name: e });
+      gsense.used = true;
       room.devices.gsense[0] = gsense._id;
-      await gsense.save() ; 
-
+      await gsense.save();
     } else if (e[0] == "a") {
-        var alarm = await Alarm.findOne({ name :  e  });
+      var alarm = await Alarm.findOne({ name: e });
 
-      alarm.used = true
+      alarm.used = true;
       room.devices.alarm[0] = alarm._id;
       await alarm.save();
-
     }
   });
- 
+
   await room.save();
 
   res.status(200).send({ message: "modify succesfully" });

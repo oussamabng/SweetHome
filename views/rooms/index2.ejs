@@ -3,7 +3,7 @@
 <head>
   <title>Rooms!</title>
   <meta charset="UTF-8">  
- 
+  <link href="../../../dist/css/hopscotch.min.css" rel="stylesheet" />
   <link
   rel="stylesheet"
   href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
@@ -75,7 +75,7 @@
 
     <div class="row"  >
         <!---hadi ga3 t3 animation t3 kol w7da -->
-        <section class="container">
+        <section class="container" id="logout">
           <div class="card">
                                       <div class="front">
                                   <div class="column">
@@ -124,7 +124,7 @@
             </section>
         <!--rab3a hna--> 
         <section class="container">
-                <div class="card">
+                <div class="card"  id="add-tour">
                         <div class="front">
                                 <div calss="column">
                                     <img onclick="document.getElementById('id03').style.display='block'" src="../../../designs/add.png" title="add romm" >
@@ -141,17 +141,15 @@
             </section>
         <!--talia ga3 hna-->
         <section class="container">
-                <div class="card">
+                <div class="card" id="help-tour">
                         <div class="front">
                                 <div calss="column">
-                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/help.png" title="help" >
-                                </div>
+                                  <img onclick="document.getElementById('id13').style.display='block'" src="../../../designs/help.png" title="help" id="help-tour">                                </div>
 
                         </div>
                         <div class="back">
                                 <div calss="column">
-                                     <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/help1.png" title="help" >
-                                </div>
+                                  <img onclick="libya(this)"  src="../../../designs/help1.png" title="help" id="help-tour">                                </div>
                            </div>
                 </div>
 
@@ -173,7 +171,7 @@
             <h1>your home will stay sweet when you're away!</h1>
           
                 
-            <button id="logout" type="submit">logout</button>
+            <button id="logoutPage" type="submit">logout</button>
             
           
           
@@ -186,9 +184,227 @@
     </div>
       <!--script hada t3 ki tclicki barra window youkhrj-->
      
-     
+      <div id="id13" class="modal">
+
+        <div class="imgcontainer">
+        <form class="modal-content animate" action="#">
+      
+      
+      
+            <h1>Take a tour around the app! </h1>
+            <p>confused or new user? follow the walkthrough to know all the elements and to use the app to its maximum</p>
+      
+          <br>
+          <br>
+          <button id="libya"  type="button" class="btn btn-primary">Start </button>
+
+      
+      <br>
+      <br>
+      <h1>Any qestions ?</h1>
+      <p>Send us an email and we will reply as soon as possible!</p>
+          <input type="text" placeholder="Email"  />
+          <input type="text" placeholder="Subject"  />
+          <textarea placeholder="Message"  maxlength="2000"></textarea>
+          <button type="button" >Send</button>
+      <br>
+                    <button type="button" onclick="document.getElementById('id13').style.display='none'" class="ghost">Cancel</button>
+           
+            <br>
+            <br>       
+            </form>
+      </div>
+      </div>
+      <script src="../../../js/jquery-1.10.2.js"></script>
+      <script src="../../../dist/js/hopscotch.js"></script>
             
-        
+      <script>
+        function libya(){
+          document.getElementById('id13').style.display='block'
+          if (screen.width < 700) {
+            var r = 120;
+            var a = "bottom";
+            var b = -195;
+            var c = 220;
+            var x = -120;
+            var y = 130;
+            var u = -45;
+            var i = 55;
+            var w = -10;
+            var v = 30;
+            var p = -240;
+            var o = 270;
+          } else {
+            var r = 100;
+            var a = "left";
+            var b = 15;
+            var c = 60;
+            var x = 15;
+            var y = 60;
+            var u = 15;
+            var i = 60;
+            var w = 15;
+            var v = 60;
+            var p = 15;
+            var o = 60;
+          }
+if(getrooms.length !=0 ){
+  typeX = {
+    target: "type0",
+    placement: a,
+    title: "Name and type of your room",
+    content:
+      "here you will find the name and the type of your room; if you're on a phone or a tablet , grab and swipe left and right to navigate between your rooms!"
+  }
+} 
+if (getrooms[0].devices.ultrason[0] != ""){
+  motionX ={
+    target: 'motions0',
+    placement: a,
+    title: 'motion detector',
+    content: 'If you see this little man running , then there\'s movement in your room, and if he\'s not moving then your room is safe and empty.',
+  }
+}
+if (getrooms[0].devices.dht[0] != ""){
+  chartX = {
+    target: "charts0",
+    placement: a,
+    title: "Temperature and humidity ",
+    content:
+      "keep track of your room's temperature and humidity, click on it to check the detailed chart over time!"
+  }
+}
+if (getrooms[0].devices.rgb[0] != "") {
+  rgbX =  {
+    target: "rgb0",
+    placement: a,
+    title: "Control your lights",
+    content:
+      "turn on or off by clicking on the light bulb, and have fun changing your light color with the rgb color wheel"
+  }
+}
+if(getrooms[0].devices.gsense[0] != ""){
+  gazX = {
+    target: "charts0",
+    placement: a,
+    title: "Temperature and humidity ",
+    content:
+      "keep track of your room's temperature and humidity, click on it to check the detailed chart over time!"
+  }
+} else {
+  gazX = {
+
+  }
+}
+  
+
+    var tour = {
+      id: "hello-hopscotch",
+      steps: [
+        {
+          target: "test",
+          title: "Hello and welcome!",
+          content:
+            "welcome to your Sweet app, where you can control your whole home easily , by controlling each room by itself! each room has its own card with the devices working in it!",
+          placement: "top",
+          yOffset: r,
+          xOffset: 15,
+          arrowOffset: 60
+        },
+  
+        typeX,
+       rgbX,
+        chartX,
+       motionX,
+      gazX,
+        {
+          target: "add-tour",
+          placement: "bottom",
+          title: "Add a new room",
+          content:
+            "create a new room here by naming it , choosing a type and Selecting the devices that you installed in it ",
+          yOffset: 100,
+          xOffset: b,
+          arrowOffset: c
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          title: "Routines",
+          content:
+            "all of us have routines that we repeat every day , well you don't have to anymore! ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          content:
+            "Add your routine , name it and give it a themed color, and select devices that will do certain actions when the routine is activated! ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          content:
+            "for example : whenever you are going to sleep you have to turn all the lights off and turn on the alarm for motion sensors , well... why do it by hand when you only have to press one button if you add a sleep routine here? (cool, right?) ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "notify",
+          placement: "bottom",
+          title: "Notifications",
+          content:
+            "all of the notifications sent to you by the app are listed here , if you miss one you can check it , and if you handled the situation , you can delete the notification with the lil 'x' on the right of each one ",
+          yOffset: 100,
+          xOffset: u,
+          arrowOffset: i
+        },
+        {
+          target: "logout",
+          placement: "bottom",
+          title: "Logout!",
+          content:
+            "if you want to sign off from your account , you can do it here !  ",
+          yOffset: 100,
+          xOffset: w,
+          arrowOffset: v
+        },
+        {
+          target: "help-tour",
+          placement: "bottom",
+         
+          content:
+            "have fun using your Sweet app in your Sweet home, if you have any questions, fill free to sen us an email with the form that you will find here!",
+          yOffset: 100,
+          xOffset: p,
+          arrowOffset: o
+        }
+      ],
+      showPrevButton: true,
+      scrollTopMargin: 100
+    }
+  
+      document.getElementById("libya").addEventListener("click", function() {
+        document.getElementById('id13').style.display='none' ; 
+
+        if (!hopscotch.isActive) {
+
+        hopscotch.startTour(tour);
+        }
+
+
+      });
+    };
+
+
+</script>
+        <!--  id13   -->
 
 
  <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
@@ -1003,7 +1219,23 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
                 if (elm.used == true) {
                   if (elm.value == true) {
                     document.getElementById("motions" + i).innerHTML +=
-                      '<img id="motions" src="../../icons/motion.png" style="width:25%; margin-left:25px;margin-top:10px; margin-bottom:10px">';
+                    '<div class="row">'+
+                        '<div class="column">'+
+                      '<img id="motions" src="../../icons/motion.png" class="gifgif">'+
+                      '</div>'+
+                      '<div class="column">'+
+                          '<div class="onoffswitch" style="margin-left:20%">'+
+                              '<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>'+
+                                '<label class="onoffswitch-label" for="myonoffswitch">'+
+                                   '<span class="onoffswitch-inner"></span>'+
+                                     '<span class="onoffswitch-switch"></span>'+
+                               '</label>'+
+                            '</div>'+
+                          '</div>'+
+
+                      '</div>';
+
+                      
                   }
                 }else {
                   document.getElementById("motions"+i).style.display = "none"

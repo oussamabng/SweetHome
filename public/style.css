@@ -3,7 +3,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
   color: black;
-  font-size: 500;
+  font-size: 30;
   margin: 0;
   padding: 0;
 }
@@ -122,6 +122,13 @@ img.addimg {
 /*******************/
 
 @media only screen and (max-width: 600px) {
+  .gifgif {
+    width: 70%;
+    margin-left: -0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
   .closenoti {
     position: absolute;
     right: 40px;
@@ -1252,4 +1259,111 @@ select {
     width: 75%;
     height: 75%;
   }
+}
+.walkthrough {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 12;
+}
+
+.onoffswitch {
+  top: 30%;
+  position: relative;
+  width: 90px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  display: none;
+}
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 14px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: lighter;
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 10px;
+  background-color: rgb(182, 80, 177);
+  color: #ffffff;
+}
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 10px;
+  background-color: #eeeeee;
+  color: #999999;
+  text-align: right;
+}
+.onoffswitch-switch {
+  display: block;
+  width: 18px;
+  margin: 6px;
+  background: #ffffff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 56px;
+  border: 2px solid #999999;
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
+
+column {
+  column-gap: -50px;
+  flex: 50%;
+  margin: 0px;
+  left: 0px;
+  padding: 0px;
+}
+.gifgif {
+  width: 100%;
+  margin-left: -50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+textarea {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+.kitchen {
+  background-image: url("./icons/ha.png");
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  /* margin: 1px 10px 1px 0px; */
+  vertical-align: middle;
 }
