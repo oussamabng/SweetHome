@@ -49,7 +49,20 @@
 </div>
   
 <script type="text/javascript">
-    
+	var rgbToHex = function (rgb) { 
+		var hex = Number(rgb).toString(16);
+		if (hex.length < 2) {
+				 hex = "0" + hex;
+		}
+		return hex;
+	}
+	var fullColorHex = function(r,g,b) {   
+		var red = rgbToHex(r);
+		var green = rgbToHex(g);
+		var blue = rgbToHex(b);
+		return "#"+red+green+blue;
+	}
+
 function changeimage(){
 	var name = document.getElementById("hihi").name ; 
 		var img = document.getElementById("daw") ; 
@@ -120,7 +133,7 @@ var name = "ok";
 	});
 
 	
-
+	
 
 function setColor(e){
 	document.getElementById('info').innerHTML = 
@@ -128,8 +141,11 @@ function setColor(e){
 			'G:' + ('000' + e.g).substr(-3) + 
 			'B:' + ('000' + e.b).substr(-3);
 			var i=0;
+		
 			//while (document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value == "true"){
 				//i++
+
+
 
 var nameHih = document.getElementById("hihi") ; 
 
@@ -140,9 +156,7 @@ if (nameHih.name != "test") {
         type: "POST",
         data: JSON.stringify({
           name: document.getElementById("hihi").name,
-          red: e.r,
-          blue: e.b,
-          green: e.g
+          color : fullColorHex(e.r ,e.g,e.b) 
         }),
         contentType: "application/json",
         dataType: "json",

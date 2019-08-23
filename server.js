@@ -2,7 +2,18 @@ const express = require("express");
 const app = express();
 const webPush = require("web-push");
 const jwt = require("jsonwebtoken");
-
+const {
+  User,
+  Dht,
+  Light,
+  Alarm,
+  Rgb,
+  Gsense,
+  Ultrason,
+  Rooms,
+  Notification,
+  Scenario
+} = require("./models/user");
 //const path = require("path");
 const config = require("config");
 const mongoose = require("mongoose");
@@ -89,21 +100,77 @@ db.once("open", () => {
   app.listen(3000, () => {
     console.log("Listening on port :  3000");
   });
-
+  const utrasonCollection = db.collection("ultrasons");
   const alarmCollection = db.collection("alarms");
   const changeStream = alarmCollection.watch();
+  const changeStreamUltrason = utrasonCollection.watch();
 
-  changeStream.on("change", change => {
+  changeStreamUltrason.on("change", async function(change) {
+    if (change.operationType === "replace") {
+      const user = await User.findOne({ tokenId: change.fullDocument.tokenId });
+      var room = await Rooms.find({ userId: user._id });
+      room.forEach(async function(elm) {
+        if (elm.devices.ultrason[0] == change.fullDocument._id) {
+          console.log({
+            id: change.fullDocument._id,
+            name: elm.name,
+            value: change.fullDocument.value
+          });
+          pusher.trigger("inserted", "ultrason", {
+            //TODO to add //data : change.fullDocument.data
+            id: change.fullDocument._id,
+            name: elm.name,
+            value: change.fullDocument.value
+          });
+          notif = new Notification({
+            type: "ultrason",
+            content: "door action happend",
+            time: new Date().toString().substring(0, 24),
+            userId: user._id,
+            a: {
+              val: true,
+              id: change.fullDocument._id,
+              nameRoom: elm.name
+            }
+          });
+          await notif.save();
+        }
+      });
+    }
+  });
+
+  changeStream.on("change", async function(change) {
     if (
       change.operationType === "replace" &&
       change.fullDocument.value == true
     ) {
       console.log("alarm tsoniii !!!!!!!");
-      pusher.trigger("alarms", "inserted", {
+      pusher.trigger("inserted", "alarm", {
         //TODO to add //data : change.fullDocument.data
         message: "hello world",
         id: change.fullDocument._id
       });
+      var user = await User.findOne({ tokenId: change.fullDocument.tokenId });
+      user.check = false;
+      var rooms = await Rooms.find({ userId: user._id });
+      rooms.forEach(function(room) {
+        if (room.devices.alarm[0] == change.fullDocument._id) {
+          notif = new Notification({
+            type: "motion",
+            content: "movement dtc",
+            time: new Date().toString().substring(0, 24),
+            userId: user._id,
+            a: {
+              val: true,
+              id: change.fullDocument._id,
+              nameRoom: room.name
+            }
+          });
+        }
+      });
+
+      await user.save();
+      await notif.save();
     }
   });
 });

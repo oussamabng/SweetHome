@@ -32,7 +32,6 @@
   <link rel="manifest" href="/views/manifest.json">  
   <meta name="theme-color" content="#585f82">
   <link rel="apple-touch-icon" href="/views/designs/touch-apple.png">
-  <script src="//code.jquery.com/jquery.min.js"></script> 
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
 
@@ -92,15 +91,15 @@
         <!--hna tkml lwla g3 t3 nav bar t3 login-->
         <!--zwaja tbda hna-->
         <section class="container">
-                <div class="card"  id="notify">
+                <div class="card" id="notify" >
                         <div class="front">
                                 <div calss="column">
-                                    <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs/notifications.png" title="notification" id="notify">                                </div>
+                                    <img onclick="not(this)" src="../../../designs/notifications.png" title="notification" id="notify">                                </div>
 
                         </div>
                         <div class="back">
                                 <div calss="column">
-                                    <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs/notifications1.png" title="notification" id="notify">                                </div>
+                                    <img onclick="not(this)"  src="../../../designs/notifications1.png" title="notification" id="notifyx" >                                </div>
                            </div>
                 </div>
 
@@ -776,6 +775,7 @@ if(getrooms[0].devices.gsense[0] != ""){
   
               </select>
             </div>
+
             <div class="selectcontainer">
             <select name="select-devices" id="modify-devices-routines-on" class="form-control">
                 <option value="1" >dht</option>
@@ -896,6 +896,33 @@ if(getrooms[0].devices.gsense[0] != ""){
   }
   </script>
   <script>
+    function not() {
+
+      
+      document.getElementById('id02').style.display='block'
+      
+if (document.getElementById('notifyx').src =="http://localhost:3000/designs/notifications1.gif" ) {
+    document.getElementById('notifyx').src = "../../../designs/notifications1.png" ;
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ check  : true }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/check"+document.location.search,
+      success: function(data) {
+  }
+});
+}
+
+
+
+
+
+
+
+
+  
+  }
   function myFunctionRoutine(i) {
             document.getElementById("myDropdownroutine"+i).classList.toggle("show");
           }
@@ -994,7 +1021,9 @@ if(getrooms[0].devices.gsense[0] != ""){
       <h1 id="devx">
           <%= devices %>
         </h1>
-
+        <h1 id="check">
+          <%= check %>
+        </h1>
        
   </div>
 
@@ -1006,7 +1035,7 @@ if(getrooms[0].devices.gsense[0] != ""){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   <script>
       var getrooms = JSON.parse(document.getElementById("getrooms").innerHTML);
-      console.log(getrooms);
+      var check = JSON.parse(document.getElementById("check").innerHTML);
       var allrgb = JSON.parse(document.getElementById("rgb").innerHTML);
       var alldht = JSON.parse(document.getElementById("dht").innerHTML);
       var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
@@ -1144,7 +1173,7 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
                 console.log(b);
                 if (elm.value == true) {
                   document.getElementById("rgb" + i).innerHTML +=
-                    '<section id="OnOff"><img title="' +
+                    '<section id="OnOff"><img style="width:70%; title="' +
                     id +
                     '"  onclick="OnOff(' +
                     i +
@@ -1159,7 +1188,7 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
                     i +
                     ", " +
                     b +
-                    ')" src="../../../icons/off.png" style="width:13%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
+                    ')" src="../../../icons/off.png" style="width:19%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
                 }
               }
               else{
@@ -1217,26 +1246,12 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
             allultrason.forEach(function(elm) {
               if (id == elm._id) {
                 if (elm.used == true) {
-                  if (elm.value == true) {
                     document.getElementById("motions" + i).innerHTML +=
-                    '<div class="row">'+
-                        '<div class="column">'+
-                      '<img id="motions" src="../../icons/motion.png" class="gifgif">'+
-                      '</div>'+
-                      '<div class="column">'+
-                          '<div class="onoffswitch" style="margin-left:20%">'+
-                              '<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>'+
-                                '<label class="onoffswitch-label" for="myonoffswitch">'+
-                                   '<span class="onoffswitch-inner"></span>'+
-                                     '<span class="onoffswitch-switch"></span>'+
-                               '</label>'+
-                            '</div>'+
-                          '</div>'+
-
-                      '</div>';
+                      '<img class="gifgif" id="motions" src="../../icons/closeDoor.png" style="height: 100px ; width: 100px; margin-left:10px" >';
+                     
 
                       
-                  }
+                  
                 }else {
                   document.getElementById("motions"+i).style.display = "none"
                 }
@@ -1282,17 +1297,16 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
     <script>
       
 
-          document.getElementById("notify").addEventListener("click", function() {
-            document.getElementById('notifi').innerHTML ="";
-            for (i=0;i<notifications.length;i++){
-              showntifications(i);
-            }
-          });    
+         
   function showntifications(i){
         if(notifications[i].type=="motion") {
         document.getElementById('notifi').innerHTML += '<li id="mouvement'+i+'"   class="motion">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
         
   }
+  if(notifications[i].type=="ultrason") {
+    document.getElementById('notifi').innerHTML += '<li id="mouvement'+i+'"   class="motion">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+    
+}
         if(notifications[i].type=="temperature"){
           document.getElementById('notifi').innerHTML += '<li  id="tmp'+i+'"  class="temperature">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
       
@@ -1310,20 +1324,98 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
       </script>
     <script>
     $(document).on('ready', function() {
-      for (i = 0; i < getrooms.length; i++){
+
+
+if (check) {
+  document.getElementById('notifyx').src = "../../../designs/notifications1.png"
+} else  {
+  document.getElementById('notifyx').src = "../../../designs/notifications1.gif"
+
+}
+      
+
+      for (var i = 0; i < getrooms.length; i++){
       showRooms(i);
       addType(i); 
       addRGB(i);  
       addCharts(i); 
       addGaz(i);
-            biz(i); 
-
+      biz(i); 
       addMotion(i);
       rek(i) ;
 
     }
-    
-    
+    for (var j=0;j<notifications.length;j++){
+      console.log(notifications[j]) ; 
+      showntifications(j);
+    }
+    notifications.forEach(function(elm){
+     
+      if (elm.a.val == true){
+        document.getElementById("notifyx").src = "../../../designs/notifications1.gif" ; 
+        $.ajax({
+          type: "POST",
+          data: JSON.stringify({ check  : false }),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/rooms/check"+document.location.search,
+          success: function(data) {
+      }
+    });
+
+        if(elm.type == "motion") {
+
+
+
+
+        if(!("Notification" in window)){
+          alert("this browser does not support notif");
+      }else if (Notification.permission == "granted"){
+        var options = {
+          body: "ring ring in :"+elm.a.nameRoom,
+          icon: "../../../notifications1.gif",
+          requireInteraction: true     
+        }
+          var notification = new Notification("alarm" ,options );
+          
+      } 
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({
+          id : elm._id
+        }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/val"+document.location.search,
+        success: function(name) {console.log(name)}
+      });
+
+    } else if (elm.type == "ultrason"){
+      if(!("Notification" in window)){
+        alert("this browser does not support notif");
+    }else if (Notification.permission == "granted"){
+      var options = {
+        body: elm.content,
+        icon: "../../../notifications1.gif",
+        requireInteraction: true     
+      }
+        var notification = new Notification("Door action detected" ,options );
+        $.ajax({
+          type: "POST",
+          data: JSON.stringify({
+            id : elm._id
+          }),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/rooms/val"+document.location.search,
+          success: function(name) {console.log(name)}
+        });
+    }
+     
+    }
+     
+  }
+      });
   });
    
     </script>
@@ -1400,8 +1492,40 @@ var pusher = new Pusher('28874f2f3bdf02b787e5', {
   forceTLS: true
 });
 
-var channel = pusher.subscribe('alarms');
-channel.bind('inserted', function(data) {
+var chan = pusher.subscribe('inserted');
+
+
+chan = pusher.bind('ultrason' , function(data){
+  for(var i=0 ; i< getrooms.length ; i++){
+    if ((document.getElementsByClassName("container-name")[i].children[2].innerText) == data.name ) {
+      if(!("Notification" in window)){
+        alert("this browser does not support notif");
+    }else if (Notification.permission == "granted"){
+        var notification = new Notification("motion detected" , {
+          body : function(){
+            if (data.value) {
+              return "Door opened in the room :"+data.name
+            } else{
+              return "Door closed in the room :"+data.name
+            }
+          }
+        });
+    } 
+   
+
+     if (data.value == true){
+      document.getElementById("motions"+i).children[0].src = "../../../icons/openDoor.png" ; 
+     } else {
+      document.getElementById("motions"+i).children[0].src = "../../../icons/closeDoor.png" ; 
+ }
+    }
+  }
+})
+
+
+
+
+chan.bind('alarm', function(data) {
   //  VanillaToasts.create({
     //    title: 'alert',
       //  text:JSON.stringify(data),
@@ -1410,6 +1534,13 @@ channel.bind('inserted', function(data) {
         //timeout: 2000 ,
         //callback: function() {  } 
      // });
+
+  //w   document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
+
+
+    
+
+
      var id =  JSON.stringify(data.id) ;
      const name = "haha";
 const saha  = document.getElementById("pushTest");
@@ -1431,17 +1562,7 @@ toastr.options = {
   hideMethod: "fadeOut",
   tapToDismiss: false,
   onclick: function() {
-    $.ajax({
-      type: "POST",
-      data: JSON.stringify({ type: "motion" , content : "Mouvement Detected" , time : new Date().toString().substring(0,24)  }),
-      contentType: "application/json",
-      dataType: "json",
-      url: "/api/rooms/getnotifications"+document.location.search,
-      success: function(data) {
-
-console.log("test khay !" +data);
-            }
-    });
+   
   
     
     $.ajax({
@@ -1454,6 +1575,18 @@ console.log("test khay !" +data);
       url: "/api/rooms/notifications"+document.location.search,
       success: function(name) {
 nombre = 0;
+
+if (getrooms.length == 1){
+  document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
+
+  document.getElementById("motions").src = "http://localhost:3000/icons/motion.gif" ; 
+  document.getElementById("motions").onclick = function (){
+    document.getElementById("motions").src = "http://localhost:3000/icons/motion.png" ; 
+  }
+
+}else
+{
+
 for(var i = 0 ; i < getrooms.length; i++){
 
 if (document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value == "false"){ 
@@ -1482,6 +1615,7 @@ t = setInterval(function(){
 
       if (name[0] == document.getElementById("type"+a).children[2].innerHTML )
     {
+      document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
     document.getElementById("motions").src = "http://localhost:3000/icons/motion.gif" ; 
     document.getElementById("motions").onclick = function (){
       document.getElementById("motions").src = "http://localhost:3000/icons/motion.png" ; 
@@ -1507,6 +1641,7 @@ t = setInterval(function(){
 console.log(nombre+1);
 //TODO doka ha ndir 
       }
+    }
   
 // hna
 // TODO ok 
@@ -1811,6 +1946,7 @@ $.ajax({
   dataType: "json",
   url: "/api/rooms/deleteNot"+document.location.search,
   success: function(data) {
+    console.log(data) ; 
  if (data.type == "motion") {
    document.getElementById("mouvement"+data.i).style.display = "none";
  } else if (data.type == "temperature") {

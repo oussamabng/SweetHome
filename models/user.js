@@ -24,7 +24,8 @@ const userSchema = new mongoose.Schema({
   resetPasswordToken: { type: String, default: "" },
 
   resetPasswordExpires: { type: Date, default: Date.now() },
-  tokenId: String
+  tokenId: String,
+  check: { type: Boolean, default: true }
 });
 
 const roomsSchema = {
@@ -49,7 +50,9 @@ const roomsSchema = {
 const DHTSchema = new mongoose.Schema({
   name: String,
   value: {
-    type: [{ data: Number, time: Date }]
+    temperature: { type: [Number] },
+    humidity: { type: [Number] },
+    time: { type: Date }
   },
   used: { type: Boolean, default: false },
   tokenId: String
@@ -81,8 +84,8 @@ GSenseSchema = new mongoose.Schema({
 
 const RGBSchema = new mongoose.Schema({
   name: String,
-  state: { type: [Number], default: new Array() },
-  color: { type: [Number], default: new Array() },
+  state: { type: Boolean },
+  color: { type: String },
   used: { type: Boolean, default: false },
   tokenId: String
 });
@@ -126,14 +129,24 @@ const ScenarioSchema = new mongoose.Schema({
   }
 });
 
+const ArmingModeSchema = new mongoose.Schema({
+  name: { type: String },
+  value: { type: Boolean, default: false },
+  tokenId: { type: String }
+});
+
 const NotificationSchema = new mongoose.Schema({
-  type: { type: String, enum: ["motion", "temperature", "gaz"] },
+  type: { type: String, enum: ["motion", "temperature", "gaz", "ultrason"] },
   content: { type: String },
   time: { type: String },
   userId: { type: String },
-  showed: { type: Boolean }
+  a: {
+    val: { type: Boolean, default: false },
+    id: { type: String },
+    nameRoom: { type: String }
+  }
 });
-
+const ArmingMode = mongoose.model("armingmodes", ArmingModeSchema);
 const Notification = mongoose.model("notifications", NotificationSchema);
 const Scenario = mongoose.model("scenarios", ScenarioSchema);
 const User = mongoose.model("users", userSchema);
@@ -166,7 +179,7 @@ function validate(user) {
   };
   return Joi.validate(user, schema);
 }
-
+module.exports.ArmingMode = ArmingMode;
 module.exports.Notification = Notification;
 module.exports.Scenario = Scenario;
 module.exports.User = User;
