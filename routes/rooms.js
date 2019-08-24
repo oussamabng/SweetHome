@@ -14,7 +14,8 @@ const {
   Ultrason,
   Rooms,
   Notification,
-  Scenario
+  Scenario,
+  ArmingMode
 } = require("../models/user");
 const _ = require("lodash");
 
@@ -147,22 +148,16 @@ router.post("/rgb", async function(req, res) {
   var token = req.query.token;
 
   var decoded = jwt.verify(token, config.get("jwtPrivateKey"));
-  const room = await Rooms.findOne({
-    name: req.body.name,
-    userId: decoded._id
-  });
 
-  room.devices.rgb.forEach(async function(elm) {
-    var rgb = await Rgb.findOne({ _id: elm });
+  var rgb = await Rgb.findOne({ _id: req.body.id });
 
-    rgb.used = true;
+  rgb.used = true;
 
-    rgb.color = req.body.color;
+  rgb.color = req.body.color;
 
-    rgb.save();
-  });
+  await rgb.save();
 
-  res.status(200).send("succes rgb ^^");
+  res.status(200).send({ msg: "rgb color changed successfully" });
 });
 // TODO modify devices ................................................................;
 
@@ -283,16 +278,14 @@ router.post("/modify", async function(req, res) {
 router.post("/light", async function(req, res) {
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
-  const room = await Rooms.findOne({
-    name: req.body.name,
-    userId: decoded._id
-  });
-  room.devices.light.forEach(async function(id) {
-    var light = await Light.findOne({ _id: id });
-    light.value = req.body.value;
-    light.save();
-  });
-  res.status(200).send({ message: "activate routine succesfully" }); //anglais mkwd laghlb
+  console.log(req.body);
+
+  var light = await Light.findOne({ _id: req.body.id });
+
+  light.value = req.body.value;
+
+  await light.save();
+  res.status(200).send({ message: "light change succesfully" }); //anglais mkwd laghlb
 });
 // ********************************************************//
 // ********************************************************//
@@ -390,10 +383,13 @@ router.post("/ArmingMode", async function(req, res) {
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
 
-  console.log({
-    req: req.body
-  });
-  res.status(200).send({ msg: "val succes" });
+  const user = await User.findOne({ _id: decoded._id });
+  const ar = await ArmingMode.findOne({ tokenId: user.tokenId });
+  ar.value = req.body.value;
+
+  await ar.save();
+
+  res.status(200).send({ msg: "ArmingMode change value success" });
 });
 
 // ********************************************************//
@@ -596,6 +592,8 @@ router.get("/all", async function(req, res) {
   const check = user.check;
   var devices = new Array();
 
+  const ar = await ArmingMode.findOne({ tokenId: user.tokenId });
+
   const dht = await Dht.find({
     tokenId: user.tokenId
   });
@@ -665,7 +663,8 @@ router.get("/all", async function(req, res) {
     notification: JSON.stringify(notification),
     routine: JSON.stringify(routine),
     devices: JSON.stringify({ devices: devices }),
-    check: check
+    check: check,
+    armingMode: ar.value
   });
 });
 // get rooms

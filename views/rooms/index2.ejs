@@ -63,11 +63,10 @@
       }, 1000);
     </script>
 </head>
-<body>
+<body onload="loader()">
 
 
 <!--------------------------------------------------------------->
-
 
 
 
@@ -156,8 +155,21 @@
       
 </div>  
 <!------------------------------------------------------------>
+<div id="ArmingMode" >
 
-
+<div class="row">
+    <p><strong>Arming Mode</strong></p>
+  </div>
+<div  class="row" >
+<div class="onoffswitch" >
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+      <label class="onoffswitch-label" for="myonoffswitch">
+         <span class="onoffswitch-inner"></span>
+           <span class="onoffswitch-switch"></span>
+     </label>
+  </div>
+</div>
+</div>
 
      <!--hadi l fenetre li tkhrjlk f login-->
 <div id="id01" class="modal">
@@ -218,6 +230,23 @@
       <script src="../../../dist/js/hopscotch.js"></script>
             
       <script>
+$('#myonoffswitch').change(function(){
+  var value = this.checked ;
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({
+     value : value
+    }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/ArmingMode"+document.location.search,
+    success: function(data) {
+      console.log(data);
+    }
+  });
+
+})
+
         function libya(){
           document.getElementById('id13').style.display='block'
           if (screen.width < 700) {
@@ -316,6 +345,16 @@ if(getrooms[0].devices.gsense[0] != ""){
         chartX,
        motionX,
       gazX,
+      {
+        target: "ArmingMode",
+        placement: "bottom",
+        title: "Arming mode",
+        content:
+          "Active or Desactive motion sensor for the home .. active it when you are leaving home and desactivate when you are back .",
+        yOffset: 0,
+        xOffset: b-50,
+        arrowOffset: c
+      },
         {
           target: "add-tour",
           placement: "bottom",
@@ -731,7 +770,7 @@ if(getrooms[0].devices.gsense[0] != ""){
     </div>
   
   
-    <div lang="test" id="id12" class="modal">
+    <div lang="test" id="id12" class="modal" >
   
   
         <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoutine(this)">
@@ -975,9 +1014,9 @@ if (document.getElementById('notifyx').src =="http://localhost:3000/designs/noti
 
 
 
-  
 
-  <section class="regular slider" id="test"></section>
+
+  <section class="regular slider" id="test" style="margin-top: 0;" ></section>
 
   
 
@@ -1024,18 +1063,67 @@ if (document.getElementById('notifyx').src =="http://localhost:3000/designs/noti
         <h1 id="check">
           <%= check %>
         </h1>
+        <h1 id="ar">
+            <%= armingMode %>
+          </h1>
        
   </div>
 
 </div>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
 
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
    <script src="../../../slick/slick.js" type="text/javascript" charset="utf-8"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   <script>
+
+    var onOff =  function () {
+      console.log(this) ; 
+      var id = this.title; 
+      if (this.src == "http://localhost:3000/icons/on.png" ){
+
+        $.ajax({
+          url: "/api/rooms/light"+document.location.search,
+          method: "POST",
+          data: JSON.stringify({ id: id, value: false }),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(data) {
+            console.log(data);
+
+          }
+        });  
+        this.src = "../../../icons/off.png";     
+
+      }else if (this.src == "http://localhost:3000/icons/off.png") {
+        $.ajax({
+          url: "/api/rooms/light"+document.location.search,
+          method: "POST",
+          data: JSON.stringify({ id: id, value: true }),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(data) {
+console.log(data);
+          }
+        });
+        this.src = "../../../icons/on.png"
+        
+      }
+
+
+     
+
+
+
+
+      }
+
       var getrooms = JSON.parse(document.getElementById("getrooms").innerHTML);
       var check = JSON.parse(document.getElementById("check").innerHTML);
+      var ar = JSON.parse(document.getElementById("ar").innerHTML);
+
       var allrgb = JSON.parse(document.getElementById("rgb").innerHTML);
       var alldht = JSON.parse(document.getElementById("dht").innerHTML);
       var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
@@ -1059,9 +1147,26 @@ if (document.getElementById('notifyx').src =="http://localhost:3000/designs/noti
             '<section class="container-name" id="type'+i+'" >'+
              
             '</section>'+
-           '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
+
+              
+
+        
+
+                  
+                 '<section class="ok" style=" width:100%; height:150px;" frameBorder="0" scrolling="no">'+
+
+                    '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
             
-            '</iframe>'+
+                        '</iframe>'+
+                        '<section class="container-light" id="light'+i+'" style="text-align: left; " frameBorder="0" scrolling="no">'+
+            
+                            '</section>'+
+                        
+                  '</section>'+
+
+
+
+
             '<div id="temp" style="position:relative;">'+
                 '<div id="overlay-charts" onclick="showTemp(this)" > '+
               '</div>'+
@@ -1136,71 +1241,86 @@ if (document.getElementById('notifyx').src =="http://localhost:3000/designs/noti
                                                           }
           
       }
-      function addRGB(i){
+      function addLight(i){
+        if (getrooms[i].devices.light[0] != ""){
+
         
-        if (getrooms[i].devices.light[0] == ""){
-          document.getElementById("rgb"+i).style.display = "none"
-          
-        } else {
-         
         getrooms[i].devices.light.forEach(function(id) {
           alllight.forEach(function(elm) {
-            if (id == elm._id) {
-              if (elm.used == true) {
-                if (getrooms[i].devices.rgb[0] == ""){
+if (id == elm._id){
+  if (elm.used == true){
+    if (elm.value){
+     var daw =  document.createElement("section") ;
+     daw.id= "OnOff"+i ; 
+     var im = document.createElement("img");
+     daw.appendChild(im)
+     im.title = id ; 
+   
+     im.className = "rgbview";
+     im.src ="../../../icons/on.png" ;
+     im.style = "width:50px;margin-left:30px;margin-top:50px;" ; 
+im.onclick = onOff ; 
+document.getElementById("light"+i).appendChild(daw);
 
-                document.getElementById('rgb'+i).style.display = "none";
-                }
-                document.getElementById('rgb'+i).src = '../../../rgb.html';    
+    
+    }else{
+      var daw =  document.createElement("section") ;
+      daw.id= "OnOff"+i ; 
+      var im = document.createElement("img");
+      daw.appendChild(im)
+      im.title = id ; 
+      im.className = "rgbview";
+     
+      im.src ="../../../icons/off.png" ;
+      im.style = "width:50px;margin-left:20px;margin-top:50px;" ; 
+ im.onclick = onOff ; 
 
-                setTimeout(function(){
-                  if (getrooms[i].devices.rgb[0] == ""){
-                    document.getElementById('rgb'+i).style.display = "block";
-                    document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[1].children[1].style.display = "none"      ;   
-
-                    console.log("samaykom");
-              document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[1].children[0].children[0].style.width ="15%"   ;  
-
-      
-                   }
-//console.log( document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name)
-document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name =  document.getElementById("type"+i).children[2].innerHTML;
-               //   document.getElementById("rgb0").contentDocument.defaultView.window.document.getElementById("hihi").name= document.getElementById("type"+i).children[1].innerHTML ;
-
-                },1000); 
-
-                b = elm.value;
-                console.log(b);
-                if (elm.value == true) {
-                  document.getElementById("rgb" + i).innerHTML +=
-                    '<section id="OnOff"><img style="width:70%; title="' +
-                    id +
-                    '"  onclick="OnOff(' +
-                    i +
-                    ", " +
-                    b +
-                    ')" src="../../../icons/on.png"  class="rgbview"></section>';
-                } else if (elm.value == false) {
-                  document.getElementById("rgb" + i).innerHTML +=
-                    '<section id="OnOff"><img title="' +
-                    id +
-                    '"   onclick="OnOff(' +
-                    i +
-                    ", " +
-                    b +
-                    ')" src="../../../icons/off.png" style="width:19%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
-                }
-              }
-              else{
-                                document.getElementById('rgb'+i).style.display = "none";
-
-              }
-            }
+ document.getElementById("light"+i).appendChild(daw);    }
+  }
+}
           });
         });
-        
+      }else {
+        document.getElementById("light"+i).style.display = "none";
+        document.getElementById("light"+i).style.marginTop = 0;
+
+      
+
+
       }
-    
+      }
+
+
+
+
+
+
+      function addRGB(i){
+        if (getrooms[i].devices.rgb[0] == ""){
+          document.getElementById("rgb"+i).style.display = "none";
+ 
+        }else {
+       
+allrgb.forEach(function(elm){
+  
+  if (getrooms[i].devices.rgb[0] == elm._id){
+
+    if (elm.used){
+
+      document.getElementById("rgb"+i).src = "../../../rgb.html";
+      setTimeout(function(){
+      
+        document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name =  elm._id ; 
+      },500);
+      
+    }else {
+      document.getElementById("rgb"+i).style.display = "none";
+
+    }
+  }
+})
+        }
+      
      
       
         }
@@ -1322,10 +1442,20 @@ document.getElementById("rgb"+i).contentDocument.defaultView.window.document.chi
       
   }
       </script>
+      <script>
+          function loader() {
+            document.getElementById("myonoffswitch").checked = ar ; 
+            setTimeout(function() { 
+              if($('#ftco-loader').length > 0) {
+                $('#ftco-loader').removeClass('show');
+              }
+            }, 1  );
+          };
+
+
+      </script>
     <script>
     $(document).on('ready', function() {
-
-
 if (check) {
   document.getElementById('notifyx').src = "../../../designs/notifications1.png"
 } else  {
@@ -1335,9 +1465,11 @@ if (check) {
       
 
       for (var i = 0; i < getrooms.length; i++){
+        
       showRooms(i);
       addType(i); 
-      addRGB(i);  
+      addRGB(i);
+      addLight(i);
       addCharts(i); 
       addGaz(i);
       biz(i); 
@@ -2501,6 +2633,5 @@ $.ajax({
 
   </script>
  
-
 </body>
 </html>
