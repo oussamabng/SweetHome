@@ -134,6 +134,9 @@ var nameHih = document.getElementById("hihi") ;
 			//onsole.log("name " + name );
  setTimeout(function(){
 if (nameHih.name != "test") {
+	if (	document.getElementById('info').innerHTML    != 	"R:255G:000B:000"){
+
+	
   $.ajax({
         type: "POST",
         data: JSON.stringify({
@@ -146,9 +149,10 @@ if (nameHih.name != "test") {
         success: function(data) {
           console.log(data);
         }
-      });
+			});	
+		}
 }
- },2000)
+ },500);
 	
 	}	
 	 	

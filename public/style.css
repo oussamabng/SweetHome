@@ -753,10 +753,16 @@ input[type="range"]::-moz-range-thumb:active {
     background: rgb(146, 230, 202);
     transition: 0.3s;
     display: inline-block;
-    width: 150px;
+    width: 15 0px;
     height: 100px;
     margin-left: 30%;
     margin-top: 10%;
+  }
+  #hah {
+    margin-left: 18%;
+  }
+  #hih {
+    margin-left: 18%;
   }
   .cardroom {
     margin: 5%;
@@ -765,7 +771,15 @@ input[type="range"]::-moz-range-thumb:active {
   .iframechart {
     width: 95%;
   }
-
+  .container-light {
+    position: absolute;
+    width: 20%;
+    height: auto;
+    left: 20px;
+    bottom: 50px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0);
+  }
   .detailed-graph {
     text-align: center;
     margin-left: -10px;
@@ -1054,6 +1068,16 @@ select {
   list-style-image: url("icons/motion2.png");
   margin-top: 5px;
   padding: 30px;
+  border-radius: 1%;
+  margin-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: thick;
+  border-bottom-color: rgba(15, 13, 13, 0.1);
+}
+.ultrason {
+  list-style-image: url("icons/door.png");
+  margin-top: 5px;
+  padding: 20px;
   border-radius: 1%;
   margin-bottom: 10px;
   border-bottom-style: solid;

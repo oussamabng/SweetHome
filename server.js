@@ -144,20 +144,14 @@ db.once("open", () => {
       change.operationType === "replace" &&
       change.fullDocument.value == true
     ) {
-      console.log("alarm tsoniii !!!!!!!");
-      pusher.trigger("inserted", "alarm", {
-        //TODO to add //data : change.fullDocument.data
-        message: "hello world",
-        id: change.fullDocument._id
-      });
       var user = await User.findOne({ tokenId: change.fullDocument.tokenId });
       user.check = false;
       var rooms = await Rooms.find({ userId: user._id });
-      rooms.forEach(function(room) {
+      rooms.forEach(async function(room) {
         if (room.devices.alarm[0] == change.fullDocument._id) {
-          notif = new Notification({
-            type: "motion",
-            content: "movement dtc",
+          var notif = new Notification({
+            type: change.fullDocument.data,
+            content: change.fullDocument.data + " detected",
             time: new Date().toString().substring(0, 24),
             userId: user._id,
             a: {
@@ -166,11 +160,21 @@ db.once("open", () => {
               nameRoom: room.name
             }
           });
+          pusher.trigger("inserted", "alarm", {
+            //TODO to add //data : change.fullDocument.data
+            message:
+              change.fullDocument.data +
+              " detected on the room : " +
+              room.name +
+              ", would you like to stop it ?",
+            id: change.fullDocument._id,
+            elm: notif._id
+          });
+          await notif.save();
         }
       });
 
       await user.save();
-      await notif.save();
     }
   });
 });

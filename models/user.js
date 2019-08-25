@@ -60,6 +60,11 @@ const DHTSchema = new mongoose.Schema({
 
 alarmSchema = new mongoose.Schema({
   name: String,
+  data: {
+    type: String,
+    enum: ["motion", "temperature", "gaz", "ultrason"],
+    default: "motion"
+  },
   value: { type: Boolean, default: false },
   used: { type: Boolean, default: false },
   tokenId: String

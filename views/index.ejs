@@ -373,8 +373,7 @@ $(document).on('ready',myFunction());
   
 
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+s
 
 <script>
 
@@ -437,7 +436,26 @@ function register(){
 			dataType: "json",
 			url: "/api/signIn",
 			success: function(data) {
-				console.log(data);
+			
+		$.ajax({
+			type: "POST",
+			data: JSON.stringify({
+				username: username,
+				password: password
+			}),
+			contentType: "application/json",
+			dataType: "json",
+			url: "/api/auth",
+			success: function(data) {
+				$.ajaxSetup({
+					headers: {
+						"x-auth-token": data.token
+					}
+				});
+				window.location.replace(`/api/rooms/all?token=${data.token}`);
+
+			}
+		 }); 
 			} , 
 			error: function(data) {
 			

@@ -15,7 +15,8 @@
     href="../../../slick/slick-theme.css"
   />
  
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
   
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
@@ -157,10 +158,10 @@
 <!------------------------------------------------------------>
 <div id="ArmingMode" >
 
-<div class="row">
+<div id="hah" class="row">
     <p><strong>Arming Mode</strong></p>
   </div>
-<div  class="row" >
+<div id ="hih"  class="row" >
 <div class="onoffswitch" >
     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
       <label class="onoffswitch-label" for="myonoffswitch">
@@ -170,6 +171,22 @@
   </div>
 </div>
 </div>
+
+<!--  Modal notifications    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
      <!--hadi l fenetre li tkhrjlk f login-->
 <div id="id01" class="modal">
@@ -248,6 +265,12 @@ $('#myonoffswitch').change(function(){
 })
 
         function libya(){
+          var typeX = {}
+          var motionX = {}
+          var chartX = {}
+          var rgbX = {}
+          var gazX= {}
+          
           document.getElementById('id13').style.display='block'
           if (screen.width < 700) {
             var r = 120;
@@ -285,7 +308,8 @@ if(getrooms.length !=0 ){
       "here you will find the name and the type of your room; if you're on a phone or a tablet , grab and swipe left and right to navigate between your rooms!"
   }
 } 
-if (getrooms[0].devices.ultrason[0] != ""){
+if(getrooms.length !=0 ){
+  if (getrooms[0].devices.ultrason[0] != ""){
   motionX ={
     target: 'motions0',
     placement: a,
@@ -293,6 +317,9 @@ if (getrooms[0].devices.ultrason[0] != ""){
     content: 'If you see this little man running , then there\'s movement in your room, and if he\'s not moving then your room is safe and empty.',
   }
 }
+}
+if(getrooms.length !=0 ){
+
 if (getrooms[0].devices.dht[0] != ""){
   chartX = {
     target: "charts0",
@@ -302,6 +329,10 @@ if (getrooms[0].devices.dht[0] != ""){
       "keep track of your room's temperature and humidity, click on it to check the detailed chart over time!"
   }
 }
+}
+
+if(getrooms.length !=0 ){
+
 if (getrooms[0].devices.rgb[0] != "") {
   rgbX =  {
     target: "rgb0",
@@ -310,7 +341,9 @@ if (getrooms[0].devices.rgb[0] != "") {
     content:
       "turn on or off by clicking on the light bulb, and have fun changing your light color with the rgb color wheel"
   }
-}
+}}
+if(getrooms.length !=0 ){
+
 if(getrooms[0].devices.gsense[0] != ""){
   gazX = {
     target: "charts0",
@@ -318,13 +351,9 @@ if(getrooms[0].devices.gsense[0] != ""){
     title: "Temperature and humidity ",
     content:
       "keep track of your room's temperature and humidity, click on it to check the detailed chart over time!"
-  }
-} else {
-  gazX = {
+  }}
+} 
 
-  }
-}
-  
 
     var tour = {
       id: "hello-hopscotch",
@@ -337,7 +366,8 @@ if(getrooms[0].devices.gsense[0] != ""){
           placement: "top",
           yOffset: r,
           xOffset: 15,
-          arrowOffset: 60
+          arrowOffset: 60 , 
+         
         },
   
         typeX,
@@ -780,7 +810,7 @@ if(getrooms[0].devices.gsense[0] != ""){
             <input id="nameRoutineMod" type="text" placeholder=""  />
             <div class="selectcontainer">
                 <select name="select-type" id="modify-color-routines" class="form-control">
-                    <option value="1" icon="red-icon">brick red  </option>
+                    <option value="1" icon="red-icon">red</option>
                     <option value="2" icon="purple-icon">purple</option>
                     <option value="3" icon="yellow-icon">yellow</option>
                     <option value="4" icon="green-icon">green</option>
@@ -851,11 +881,15 @@ if(getrooms[0].devices.gsense[0] != ""){
   <script>
      
       document.getElementById("showRoutines").addEventListener("click", function() {
+        if  (document.getElementById('routines').innerHTML == "") {
+
+        
             for (i=0;i<scenario.length;i++){
               showroutines(i);
 
               document.getElementById("toggle"+i).checked = scenario[i].checked ; 
             }
+          }
           });    
   function showroutines(i){
     var b=("'block'"); 
@@ -881,7 +915,7 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                            '<div class="checkbox-container red">'+
-                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
+                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
                                                               '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
@@ -892,8 +926,8 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                            '<div class="checkbox-container bleu">'+
-                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
-                                                          '<label for="toggle'+i+'"></label>'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                            '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
                                                            '</div>';
@@ -903,8 +937,8 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                            '<div class="checkbox-container yellow">'+
-                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
-                                                              '<label for="toggle'+i+'"></label>'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                            '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
                                                            '</div>';
@@ -914,8 +948,8 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                            '<div class="checkbox-container purple">'+
-                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
-                                                          '<label for="toggle'+i+'"></label>'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                            '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
                                                            '</div>';
@@ -925,8 +959,8 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                              '<div class="checkbox-container green">'+
-                                                              '<input onclick="activeRoutine(this)" type="checkbox"  id="toggle'+i+'" />'+
-                                                          '<label for="toggle'+i+'"></label>'+
+                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                              '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
                                                            '</div>';
@@ -952,16 +986,9 @@ if (document.getElementById('notifyx').src =="http://localhost:3000/designs/noti
   }
 });
 }
+    }
 
 
-
-
-
-
-
-
-  
-  }
   function myFunctionRoutine(i) {
             document.getElementById("myDropdownroutine"+i).classList.toggle("show");
           }
@@ -1080,9 +1107,9 @@ if (document.getElementById('notifyx').src =="http://localhost:3000/designs/noti
   <script>
 
     var onOff =  function () {
-      console.log(this) ; 
       var id = this.title; 
       if (this.src == "http://localhost:3000/icons/on.png" ){
+        console.log("s")
 
         $.ajax({
           url: "/api/rooms/light"+document.location.search,
@@ -1098,6 +1125,7 @@ if (document.getElementById('notifyx').src =="http://localhost:3000/designs/noti
         this.src = "../../../icons/off.png";     
 
       }else if (this.src == "http://localhost:3000/icons/off.png") {
+        console.log("ba3")
         $.ajax({
           url: "/api/rooms/light"+document.location.search,
           method: "POST",
@@ -1122,7 +1150,9 @@ console.log(data);
 
       var getrooms = JSON.parse(document.getElementById("getrooms").innerHTML);
       var check = JSON.parse(document.getElementById("check").innerHTML);
-      var ar = JSON.parse(document.getElementById("ar").innerHTML);
+      if (ar){
+        var ar = JSON.parse(document.getElementById("ar").innerHTML);
+      }
 
       var allrgb = JSON.parse(document.getElementById("rgb").innerHTML);
       var alldht = JSON.parse(document.getElementById("dht").innerHTML);
@@ -1167,7 +1197,7 @@ console.log(data);
 
 
 
-            '<div id="temp" style="position:relative;">'+
+            '<div id="temp'+i+'" style="position:relative;">'+
                 '<div id="overlay-charts" onclick="showTemp(this)" > '+
               '</div>'+
           
@@ -1196,6 +1226,7 @@ console.log(data);
           var a=("'id05'");
           b=("'block'");
           var y=("'id08'");
+          //var id = getrooms[i]._id ; 
 
           document.getElementById('type'+i).innerHTML+=  '<div class="dropdown">'+
                                                         '<div class="dropbtn">'+
@@ -1241,6 +1272,45 @@ console.log(data);
                                                           }
           
       }
+function test(i){
+  
+   var id = document.getElementById("light"+i).children[0].title ; 
+   var src = document.getElementById("light"+i).children[0].src ; 
+   if (src == "http://localhost:3000/icons/on.png" ){
+
+    $.ajax({
+      url: "/api/rooms/light"+document.location.search,
+      method: "POST",
+      data: JSON.stringify({ id: id, value: false }),
+      contentType: "application/json",
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+
+      }
+    });  
+    document.getElementById("light"+i).children[0].src = "../../../icons/off.png";     
+
+  }else if (src == "http://localhost:3000/icons/off.png") {
+    console.log("ba3")
+    $.ajax({
+      url: "/api/rooms/light"+document.location.search,
+      method: "POST",
+      data: JSON.stringify({ id: id, value: true }),
+      contentType: "application/json",
+      dataType: "json",
+      success: function(data) {
+console.log(data);
+      }
+    });
+    document.getElementById("light"+i).children[0].src = "../../../icons/on.png";
+    
+  }
+
+
+
+}
+
       function addLight(i){
         if (getrooms[i].devices.light[0] != ""){
 
@@ -1249,33 +1319,42 @@ console.log(data);
           alllight.forEach(function(elm) {
 if (id == elm._id){
   if (elm.used == true){
-    if (elm.value){
-     var daw =  document.createElement("section") ;
-     daw.id= "OnOff"+i ; 
-     var im = document.createElement("img");
-     daw.appendChild(im)
-     im.title = id ; 
+    if (elm.value == true){
+      document.getElementById("light"+i).innerHTML += '<img  title="'+id+'" src="../../../icons/on.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test('+i+')" >'; 
+     //var daw =  document.createElement("section") ;
+     //daw.id= "OnOff" ; 
+     //daw.style.width = "20px";
+    // var im = document.createElement("img");
+     //daw.appendChild(im)
+    // im.title = id ; 
    
-     im.className = "rgbview";
-     im.src ="../../../icons/on.png" ;
-     im.style = "width:50px;margin-left:30px;margin-top:50px;" ; 
-im.onclick = onOff ; 
-document.getElementById("light"+i).appendChild(daw);
+     //im.className = "rgbview";
+     //im.src ="../../../icons/on.png" ;
+     //im.style = "width:50px;margin-left:30px;margin-top:50px;" ; 
+     //im.onclick = onOff ; 
+//document.getElementById("light"+i).appendChild(im);
 
     
-    }else{
-      var daw =  document.createElement("section") ;
-      daw.id= "OnOff"+i ; 
-      var im = document.createElement("img");
-      daw.appendChild(im)
-      im.title = id ; 
-      im.className = "rgbview";
-     
-      im.src ="../../../icons/off.png" ;
-      im.style = "width:50px;margin-left:20px;margin-top:50px;" ; 
- im.onclick = onOff ; 
+    }else if (elm.value == false){
+      document.getElementById("light"+i).innerHTML += '<img  title="'+id+'" src="../../../icons/off.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test('+i+')" >'; 
 
- document.getElementById("light"+i).appendChild(daw);    }
+      //var daw =  document.createElement("section") ;
+      //daw.id= "OnOff" ; 
+      //daw.style.width = "20px";
+      //var im = document.createElement("img");
+      //daw.appendChild(im)
+   //   im.title = id ; 
+     // im.className = "rgbview";
+     
+      //im.src ="../../../icons/off.png" ;
+      //im.style = "width:50px;margin-left:20px;margin-top:50px;" ; 
+// im.onclick = onOff ; 
+    }
+ //document.getElementById("light"+i).appendChild(im);    }
+  }else {
+    document.getElementById("light"+i).style.display = "none";
+    document.getElementById("light"+i).style.marginTop = 0;
+    document.getElementsByClassName("ok")[i].style.display = "none"
   }
 }
           });
@@ -1283,8 +1362,7 @@ document.getElementById("light"+i).appendChild(daw);
       }else {
         document.getElementById("light"+i).style.display = "none";
         document.getElementById("light"+i).style.marginTop = 0;
-
-      
+        document.getElementsByClassName("ok")[i].style.display = "none"
 
 
       }
@@ -1293,9 +1371,21 @@ document.getElementById("light"+i).appendChild(daw);
 
 
 
-
+      function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : null;
+      }
 
       function addRGB(i){
+        
+if (getrooms[i].devices.light[0] != ""){
+
+
+
         if (getrooms[i].devices.rgb[0] == ""){
           document.getElementById("rgb"+i).style.display = "none";
  
@@ -1311,16 +1401,25 @@ allrgb.forEach(function(elm){
       setTimeout(function(){
       
         document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name =  elm._id ; 
-      },500);
-      
-    }else {
+      document.getElementById("rgb"+i).contentDocument.defaultView.document.getElementById("info").innerHTML = 
+        'R:' + ('000' + hexToRgb(elm.color).r).substr(-3) +
+        'G:' + ('000' + hexToRgb(elm.color).g).substr(-3) + 
+        'B:' + ('000' + hexToRgb(elm.color).b).substr(-3);      
+    },2000);
+  }
+    else {
       document.getElementById("rgb"+i).style.display = "none";
 
     }
   }
 })
         }
-      
+}
+else {
+  document.getElementById("rgb"+i).style.display = "none";
+ 
+
+}
      
       
         }
@@ -1329,14 +1428,22 @@ allrgb.forEach(function(elm){
 
         function addCharts(i) {
           if (getrooms[i].devices.dht[0] == ""){
+            console.log("alo")
+            document.getElementById("temp"+i).style.height = "0px";
             document.getElementById("charts"+i).style.display = "none";
-            document.getElementById("motions"+i).style.marginTop = 0;
+      //loca      document.getElementById("motions"+i).style.marginTop = 0;
 
           
 
-            document.getElementById("temp").children[0].style.display = "none"
+            document.getElementById("temp"+i).children[0].style.display = "none"
             
           } else {
+            if (getrooms.length != 1) {
+              document.getElementById("temp"+i).style.height = "150px";
+
+            } else {
+              document.getElementById("temp"+i).style.height = "0px";
+            }
           getrooms[i].devices.dht.forEach(function(id) {
             alldht.forEach(function(elm) {
               if (id == elm._id) {
@@ -1359,21 +1466,47 @@ allrgb.forEach(function(elm){
         }
         function addMotion(i) {
           if (getrooms[i].devices.ultrason[0] == ""){
-            document.getElementById("motions"+i).style.display = "none"
+            document.getElementById("motions"+i).style.display = "none";
+
+            if (getrooms[i].devices.dht[0] ==""){
+
+              document.getElementById("temp"+i).style.height = "0px";
+
+            } else {
+              document.getElementById("temp"+i).style.height = "125px";
+
+            }
             
           } else {
+            if (getrooms[i].devices.dht[0] ==""){
+
+              document.getElementById("motions"+i).style.margin = "0px"
+            }
+
           getrooms[i].devices.ultrason.forEach(function(id) {
             allultrason.forEach(function(elm) {
               if (id == elm._id) {
                 if (elm.used == true) {
-                    document.getElementById("motions" + i).innerHTML +=
-                      '<img class="gifgif" id="motions" src="../../icons/closeDoor.png" style="height: 100px ; width: 100px; margin-left:10px" >';
-                     
+                  if (elm.value == true){
 
-                      
                   
-                }else {
-                  document.getElementById("motions"+i).style.display = "none"
+                    document.getElementById("motions" + i).innerHTML +=
+                      '<img class="gifgif" id="motions" src="../../icons/openDoor.png" style="height: 100px ; width: 100px; margin-left:10px;"; >';
+                    
+                    if (getrooms.length != 1 ){
+                      document.getElementById("motions"+i).style.margin = 0;
+
+                    }
+
+                  }else {
+                    document.getElementById("motions" + i).innerHTML +=
+                    '<img class="gifgif" id="motions" src="../../icons/closeDoor.png" style="height: 100px ; width: 100px; margin-left:10px;  " >';
+                    if (getrooms.length != 1 ){
+                      document.getElementById("motions"+i).style.margin = 0;
+
+                    }
+                  }
+                  
                 }
               }
             });
@@ -1383,7 +1516,6 @@ allrgb.forEach(function(elm){
         function addGaz(i) {
           if (getrooms[i].devices.gsense[0] == ""){
             document.getElementById("gaz"+i).style.display = "none"
-
           
 
             document.getElementById("gazz").children[0].style.display = "none"
@@ -1424,7 +1556,7 @@ allrgb.forEach(function(elm){
         
   }
   if(notifications[i].type=="ultrason") {
-    document.getElementById('notifi').innerHTML += '<li id="mouvement'+i+'"   class="motion">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+    document.getElementById('notifi').innerHTML += '<li id="ult'+i+'"   class="ultrason">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
     
 }
         if(notifications[i].type=="temperature"){
@@ -1456,6 +1588,62 @@ allrgb.forEach(function(elm){
       </script>
     <script>
     $(document).on('ready', function() {
+      
+
+if (getrooms.length == 0) {
+  if (screen.width < 700) {
+    var r = 120;
+    var a = "bottom";
+    var b = -195;
+    var c = 220;
+    var x = -120;
+    var y = 130;
+    var u = -45;
+    var i = 55;
+    var w = -10;
+    var v = 30;
+    var p = -240;
+    var o = 270;
+  } else {
+    var r = 100;
+    var a = "left";
+    var b = 15;
+    var c = 60;
+    var x = 15;
+    var y = 60;
+    var u = 15;
+    var i = 60;
+    var w = 15;
+    var v = 60;
+    var p = 15;
+    var o = 60;
+  }
+  var tour =  {
+    id :  "hello-hopscotch" , 
+     steps : [
+     {
+       target: "help-tour",
+       placement: "bottom",
+       delay : 800,  
+       content:
+         "new user ? check our help page ..",
+       yOffset: 100,
+       xOffset: p,
+       arrowOffset: o,
+     } ,
+     ],
+     showNextButton : false ,
+     showCloseButton : true , 
+       }
+    
+  if (!hopscotch.isActive) {
+
+    hopscotch.startTour(tour);
+    }
+} 
+
+
+
 if (check) {
   document.getElementById('notifyx').src = "../../../designs/notifications1.png"
 } else  {
@@ -1466,6 +1654,18 @@ if (check) {
 
       for (var i = 0; i < getrooms.length; i++){
         
+        
+
+
+
+
+
+
+
+
+
+
+
       showRooms(i);
       addType(i); 
       addRGB(i);
@@ -1476,41 +1676,28 @@ if (check) {
       addMotion(i);
       rek(i) ;
 
+
     }
-    for (var j=0;j<notifications.length;j++){
-      console.log(notifications[j]) ; 
-      showntifications(j);
-    }
-    notifications.forEach(function(elm){
-     
-      if (elm.a.val == true){
-        document.getElementById("notifyx").src = "../../../designs/notifications1.gif" ; 
-        $.ajax({
-          type: "POST",
-          data: JSON.stringify({ check  : false }),
-          contentType: "application/json",
-          dataType: "json",
-          url: "/api/rooms/check"+document.location.search,
-          success: function(data) {
+    if (notifications){
+      for (var j=0;j<notifications.length;j++){
+        showntifications(j);
       }
-    });
+    }
 
-        if(elm.type == "motion") {
-
-
-
-
-        if(!("Notification" in window)){
-          alert("this browser does not support notif");
-      }else if (Notification.permission == "granted"){
-        var options = {
-          body: "ring ring in :"+elm.a.nameRoom,
-          icon: "../../../notifications1.gif",
-          requireInteraction: true     
+    if (notifications){
+      notifications.forEach(function(elm){
+     
+        if (elm.a.val == true){
+          document.getElementById("notifyx").src = "../../../designs/notifications1.gif" ; 
+          $.ajax({
+            type: "POST",
+            data: JSON.stringify({ check  : false }),
+            contentType: "application/json",
+            dataType: "json",
+            url: "/api/rooms/check"+document.location.search,
+            success: function(data) {
         }
-          var notification = new Notification("alarm" ,options );
-          
-      } 
+      });
       $.ajax({
         type: "POST",
         data: JSON.stringify({
@@ -1521,33 +1708,44 @@ if (check) {
         url: "/api/rooms/val"+document.location.search,
         success: function(name) {console.log(name)}
       });
-
-    } else if (elm.type == "ultrason"){
-      if(!("Notification" in window)){
-        alert("this browser does not support notif");
-    }else if (Notification.permission == "granted"){
-      var options = {
-        body: elm.content,
-        icon: "../../../notifications1.gif",
-        requireInteraction: true     
+          if(elm.type == "motion") {
+  
+  
+  
+  
+          if(!("Notification" in window)){
+            alert("this browser does not support notif");
+        }else if (Notification.permission == "granted"){
+          var options = {
+            body: "motion was detected on the room :"+elm.a.nameRoom,
+            icon: "../../../notifications1.gif",
+            requireInteraction: true     
+          }
+            var notification = new Notification("alarm" ,options );
+            
+        } 
+       
+  
+      } else if (elm.type == "ultrason"){
+        if(!("Notification" in window)){
+          alert("this browser does not support notif");
+      }else if (Notification.permission == "granted"){
+        var options = {
+          body: elm.content,
+          icon: "../../../notifications1.gif",
+          requireInteraction: true     
+        }
+          var notification = new Notification("Door action detected" ,options );
+         
       }
-        var notification = new Notification("Door action detected" ,options );
-        $.ajax({
-          type: "POST",
-          data: JSON.stringify({
-            id : elm._id
-          }),
-          contentType: "application/json",
-          dataType: "json",
-          url: "/api/rooms/val"+document.location.search,
-          success: function(name) {console.log(name)}
+       
+      }
+       
+    }
         });
     }
-     
-    }
-     
-  }
-      });
+   
+    
   });
    
     </script>
@@ -1628,23 +1826,13 @@ var chan = pusher.subscribe('inserted');
 
 
 chan = pusher.bind('ultrason' , function(data){
+
+
+
+
+
   for(var i=0 ; i< getrooms.length ; i++){
     if ((document.getElementsByClassName("container-name")[i].children[2].innerText) == data.name ) {
-      if(!("Notification" in window)){
-        alert("this browser does not support notif");
-    }else if (Notification.permission == "granted"){
-        var notification = new Notification("motion detected" , {
-          body : function(){
-            if (data.value) {
-              return "Door opened in the room :"+data.name
-            } else{
-              return "Door closed in the room :"+data.name
-            }
-          }
-        });
-    } 
-   
-
      if (data.value == true){
       document.getElementById("motions"+i).children[0].src = "../../../icons/openDoor.png" ; 
      } else {
@@ -1657,46 +1845,43 @@ chan = pusher.bind('ultrason' , function(data){
 
 
 
-chan.bind('alarm', function(data) {
-  //  VanillaToasts.create({
-    //    title: 'alert',
-      //  text:JSON.stringify(data),
-       // type: 'warning', // success, info, warning, error
-        //icon: 'designs/login.png',
-        //timeout: 2000 ,
-        //callback: function() {  } 
-     // });
-
-  //w   document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
-
-
-    
-
-
-     var id =  JSON.stringify(data.id) ;
+chan =  pusher.bind('alarm', function(data) {
+     var id =  data.id ;
+   
      const name = "haha";
 const saha  = document.getElementById("pushTest");
-saha.click();
-toastr.options = {
-  closeButton: true,
-  debug: false,
-  newestOnTop: true,
-  progressBar: false,
-  positionClass: "toast-top-right",
-  preventDuplicates: false,
-  showDuration: "300",
-  hideDuration: "1000",
-  timeOut: 0,
-  extendedTimeOut: 0,
-  showEasing: "swing",
-  hideEasing: "linear",
-  showMethod: "fadeIn",
-  hideMethod: "fadeOut",
-  tapToDismiss: false,
-  onclick: function() {
-   
-  
-    
+
+
+
+
+
+
+
+
+
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Alarm On !! ',
+  text: data.message,
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, stop it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+
+
+
+
+
     $.ajax({
       type: "POST",
       data: JSON.stringify({
@@ -1711,10 +1896,6 @@ nombre = 0;
 if (getrooms.length == 1){
   document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
 
-  document.getElementById("motions").src = "http://localhost:3000/icons/motion.gif" ; 
-  document.getElementById("motions").onclick = function (){
-    document.getElementById("motions").src = "http://localhost:3000/icons/motion.png" ; 
-  }
 
 }else
 {
@@ -1748,20 +1929,16 @@ t = setInterval(function(){
       if (name[0] == document.getElementById("type"+a).children[2].innerHTML )
     {
       document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
-    document.getElementById("motions").src = "http://localhost:3000/icons/motion.gif" ; 
-    document.getElementById("motions").onclick = function (){
-      document.getElementById("motions").src = "http://localhost:3000/icons/motion.png" ; 
-
-    }
-    clearInterval(t);
+      learInterval(t);
   } 
 
 
   else{ 
-    console.log("machi matsawyin");
     document.getElementsByClassName("slick-next")[0].click();
     a++;
-  }} else {
+  }
+} 
+else {
     a = 0 ; 
     }
 
@@ -1780,31 +1957,107 @@ console.log(nombre+1);
 //document.getElementsByClassName("slick-next")[0].firstChild.data
  
     }) ; 
-    
-    
-    $('.regular').slick('slickSetOption', 'speed', 300, true);
-    toastr.remove();
+
+
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ check  : false }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/check"+document.location.search,
+      success: function(data) {
   }
-};
+});
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({
+    id : data.elm
+  }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/val"+document.location.search,
+  success: function(name) {console.log(name)}
+});
+   
 
-  toastr["error"](
-    `Mouvement Detected,  :"     <br /><br /><button id="stop" type="button" class="btn btn-dark">Stop the alarm and check the room </button>`,
-    " alarm rings "
-  );
+    Swal.fire(
+      'Stoped!',
+      'Your Alarm has been stoped.',
+      'success'
+    ).then((result) => {
+      if (result.value) {
+        setTimeout(function(){
+          location.reload() ;
+        },50)
+      }});
 
-// alert(JSON.stringify(data +" :ahay"));
- if(!("Notification" in window)){
-        alert("this browser does not support notif");
-    }else if (Notification.permission == "granted"){
-        var notification = new Notification(JSON.stringify(data));
-    } 
-    else if(Notification.permission!="denied"){
-       Notification.requestPermission(function(permission){
-          if("permission" == "granted"){
-                var notification = new Notification(JSON.stringify(("ok")));
-            }
-        });
-    }
+
+
+
+
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    Swal.fire(
+      'Cancelled',
+      'Your alarm still ringing  !',
+      'error'
+    ).then((result) => {
+      if (result.value) {
+        setTimeout(function(){
+          location.reload() ;
+        },50)
+      }});
+
+
+  
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+saha.click();
+
+
+
 });
 </script>
 <script src="../../../select-beauty.js"></script>
@@ -1950,9 +2203,16 @@ $.ajax({
 
 
 function addRoom(){
+  if (!devicesX){
+
   
+  console.log({
+    devices : "dala3"
+  })
+}
 
   document.getElementById('id03').style.display='block' ;
+  if (devicesX){
   for (j = 0; j < devicesX.devices.length; j++){
 
     document.getElementsByClassName("select-beauty")[1].children[1].children[j].children[0].dataset.value = j ;
@@ -1965,44 +2225,54 @@ function addRoom(){
 
 
   }
+} else {
+  for(f  = 0 ; f < Object.entries(selectDevices.tempData).length ; f++){
+    document.getElementsByClassName("select-beauty")[1].children[1].children[f].innerText = "" ; 
+
+
+  }
+
+}
 
 
 }
 
-function activeRoutine(){
-  for (var i =0 ; i<scenario.length ; i ++){
+function activeRoutine(i){
     if (document.getElementById("toggle"+i).checked == true){
 
-
+var id = scenario[i]._id;
       $.ajax({
         type: "POST",
-        data: JSON.stringify({ id: scenario[i]._id }),
+        data: JSON.stringify({ id: id}),
         contentType: "application/json",
         dataType: "json",
         url: "/api/rooms/activeRoutine"+document.location.search,
         success: function(data) {
           setTimeout(function(){
             location.reload()
-           },400)      }
+           },800)      }
       });
 
 
 
 
 
-    } else {
+    } else if (document.getElementById("toggle"+i).checked == false) {
+      var id = scenario[i]._id;
+
       $.ajax({
         type: "POST",
-        data: JSON.stringify({ id: scenario[i]._id }),
+        data: JSON.stringify({ id: id }),
         contentType: "application/json",
         dataType: "json",
         url: "/api/rooms/desactiveRoutine"+document.location.search,
         success: function(data) {
           setTimeout(function(){
             location.reload()
-           },400)      }
-      });    }
-  }
+           },700)      }
+      });    
+    }
+  
 
 }
 
@@ -2067,28 +2337,36 @@ $.ajax({
       modifyroomsroutines.tempData[i].text = getrooms[i].name ; 
     }
 function deleteNot(j){
+if (notifications.length !=0){
+  var id  = notifications[j]._id ; 
+  var type  = notifications[j].type ; 
 
-var id  = notifications[j]._id ; 
-var type  = notifications[j].type ; 
 
-$.ajax({
-  type: "POST",
-  data: JSON.stringify({ id: id , type : type , i :j }),
-  contentType: "application/json",
-  dataType: "json",
-  url: "/api/rooms/deleteNot"+document.location.search,
-  success: function(data) {
-    console.log(data) ; 
- if (data.type == "motion") {
-   document.getElementById("mouvement"+data.i).style.display = "none";
- } else if (data.type == "temperature") {
-  document.getElementById("tmp"+data.i).style.display = "none";
-} else if (data.type == "gaz") {
-  document.getElementById("gz"+data.i).style.display = "none";
-} 
 
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({ id: id , type : type , i :j }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/deleteNot"+document.location.search,
+    success: function(data) {
+      console.log(data) ; 
+   if (data.type == "motion") {
+     document.getElementById("mouvement"+data.i).style.display = "none";
+   } else if (data.type == "temperature") {
+    document.getElementById("tmp"+data.i).style.display = "none";
+  } else if (data.type == "gaz") {
+    document.getElementById("gz"+data.i).style.display = "none";
+  } else if (data.type == "ultrason"){
+    document.getElementById("ult"+data.i).style.display = "none";
+  }
+  
+  }
+  });
 }
-});
+
+
+
 
 
 }
@@ -2096,7 +2374,7 @@ function modifyRoutine(){
     var devicesOn = new Object();
  var devicesOff = new Object();
  var rooms = new Array() ; 
-
+var color =""
  const i = Number(document.getElementById("id12").lang) ; 
  const id = scenario[i]._id ; 
 
@@ -2109,12 +2387,12 @@ if ( name == ""){
   name = document.getElementById("nameRoutineMod").placeholder
 
 } 
-
- const color = Object.entries(modifycolorsroutines.selected)[0][1].text ;
+if (Object.entries(modifycolorsroutines.selected).length != 0){ 
+var color = Object.entries(modifycolorsroutines.selected)[0][1].text ;
  Object.entries(modifyroomsroutines.selected).forEach(function(elm){
 rooms.push(elm[1].text) ; 
  });
-
+} 
  Object.entries(modifydevicesonroutines.selected).forEach(function(elm){
   var ok = elm[1].text ; 
   devicesOn[ok] = true ; 
@@ -2134,7 +2412,10 @@ rooms.push(elm[1].text) ;
     success: function(data) {
       setTimeout(function(){
         location.reload()
-       },400)}
+       },400)} , 
+       error : function(err){
+         console.log(err)
+       }
   });
   
 
@@ -2176,7 +2457,10 @@ $.ajax({
   success: function(data) {
     setTimeout(function(){
       location.reload()
-     },400)}
+     },400)},
+     error : function(err){
+      console.log(err)
+    }
 });
 
 
@@ -2188,21 +2472,17 @@ $.ajax({
         
   const type = Object.entries(selectType.selected)[0][1].text
   const name = document.getElementById("nameRoom").value ; 
-  var dev = {
-    dht : false,
-    gsense : false,
-    rgb : false,
-    ultrason : false,
-    alarm :false, 
-    light :false
-  }
+  var dev = new Array();
    
   Object.entries(selectDevices.selected).forEach(function(elm){
-    if (elm) {var text = elm[1].text ; 
-    dev[text] = true;
+    if (elm) {
+      dev.push(elm[1].text)
     }
   })
 
+
+ 
+  
   $.ajax({
     type: "POST",
     data: JSON.stringify({ type: type , name : name , devices : dev }),
@@ -2210,9 +2490,33 @@ $.ajax({
     dataType: "json",
     url: "/api/rooms/add"+document.location.search,
     success: function(data) {
-      setTimeout(function(){
-        location.reload()
-       },400)    }
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ type: data.type , name : data.name , devices : data.arr }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/room"+document.location.search,
+        success: function(data) {
+
+
+Swal.fire({
+  position: 'top-end',
+  type: 'success',
+  title: 'Your room has been added',
+  showConfirmButton: false,
+  timer: 2000
+})
+           
+          setTimeout(function(){
+            location.reload()
+           },2000)      
+        }
+      });
+
+
+          }
   });
 
     }
@@ -2591,10 +2895,11 @@ while (document.getElementById("slick-slide0"+i)) {
     }
 
    function modifyRoom(){
+     name =  document.getElementById("modify").placeholder ;
 
-var name = document.getElementById("modify").placeholder ;
+var newName = document.getElementById("modify").placeholder ;
 if (document.getElementById("modify").value != ""){
-  name = document.getElementById("modify").value
+  newName = document.getElementById("modify").value
 }
 
     var devAdd = new Array() ; 
@@ -2615,15 +2920,27 @@ Object.entries(selectdevicestodelelet.selected).forEach(function(elm){
 });
 $.ajax({
     type: "POST",
-    data: JSON.stringify({ name : name , devAdd : devAdd , devDel : devDel }),
+    data: JSON.stringify({ name : name , newName : newName , devAdd : devAdd , devDel : devDel }),
     contentType: "application/json",
     dataType: "json",
     url: "/api/rooms/modify"+document.location.search,
     success: function(data) {
-     
-    setTimeout(function(){
-      location.reload()
-     },400)
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ name : data.name , newName : data.newName , arr : data.arr }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/delDev"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },400)        
+      }
+    
+        
+      });
+      
+   
   }
 
     
