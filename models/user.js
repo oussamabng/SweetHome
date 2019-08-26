@@ -75,17 +75,13 @@ GSenseSchema = new mongoose.Schema({
   used: { type: Boolean, default: false },
   tokenId: String,
 
-  value: [
-    [
-      {
-        smoke: { type: [Number], default: new Array() },
-        lpg: { type: [Number], default: new Array() },
-        methane: { type: [Number], default: new Array() },
-        propane: { type: [Number], default: new Array() },
-        time: { type: Date }
-      }
-    ]
-  ]
+  value: {
+    smoke: { type: [Number], default: new Array() },
+    lpg: { type: [Number], default: new Array() },
+    methane: { type: [Number], default: new Array() },
+    propane: { type: [Number], default: new Array() },
+    time: { type: Date }
+  }
 });
 
 const RGBSchema = new mongoose.Schema({
