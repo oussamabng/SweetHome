@@ -755,7 +755,7 @@ input[type="range"]::-moz-range-thumb:active {
     display: inline-block;
     width: 15 0px;
     height: 100px;
-    margin-left: 30%;
+    margin-left: 25%;
     margin-top: 10%;
   }
   #hah {

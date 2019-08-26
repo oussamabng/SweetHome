@@ -81,7 +81,8 @@ GSenseSchema = new mongoose.Schema({
         smoke: { type: [Number], default: new Array() },
         lpg: { type: [Number], default: new Array() },
         methane: { type: [Number], default: new Array() },
-        propane: { type: [Number], default: new Array() }
+        propane: { type: [Number], default: new Array() },
+        time: { type: Date }
       }
     ]
   ]
