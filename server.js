@@ -188,14 +188,10 @@ app.get(
   "/home",
   //, csrfProtection
   function(req, res) {
-    console.log(req.csrfToken);
-    res.render(
-      "index"
-
-      //,{ csrfToken: req.csrfToken() }
-    );
+    res.render("index");
   }
 );
+
 app.use("/api/auth", auth);
 app.use("/api/signIn", signIn);
 app.use("/api/forgot", forgot);

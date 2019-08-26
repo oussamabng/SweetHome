@@ -296,38 +296,40 @@ router.post("/desactiveRoutine", async function(req, res) {
 
   scenario.rooms.forEach(async function(elm) {
     var room = await Rooms.findOne({ name: elm, userId: decoded._id });
-    room.devices.light.forEach(async function(id) {
-      var light = await Light.findOne({ _id: id });
-      light.used = true;
-      light.save();
-    });
+    if (room) {
+      room.devices.light.forEach(async function(id) {
+        var light = await Light.findOne({ _id: id });
+        light.used = true;
+        light.save();
+      });
 
-    room.devices.dht.forEach(async function(id) {
-      var dht = await Dht.findOne({ _id: id });
-      dht.used = true;
-      dht.save();
-    });
+      room.devices.dht.forEach(async function(id) {
+        var dht = await Dht.findOne({ _id: id });
+        dht.used = true;
+        dht.save();
+      });
 
-    room.devices.rgb.forEach(async function(id) {
-      var rgb = await Rgb.findOne({ _id: id });
-      rgb.used = true;
-      rgb.save();
-    });
-    room.devices.ultrason.forEach(async function(id) {
-      var ultrason = await Ultrason.findOne({ _id: id });
-      ultrason.used = true;
-      ultrason.save();
-    });
-    room.devices.gsense.forEach(async function(id) {
-      var gsense = await Gsense.findOne({ _id: id });
-      gsense.used = true;
-      gsense.save();
-    });
-    room.devices.alarm.forEach(async function(id) {
-      var alarm = await Alarm.findOne({ _id: id });
-      alarm.used = true;
-      alarm.save();
-    });
+      room.devices.rgb.forEach(async function(id) {
+        var rgb = await Rgb.findOne({ _id: id });
+        rgb.used = true;
+        rgb.save();
+      });
+      room.devices.ultrason.forEach(async function(id) {
+        var ultrason = await Ultrason.findOne({ _id: id });
+        ultrason.used = true;
+        ultrason.save();
+      });
+      room.devices.gsense.forEach(async function(id) {
+        var gsense = await Gsense.findOne({ _id: id });
+        gsense.used = true;
+        gsense.save();
+      });
+      room.devices.alarm.forEach(async function(id) {
+        var alarm = await Alarm.findOne({ _id: id });
+        alarm.used = true;
+        alarm.save();
+      });
+    }
   });
 
   scenario.checked = false;
@@ -476,130 +478,156 @@ router.post("/activeRoutine", async function(req, res) {
 
     Object.entries(scenario.devicesOn).forEach(async function(r) {
       if (r[0] == "dht") {
-        room.devices.dht.forEach(async function(e) {
-          if (e != "") {
-            const dht = await Dht.findOne({ _id: e });
-            if (r[1] == true) {
-              dht.used = true;
-              await dht.save();
+        if (room) {
+          room.devices.dht.forEach(async function(e) {
+            if (e != "") {
+              const dht = await Dht.findOne({ _id: e });
+              if (r[1] == true) {
+                dht.used = true;
+                await dht.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "rgb") {
-        room.devices.rgb.forEach(async function(e) {
-          if (e != "") {
-            const rgb = await Rgb.findOne({ _id: e });
-            if (r[1] == true) {
-              rgb.used = true;
-              await rgb.save();
+        if (room) {
+          room.devices.rgb.forEach(async function(e) {
+            if (e != "") {
+              const rgb = await Rgb.findOne({ _id: e });
+              if (r[1] == true) {
+                rgb.used = true;
+                await rgb.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "light") {
-        room.devices.light.forEach(async function(e) {
-          if (e != "") {
-            const light = await Light.findOne({ _id: e });
-            if (r[1] == true) {
-              light.used = true;
-              light.value = true;
-              await light.save();
+        if (room) {
+          room.devices.light.forEach(async function(e) {
+            if (e != "") {
+              const light = await Light.findOne({ _id: e });
+              if (r[1] == true) {
+                light.used = true;
+                light.value = true;
+                await light.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "ultrason") {
-        room.devices.ultrason.forEach(async function(e) {
-          if (e != "") {
-            const ultrason = await Ultrason.findOne({ _id: e });
-            if (r[1] == true) {
-              ultrason.used = true;
-              await ultrason.save();
+        if (room) {
+          room.devices.ultrason.forEach(async function(e) {
+            if (e != "") {
+              const ultrason = await Ultrason.findOne({ _id: e });
+              if (r[1] == true) {
+                ultrason.used = true;
+                await ultrason.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "alarm") {
-        room.devices.alarm.forEach(async function(e) {
-          if (e != "") {
-            const alarm = await Alarm.findOne({ _id: e });
-            if (r[1] == true) {
-              alarm.used = true;
-              await alarm.save();
+        if (room) {
+          room.devices.alarm.forEach(async function(e) {
+            if (e != "") {
+              const alarm = await Alarm.findOne({ _id: e });
+              if (r[1] == true) {
+                alarm.used = true;
+                await alarm.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "gsense") {
-        room.devices.gsense.forEach(async function(e) {
-          if (e != "") {
-            const gsense = await Gsense.findOne({ _id: e });
-            if (r[1] == true) {
-              gsense.used = true;
-              await gsense.save();
+        if (room) {
+          room.devices.gsense.forEach(async function(e) {
+            if (e != "") {
+              const gsense = await Gsense.findOne({ _id: e });
+              if (r[1] == true) {
+                gsense.used = true;
+                await gsense.save();
+              }
             }
-          }
-        });
+          });
+        }
       }
     });
+
     Object.entries(scenario.devicesOff).forEach(async function(r) {
       if (r[0] == "dht") {
-        room.devices.dht.forEach(async function(e) {
-          if (e != "") {
-            const dht = await Dht.findOne({ _id: e });
-            if (r[1] == false) {
-              dht.used = false;
-              await dht.save();
+        if (room) {
+          room.devices.dht.forEach(async function(e) {
+            if (e != "") {
+              const dht = await Dht.findOne({ _id: e });
+              if (r[1] == false) {
+                dht.used = false;
+                await dht.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "rgb") {
-        room.devices.rgb.forEach(async function(e) {
-          if (e != "") {
-            const rgb = await Rgb.findOne({ _id: e });
-            if (r[1] == false) {
-              rgb.used = false;
-              await rgb.save();
+        if (room) {
+          room.devices.rgb.forEach(async function(e) {
+            if (e != "") {
+              const rgb = await Rgb.findOne({ _id: e });
+              if (r[1] == false) {
+                rgb.used = false;
+                await rgb.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "light") {
-        room.devices.light.forEach(async function(e) {
-          if (e != "") {
-            const light = await Light.findOne({ _id: e });
-            if (r[1] == false) {
-              light.value = false;
-              light.used = false;
-              await light.save();
+        console.log("dd");
+        if (room) {
+          room.devices.light.forEach(async function(e) {
+            if (e != "") {
+              const light = await Light.findOne({ _id: e });
+              if (r[1] == false) {
+                light.value = false;
+                light.used = false;
+                await light.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "ultrason") {
-        room.devices.ultrason.forEach(async function(e) {
-          if (e != "") {
-            const ultrason = await Ultrason.findOne({ _id: e });
-            if (r[1] == false) {
-              ultrason.used = false;
-              await ultrason.save();
+        if (room) {
+          room.devices.ultrason.forEach(async function(e) {
+            if (e != "") {
+              const ultrason = await Ultrason.findOne({ _id: e });
+              if (r[1] == false) {
+                ultrason.used = false;
+                await ultrason.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "alarm") {
-        room.devices.alarm.forEach(async function(e) {
-          if (e != "") {
-            const alarm = await Alarm.findOne({ _id: e });
-            if (r[1] == false) {
-              alarm.used = false;
-              await alarm.save();
+        if (room) {
+          room.devices.alarm.forEach(async function(e) {
+            if (e != "") {
+              const alarm = await Alarm.findOne({ _id: e });
+              if (r[1] == false) {
+                alarm.used = false;
+                await alarm.save();
+              }
             }
-          }
-        });
+          });
+        }
       } else if (r[0] == "gsense") {
-        room.devices.gsense.forEach(async function(e) {
-          if (e != "") {
-            const gsense = await Gsense.findOne({ _id: e });
-            if (r[1] == false) {
-              gsense.used = false;
-              await gsense.save();
+        if (room) {
+          room.devices.gsense.forEach(async function(e) {
+            if (e != "") {
+              const gsense = await Gsense.findOne({ _id: e });
+              if (r[1] == false) {
+                gsense.used = false;
+                await gsense.save();
+              }
             }
-          }
-        });
+          });
+        }
       }
     });
   });
@@ -987,9 +1015,9 @@ router.delete("/delete", async function(req, res) {
     gsense.used = false;
     await gsense.save();
   }
-
+  var i = req.body.i;
   room = await Rooms.deleteOne({ name: req.body.name });
-  res.send({ message: "succes of delete " });
+  res.send({ message: "succes of delete ", i: i });
 });
 
 module.exports = router;

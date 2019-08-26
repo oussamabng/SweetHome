@@ -886,8 +886,20 @@ if(getrooms[0].devices.gsense[0] != ""){
         
             for (i=0;i<scenario.length;i++){
               showroutines(i);
+              
+              if (scenario[i].checked == true){
+                if (  document.getElementById("toggle"+i)){
+                  document.getElementById("toggle"+i).checked = true ;
+                }
+              }else  if (scenario[i].checked == false){
+                if (  document.getElementById("toggle"+i)){
+                  document.getElementById("toggle"+i).checked = false ;
+                }
+              
 
-              document.getElementById("toggle"+i).checked = scenario[i].checked ; 
+              }
+
+
             }
           }
           });    
@@ -895,7 +907,6 @@ if(getrooms[0].devices.gsense[0] != ""){
     var b=("'block'"); 
     var a=("'id12'");
     var y=("'id11'");
-    var check = scenario[i].checked ;
  var id = scenario[i]._id ; 
  var name = scenario[i].name ; 
     document.getElementById('routines').innerHTML +='<div class="dropdown-routine">'+
@@ -915,7 +926,7 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                            '<div class="checkbox-container red">'+
-                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
                                                               '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
@@ -926,7 +937,7 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                            '<div class="checkbox-container bleu">'+
-                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
                                                             '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
@@ -937,7 +948,7 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                            '<div class="checkbox-container yellow">'+
-                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
                                                             '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
@@ -948,7 +959,7 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                            '<div class="checkbox-container purple">'+
-                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
                                                             '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
@@ -959,7 +970,7 @@ if(getrooms[0].devices.gsense[0] != ""){
         document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
                                                            '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
                                                              '<div class="checkbox-container green">'+
-                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'" checked='+check+' />'+
+                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
                                                               '<label for="toggle'+i+'"></label>'+
                                                           '<div class="active-circle"></div>'+
                                                           '</div>'+
@@ -2207,7 +2218,7 @@ function addRoom(){
 
   
   console.log({
-    devices : "dala3"
+    devices : devicesX
   })
 }
 
@@ -2506,12 +2517,12 @@ Swal.fire({
   type: 'success',
   title: 'Your room has been added',
   showConfirmButton: false,
-  timer: 2000
+  timer: 1500
 })
            
           setTimeout(function(){
             location.reload()
-           },2000)      
+           },1500)      
         }
       });
 
@@ -2883,14 +2894,34 @@ while (document.getElementById("slick-slide0"+i)) {
         var name =   document.getElementById("type"+i).children[2].innerHTML ; 
         $.ajax({
           type: "DELETE",
-          data: JSON.stringify({ name : name }),
+          data: JSON.stringify({ name : name , i : i}),
           contentType: "application/json",
           dataType: "json",
           url: "/api/rooms/delete"+document.location.search,
           success: function(data) {
+            document.getElementsByClassName("cardroom")[i].style.display = "none";
+setTimeout(function(){
+if (i !=0){
+  document.getElementsByClassName("slick-prev")[0].click() ; 
+
+}else{
+  document.getElementsByClassName("slick-next")[0].click() ; 
+
+}
+},700)
+            Swal.fire({
+              position: 'top-end',
+              type: 'success',
+              title: 'Your room has been deleted succesfully',
+              showConfirmButton: false,
+              timer: 1200
+            })
+                       
             setTimeout(function(){
-              location.reload()
-             },400)        }
+            location.reload()
+              },1400)
+                       
+              }
       });
     }
 

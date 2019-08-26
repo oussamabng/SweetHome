@@ -41,6 +41,7 @@
 	  </nav>
     <!-- END nav -->
     
+
     <div class="hero-wrap js-fullheight">
       <div class="overlay"></div>
       <div class="container-fluid px-0">
@@ -83,8 +84,20 @@
 									                <input id="passwordLogin" type="password" class="form-control" placeholder="Password">
 									              </div>
 								              </div>
-										  </div>
-										  <a style="color:white" onclick="document.getElementById('id01').style.display='block'">Forgot password?  </a>
+											</div>
+											<div class="remember-me">
+												<div style=" margin-right:80px"  class="custom-control custom-checkbox custom-control-inline mb-3">
+
+													<input type="checkbox" id="customCheckboxInline1" name="customCheckboxInline1" class="custom-control-input">
+													<label style="color:white" class="custom-control-label" for="customCheckboxInline1">
+														Remember Me
+													</label>
+
+												</div>
+												<a  style="color:white; margin-left:100px" onclick="document.getElementById('id01').style.display='block'">Forgot password?  </a>
+
+											</div>
+											
 				              			<div class="col-md">
 				              				<div class="form-group">
 				              					<div class="form-field">
@@ -282,6 +295,7 @@
 	<script> 
 	
 	function myFunction() {
+		
   // Get the checkbox
   var checkBox = document.getElementById("toggle");
   // Get the output text
@@ -437,25 +451,25 @@ function register(){
 			url: "/api/signIn",
 			success: function(data) {
 			
-		$.ajax({
-			type: "POST",
-			data: JSON.stringify({
-				username: username,
-				password: password
-			}),
-			contentType: "application/json",
-			dataType: "json",
-			url: "/api/auth",
-			success: function(data) {
-				$.ajaxSetup({
-					headers: {
-						"x-auth-token": data.token
-					}
-				});
-				window.location.replace(`/api/rooms/all?token=${data.token}`);
+			$.ajax({
+				type: "POST",
+				data: JSON.stringify({
+					username: username,
+					password: password
+				}),
+				contentType: "application/json",
+				dataType: "json",
+				url: "/api/auth",
+				success: function(data) {
+					$.ajaxSetup({
+						headers: {
+							"x-auth-token": data.token
+						}
+					});
+					window.location.replace(`/api/rooms/all?token=${data.token}`);
 
-			}
-		 }); 
+				}
+			}); 
 			} , 
 			error: function(data) {
 			
