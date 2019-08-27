@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rooms!</title>
+    <meta charset="UTF-8" />
+  
+   
+    <link
+    rel="stylesheet"
+    href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+  />
+    <link rel="stylesheet" type="text/css" href="../../../slick/slick.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../slick/slick-theme.css"
+    />
+    <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="../../../style.css" />
+    <link rel="icon" type="image/png" href="/views/designs/favicon.png" sizes="32x32" />
+    <link rel="manifest" href="/views/manifest.json">  
+    <meta name="theme-color" content="#585f82">
+    <link rel="apple-touch-icon" href="/views/designs/touch-apple.png">
+    
+    <script>  
+      function flip() {
+        $(".card").toggleClass("flipped");
+      }
+    </script>
+
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      var doughnut = 0;
+      var chawrma = 1;
+      window.setInterval(function() {
+        doughnut = doughnut + 1;
+        var pizza = 0;
+        pizza = doughnut % 20;
+        if (pizza == 0) {
+          flip();
+          chawrma = 1;
+        } else {
+          if (chawrma == 1) {
+            flip();
+            chawrma = 0;
+          }
+        }
+      }, 1000);
+    </script>
+   
+  
+  </head>
+  <body>
+      
+
+      <div class="row"  >
+          <!---hadi ga3 t3 animation t3 kol w7da -->
+          <section class="container">
+                       <div class="card" onclick="flip()">
+                            <div class="front">
+                                    <div class="column">
+                                     <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs\login.png" title="logout" >
+                                    </div>                          
+                              </div>
+                      <div class="back"> 
+                              <div class="column">
+                                 <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs\login1.png" title="logout" >
+                        
+                              </div>
+                      </div>
+            </section>
+          <!--hna tkml lwla g3 t3 nav bar t3 login-->
+          <!--zwaja tbda hna-->
+          <section class="container">
+                  <div class="card">
+                          <div class="front">
+                                  <div calss="column">
+                                      <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs\notifications.png" title="notification" >
+                                  </div>
+  
+                          </div>
+                          <div class="back">
+                                  <div calss="column">
+                                       <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs\notifications1.png" title="notification">
+                                  </div>
+                             </div>
+                  </div>
+  
+              </section>
+          <!--talta tbda hna-->
+          <section class="container">
+                  <div class="card">
+                          <div class="front">
+                                  <div calss="column">
+                                      <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs\settings.png" title="settings" >
+                                  </div>
+  
+                          </div>
+                          <div class="back">
+                                  <div calss="column">
+                                       <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs\settings1.png" title="settings" >
+                                  </div>
+                             </div>
+                  </div>
+  
+              </section>
+          <!--rab3a hna--> 
+          <section class="container">
+                  <div class="card">
+                          <div class="front">
+                                  <div calss="column">
+                                      <img onclick="document.getElementById('id03').style.display='block'" src="../../../designs\add.png" title="add romm" >
+                                  </div>
+  
+                          </div>
+                          <div class="back">
+                                  <div calss="column">
+                                       <img onclick="document.getElementById('id03').style.display='block'"  src="../../../designs\add1.png" title="add room" >
+                                  </div>
+                             </div>
+                  </div>
+  
+              </section>
+          <!--talia ga3 hna-->
+          <section class="container">
+                  <div class="card">
+                          <div class="front">
+                                  <div calss="column">
+                                      <img onclick="document.getElementById('id02').style.display='block'" src="../../../designs\help.png" title="help" >
+                                  </div>
+  
+                          </div>
+                          <div class="back">
+                                  <div calss="column">
+                                       <img onclick="document.getElementById('id02').style.display='block'"  src="../../../designs\help1.png" title="help" >
+                                  </div>
+                             </div>
+                  </div>
+  
+              </section>
+        
+  </div>  
+  
+       
+<section></section>  
+  
+  
+  
+  <!--hadi l fenetre li tkhrjlk f login-->
+  <div id="id01" class="modal">
+          
+  
+          <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <img src="../../../designs\sweet.png" width=75%>
+              <img src="../../../designs\key.png" alt="Avatar" class="avatar">
+              <h1>your home will stay sweet when you're away!</h1>
+            
+        
+            <div class="container1">                  
+              <button type="submit">logout</button>
+              
+            </div>
+            
+            </div>   
+            <div class="container1" style="background-color:#554269" >
+                      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              </div>
+       
+              </form>
+      </div>
+        <!--script hada t3 ki tclicki barra window youkhrj-->
+       
+       
+              
+          
+  
+  
+   <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
+   <div id="id02" class="modal">
+  
+      <form class="modal-content animate" action="/action_page.php">
+          
+            <div class="container1" style="background-color:#554269;color:white" >
+                      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+              notifications
+             </div>
+  
+  
+              <!--hna yji script-->
+  
+  
+  
+          
+      </form>
+
+  </div>
+
+
+  <div id="id03" class="modal">
+        
+
+    <form class="modal-content animate" action="javascript:;" onsubmit="myFunction(this)">
+      <div class="imgcontainer">
+        <h1>Add a new room</h1>
+
+        <input id="nameRoom" type="text" placeholder="choose a name for the roo m"  />
+        <div class="selectcontainer">
+        <select name="select-type" id="select-type" class="form-control">
+            <option value="1" icon="kitchen">kitchen</option>
+            <option value="2" icon="hallway">hallway</option>
+            <option value="3" icon="office">office</option>
+            <option value="4" icon="bedroom">bedroom</option>
+            <option value="5" icon="livingroom">livingRoom</option>
+            
+    
+          </select>
+        </div> 
+        <select name="select-devices" id="select-devices" class="form-control">
+            <option value="0" >dht</option>
+            <option value="1" >rgb</option>
+            <option value="2" >gsense</option>
+            <option value="3" >light</option>
+            <option value="4">ultrason</option>
+            <option value="5">alarm</option>
+
+            
+    
+          </select>
+        </div> 
+        
+        
+        <button id="createRoom" type="submit">Create Room</button>
+         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="ghost">Cancel</button>
+       
+              </div> 
+        </form>
+</div>
+
+<div id="id05" class="modal">
+        
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <h1>Modify this room</h1>
+
+      <input type="text" placeholder="oussama 7at old name t3 room hna"  />
+      <div class="selectcontainer">
+      <select name="select-devicesdelet" id="select-devicesdelet" class="form-control">
+          <option value="1" >dht1</option>
+          <option value="2" >RGB</option>
+          <option value="3" >gaz</option>
+          <option value="4" >motion</option>
+          <option value="5">dht2</option>
+          
+  
+        </select>
+      </div> 
+      <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
+          <option value="1" >dht1</option>
+          <option value="2" >RGB</option>
+          <option value="3" >gaz</option>
+          <option value="4" >motion</option>
+          <option value="5">dht2</option>
+          
+  
+        </select>
+      </div> 
+      
+      
+      <button type="submit">Modify Room</button>
+       <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
+     
+            </div> 
+      </form>
+</div>
+
+
+<div id="id06" class="modal">
+        
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <h1>Modify this room</h1>
+
+      <input type="text" placeholder="oussama 7at old name t3 room hna"  />
+      <div class="selectcontainer">
+      <select name="select-devicesdelet" id="select-devicesdelet" class="form-control">
+          <option value="1" >dht1</option>
+          <option value="2" >RGB</option>
+          <option value="3" >gaz</option>
+          <option value="4" >motion</option>
+          <option value="5">dht2</option>
+          
+  
+        </select>
+      </div> 
+      <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
+          <option value="1" >dht1</option>
+          <option value="2" >RGB</option>
+          <option value="3" >gaz</option>
+          <option value="4" >motion</option>
+          <option value="5">dht2</option>
+          
+  
+        </select>
+      </div> 
+      
+      
+      <button type="submit">Modify Room</button>
+       <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
+     
+            </div> 
+      </form>
+</div>
+
+
+    <!-- hada tanmodal1 ki tclicki barra window toukhrj-->
+    <script>
+    // Get the modal
+    var modal1 = document.getElementById('id01');
+    var modal2 = document.getElementById('id02');
+    var modal3 = document.getElementById('id03');
+    var modal4 = document.getElementById('id04');
+    var modal5 = document.getElementById('id05');
+    var modal6 = document.getElementById('id06');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+        }
+        if (event.target == modal4) {
+            modal4.style.display = "none";
+        }
+        if (event.target == modal5) {
+            modal5.style.display = "none";
+        }
+        if (event.target == modal6) {
+            modal6.style.display = "none";
+        }
+    }
+    </script>
+    <section class="regular slider" id="test"></section>
+
+    <div class="dropdown">
+      <div id="myDropdown" class="dropdown-content">
+        <a href="#home">Delete this room</a>
+        <a href="#about">Modify this room</a>
+       
+      </div>
+    </div>
+
+
+ <div style="display: none;">
+                                <button type="submit" id="pushTest" ></button>
+                            
+                            </div>
+
+
+    <div style="display: none;">
+      <h1 id="getrooms">
+        <%= rooms %>
+      </h1>
+      <h1 id="dht">
+        <%= dht %>
+      </h1>
+      <h1 id="rgb">
+        <%= rgb %>
+      </h1>
+      <h1 id="alarm">
+        <%= alarm %>
+      </h1>
+
+      <h1 id="gsense">
+        <%= gsense %>
+      </h1>
+      <h1 id="ultrason">
+        <%= ultrason %>
+      </h1>
+      <h1 id="light">
+        <%= light %>
+      </h1>
+    </div>
+
+
+
+    <script
+      src="../../../slick/slick.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script>
+      var getrooms = JSON.parse(document.getElementById("getrooms").innerHTML);
+      console.log(getrooms);
+      var allrgb = JSON.parse(document.getElementById("rgb").innerHTML);
+      var alldht = JSON.parse(document.getElementById("dht").innerHTML);
+      var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
+      var alllight = JSON.parse(document.getElementById("light").innerHTML);
+      var allultrason = JSON.parse(
+        document.getElementById("ultrason").innerHTML
+      );
+      var allalarm = JSON.parse(document.getElementById("alarm").innerHTML);
+     
+      function showRooms(i) {
+
+
+
+        
+
+        document.getElementById("test").innerHTML +=
+          '<div class="cardroom">' +
+          '<section class="container-name" id="type' +
+          i +
+          '" >' +
+          "</section>" +
+          '<section class="container-rgb" id="rgb' +
+          i +
+          '">' +
+          "</section>" +
+          '<iframe class="container-charts" id="charts' +
+          i +
+          '" frameBorder="0" scrolling="no">' +
+          "</iframe>" +
+          '<section class="container-secure" id="motion' +
+          i +
+          '">' +
+          "</section>" +
+          '<iframe class="container-gaz" id="gaz' +
+          i +
+          '" frameBorder="0" scrolling="no">' +
+          "</iframe>" +
+          "</div>";
+      }
+      function addType(i) {
+        
+        if (getrooms[i].typeRoom == "kitchen") {
+          document.getElementById("type" + i).innerHTML +=
+            '<img src="../../../icons/hat.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+          document.getElementById("type" + i).innerHTML +=
+            "<p>" + getrooms[i].name + "</p>";
+        }
+        if (getrooms[i].typeRoom == "bedroom") {
+          document.getElementById("type" + i).innerHTML +=
+            '<img src="../../../icons/bedroom.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+          document.getElementById("type" + i).innerHTML +=
+            "<p>" + getrooms[i].name + "</p>";
+        }
+        if (getrooms[i].typeRoom == "livingRoom") {
+          document.getElementById("type" + i).innerHTML +=
+            '<img src="../../../icons/livingroom.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+          document.getElementById("type" + i).innerHTML +=
+            "<p>" + getrooms[i].name + "</p>";
+        }
+        if (getrooms[i].typeRoom == "office") {
+          document.getElementById("type" + i).innerHTML +=
+            '<img src="../../../icons/office.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+          document.getElementById("type" + i).innerHTML +=
+            "<p>" + getrooms[i].name + "</p>";
+        }
+        if (getrooms[i].typeRoom == "hallway") {
+          document.getElementById("type" + i).innerHTML +=
+            '<img src="../../../icons/hallway.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+          document.getElementById("type" + i).innerHTML +=
+            "<p>" + getrooms[i].name + "</p>";
+        }
+      }
+      function addRGB(i) {
+        getrooms[i].devices.light.forEach(function(id) {
+          alllight.forEach(function(elm) {
+            if (id == elm._id) {
+              if (elm.used == true) {
+                console.log("okdddddddddddddd")
+                document.getElementById('rgb'+i).src = '../../../rgb.html';    
+
+                b = elm.value;
+                console.log(b);
+                if (elm.value == true) {
+                  document.getElementById("rgb" + i).innerHTML +=
+                    '<section id="OnOff"><img title="' +
+                    id +
+                    '"  onclick="OnOff(' +
+                    i +
+                    ", " +
+                    b +
+                    ')" src="../../icons/on.png" style="width:13%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
+                } else if (elm.value == false) {
+                  document.getElementById("rgb" + i).innerHTML +=
+                    '<section id="OnOff"><img title="' +
+                    id +
+                    '"   onclick="OnOff(' +
+                    i +
+                    ", " +
+                    b +
+                    ')" src="../../icons/off.png" style="width:13%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
+                }
+              }
+            }
+          });
+        });
+      }
+      function OnOff(i, a) {
+        if (a == true) {
+          var id = document
+            .getElementById("rgb" + i)
+            .childNodes[0].getElementsByTagName("img")[0].title;
+          var b = false;
+          console.log("id haho: " + id);
+          $.ajax({
+            url: "/api/rooms/light",
+            method: "POST",
+            data: JSON.stringify({ id: id, value: b }),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(data) {
+              console.log(data);
+            }
+          });
+          document.getElementById("rgb" + i).innerHTML =
+            '<section id="  "><img title="' +
+            id +
+            '"  onclick="OnOff(' +
+            i +
+            ", " +
+            b +
+            ')" src="../../icons/off.png" style="width:13%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
+        } else {
+          var id = document
+            .getElementById("rgb" + i)
+            .childNodes[0].getElements  ByTagName("img")[0].title;
+          var b = true;
+          console.log("id haho: " + id);
+          $.ajax({
+            url: "/api/rooms/light",
+            method: "POST",
+            data: JSON.stringify({ id: id, value: b }),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(data) {
+              console.log(data);
+            }
+          });
+          document.getElementById("rgb" + i).innerHTML =
+            '<section id="OnOff"><img title="' +
+            id +
+            '" onclick="OnOff(' +
+            i +
+            ", " +
+            b +
+            ')" src="../../icons/on.png" style="width:13%;margin-left:35px;margin-top:20px;margin-bottom:20px" class="rgbview"></section>';
+        }
+      }
+      function addCharts(i) {
+        getrooms[i].devices.dht.forEach(function(id) {
+          alldht.forEach(function(elm) {
+            if (id == elm._id) {
+              if (elm.used == true) {
+                setTimeout(function() {
+                  document.getElementById(
+                    "charts" + i
+                  ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
+                    elm.value;
+                }, 1500);
+                document.getElementById("charts" + i).src =
+                  "../../../Sweet-chart/mychart/dht.html";
+              }
+              b = elm.value;
+            }
+          });
+        });
+      }
+      function addMotion(i) {
+        getrooms[i].devices.ultrason.forEach(function(id) {
+          allultrason.forEach(function(elm) {
+            if (id == elm._id) {
+              if (elm.used == true) {
+                if (elm.value == true) {
+                  document.getElementById("motion" + i).innerHTML +=
+                    '<img src="../../icons/motion.png" style="width:25%; margin-left:25px;margin-top:10px; margin-bottom:10px">';
+                }
+              }
+            }
+          });
+        });
+      }
+      function addGaz(i) {
+        getrooms[i].devices.gsense.forEach(function(id) {
+          allgsense.forEach(function(elm) {
+            if (id == elm._id) {
+              if (elm.used == true) {
+                setTimeout(function() {
+                  // document.getElementById(
+                  // "gaz" + i
+                  // ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
+                  // elm.value;
+                }, 5000);
+                document.getElementById("gaz" + i).src +=
+                  "../../Sweet-chart/mychart/gaz.html";
+              }
+            }
+          });
+        });
+      }
+    </script>
+    <script>
+      $(document).on("ready", function() {
+        for (i = 0; i < getrooms.length; i++) {
+          showRooms(i);
+          addType(i);
+          addRGB(i);
+          addCharts(i);
+          addGaz(i);
+          addMotion(i);
+        }
+      });
+    </script>
+
+    <script type="text/javascript">
+      var a;
+      if (getrooms.length > 3) {
+        a = true;
+      } else {
+        a = false;
+      }
+      $(document).on("ready", function() {
+        $(".regular").  slick({
+          dots: true,
+          infinite: a,
+          speed: 300,
+          slidesToShow: 1,
+          centerMode: true,
+          variableWidth: true,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: "40px",
+                slidesToShow: 1 , 
+                
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: "40px",
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+      });
+    </script>
+   
+    
+
+  <script src="../../../select-beauty.js"></script>
+<script>
+		var selectType = new SelectBeauty({
+			el: '#select-type',
+			length: 6,
+      placeholder:"choose type",
+			max: 1
+		});
+    var selectDevices = new SelectBeauty({
+			el: '#select-devices',
+			length: 20,
+      placeholder:"choose the divices used in the room",
+			max:6
+    });
+    var selectdevicestodelelet = new SelectBeauty({
+			el: '#select-devicesdelet',
+			length: 6,
+      placeholder:"choose devices to delete from the room",
+			max:6
+    });
+  
+    var selectdevicestoadd = new SelectBeauty({
+			el: '#select-devicestoadd',
+			length: 6,
+      placeholder:"choose new devices to add to the room",
+			max:6
+		});
+  </script>
+  <script>
+    function myFunction(){
+const type = Object.entries(selectType.selected)[0][1].text
+const name = document.getElementById("nameRoom").value ; 
+var dev = {
+  dht : false,
+  gsense : false,
+  rgb : false,
+  ultrason : false,
+  light : false ,
+  alarm :false
+}
+ 
+Object.entries(selectDevices.selected).forEach(function(elm){
+  if (elm) {var text = elm[1].text ; 
+  dev[text] = true;
+  }
+})
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ type: type , name : name , devices : dev }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/add"+document.location.search,
+  success: function(data) {
+    console.log(data);
+  }
+});
+setTimeout(function(){
+  location.reload()
+},400)
+   }
+  </script>
+ 
+ 
+
+ <script src="/views/vanillatoasts.js"></script>
+ <link href="/views//vanillatoasts.css" rel="stylesheet"></script>
+ <script type="text/javascript" src="/views/main.js"></script>
+ <script src="/views/offline.js"></script>  
+ <script src="/views/push.js"></script>
+
+  </body>
+</html>

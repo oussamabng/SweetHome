@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="Chart.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <title> Chart</title>
+</head>
+<body>
+  <div  class="container">
+    <canvas id="myChartDht"></canvas>
+  </div>
+  <div id="ok" style="display: none;">
+
+  </div>
+
+  <script>
+  function getData(){
+    return  Math.random()
+  }
+      // Get the context of the canvas element we want to select
+    let myChart = document.getElementById('myChartDht').getContext('2d');
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Roboto';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+console.log(document.defaultView.top.getName())
+    let massPopChart = new Chart(myChart, {
+      type:'line', 
+      data:{
+        labels:['mascara', 'sba', 'mechria'],
+        datasets:[{
+          label:'Population',
+          data:[
+           getData()
+            
+          ],
+          //backgroundColor:'green',
+          backgroundColor:' rgba(89,83,134, 0.7)',
+          borderWidth:3,
+          borderColor: '#554269',
+          hoverBorderWidth:5,
+          hoverBorderColor:'#554269'
+        }]
+      },
+      options:{
+        responsive:true,
+        title:{
+          display:true,
+          text:'Temperature &  humidity',
+          fontSize:10
+        },
+        legend:{
+          display:true,
+          position:'bottom',
+          labels:{
+            fontColor:'#000'
+          }
+        },
+        layout:{
+          padding:{
+            left:50,
+            right:0,
+            bottom:0,
+            top:0
+          }
+        },
+        tooltips:{
+          enabled:true
+        }
+      }
+    });
+    setInterval(function(){
+      massPopChart.data.datasets["data"] = getData() ; 
+    })
+ 
+
+  </script>
+</body>
+</html>

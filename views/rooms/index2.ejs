@@ -1,0 +1,3055 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rooms!</title>
+  <meta charset="UTF-8">  
+  <link href="../../../dist/css/hopscotch.min.css" rel="stylesheet" />
+  <link
+  rel="stylesheet"
+  href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+/>
+  <link rel="stylesheet" type="text/css" href="../../../slick/slick.css" />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="../../../slick/slick-theme.css"
+  />
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
+  
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+  <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto"
+    rel="stylesheet"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <link rel="stylesheet" href="../../../style.css" />
+  <link rel="icon" type="image/png" href="/views/designs/favicon.png" sizes="32x32" />
+  <meta name="theme-color" content="#585f82">
+  <link rel="apple-touch-icon" href="/views/designs/touch-apple.png">
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+
+  <script>  
+
+      function flip() {
+        $(".card").toggleClass("flipped");
+      }
+    </script>
+
+
+    <script>
+      var doughnut = 0;
+      var chawrma = 1;
+      window.setInterval(function() {
+        doughnut = doughnut + 1;
+        var pizza = 0;
+        pizza = doughnut % 20;
+
+        if (pizza == 0) {
+          flip();
+          chawrma = 1;
+        } else {
+          if (chawrma == 1) {
+            flip();
+            chawrma = 0;
+          }
+        }
+      }, 1000);
+    </script>
+</head>
+<body onload="loader()">
+
+
+<!--------------------------------------------------------------->
+
+
+
+
+    <div class="row"  >
+        <!---hadi ga3 t3 animation t3 kol w7da -->
+        <section class="container" id="logout">
+          <div class="card">
+                                      <div class="front">
+                                  <div class="column">
+                                   <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs/login.png" title="logout" >
+                                  </div>                          
+                            </div>
+                    <div class="back"> 
+                            <div class="column">
+                               <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="../../../designs/login1.png" title="logout" >
+                      
+                            </div>
+                    </div>
+          </section>
+        <!--hna tkml lwla g3 t3 nav bar t3 login-->
+        <!--zwaja tbda hna-->
+        <section class="container">
+                <div class="card" id="notify" >
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="not(this)" src="../../../designs/notifications.png" title="notification" id="notify">                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                    <img onclick="not(this)"  src="../../../designs/notifications1.png" title="notification" id="notifyx" >                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--talta tbda hna-->
+        <section class="container">
+          <div class="card" id="showRoutines">
+            
+            <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id09').style.display='block'" src="../../../designs/settings.png" title="settings" >
+                                  </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id09').style.display='block'"  src="../../../designs/settings1.png" title="settings" >                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--rab3a hna--> 
+        <section class="container">
+                <div class="card"  id="add-tour">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById('id03').style.display='block'" src="../../../designs/add.png" title="add romm" >
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="addRoom(this)"  src="../../../designs/add1.png" title="add room" >
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--talia ga3 hna-->
+        <section class="container">
+                <div class="card" id="help-tour">
+                        <div class="front">
+                                <div calss="column">
+                                  <img onclick="document.getElementById('id13').style.display='block'" src="../../../designs/help.png" title="help" id="help-tour">                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                  <img onclick="libya(this)"  src="../../../designs/help1.png" title="help" id="help-tour">                                </div>
+                           </div>
+                </div>
+
+            </section>
+      
+</div>  
+<!------------------------------------------------------------>
+<div id="ArmingMode" >
+
+<div id="hah" class="row">
+    <p><strong>Arming Mode</strong></p>
+  </div>
+<div id ="hih"  class="row" >
+<div class="onoffswitch" >
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+      <label class="onoffswitch-label" for="myonoffswitch">
+         <span class="onoffswitch-inner"></span>
+           <span class="onoffswitch-switch"></span>
+     </label>
+  </div>
+</div>
+</div>
+
+<!--  Modal notifications    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <!--hadi l fenetre li tkhrjlk f login-->
+<div id="id01" class="modal">
+        
+
+        <form class="modal-content animate"  action="/"  >
+          <div class="imgcontainer">
+            <img src="../../../designs/sweet.png" class="bo">
+            <img src="../../../designs/key.png" alt="Avatar" class="avatar">
+            <h1>your home will stay sweet when you're away!</h1>
+          
+                
+            <button id="logoutPage" type="submit">logout</button>
+            
+          
+          
+            
+          
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="ghost">Cancel</button>
+           
+                  </div> 
+            </form>
+    </div>
+      <!--script hada t3 ki tclicki barra window youkhrj-->
+     
+      <div id="id13" class="modal">
+
+        <div class="imgcontainer">
+        <form class="modal-content animate" action="#">
+      
+      
+      
+            <h1>Take a tour around the app! </h1>
+            <p>confused or new user? follow the walkthrough to know all the elements and to use the app to its maximum</p>
+      
+          <br>
+          <br>
+          <button id="libya"  type="button" class="btn btn-primary">Start </button>
+
+      
+      <br>
+      <br>
+      <h1>Any qestions ?</h1>
+      <p>Send us an email and we will reply as soon as possible!</p>
+          <input type="text" placeholder="Email"  />
+          <input type="text" placeholder="Subject"  />
+          <textarea placeholder="Message"  maxlength="2000"></textarea>
+          <button type="button" >Send</button>
+      <br>
+                    <button type="button" onclick="document.getElementById('id13').style.display='none'" class="ghost">Cancel</button>
+           
+            <br>
+            <br>       
+            </form>
+      </div>
+      </div>
+      <script src="../../../js/jquery-1.10.2.js"></script>
+      <script src="../../../dist/js/hopscotch.js"></script>
+            
+      <script>
+$('#myonoffswitch').change(function(){
+  var value = this.checked ;
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({
+     value : value
+    }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/ArmingMode"+document.location.search,
+    success: function(data) {
+      console.log(data);
+    }
+  });
+
+})
+
+        function libya(){
+          var typeX = {}
+          var motionX = {}
+          var chartX = {}
+          var rgbX = {}
+          var gazX= {}
+          
+          document.getElementById('id13').style.display='block'
+          if (screen.width < 700) {
+            var r = 120;
+            var a = "bottom";
+            var b = -195;
+            var c = 220;
+            var x = -120;
+            var y = 130;
+            var u = -45;
+            var i = 55;
+            var w = -10;
+            var v = 30;
+            var p = -240;
+            var o = 270;
+          } else {
+            var r = 100;
+            var a = "left";
+            var b = 15;
+            var c = 60;
+            var x = 15;
+            var y = 60;
+            var u = 15;
+            var i = 60;
+            var w = 15;
+            var v = 60;
+            var p = 15;
+            var o = 60;
+          }
+if(getrooms.length !=0 ){
+  typeX = {
+    target: "type0",
+    placement: a,
+    title: "Name and type of your room",
+    content:
+      "here you will find the name and the type of your room; if you're on a phone or a tablet , grab and swipe left and right to navigate between your rooms!"
+  }
+} 
+if(getrooms.length !=0 ){
+  if (getrooms[0].devices.ultrason[0] != ""){
+  motionX ={
+    target: 'motions0',
+    placement: a,
+    title: 'motion detector',
+    content: 'If you see this little man running , then there\'s movement in your room, and if he\'s not moving then your room is safe and empty.',
+  }
+}
+}
+if(getrooms.length !=0 ){
+
+if (getrooms[0].devices.dht[0] != ""){
+  chartX = {
+    target: "charts0",
+    placement: a,
+    title: "Temperature and humidity ",
+    content:
+      "keep track of your room's temperature and humidity, click on it to check the detailed chart over time!"
+  }
+}
+}
+
+if(getrooms.length !=0 ){
+
+if (getrooms[0].devices.rgb[0] != "") {
+  rgbX =  {
+    target: "rgb0",
+    placement: a,
+    title: "Control your lights",
+    content:
+      "turn on or off by clicking on the light bulb, and have fun changing your light color with the rgb color wheel"
+  }
+}}
+if(getrooms.length !=0 ){
+
+if(getrooms[0].devices.gsense[0] != ""){
+  gazX = {
+    target: "gaz0",
+    placement: a,
+    title: "Gas leak?",
+    content:
+      "keep an eye on different gas levels on your room , don't worry  you will have a notification if there is any gas leak!"
+  }}
+} 
+
+
+    var tour = {
+      id: "hello-hopscotch",
+      steps: [
+        {
+          target: "test",
+          title: "Hello and welcome!",
+          content:
+            "welcome to your Sweet app, where you can control your whole home easily , by controlling each room by itself! each room has its own card with the devices working in it!",
+          placement: "top",
+          yOffset: r,
+          xOffset: 15,
+          arrowOffset: 60 , 
+         
+        },
+  
+        typeX,
+       rgbX,
+        chartX,
+       motionX,
+      gazX,
+      {
+        target: "ArmingMode",
+        placement: "bottom",
+        title: "Arming mode",
+        content:
+          "Active or Desactive motion sensor for the home .. active it when you are leaving home and desactivate when you are back .",
+        yOffset: 0,
+        xOffset: b-50,
+        arrowOffset: c
+      },
+        {
+          target: "add-tour",
+          placement: "bottom",
+          title: "Add a new room",
+          content:
+            "create a new room here by naming it , choosing a type and Selecting the devices that you installed in it ",
+          yOffset: 100,
+          xOffset: b,
+          arrowOffset: c
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          title: "Routines",
+          content:
+            "all of us have routines that we repeat every day , well you don't have to anymore! ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          content:
+            "Add your routine , name it and give it a themed color, and select devices that will do certain actions when the routine is activated! ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          content:
+            "for example : whenever you are going to sleep you have to turn all the lights off and turn on the alarm for motion sensors , well... why do it by hand when you only have to press one button if you add a sleep routine here? (cool, right?) ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "notify",
+          placement: "bottom",
+          title: "Notifications",
+          content:
+            "all of the notifications sent to you by the app are listed here , if you miss one you can check it , and if you handled the situation , you can delete the notification with the lil 'x' on the right of each one ",
+          yOffset: 100,
+          xOffset: u,
+          arrowOffset: i
+        },
+        {
+          target: "logout",
+          placement: "bottom",
+          title: "Logout!",
+          content:
+            "if you want to sign off from your account , you can do it here !  ",
+          yOffset: 100,
+          xOffset: w,
+          arrowOffset: v
+        },
+        {
+          target: "help-tour",
+          placement: "bottom",
+         
+          content:
+            "have fun using your Sweet app in your Sweet home, if you have any questions, fill free to sen us an email with the form that you will find here!",
+          yOffset: 100,
+          xOffset: p,
+          arrowOffset: o
+        }
+      ],
+      showPrevButton: true,
+      scrollTopMargin: 100
+    }
+  
+      document.getElementById("libya").addEventListener("click", function() {
+        document.getElementById('id13').style.display='none' ; 
+
+        if (!hopscotch.isActive) {
+
+        hopscotch.startTour(tour);
+        }
+
+
+      });
+    };
+
+
+</script>
+        <!--  id13   -->
+
+
+ <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
+ <div id="id02" class="modal">
+    <div class="imgcontainernotif">
+            <form class="modal-content animate">
+                <h1>notifications</h1>
+                <ul id="notifi">
+               
+               </ul>
+               
+               
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="ghost">Cancel</button>
+                          </form>
+                        </div>
+  </div>
+
+
+
+
+
+
+   <div id="id03" class="modal">
+        
+
+      <form class="modal-content animate" action="javascript:;" onsubmit="create(this)">
+          <div class="imgcontainer">
+          <h1>Add a new room</h1>
+
+          <input id="nameRoom" type="text" placeholder="choose a name for the room"  />
+          <div class="selectcontainer">
+          <select name="select-type" id="select-type" class="form-control">
+              <option value="1" icon="kitchen">kitchen</option>
+              <option value="2" icon="hallway">hallway</option>
+              <option value="3" icon="office">office</option>
+              <option value="4" icon="bedroom">bedroom</option>
+              <option value="5" icon="livingroom">livingRoom</option>
+              
+      
+            </select>
+          </div> 
+          <select name="select-devices" id="select-devices" class="form-control">
+            <option  style="display: none;"  value="0" >dht</option>
+            <option  style="display: none;"  value="1" >rgb</option>
+            <option  style="display: none;"  value="2" >gsense</option>
+            <option  style="display: none;"  value="3" >ultrason</option>
+            <option  style="display: none;"  value="4">alarm</option>
+            <option  style="display: none;"  value="5">light</option>
+            <option  style="display: none;"  value="6">light</option>
+            <option  style="display: none;"  value="7">light</option>
+            <option  style="display: none;"  value="8">light</option>
+            <option  style="display: none;"  value="9">light</option>
+
+
+              
+      
+            </select>
+          </div> 
+          
+          
+          <button id="createRoom" type="submit">Create Room</button>
+           <button type="button" onclick="document.getElementById('id03').style.display='none'" class="ghost">Cancel</button>
+         
+                </div> 
+          </form>
+  </div>
+
+
+
+
+
+
+
+
+  <div id="id05" class="modal">
+        
+
+    <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoom(this)">
+      <div class="imgcontainer">  
+          <h1>Modify this room</h1>
+
+          <input id="modify" type="text" placeholder="oussama 7at old name t3 room hna"  />
+          <div class="selectcontainer">
+          <select name="select-devicesdelet" id="select-devicesdelet" class="form-control">
+            <option value="0" >dht</option>
+            <option value="1" >rgb</option>
+            <option value="2" >gsense</option>
+            <option value="3" >ultrason</option>
+            <option value="4">alarm</option>
+            <option value="5">light</option>
+            <option value="6">light</option>
+            <option value="7">light</option>
+            <option value="8">light</option>
+            <option value="9">light</option>
+            <option value="10">light</option>
+            <option value="11">light</option>
+            <option value="12">light</option>
+            <option value="13">light</option>
+            <option value="14">light</option>
+
+              
+      
+            </select>
+          </div> 
+          <div class="selectcontainer">
+          <select name="select-devicestoadd" id="select-devicestoadd" class="form-control">
+            <option value="0" >dht</option>
+              <option value="1" >rgb</option>
+              <option value="2" >gsense</option>
+              <option value="3" >ultrason</option>
+              <option value="4">alarm</option>
+              <option value="5">light</option>
+              <option value="6">light</option>
+              <option value="7">light</option>
+              <option value="8">light</option>
+              <option value="9">light</option>
+              <option value="10">light</option>
+              <option value="11">light</option>
+              <option value="12">light</option>
+              <option value="13">light</option>
+              <option value="14">light</option>
+      
+            </select>
+          </div> 
+          
+          
+          <button id="modifi"  type="submit">Modify Room</button>
+           <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
+         
+                </div> 
+          </form>
+  </div>
+
+
+
+  <div id="dialogBox" style="display: none;">
+      <div id="chartContainer" class="dialog" style="height: 500px; width: 100%;"></div>
+  </div>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <div id="id06" class="modal">
+        
+
+    <form class="modal-content animate detailed" action="/action_page.php" > <!---   temperature.html----->
+     <form>
+      <iframe src="../../../Sweet-chart/mychart/temperature.html" class="detailed-graph" frameBorder="0" scrolling="no" id=" "></iframe>
+      <br>
+      <br> 
+      <br>
+      <button type="button" onclick="document.getElementById('id06').style.display='none'" class="ghost" style="width:25%;">Exit</button>
+
+    </form>
+    </form>
+
+</div>
+
+
+
+
+
+<div id="id07" class="modal">
+      
+
+  <form class="modal-content animate detailed" action="/action_page.php" >
+   <form>
+    <iframe src="../../../Sweet-chart/mychart/gaz1.html" class="detailed-graph" frameBorder="0" scrolling="no" id="detailed"></iframe>
+
+    <br>
+    <br>
+    <br>
+    <button type="button" onclick="document.getElementById('id07').style.display='none'" class="ghost" style="width:25%;">Exit</button>
+  </form>
+
+</div>
+</div>
+
+<!--confirmation pop up-->
+<div id="id08" class="modal">
+
+
+    <form class="modal-content animate detailed delete-confirmation" >     <form >
+        <br>
+        <br>
+       Delete this room?
+     <br>
+     <br>
+        <button type="submit">Delete</button>
+        <button type="button" onclick="document.getElementById('id08').style.display='none'" class="ghost">Cancel</button>
+        <br>
+        <br>
+        <br> 
+  
+     </form>
+    </form>
+  
+  </div>
+
+
+
+  <!---------------------------------------------->
+<div id="id09" class="modal">
+
+    <div class="imgcontainerroutines">
+  <form class="modal-content animate">
+  
+    <h1>Routines</h1>
+    <section id="routines"></section>
+  
+    <img src="../../../icons/addroutine.png" onclick="clickBb(this)" style="width:40px">
+  <br>
+  <br>
+    <button type="button" onclick="document.getElementById('id09').style.display='none'" class="ghost">Cancel</button>
+    <br>
+    <br>
+    <br>
+  </form>
+  
+  </div>
+  </div>
+  
+  
+  
+  <div id="id10" class="modal">
+  
+  
+      <form class="modal-content animate"   action="javascript:;" onsubmit="addRoutine(this)">
+        <div class="imgcontainer">
+          <h1>Add a new routine</h1>
+  
+          <input id="nameRoutine" type="text" placeholder="choose a name for the routine"  />
+          <div class="selectcontainer">
+              <select name="select-type" id="select-color-routines" class="form-control">
+                  <option value="1" icon="red-icon">red</option>
+                  <option value="2" icon="purple-icon">purple</option>
+                  <option value="3" icon="yellow-icon">yellow</option>
+                  <option value="4" icon="green-icon">green</option>
+                  <option value="5" icon="bleu-icon">bleu</option>
+  
+  
+                </select>
+          </div>
+          <div class="selectcontainer">
+          <select name="select-type" id="select-room-routines" class="form-control">
+           <option value="0">bleu</option>
+            <option style="display: none;" value="1">bleu</option>
+            <option style="display: none;" value="2">bleu</option>
+            <option style="display: none;" value="3">bleu</option>
+            <option style="display: none;" value="4">bleu</option>
+            <option style="display: none;" value="5">bleu</option>
+            <option style="display: none;" value="6">bleu</option>
+            <option style="display: none;" value="7">bleu</option>
+            <option style="display: none;" value="8">bleu</option>
+            <option style="display: none;" value="9">bleu</option>
+            <option style="display: none;" value="10">bleu</option>
+            <option style="display: none;" value="11">bleu</option>
+            <option style="display: none;" value="12">bleu</option>
+            <option style="display: none;" value="13">bleu</option>
+            <option style="display: none;" value="14">bleu</option>
+            <option style="display: none;" value="15">bleu</option>
+            <option style="display: none;" value="16">bleu</option>
+            <option style="display: none;" value="17">x</option> 
+
+
+              
+             </select>
+          </div>
+          <div class="selectcontainer">
+          <select name="select-devices" id="select-devices-routines-on" class="form-control">
+              <option value="1" >dht</option>
+              <option value="2" >rgb</option>
+              <option value="3" >gsense</option>
+              <option value="4" >ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+
+
+  
+  
+            </select>
+          </div>
+          <div class="selectcontainer">
+            <select name="select-devices" id="select-devices-routines-off" class="form-control">
+              <option value="1" >dht</option>
+              <option value="2" >rgb</option>
+              <option value="3" >gsense</option>
+              <option value="4" >ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+              </select>
+          </div> 
+  
+  
+          <button id="routine" >Add routine</button>
+           <button type="button" onclick="document.getElementById('id10').style.display='none'" class="ghost">Cancel</button>
+  
+                </div> 
+          </form>
+  </div>
+  
+  
+  
+  
+  <div name="" id="id11" class="modal">
+  
+  
+      <form class="modal-content animate detailed delete-confirmation"  action="javascript:;" onsubmit="deleteRoutine(this)">
+       <form >
+          <br>
+          <br>
+         Delete this routine?
+       <br>
+       <br>
+          <button  type="submit">Delete</button>
+          <button type="button" onclick="document.getElementById('id11').style.display='none'" class="ghost">Cancel</button>
+          <br>
+          <br>
+          <br> 
+  
+       </form>
+      </form>
+  
+    </div>
+  
+  
+    <div lang="test" id="id12" class="modal" >
+  
+  
+        <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoutine(this)">
+          <div class="imgcontainer">
+            <h1>Modify this routine</h1>
+  
+            <input id="nameRoutineMod" type="text" placeholder=""  />
+            <div class="selectcontainer">
+                <select name="select-type" id="modify-color-routines" class="form-control">
+                    <option value="1" icon="red-icon">red</option>
+                    <option value="2" icon="purple-icon">purple</option>
+                    <option value="3" icon="yellow-icon">yellow</option>
+                    <option value="4" icon="green-icon">green</option>
+                    <option value="5" icon="bleu-icon">bleu</option>
+  
+  
+  
+                  </select>
+            </div>
+            <div class="selectcontainer">
+            <select name="select-type" id="modify-room-routines" class="form-control">
+                <option value="0">bleu</option>
+            <option style="display: none;" value="1">bleu</option>
+            <option style="display: none;" value="2">bleu</option>
+            <option style="display: none;" value="3">bleu</option>
+            <option style="display: none;" value="4">bleu</option>
+            <option style="display: none;" value="5">bleu</option>
+            <option style="display: none;" value="6">bleu</option>
+            <option style="display: none;" value="7">bleu</option>
+            <option style="display: none;" value="8">bleu</option>
+            <option style="display: none;" value="9">bleu</option>
+            <option style="display: none;" value="10">bleu</option>
+            <option style="display: none;" value="11">bleu</option>
+            <option style="display: none;" value="12">bleu</option>
+            <option style="display: none;" value="13">bleu</option>
+            <option style="display: none;" value="14">bleu</option>
+            <option style="display: none;" value="15">bleu</option>
+            <option style="display: none;" value="16">bleu</option>
+            <option style="display: none;" value="17">x</option>
+  
+  
+              </select>
+            </div>
+
+            <div class="selectcontainer">
+            <select name="select-devices" id="modify-devices-routines-on" class="form-control">
+                <option value="1" >dht</option>
+                <option value="2" >rgb</option>
+                <<option value="3" >gsense</option>
+              <option value="4" >ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+              </select>
+            </div>
+            <div class="selectcontainer">
+              <select name="select-devices" id="modify-devices-routines-off" class="form-control">
+                   <option value="1" >dht</option>
+                <option value="2" >rgb</option>
+                <<option value="3" >gsense</option>
+              <option value="4" >ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+                </select>
+            </div> 
+  
+  
+            <button type="submit">Modify Routine</button>
+             <button type="button" onclick="document.getElementById('id12').style.display='none'" class="ghost">Cancel</button>
+  
+                  </div> 
+            </form>
+    </div>
+  
+  <script>
+     
+      document.getElementById("showRoutines").addEventListener("click", function() {
+        if  (document.getElementById('routines').innerHTML == "") {
+
+        
+            for (i=0;i<scenario.length;i++){
+              showroutines(i);
+             
+
+
+            }
+          }
+          });    
+  function showroutines(i){
+    var b=("'block'"); 
+    var a=("'id12'");
+    var y=("'id11'");
+ var id = scenario[i]._id ; 
+ var name = scenario[i].name ; 
+    document.getElementById('routines').innerHTML +='<div class="dropdown-routine">'+
+                                                        '<div class="dropbtnroutine">'+
+                                                       '<img  src="../../../icons/settings2.png"  onclick="myFunctionRoutine('+i+')" class="dropbtnroutine">'+
+                                                       '</div>'+
+                                                       '<div id="myDropdownroutine'+i+'" class="dropdown-content-routine">'+
+                                                         ' <a onclick="deleteConf('+i+')">Delete this routine</a>'+
+                                                          '<a onclick="okBb('+i+')" >Modify this routine</a>'+
+         
+                                                        '</div>'+
+                                                          '</div>'+
+                                                          '<div>';
+                                                           
+                                                      
+    if(scenario[i].color=="red"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container red">'+
+                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                              '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="bleu"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container bleu">'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                            '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="yellow"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container yellow">'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                            '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="purple"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container purple">'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                            '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="green"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                             '<div class="checkbox-container green">'+
+                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                              '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+
+  setTimeout(function(){
+ 
+    if (scenario[i].checked == true){
+      if (  document.getElementById("toggle"+i)){
+        document.getElementById("toggle"+i).checked = true ;
+      }
+    }else  if (scenario[i].checked == false){
+      if (  document.getElementById("toggle"+i)){
+        document.getElementById("toggle"+i).checked = false ;
+      }
+    
+
+    }
+  },10);
+  }
+  </script>
+  <script>
+    function not() {
+
+      
+      document.getElementById('id02').style.display='block'
+      
+if (document.getElementById('notifyx').src =="http://localhost:3000/designs/notifications1.gif" ) {
+    document.getElementById('notifyx').src = "../../../designs/notifications1.png" ;
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ check  : true }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/check"+document.location.search,
+      success: function(data) {
+  }
+});
+}
+    }
+
+
+  function myFunctionRoutine(i) {
+
+
+
+
+if (scenario[i].checked == true){
+  Swal.fire({
+    type: 'info',
+    html: '<h2>please disable this routine before modify it</h2>',
+  })
+
+}
+else{
+  document.getElementById("myDropdownroutine"+i).classList.toggle("show");
+}
+
+
+
+
+
+
+          }
+          
+          // Close the dropdown if the user clicks outside of it
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtnroutine')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }       
+  </script>
+  
+  
+  
+  
+  
+  
+
+
+           <script>
+                // Get the modal
+                var modal1 = document.getElementById('id01');
+            
+
+              
+              // When the user clicks anywhere outside of the modal, close it
+              window.onclick = function(event) {
+                if (event.target =! modal1) {
+                  modal1.style.display = "none";
+              }
+              }
+              </script>
+<!----------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="regular slider" id="test" style="margin-top: 0;" ></section>
+
+  
+
+
+
+<div style="display: none;">
+                              <button type="submit" id="pushTest" ></button>
+                          
+                          </div>
+
+
+  <div style="display: none;">
+    <h1 id="getrooms">
+      <%= rooms %>
+    </h1>
+    <h1 id="dht">
+      <%= dht %>
+    </h1>
+    <h1 id="rgb">
+      <%= rgb %>
+    </h1>
+    <h1 id="alarm">
+      <%= alarm %>
+    </h1>
+
+    <h1 id="gsense">
+      <%= gsense %>
+    </h1>
+    <h1 id="ultrason">
+      <%= ultrason %>
+    </h1>
+    <h1 id="light">
+      <%= light %>
+    </h1>
+    <h1 id="notifications">
+      <%= notification %>
+    </h1>
+    <h1 id="scz">
+        <%= routine %>
+      </h1>
+      <h1 id="devx">
+          <%= devices %>
+        </h1>
+        <h1 id="check">
+          <%= check %>
+        </h1>
+        <h1 id="ar">
+            <%= armingMode %>
+          </h1>
+       
+  </div>
+
+</div>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+   <script src="../../../slick/slick.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <script>
+
+    var onOff =  function () {
+      var id = this.title; 
+      if (this.src == "http://localhost:3000/icons/on.png" ){
+
+        $.ajax({
+          url: "/api/rooms/light"+document.location.search,
+          method: "POST",
+          data: JSON.stringify({ id: id, value: false }),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(data) {
+            console.log(data);
+
+          }
+        });  
+        this.src = "../../../icons/off.png";     
+
+      }else if (this.src == "http://localhost:3000/icons/off.png") {
+        $.ajax({
+          url: "/api/rooms/light"+document.location.search,
+          method: "POST",
+          data: JSON.stringify({ id: id, value: true }),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(data) {
+          }
+        });
+        this.src = "../../../icons/on.png"
+        
+      }
+
+
+     
+
+
+
+
+      }
+
+      var getrooms = JSON.parse(document.getElementById("getrooms").innerHTML);
+      var check = JSON.parse(document.getElementById("check").innerHTML);
+      if (ar){
+        var ar = JSON.parse(document.getElementById("ar").innerHTML);
+      }
+
+      var allrgb = JSON.parse(document.getElementById("rgb").innerHTML);
+      var alldht = JSON.parse(document.getElementById("dht").innerHTML);
+      var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
+      var alllight = JSON.parse(document.getElementById("light").innerHTML);
+      var notifications = JSON.parse(document.getElementById("notifications").innerHTML);
+      var scenario = JSON.parse(document.getElementById("scz").innerHTML);
+      var allultrason = JSON.parse(
+        document.getElementById("ultrason").innerHTML
+      );
+
+      var allalarm = JSON.parse(document.getElementById("alarm").innerHTML);
+      var devicesX = JSON.parse(document.getElementById("devx").innerHTML);
+    function showRooms(i) {
+          var v=("'id06'");
+        b=("'block'")
+        var w=("'id07'");
+              
+        document.getElementById('test').innerHTML+=
+                
+        '<div class="cardroom" style="margin-top: 50px">'+
+            '<section class="container-name" id="type'+i+'" >'+
+             
+            '</section>'+
+
+              
+
+        
+
+                  
+                 '<section class="ok" style=" width:100%; height:150px;" frameBorder="0" scrolling="no">'+
+
+                    '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
+            
+                        '</iframe>'+
+                        '<section class="container-light" id="light'+i+'" style="text-align: left; " frameBorder="0" scrolling="no">'+
+            
+                            '</section>'+
+                        
+                  '</section>'+
+
+
+
+
+            '<div id="temp'+i+'" style="position:relative;">'+
+                '<div id="overlay-charts" onclick="showTemp(this)" > '+
+              '</div>'+
+          
+            '<iframe   id="charts'+i+'" frameBorder="0" scrolling="no" class="iframechart" >'+
+            
+            '</iframe>'+
+            '</div>'+
+            
+            '<section class="container-secure" id="motions'+i+'">'+
+            
+            '</section>'+
+            '<div id="gazz" style="position:relative;">'+
+                '<div id="overlay-charts" onclick="showGaz(this)" > '+
+                    '</div>'+
+            '<iframe class="container-gaz" id="gaz'+i+'" frameBorder="0" scrolling="no" class="iframechart">'+
+            
+            '</iframe>'+
+            '</div>'+
+        '</div>'
+        ;
+                
+                
+            }
+      
+      function addType(i){
+          var a=("'id05'");
+          b=("'block'");
+          var y=("'id08'");
+          //var id = getrooms[i]._id ; 
+
+          document.getElementById('type'+i).innerHTML+=  '<div class="dropdown">'+
+                                                        '<div class="dropbtn">'+
+                                                      '<img src="../../../icons/settings.png"  onclick="myFunction('+i+')" class="dropbtn">'+
+                                                      '</div>'+
+                                                      '<div id="myDropdown'+i+'" class="dropdown-content">'+
+                                                        ' <a  onclick="deleteRoom('+i+')">Delete this room</a>'+
+                                                          '<a onclick="modeR('+i+')" >Modify this room</a>'+
+        
+                                                        '</div>'+
+                                                          '</div>';
+
+
+                                                          if (getrooms[i].typeRoom == "kitchen") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/hat.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "bedroom") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/bedroom.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "livingRoom") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/livingroom.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "office") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/office.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "hallway") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/hallway.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+          
+      }
+function test(i){
+  
+   var id = document.getElementById("light"+i).children[0].title ; 
+   var src = document.getElementById("light"+i).children[0].src ; 
+   if (src == "http://localhost:3000/icons/on.png" ){
+
+    $.ajax({
+      url: "/api/rooms/light"+document.location.search,
+      method: "POST",
+      data: JSON.stringify({ id: id, value: false }),
+      contentType: "application/json",
+      dataType: "json",
+      success: function(data) {
+
+      }
+    });  
+    document.getElementById("light"+i).children[0].src = "../../../icons/off.png";     
+
+  }else if (src == "http://localhost:3000/icons/off.png") {
+    $.ajax({
+      url: "/api/rooms/light"+document.location.search,
+      method: "POST",
+      data: JSON.stringify({ id: id, value: true }),
+      contentType: "application/json",
+      dataType: "json",
+      success: function(data) {
+console.log(data);
+      }
+    });
+    document.getElementById("light"+i).children[0].src = "../../../icons/on.png";
+    
+  }
+
+
+
+}
+
+      function addLight(i){
+        if (getrooms[i].devices.light[0] != ""){
+
+        
+        getrooms[i].devices.light.forEach(function(id) {
+          alllight.forEach(function(elm) {
+if (id == elm._id){
+  if (elm.used == true){
+    if (elm.value == true){
+      document.getElementById("light"+i).innerHTML += '<img  title="'+id+'" src="../../../icons/on.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test('+i+')" >'; 
+     //var daw =  document.createElement("section") ;
+     //daw.id= "OnOff" ; 
+     //daw.style.width = "20px";
+    // var im = document.createElement("img");
+     //daw.appendChild(im)
+    // im.title = id ; 
+   
+     //im.className = "rgbview";
+     //im.src ="../../../icons/on.png" ;
+     //im.style = "width:50px;margin-left:30px;margin-top:50px;" ; 
+     //im.onclick = onOff ; 
+//document.getElementById("light"+i).appendChild(im);
+
+    
+    }else if (elm.value == false){
+      document.getElementById("light"+i).innerHTML += '<img  title="'+id+'" src="../../../icons/off.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test('+i+')" >'; 
+
+      //var daw =  document.createElement("section") ;
+      //daw.id= "OnOff" ; 
+      //daw.style.width = "20px";
+      //var im = document.createElement("img");
+      //daw.appendChild(im)
+   //   im.title = id ; 
+     // im.className = "rgbview";
+     
+      //im.src ="../../../icons/off.png" ;
+      //im.style = "width:50px;margin-left:20px;margin-top:50px;" ; 
+// im.onclick = onOff ; 
+    }
+ //document.getElementById("light"+i).appendChild(im);    }
+  }else {
+    document.getElementById("light"+i).style.display = "none";
+    document.getElementById("light"+i).style.marginTop = 0;
+    document.getElementsByClassName("ok")[i].style.display = "none"
+  }
+}
+          });
+        });
+      }else {
+        document.getElementById("light"+i).style.display = "none";
+        document.getElementById("light"+i).style.marginTop = 0;
+        document.getElementsByClassName("ok")[i].style.display = "none"
+
+
+      }
+      }
+
+
+
+
+      function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : null;
+      }
+
+      function addRGB(i){
+        
+if (getrooms[i].devices.light[0] != ""){
+
+
+
+        if (getrooms[i].devices.rgb[0] == ""){
+          document.getElementById("rgb"+i).style.display = "none";
+ 
+        }else {
+       
+allrgb.forEach(function(elm){
+  
+  if (getrooms[i].devices.rgb[0] == elm._id){
+
+    if (elm.used){
+
+      document.getElementById("rgb"+i).src = "../../../rgb.html";
+      setTimeout(function(){
+      
+        document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name =  elm._id ; 
+      document.getElementById("rgb"+i).contentDocument.defaultView.document.getElementById("info").innerHTML = 
+        'R:' + ('000' + hexToRgb(elm.color).r).substr(-3) +
+        'G:' + ('000' + hexToRgb(elm.color).g).substr(-3) + 
+        'B:' + ('000' + hexToRgb(elm.color).b).substr(-3);      
+    },2000);
+  }
+    else {
+      document.getElementById("rgb"+i).style.display = "none";
+
+    }
+  }
+})
+        }
+}
+else {
+  document.getElementById("rgb"+i).style.display = "none";
+ 
+
+}
+     
+      
+        }
+      
+
+
+        function addCharts(i) {
+          if (getrooms[i].devices.dht[0] == ""){
+            document.getElementById("temp"+i).style.height = "0px";
+            document.getElementById("charts"+i).style.display = "none";
+      //loca      document.getElementById("motions"+i).style.marginTop = 0;
+
+          
+
+            document.getElementById("temp"+i).children[0].style.display = "none"
+            
+          } else {
+            if (getrooms.length != 1) {
+              document.getElementById("temp"+i).style.height = "150px";
+
+            } else {
+              document.getElementById("temp"+i).style.height = "0px";
+            }
+          getrooms[i].devices.dht.forEach(function(id) {
+            alldht.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  setTimeout(function() {
+                    document.getElementById(
+                      "charts" + i
+                    ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
+                      elm.value;
+                  }, 1500);
+                  document.getElementById("charts" + i).src =
+                    "../../../Sweet-chart/mychart/dht.html";
+                } else {
+                  document.getElementById("temp"+i).style.height = "0";
+                }
+                b = elm.value;
+              }
+            });
+          });
+        }
+        
+        }
+        function addMotion(i) {
+          if (getrooms[i].devices.ultrason[0] == ""){
+            document.getElementById("motions"+i).style.display = "none";
+
+            if (getrooms[i].devices.dht[0] ==""){
+
+              document.getElementById("temp"+i).style.height = "0px";
+
+            } else {
+              document.getElementById("temp"+i).style.height = "125px";
+
+            }
+            
+          } else {
+            if (getrooms[i].devices.dht[0] ==""){
+
+              document.getElementById("motions"+i).style.margin = "0px"
+            }
+
+          getrooms[i].devices.ultrason.forEach(function(id) {
+            allultrason.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  if (elm.value == true){
+
+                  
+                    document.getElementById("motions" + i).innerHTML +=
+                      '<img class="gifgif" id="motions" src="../../icons/openDoor.png" style="height: 100px ; width: 100px; margin-left:10px;"; >';
+                    
+                    if (getrooms.length != 1 ){
+                      document.getElementById("motions"+i).style.margin = 0;
+
+                    }
+
+                  }else {
+                    document.getElementById("motions" + i).innerHTML +=
+                    '<img class="gifgif" id="motions" src="../../icons/closeDoor.png" style="height: 100px ; width: 100px; margin-left:10px;  " >';
+                    if (getrooms.length != 1 ){
+                      document.getElementById("motions"+i).style.margin = 0;
+
+                    }
+                  }
+                  
+                }else{
+                  document.getElementById("motions"+i).style.display = "none" ; 
+                }
+              }
+            });
+          });
+        }
+      }
+        function addGaz(i) {
+          if (getrooms[i].devices.gsense[0] == ""){
+            document.getElementById("gaz"+i).style.display = "none"
+          
+
+            document.getElementById("gazz").children[0].style.display = "none"
+            
+          } else {
+          getrooms[i].devices.gsense.forEach(function(id) {
+            allgsense.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  setTimeout(function() {
+                    // document.getElementById(
+                    // "gaz" + i
+                    // ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
+                    // elm.value;
+                  }, 5000);
+                  document.getElementById("gaz" + i).src +=
+                    "../../Sweet-chart/mychart/gaz.html";
+                } else {
+                  document.getElementById("gaz"+i).style.display = "none";
+                }
+              }
+            });
+          });
+        }
+        }
+    
+
+
+      
+    </script>
+    <script>
+      
+
+         
+  function showntifications(i){
+        if(notifications[i].type=="motion") {
+        document.getElementById('notifi').innerHTML += '<li id="mouvement'+i+'"   class="motion">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+        
+  }
+  if(notifications[i].type=="ultrason") {
+    document.getElementById('notifi').innerHTML += '<li id="ult'+i+'"   class="ultrason">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+    
+}
+        if(notifications[i].type=="temperature"){
+          document.getElementById('notifi').innerHTML += '<li  id="tmp'+i+'"  class="temperature">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+      
+      
+      }
+        
+        
+        if(notifications[i].type=="gaz") {
+          document.getElementById('notifi').innerHTML += '<li id="gz'+i+'" class="gaz">' +notifications[i].content+ '<a    title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+       
+      }
+      
+      
+  }
+      </script>
+      <script>
+          function loader() {
+            document.getElementById("myonoffswitch").checked = ar ; 
+            setTimeout(function() { 
+              if($('#ftco-loader').length > 0) {
+                $('#ftco-loader').removeClass('show');
+              }
+            }, 1  );
+          };
+
+
+      </script>
+    <script>
+    $(document).on('ready', function() {
+      
+
+if (getrooms.length == 0) {
+  if (screen.width < 700) {
+    var r = 120;
+    var a = "bottom";
+    var b = -195;
+    var c = 220;
+    var x = -120;
+    var y = 130;
+    var u = -45;
+    var i = 55;
+    var w = -10;
+    var v = 30;
+    var p = -240;
+    var o = 270;
+  } else {
+    var r = 100;
+    var a = "left";
+    var b = 15;
+    var c = 60;
+    var x = 15;
+    var y = 60;
+    var u = 15;
+    var i = 60;
+    var w = 15;
+    var v = 60;
+    var p = 15;
+    var o = 60;
+  }
+  var tour =  {
+    id :  "hello-hopscotch" , 
+     steps : [
+     {
+       target: "help-tour",
+       placement: "bottom",
+       delay : 800,  
+       content:
+         "new user ? check our help page ..",
+       yOffset: 100,
+       xOffset: p,
+       arrowOffset: o,
+     } ,
+     ],
+     showNextButton : false ,
+     showCloseButton : true , 
+       }
+    
+  if (!hopscotch.isActive) {
+
+    hopscotch.startTour(tour);
+    }
+} 
+
+
+
+if (check) {
+  document.getElementById('notifyx').src = "../../../designs/notifications1.png"
+} else  {
+  document.getElementById('notifyx').src = "../../../designs/notifications1.gif"
+
+}
+      
+
+      for (var i = 0; i < getrooms.length; i++){
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+      showRooms(i);
+      addType(i); 
+      addRGB(i);
+      addLight(i);
+      addCharts(i); 
+      addGaz(i);
+      biz(i); 
+      addMotion(i);
+      rek(i) ;
+
+
+    }
+    if (notifications){
+      for (var j=0;j<notifications.length;j++){
+        showntifications(j);
+      }
+    }
+
+    if (notifications){
+      notifications.forEach(function(elm){
+     
+        if (elm.a.val == true){
+          document.getElementById("notifyx").src = "../../../designs/notifications1.gif" ; 
+          $.ajax({
+            type: "POST",
+            data: JSON.stringify({ check  : false }),
+            contentType: "application/json",
+            dataType: "json",
+            url: "/api/rooms/check"+document.location.search,
+            success: function(data) {
+        }
+      });
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({
+          id : elm._id
+        }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/val"+document.location.search,
+        success: function(name) {
+
+        }
+      });
+          if(elm.type == "motion") {
+  
+  
+  
+  
+          if(!("Notification" in window)){
+            alert("this browser does not support notif");
+        }else if (Notification.permission == "granted"){
+          var options = {
+            body: "motion was detected on the room :"+elm.a.nameRoom,
+            icon: "../../../notifications1.gif",
+            requireInteraction: true     
+          }
+            var notification = new Notification("alarm" ,options );
+            
+        } 
+       
+  
+      } else if (elm.type == "ultrason"){
+        if(!("Notification" in window)){
+          alert("this browser does not support notif");
+      }else if (Notification.permission == "granted"){
+        var options = {
+          body: elm.content,
+          icon: "../../../notifications1.gif",
+          requireInteraction: true     
+        }
+          var notification = new Notification("Door action detected" ,options );
+         
+      }
+       
+      }
+       
+    }
+        });
+    }
+   
+    
+  });
+   
+    </script>
+    
+    <script>
+         function myFunction(i) {
+          document.getElementById("myDropdown"+i).classList.toggle("show");
+         document.getElementById("modify").placeholder =  document.getElementById("type"+i).children[2].innerHTML;
+          //console.log(document.getElementsByClassName("dropbtn")[])   ;     // Close the dropdown if the user clicks outside of it
+
+        }
+        
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }       
+        </script>
+
+  <script>
+    var a;
+    if (getrooms.length > 3) {
+      a = true;
+    } else {
+      a = false;
+    }
+   
+    $(document).on('ready', function() {
+     
+  $(".regular").slick({
+    dots: true,
+  infinite: a,
+  speed: 300,
+  slidesToShow: 1,
+  centerMode: true,
+  variableWidth: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+      });
+      
+  
+</script>
+<script>
+    Pusher.logToConsole = true;
+
+var pusher = new Pusher('28874f2f3bdf02b787e5', {
+  cluster: 'eu',
+  forceTLS: true
+});
+
+var chan = pusher.subscribe('inserted');
+
+
+chan = pusher.bind('ultrason' , function(data){
+
+
+
+
+
+  for(var i=0 ; i< getrooms.length ; i++){
+    if ((document.getElementsByClassName("container-name")[i].children[2].innerText) == data.name ) {
+     if (data.value == true){
+      document.getElementById("motions"+i).children[0].src = "../../../icons/openDoor.png" ; 
+     } else {
+      document.getElementById("motions"+i).children[0].src = "../../../icons/closeDoor.png" ; 
+ }
+    }
+  }
+})
+
+
+
+
+chan =  pusher.bind('alarm', function(data) {
+     var id =  data.id ;
+   
+     const name = "haha";
+const saha  = document.getElementById("pushTest");
+
+
+
+
+
+
+
+
+
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Alarm On !! ',
+  text: data.message,
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, stop it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+
+
+
+
+
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({
+        id : id
+      }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/notifications"+document.location.search,
+      success: function(name) {
+nombre = 0;
+
+if (getrooms.length == 1){
+  document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
+
+
+}else
+{
+
+for(var i = 0 ; i < getrooms.length; i++){
+
+if (document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value == "false"){ 
+  if (name[0] == document.getElementById("type"+i).children[1].innerHTML  ){
+    nombre = getrooms.length;
+    break;
+  }
+  else {
+    nombre = i  ;
+    //document.getElementsByClassName("slick-next")[0].click();
+    break ; 
+  }
+
+}
+}
+$('.regular').slick('slickSetOption', 'speed', 50, true);
+a =nombre; 
+b = 10;
+
+console.log("length : "+ getrooms.length);
+t = setInterval(function(){
+  
+    if (a < getrooms.length )  {
+
+      if (name[0] == document.getElementById("type"+a).children[2].innerHTML )
+    {
+      document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
+      learInterval(t);
+  } 
+
+
+  else{ 
+    document.getElementsByClassName("slick-next")[0].click();
+    a++;
+  }
+} 
+else {
+    a = 0 ; 
+    }
+
+  
+
+
+
+},200);
+//TODO doka ha ndir 
+      }
+    }
+  
+// hna
+// TODO ok 
+//document.getElementsByClassName("slick-next")[0].firstChild.data
+ 
+    }) ; 
+
+
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ check  : false }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/check"+document.location.search,
+      success: function(data) {
+  }
+});
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({
+    id : data.elm
+  }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/val"+document.location.search,
+  success: function(name) {console.log(name)}
+});
+   
+
+    Swal.fire(
+      'Stoped!',
+      'Your Alarm has been stoped.',
+      'success'
+    ).then((result) => {
+      if (result.value) {
+        setTimeout(function(){
+          location.reload() ;
+        },50)
+      }});
+
+
+
+
+
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    Swal.fire(
+      'Cancelled',
+      'Your alarm still ringing  !',
+      'error'
+    ).then((result) => {
+      if (result.value) {
+        setTimeout(function(){
+          location.reload() ;
+        },50)
+      }});
+
+
+  
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+saha.click();
+
+
+
+});
+</script>
+<script src="../../../select-beauty.js"></script>
+<script>
+		var selectType = new SelectBeauty({
+			el: '#select-type',
+			length: 6,
+      placeholder:"choose type",
+			max: 1
+		});
+
+    var selectDevices = new SelectBeauty({
+			el: '#select-devices',
+			length: 20,
+      placeholder:"choose the devices used in the room",
+			max:6
+    });
+ 
+    var selectdevicestodelelet = new SelectBeauty({
+			el: '#select-devicesdelet',
+			length: 6,
+      placeholder:"choose devices to delete from the room",
+			max:6
+    });
+  
+    var selectdevicestoadd = new SelectBeauty({
+			el: '#select-devicestoadd',
+			length: 6,
+      placeholder:"choose new devices to add to the room",
+      max:6
+    
+      
+    });
+    
+
+    var selectdeviceoffsroutines = new SelectBeauty({
+      el: '#select-devices-routines-off',
+      length: 6,
+      placeholder:"choose devices to go off when this routine is activated",
+      max:6
+    });
+    var selectdevicesonroutines = new SelectBeauty({
+      el: '#select-devices-routines-on',
+      length: 6,
+      placeholder:"choose devices to go on when this routine is activated",
+      max:6
+    });
+  
+    var selectroomsroutines= new SelectBeauty({
+      el: '#select-room-routines',
+      length: 1,
+      placeholder:"choose rooms that will follow this routine",
+      max:10
+    });
+    var selectcolorsroutines= new SelectBeauty({
+      el: '#select-color-routines',
+      length: 6,
+      placeholder:"choose a color for the routine card",
+      max:1
+    });
+    var modifydeviceoffsroutines = new SelectBeauty({
+      el: '#modify-devices-routines-off',
+      length: 6,
+      placeholder:"modify devices to go off when this routine is activated",
+      max:6
+    });
+    var modifydevicesonroutines = new SelectBeauty({
+      el: '#modify-devices-routines-on',
+      length: 6,
+      placeholder:"modify devices to go on when this routine is activated",
+      max:6
+    });
+  
+    var modifyroomsroutines= new SelectBeauty({
+      el: '#modify-room-routines',
+      length: 6,
+      placeholder:"modify the rooms that will follow this routine",
+      max:10
+    });
+    var modifycolorsroutines= new SelectBeauty({
+      el: '#modify-color-routines',
+      length: 6,
+      placeholder:"modify the color for the routine card",
+      max:1
+    });
+
+  </script>
+
+  <script>
+
+    function modeR(i){
+      document.getElementById('id05').style.display='block' ; 
+      id = getrooms[i]._id ; 
+$.ajax({
+  method : "POST"  ,
+  data : JSON.stringify ({ id : id }),
+  "url" : "/api/rooms/modeR"+document.location.search,
+  contentType: "application/json",
+  dataType: "json",
+  success : function(data){
+
+  
+    for (var j = 0; j < data.devicesToDelete.length; j++){
+    
+      document.getElementsByClassName("select-beauty")[2].children[1].children[j].children[0].dataset.value = j ;
+      document.getElementsByClassName("select-beauty")[2].children[1].children[j].children[0].innerText = data.devicesToDelete[j] ;
+      selectdevicestodelelet.tempData[j].text = data.devicesToDelete[j] ; 
+  
+    }
+    for (var k = data.devicesToDelete.length ;   k< Object.entries(selectdevicestodelelet.tempData).length  ; k++){
+
+      document.getElementsByClassName("select-beauty")[2].children[1].children[k].innerText = "" ; 
+
+
+
+    }
+    for (var j = 0; j < data.devicesToAdd.length; j++){
+    
+      document.getElementsByClassName("select-beauty")[3].children[1].children[j].children[0].dataset.value = j ;
+      document.getElementsByClassName("select-beauty")[3].children[1].children[j].children[0].innerText = data.devicesToAdd[j] ;
+      selectdevicestoadd.tempData[j].text = data.devicesToAdd[j] ; 
+  
+    }
+    for (var k = data.devicesToAdd.length ;   k< Object.entries(selectdevicestoadd.tempData).length  ; k++){
+
+      document.getElementsByClassName("select-beauty")[3].children[1].children[k].innerText = "" ; 
+
+
+
+    }
+
+
+
+
+
+  }
+})
+
+
+    }
+
+
+function addRoom(){
+
+
+  document.getElementById('id03').style.display='block' ;
+  if (devicesX){
+  for (j = 0; j < devicesX.devices.length; j++){
+
+    document.getElementsByClassName("select-beauty")[1].children[1].children[j].children[0].dataset.value = j ;
+    document.getElementsByClassName("select-beauty")[1].children[1].children[j].children[0].innerText = devicesX.devices[j] ;
+    selectDevices.tempData[j].text = devicesX.devices[j] ; 
+
+  }
+  for(k  = devicesX.devices.length ; k < Object.entries(selectDevices.tempData).length ; k++){
+    document.getElementsByClassName("select-beauty")[1].children[1].children[k].innerText = "" ; 
+
+
+  }
+} else {
+  for(f  = 0 ; f < Object.entries(selectDevices.tempData).length ; f++){
+    document.getElementsByClassName("select-beauty")[1].children[1].children[f].innerText = "" ; 
+
+
+  }
+
+}
+
+
+}
+
+function activeRoutine(i){
+
+  if (document.getElementById("toggle"+i).checked == false) {
+    var id = scenario[i]._id;
+
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ id: id }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/desactiveRoutine"+document.location.search,
+      success: function(data) {
+        setTimeout(function(){
+          location.reload()
+         },700)      }
+    });    
+  } else{
+    var id = scenario[i]._id;
+    //verefie if another scenario is checked 
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ id: id }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/ver"+document.location.search,
+      success: function(data) {
+  
+  if (data.ver == true){ //if yes send a notification to uncheck
+    Swal.fire({
+      type: 'info',
+      html: '<h2>disable the routine that is already active before activing this one</h2>',
+    })
+        document.getElementById("toggle"+i).checked = false;
+  }
+  else {
+  // if no check it 
+
+      var id = scenario[i]._id;
+            $.ajax({
+              type: "POST",
+              data: JSON.stringify({ id: id}),
+              contentType: "application/json",
+              dataType: "json",
+              url: "/api/rooms/activeRoutine"+document.location.search,
+              success: function(data) {
+                setTimeout(function(){
+                  location.reload()
+                 },800)      }
+            });
+      
+      
+      
+      
+      
+          
+  
+  
+  
+  }
+  
+  
+  
+  
+              }
+    });  
+  
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+}
+
+
+      function clickBb(){
+        document.getElementById('id10').style.display='block' ; 
+        for (var i = getrooms.length ;  i<document.getElementsByClassName("select-beauty")[5].children[1].children.length ; i++){
+          document.getElementsByClassName("select-beauty")[5].children[1].children[i].innerText = "" ; 
+        }
+       
+      }
+      function okBb(j){
+        document.getElementById("nameRoutineMod").placeholder = scenario[Number(j)].name ; 
+                document.getElementById('id12').style.display='block' ; 
+                document.getElementById('id12').lang = j ;
+
+        for (var i = getrooms.length ;  i<document.getElementsByClassName("select-beauty")[9].children[1].children.length ; i++){
+          document.getElementsByClassName("select-beauty")[9].children[1].children[i].innerText = "" ; 
+        }
+      }
+      function deleteConf(i){
+        document.getElementById("id11").style.display='block' ; 
+        document.getElementById("id11").name = i ; 
+      }
+  
+ function deleteRoutine(){
+
+  var i =  document.getElementById("id11").name ; 
+var name = document.getElementsByClassName("container-routines "+i)[0].children[0].innerHTML ;
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ name : name  , i : i }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/deleteRoutine"+document.location.search,
+  success: function(data) {
+  document.getElementsByClassName("container-routines "+data.i)[0].style.display = "none" ; 
+  document.getElementById("id11").style.display='none' ; 
+
+ setTimeout(function(){
+      location.reload()
+     },400)
+     }
+  
+});
+
+ }
+    function rek(i){
+   
+      document.getElementsByClassName("select-beauty")[5].children[1].children[i].children[0].dataset.value = i ;
+      document.getElementsByClassName("select-beauty")[5].children[1].children[i].children[0].innerText = getrooms[i].name ;
+      selectroomsroutines.tempData[i].text = getrooms[i].name ; 
+
+
+      
+
+ 
+    }
+    function biz(i){
+       document.getElementsByClassName("select-beauty")[9].children[1].children[i].children[0].dataset.value = i ;
+      document.getElementsByClassName("select-beauty")[9].children[1].children[i].children[0].innerText = getrooms[i].name ;
+      modifyroomsroutines.tempData[i].text = getrooms[i].name ; 
+    }
+function deleteNot(j){
+if (notifications.length !=0){
+  var id  = notifications[j]._id ; 
+  var type  = notifications[j].type ; 
+
+
+
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({ id: id , type : type , i :j }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/deleteNot"+document.location.search,
+    success: function(data) {
+   if (data.type == "motion") {
+     document.getElementById("mouvement"+data.i).style.display = "none";
+   } else if (data.type == "temperature") {
+    document.getElementById("tmp"+data.i).style.display = "none";
+  } else if (data.type == "gaz") {
+    document.getElementById("gz"+data.i).style.display = "none";
+  } else if (data.type == "ultrason"){
+    document.getElementById("ult"+data.i).style.display = "none";
+  }
+  
+  }
+  });
+}
+
+
+
+
+
+}
+function modifyRoutine(){
+
+
+
+
+
+    var devicesOn = new Object();
+ var devicesOff = new Object();
+ var rooms = new Array() ; 
+var color =""
+ const i = Number(document.getElementById("id12").lang) ; 
+ const id = scenario[i]._id ; 
+
+
+
+
+var name = document.getElementById("nameRoutineMod").value ;
+
+if ( name == ""){
+  name = document.getElementById("nameRoutineMod").placeholder
+
+} 
+if (Object.entries(modifycolorsroutines.selected).length != 0){ 
+var color = Object.entries(modifycolorsroutines.selected)[0][1].text ;
+}
+
+for (var j =0 ; j<Object.entries(modifyroomsroutines.selected).length;j++){
+  var elm = Object.entries(modifyroomsroutines.selected)[j] ;
+  rooms.push(elm[1].text) ; 
+}
+for (var j =0 ; j<Object.entries(modifydevicesonroutines.selected).length;j++){
+  var ok = Object.entries(modifydevicesonroutines.selected)[j][1].text ;
+  devicesOn[ok] = true ; 
+}
+for (var j =0 ; j<Object.entries(modifydeviceoffsroutines.selected).length;j++){
+  var ok = Object.entries(modifydeviceoffsroutines.selected)[j][1].text ;
+  devicesOff[ok] = true ; 
+}
+ 
+  
+   //  document.getElementsByClassName("container-routines 0")[0].children[0].innerHTML
+   $.ajax({
+    type: "POST",
+    data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , id : id }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/modifyRoutine"+document.location.search,
+    success: function(data) {
+      setTimeout(function(){
+        location.reload()
+       },400)} , 
+       error : function(err){
+         console.log(err)
+       }
+  });
+  
+
+
+
+}
+
+function addRoutine(){
+ var devicesOn = new Object();
+ var devicesOff = new Object();
+
+
+  const rooms = new Array() ; 
+ const name =  document.getElementById("nameRoutine").value; 
+ const color = Object.entries(selectcolorsroutines.selected)[0][1].text ;
+ Object.entries(selectroomsroutines.selected).forEach(function(elm){
+rooms.push(elm[1].text) ; 
+ });
+
+ Object.entries(selectdevicesonroutines.selected).forEach(function(elm){
+  var ok = elm[1].text ; 
+  devicesOn[ok] = true ; 
+   });
+   Object.entries(selectdeviceoffsroutines.selected).forEach(function(elm){
+    var ok = elm[1].text ; 
+    devicesOff[ok] = false ; 
+     });
+
+     // TODO problem teh devices...........................................
+
+
+
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/addRoutine"+document.location.search,
+  success: function(data) {
+    setTimeout(function(){
+      location.reload()
+     },400)},
+     error : function(err){
+      console.log(err)
+    }
+});
+
+
+}
+
+
+
+      function create(){
+        
+  const type = Object.entries(selectType.selected)[0][1].text
+  const name = document.getElementById("nameRoom").value ; 
+  var dev = new Array();
+   
+  Object.entries(selectDevices.selected).forEach(function(elm){
+    if (elm) {
+      dev.push(elm[1].text)
+    }
+  })
+
+
+ 
+  
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({ type: type , name : name , devices : dev }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/add"+document.location.search,
+    success: function(data) {
+
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ type: data.type , name : data.name , devices : data.arr }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/room"+document.location.search,
+        success: function(data) {
+
+
+Swal.fire({
+  position: 'top-end',
+  type: 'success',
+  title: 'Your room has been added',
+  showConfirmButton: false,
+  timer: 1500
+})
+           
+          setTimeout(function(){
+            location.reload()
+           },1500)      
+        }
+      });
+
+
+          }
+  });
+
+    }
+
+    function getName(){
+      i = 0 ;
+while (document.getElementById("slick-slide0"+i)) {
+  if (document.getElementById("slick-slide0"+i).attributes["aria-hidden"].value == "false"){
+    return document.getElementById("slick-slide02").children[0].children[0].innerText
+  }
+}
+    }
+   
+
+
+    function  showTemp() {
+
+	$("#dialogBox").dialog({
+		open: function(event,ui) {
+			$(".ui-widget-overlay").bind("click", function(event,ui) {         
+				$("#dialogBox").dialog("close");
+			});
+		},
+		closeOnEscape: true,
+		draggable: false,
+		resizable: false,
+		title: "Temperature and Humidity",
+    width: 900,
+    high : 700,
+		modal: true,
+		show: 500
+	});
+	$(".ui-widget-overlay").css({"background-color": "#ef7ef7"});
+    // Create the chart
+  Highcharts.stockChart("chartContainer", {
+    chart: {
+      events: {
+        load: function() {
+          // set up the updating of the chart each second
+            var series = this.series[0];
+                  var series2 = this.series[1];
+                  setInterval(function() {
+                    var x = new Date().getTime(), // current time
+                      y = Math.random();
+                    z = Math.random();
+                    series.addPoint([x, y], false, true);
+                    series2.addPoint([x, z], true, true);
+                  }, 1000);
+        }
+      }
+    },
+
+    time: {
+      useUTC: false
+    },
+
+    rangeSelector: {
+      buttons: [
+        {
+          count: 1,
+          type: "minute",
+          text: "1M"
+        },
+        {
+          count: 5,
+          type: "minute",
+          text: "5M"
+        },
+        {
+          type: "all",
+          text: "All"
+        }
+      ],
+      inputEnabled: false,
+      selected: 0
+    },
+
+    title: {
+      text: "Temperature and Humidity Chart"
+    }, yAxis: [
+                {
+                    opposite:false , 
+                  title: {
+                    text: "Temperature (C°)'"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#8c1531"
+                    }
+                  ]
+                },
+                {
+                  title: {
+                    text: "Humidity (%)"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#808080"
+                    }
+                  ]
+                }
+              ],
+
+    exporting: {
+      enabled: false
+    },
+
+    series: [
+      {
+        name: "Temperature",  marker: {
+                  enabled: true,
+                  radius: 5,
+                  fillColor: "#0cc9c6"
+                },
+        data: (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+          }
+          return data;
+        })()
+      } , 
+      {
+        name : "Humidity" ,
+          marker: {
+                  enabled: true,
+                  radius: 5,
+                  fillColor: "#b904d1"
+                },
+                            yAxis: 1,
+        data : (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() * 800) + 150]);
+          }
+          return data;
+        })()
+
+      }
+    ] , 
+     responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal'
+                },
+                yAxis: {
+                    labels: {
+                        align: 'left',
+                        x: 0,
+                        y: -5
+                    },
+                    title: {
+                        text: null
+                    }
+                },
+                subtitle: {
+                    text: null
+                },
+                credits: {
+                    enabled: false
+                }
+            }
+        }]
+    }
+  });
+
+    }
+
+
+    function showGaz() {
+
+
+      $("#dialogBox").dialog({
+        open: function(event,ui) {
+          $(".ui-widget-overlay").bind("click", function(event,ui) {         
+            $("#dialogBox").dialog("close");
+          });
+        },
+        closeOnEscape: true,
+        draggable: false,
+        resizable: false,
+        title: "Temperature and Humidity",
+        width: 900,
+        high : 700,
+        modal: true,
+        show: 500
+      });
+      $(".ui-widget-overlay").css({"background-color": "#ef7ef7"});
+        // Create the chart
+      Highcharts.stockChart("chartContainer", {
+        chart: {
+          events: {
+            load: function() {
+              // set up the updating of the chart each second
+                var series = this.series[0];
+                      var series2 = this.series[1];
+                      setInterval(function() {
+                        var x = new Date().getTime(), // current time
+                          y = Math.random();
+                        z = Math.random();
+                        series.addPoint([x, y], false, true);
+                        series2.addPoint([x, z], true, true);
+                      }, 1000);
+            }
+          }
+        },
+    
+        time: {
+          useUTC: false
+        },
+    
+        rangeSelector: {
+          buttons: [
+            {
+              count: 1,
+              type: "minute",
+              text: "1M"
+            },
+            {
+              count: 5,
+              type: "minute",
+              text: "5M"
+            },
+            {
+              type: "all",
+              text: "All"
+            }
+          ],
+          inputEnabled: false,
+          selected: 0
+        },
+    
+        title: {
+          text: "Temperature and Humidity Chart"
+        }, yAxis: [
+                    {
+                        opposite:false , 
+                      title: {
+                        text: "Temperature (C°)'"
+                      },
+                      plotLines: [
+                        {
+                          value: 0,
+                          width: 1,
+                          color: "#8c1531"
+                        }
+                      ]
+                    },
+                    {
+                      title: {
+                        text: "Humidity (%)"
+                      },
+                      plotLines: [
+                        {
+                          value: 0,
+                          width: 1,
+                          color: "#808080"
+                        }
+                      ]
+                    }
+                  ],
+    
+        exporting: {
+          enabled: false
+        },
+    
+        series: [
+          {
+            name: "Temperature",  marker: {
+                      enabled: true,
+                      radius: 5,
+                      fillColor: "#0cc9c6"
+                    },
+            data: (function() {
+              // generate an array of random data
+              var data = [],
+                time = new Date().getTime(),
+                i;
+    
+              for (i = -999; i <= 0; i += 1) {
+                data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+              }
+              return data;
+            })()
+          } , 
+          {
+            name : "Humidity" ,
+              marker: {
+                      enabled: true,
+                      radius: 5,
+                      fillColor: "#b904d1"
+                    },
+                                yAxis: 1,
+            data : (function() {
+              // generate an array of random data
+              var data = [],
+                time = new Date().getTime(),
+                i;
+    
+              for (i = -999; i <= 0; i += 1) {
+                data.push([time + i * 1000, Math.round(Math.random() * 800) + 150]);
+              }
+              return data;
+            })()
+    
+          }
+        ] , 
+         responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        align: 'center',
+                        verticalAlign: 'bottom',
+                        layout: 'horizontal'
+                    },
+                    yAxis: {
+                        labels: {
+                            align: 'left',
+                            x: 0,
+                            y: -5
+                        },
+                        title: {
+                            text: null
+                        }
+                    },
+                    subtitle: {
+                        text: null
+                    },
+                    credits: {
+                        enabled: false
+                    }
+                }
+            }]
+        }
+      });
+    
+        }
+
+
+        function deleteRoom(i){
+        var name =   document.getElementById("type"+i).children[2].innerHTML ; 
+        $.ajax({
+          type: "DELETE",
+          data: JSON.stringify({ name : name , i : i}),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/rooms/delete"+document.location.search,
+          success: function(data) {
+            document.getElementsByClassName("cardroom")[i].style.display = "none";
+setTimeout(function(){
+if (i !=0){
+  document.getElementsByClassName("slick-prev")[0].click() ; 
+
+}else{
+  document.getElementsByClassName("slick-next")[0].click() ; 
+
+}
+},700)
+            Swal.fire({
+              position: 'top-end',
+              type: 'success',
+              title: 'Your room has been deleted succesfully',
+              showConfirmButton: false,
+              timer: 1200
+            })
+                       
+            setTimeout(function(){
+            location.reload()
+              },1400)
+                       
+              }
+      });
+    }
+
+   function modifyRoom(){
+     name =  document.getElementById("modify").placeholder ;
+
+var newName = document.getElementById("modify").placeholder ;
+if (document.getElementById("modify").value != ""){
+  newName = document.getElementById("modify").value
+}
+
+    var devAdd = new Array() ; 
+    var devDel = new Array() ; 
+Object.entries(selectdevicestoadd.selected).forEach(function(elm){
+if (elm){
+  
+  var name = elm[1].text ; 
+  devAdd.push(name) ; 
+}
+
+}); 
+Object.entries(selectdevicestodelelet.selected).forEach(function(elm){
+  if (elm){
+    var name = elm[1].text ; 
+    devDel.push(name)  
+  }
+});
+$.ajax({
+    type: "POST",
+    data: JSON.stringify({ name : name , newName : newName , devAdd : devAdd , devDel : devDel }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/modify"+document.location.search,
+    success: function(data) {
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ name : data.name , newName : data.newName , arr : data.arr }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/delDev"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },400)        
+      }
+    
+        
+      });
+      
+   
+  }
+
+    
+  });
+  
+   }
+
+  </script>
+ 
+</body>
+</html>

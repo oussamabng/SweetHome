@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+        <link rel="stylesheet" type="text/css" href="swacss.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <meta name="viewport" content="width=360, initial-scale=1.0">
+         <link
+        rel="stylesheet"
+        href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+       />
+         <!---meta name="viewport" content="width=device-width, initial-scale=1.0" -->
+         <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       
+        <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="./log-res/scripts/app.js"></script>
+        <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="./log-res/scripts/app.js"></script>
+ <script>
+                function flip() {
+                       $('.card').toggleClass('flipped');
+                       $('.back').toggleClass('flipo');
+                       $('.front').toggleClass('flipo');
+
+                   }
+
+        </script>   
+
+        
+        
+                     
+ <title>
+    SWEET
+</title>
+
+
+</head>
+<body>
+    <script>
+        
+            const title = 'Simple Title';
+    const options = {
+      body: 'Simple piece of body text.\nSecond line of body text :)'
+    };
+    registration.showNotification(title, options);
+    </script>
+    
+        <!--- row 7akm nav bar kamla fi saf wa7ed, kichghl tableau fiha row wa7ed-->
+    <div class="row"  >
+            <!---hadi ga3 t3 animation t3 kol w7da -->
+            <section class="container2">
+                    <div class="ball gbounce">
+                    <div class="ball spring">
+                               <div class="column">
+                                       <img id="front"  onclick="document.getElementById('id01').style.display='block'" src="designs\login.png"  title="logout" class="icon">
+                                      </div> 
+                    </div>  
+                    </div>                       
+                                
+              </section>
+            <!--hna tkml lwla g3 t3 nav bar t3 login-->
+            <!--zwaja tbda hna-->
+            <section class="container2">
+                   
+                    <div class="ball gbounce1">
+                            <div class="ball spring1">
+                                    <div calss="column">
+                                        <img onclick="document.getElementById('id02').style.display='block'" src="designs\notifications.png" title="notification" class="icon">
+                                    </div>
+ 
+                   
+                                </div>  
+                            </div>              
+                                 
+
+                </section>
+            <!--talta tbda hna-->
+            <section class="container2">
+                    <div class="ball gbounce2">
+                            <div class="ball spring2">
+                                    <div calss="column">
+                                        <img onclick="document.getElementById('id02').style.display='block'" src="designs\settings.png" title="settings" class="icon">
+                                    </div>
+                                </div>  
+                            </div>    
+                            
+                </section>
+            <!--rab3a hna--> 
+            <section class="container2">
+                    <div class="ball gbounce3">
+                            <div class="ball spring3">
+                                    <div calss="column">
+                                        <img onclick="document.getElementById('id02').style.display='block'" src="designs\add.png" title="add romm" class="icon">
+                                    </div>
+                                </div>  
+                            </div>    
+                            
+                </section>
+            <!--talia ga3 hna-->
+            <section class="container2">
+                    <div class="ball gbounce4">
+                            <div class="ball spring4">
+                                    <div calss="column">
+                                        <img onclick="document.getElementById('id02').style.display='block'" src="designs\help.png" title="help" class="icon">
+                                    </div>
+
+                                </div>  
+                            </div>    
+                </section>
+    </div>  
+   
+         
+    <div  class="modal1">
+            
+  
+     
+            
+                
+                
+     <div class="container" id="homeView" >
+        
+            <div class="form-container sign-up-container">
+            
+                
+                    <form>
+                            <h1>Create Account</h1>
+                           
+                            <input type="text" placeholder="Name" id="txtRegisterUsername" />
+                            <input type="email" placeholder="Email"  id="Registermail" />
+                            <input type="password" placeholder="Password" id="txtRegisterPassword" />
+                            <button id="btnRegister" type="submit">Sign Up</button>
+                        </form>                    </div>
+                 
+            <div class="form-container sign-in-container">
+                
+                     <form action="#">
+                            <h1>Sign in</h1>
+                            
+                            <input type="text" placeholder="Username" id="txtLoginUsername" />
+                            <input type="password" placeholder="Password" id="txtLoginPassword"  />
+                            <a class="btn btn-link" href="/api/forgot">Forgot Password?</a>
+
+                            <button id="btnLoginLogin" type="submit" >Sign In</button>
+                        </form>                    </div>
+                    
+                   
+                  
+            <div class="overlay-container">
+                    <div class="overlay">
+                            <div class="overlay-panel overlay-left">
+                                <h1>Welcome Back!</h1>
+                                <p>
+                                    login and sweeten your home!
+                                </p>
+                                <button class="ghost" id="signIn">Sign In</button>
+                            </div>
+                            <div class="overlay-panel overlay-right">
+                                <h1>Hello, Friend!</h1>
+                                <p>add your home to be sweeter!</p>
+                                <button class="ghost" id="signUp">Sign Up</button>
+                            </div>
+                        </div> 
+                        
+                                       
+        </div>
+       
+        
+       
+
+</div>
+<div class="container3" id="phoneView" >
+        <div class="card">
+                <div class="front" >
+                        <div class="container-login-flip">
+                            <div class="formcontainer">
+                                    
+                                           <button id="signup-flipper" style="margin-top: 30px">sign up!</button> 
+                                   
+                           <form >
+                               <h1>Sign in</h1>
+                               
+                               <input type="text" placeholder="Username" id="txtLoginUsername" />
+                               <input type="password" placeholder="Password" id="txtLoginPassword"  />
+                               <a class="btn btn-link" href="/forgot">Forgot Password?</a>
+    
+                               <button id="btnLoginLogin" type="submit" >Sign In</button>
+                               <br>   
+                                                    
+                               
+                           </form>
+                         
+                   </div> 
+                </div>         
+                    
+            </div>
+                
+                        
+                        
+                   
+               <div class="back">
+                <div class="container-login-flip">
+
+                            <div class="formcontainer">
+                               
+                                        <button id="signup1-flipper"style="margin-top: 30px">sign in!</button>
+                                      
+                                <form>
+                                    <h1>Create Account</h1>
+                                   
+                                    <input type="text" placeholder="Name" id="txtRegisterUsername" />
+                                    <input type="email" placeholder="Email"  id="Registermail" />
+                                    <input type="password" placeholder="Password" id="txtRegisterPassword" />
+                                    <button id="btnRegister" type="submit">Sign Up</button>
+                                    <br>
+                                    
+                                </form> 
+                               
+                       </div>
+                    </div> 
+             </div>
+            
+        </div>
+        
+</div>
+<script>
+const flipperButton = document.getElementById('signup-flipper');
+const flipper1Button = document.getElementById('signup1-flipper');
+          flipperButton.addEventListener('click' , () =>{flip();});
+          flipper1Button.addEventListener('click' , () =>{flip();});
+
+</script>
+<script>
+        toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: true,
+            progressBar: false,
+            positionClass: "toast-top-center",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",    
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
+    $("#btnLoginLogin").click(function() {
+        console.log("ok")
+        var user = document.getElementById("txtLoginUsername").value;
+        var pass = document.getElementById("txtLoginPassword").value;
+        console.log(user);
+        $.ajax({
+          method: "POST",
+          data: JSON.stringify({ username: user, password: pass }),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/auth",
+  
+          success: function(data) {
+            $.ajaxSetup({
+              headers: {
+                "x-auth-token": data.token
+              }
+            });
+  
+            console.log(data);
+            window.location.replace(`/api/rooms/all?token=${data.token}`);
+  
+            //hna
+          },
+          error: function(data) {
+          
+            toastr["error"](data.responseText, "Login failed");
+          }
+        });
+      });
+  </script>  
+        <script>
+        const signUpButton = document.getElementById('signUp');
+            const signInButton = document.getElementById('signIn');
+            const container = document.getElementById('homeView');
+            
+            signUpButton.addEventListener('click', () => {
+                container.classList.add('right-panel-active');
+            });
+            
+            signInButton.addEventListener('click', () => {
+                container.classList.remove('right-panel-active');
+            });</script> 
+
+                             
+        
+
+                          
+          
+          
+     
+           
+    </div>
+    
+    <div id="mailsend" class="modal">
+     
+        <legend>mail has been sent </legend>
+        <div class="form-group">
+    </div>
+    
+    <div id="resetView" class="modal">
+    
+                <legend>Reset Password</legend>
+                <div class="form-group">
+                  <label for="password">New Password</label>
+                  <input class="form-control" type="password" name="password" value="" placeholder="New password" autofocus="autofocus"/>
+                </div>
+                <div class="form-group">
+                  <label for="confirm">Confirm Password</label>
+                  <input class="form-control" type="password" name="confirm" value="" placeholder="Confirm password"/>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit">Update Password</button>
+                </div>
+    </div>
+    
+    
+    <script>
+        
+        $(window).resize(function() {
+            if (document.documentElement.clientWidth >=1024){
+                $("#phoneView").hide();
+                $("#homeView").show();
+            }
+            else{
+                $("#homeView").hide();
+                $("#phoneView").show();
+                
+            };
+        }).resize()
+        
+    
+       
+    
+    
+    </script>
+
+                
+    
+</body>
