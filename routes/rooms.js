@@ -455,6 +455,7 @@ router.post("/modifyRoutine", async function(req, res) {
       }
     });
     sc.name = req.body.name;
+<<<<<<< HEAD
     if (req.body.rooms.length != 0) {
       sc.rooms = req.body.rooms;
     }
@@ -465,6 +466,11 @@ router.post("/modifyRoutine", async function(req, res) {
     if (Object.entries(req.body.devicesOn).length != 0) {
       sc.devicesOn = req.body.devicesOn;
     }
+=======
+    sc.rooms = req.body.rooms;
+    sc.devicesOff = req.body.devicesOff;
+    sc.devicesOn = req.body.devicesOn;
+>>>>>>> 9798761c52efb82d84dfc39d291d8bd002fcac1a
 
     await sc.save();
   } catch (error) {
@@ -586,6 +592,10 @@ router.post("/activeRoutine", async function(req, res) {
           });
         }
       } else if (r[0] == "light") {
+<<<<<<< HEAD
+=======
+        console.log("dd");
+>>>>>>> 9798761c52efb82d84dfc39d291d8bd002fcac1a
         if (room) {
           room.devices.light.forEach(async function(e) {
             if (e != "") {
@@ -762,6 +772,7 @@ router.post("/room", async function(req, res) {
 });
 
 //const rooms = await Rooms.find({ userId: req.userId._id });
+<<<<<<< HEAD
 router.post("/ver", async function(req, res) {
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
@@ -781,6 +792,8 @@ router.post("/ver", async function(req, res) {
 
   res.status(200).send({ message: "check post   succes", ver: ver });
 });
+=======
+>>>>>>> 9798761c52efb82d84dfc39d291d8bd002fcac1a
 //console.log(rooms);
 //res.send(rooms);
 //});
