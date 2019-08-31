@@ -26,7 +26,6 @@ img {
 }
 
 /*------------------------------------*/
-
 .card {
   width: 20%;
   height: 20%;
@@ -1184,6 +1183,18 @@ select {
   z-index: 1;
 }
 
+
+
+
+
+.checkbox-container.gr .active-circle,
+.checkbox-container.gr input:checked + label {
+  background-color: #2ecc71;
+  box-shadow: inset 20px 0 0 0 #2ecc71;
+
+}
+
+
 .checkbox-container.green .active-circle,
 .checkbox-container.green input:checked + label {
   background-color: #52e0dd;
@@ -1555,3 +1566,5 @@ textarea {
   /* margin: 1px 10px 1px 0px; */
   vertical-align: middle;
 }
+
+/* check box

@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Clocklet - An opinionated clock-style vanilla-js timepicker
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/themes/prism.css")
+    link(rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Frank+Ruhl+Libre|Playball|Source+Sans+Pro:400,600")
+    link(rel="stylesheet" href=`${cdnBaseUrl}/css/clocklet.css`)
+    style: include demo.css
+  body
+    script(async src="https://www.googletagmanager.com/gtag/js?id=UA-64398169-1")
+    script window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments)} gtag('js', new Date()); gtag('config', 'UA-64398169-1');
+    script(src=`${cdnBaseUrl}/umd/clocklet.js`)
+
+    div(style="display: flex; align-items: baseline;")
+      h1 Clock#[strong let]
+      a(href="https://github.com/luncheon/clocklet")
+        img(src="https://cdn.jsdelivr.net/npm/octicons@7.0.1/build/svg/mark-github.svg" alt="GitHub" style="height: 3em; margin-left: 1em; vertical-align: bottom;")
+    p
+      | An opinionated clock-style vanilla-js timepicker.
+      br
+      a(href="https://github.com/luncheon/clocklet") See README on GitHub for details.
+
+    section.examples
+      h2 Examples
+      .example
+        h3 Basic usage
+        .demo: include 1.html
+        pre: code.language-html: include:escape-html 1.html
+      .example
+        h3 Options
+        .demo: include 2.html
+        pre: code.language-html: include:escape-html 2.html
+      .example
+        h3 Events
+        .demo(style="display: flex; align-items: center;"): include 3.html
+        pre: code.language-html: include:escape-html 3.html
+      .example
+        h3 Colors
+        .demo: include 4.html
+        pre: code.language-html: include:escape-html 4.html
+      .example
+        h3 Scroll to clocklet on open
+        .demo: include 5.html
+        pre: code.language-html: include:escape-html 5.html
+
+    script(src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/prism.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/components/prism-markup.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/components/prism-css.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/components/prism-javascript.min.js")

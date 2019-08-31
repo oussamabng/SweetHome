@@ -1,20 +1,30 @@
-const jwt = require("jsonwebtoken");
-const config = require("config");
-const _ = require("lodash");
 const { User } = require("../models/user");
 var express = require("express");
 var bcryptNode = require("bcrypt-nodejs");
 const router = express.Router();
-
-var mongoose = require("mongoose");
 var nodemailer = require("nodemailer");
-var bcrypt = require("bcrypt-nodejs");
-var async = require("async");
-var crypto = require("crypto");
-var flash = require("req-flash");
 
 router.get("/", function(req, res) {
   res.render("newpassword");
+});
+
+router.post("/send", function(req, res) {
+  var smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "nodemailer.ouss@gmail.com",
+      pass: "notrust2019"
+    }
+  });
+  var mailOptions = {
+    to: "sweetysmarthome@gmail.com",
+    from: req.body.name + " ! " + req.body.email,
+    subject: req.body.subject,
+    text: req.body.message
+  };
+  smtpTransport.sendMail(mailOptions);
+
+  res.send({ message: "mail sent successfully" });
 });
 
 router.post("/", function(req, res) {

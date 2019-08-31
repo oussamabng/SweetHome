@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const webPush = require("web-push");
-const jwt = require("jsonwebtoken");
+var schedule = require("node-schedule");
+
 const {
   User,
   Dht,
@@ -71,6 +72,10 @@ app.post("/subscribe", (req, res) => {
 
 // TODO nada
 
+var j = schedule.scheduleJob(" 51 14 * * Thu,Sat", function() {
+  console.log("Time for tea!");
+});
+
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static("public"));
@@ -111,29 +116,24 @@ db.once("open", () => {
       var room = await Rooms.find({ userId: user._id });
       room.forEach(async function(elm) {
         if (elm.devices.ultrason[0] == change.fullDocument._id) {
-          console.log({
-            id: change.fullDocument._id,
-            name: elm.name,
-            value: change.fullDocument.value
-          });
           pusher.trigger("inserted", "ultrason", {
             //TODO to add //data : change.fullDocument.data
             id: change.fullDocument._id,
             name: elm.name,
             value: change.fullDocument.value
           });
-          notif = new Notification({
-            type: "ultrason",
-            content: "door action happend",
-            time: new Date().toString().substring(0, 24),
-            userId: user._id,
-            a: {
-              val: true,
-              id: change.fullDocument._id,
-              nameRoom: elm.name
-            }
-          });
-          await notif.save();
+          // notif = new Notification({
+          // type: "ultrason",
+          // content: "door action happend",
+          //time: new Date().toString().substring(0, 24),
+          // userId: user._id,
+          // a: {
+          //  val: true,
+          //   id: change.fullDocument._id,
+          // nameRoom: elm.name
+          // }
+          //});
+          //  await notif.save();
         }
       });
     }

@@ -455,7 +455,6 @@ router.post("/modifyRoutine", async function(req, res) {
       }
     });
     sc.name = req.body.name;
-<<<<<<< HEAD
     if (req.body.rooms.length != 0) {
       sc.rooms = req.body.rooms;
     }
@@ -466,11 +465,6 @@ router.post("/modifyRoutine", async function(req, res) {
     if (Object.entries(req.body.devicesOn).length != 0) {
       sc.devicesOn = req.body.devicesOn;
     }
-=======
-    sc.rooms = req.body.rooms;
-    sc.devicesOff = req.body.devicesOff;
-    sc.devicesOn = req.body.devicesOn;
->>>>>>> 9798761c52efb82d84dfc39d291d8bd002fcac1a
 
     await sc.save();
   } catch (error) {
@@ -592,10 +586,6 @@ router.post("/activeRoutine", async function(req, res) {
           });
         }
       } else if (r[0] == "light") {
-<<<<<<< HEAD
-=======
-        console.log("dd");
->>>>>>> 9798761c52efb82d84dfc39d291d8bd002fcac1a
         if (room) {
           room.devices.light.forEach(async function(e) {
             if (e != "") {
@@ -772,7 +762,6 @@ router.post("/room", async function(req, res) {
 });
 
 //const rooms = await Rooms.find({ userId: req.userId._id });
-<<<<<<< HEAD
 router.post("/ver", async function(req, res) {
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
@@ -792,8 +781,6 @@ router.post("/ver", async function(req, res) {
 
   res.status(200).send({ message: "check post   succes", ver: ver });
 });
-=======
->>>>>>> 9798761c52efb82d84dfc39d291d8bd002fcac1a
 //console.log(rooms);
 //res.send(rooms);
 //});
@@ -873,61 +860,79 @@ router.post("/modeR", async function(req, res) {
 
   if (room.devices.dht[0] != "") {
     const dht = await Dht.findOne({ _id: room.devices.dht[0] });
-    dev.push(dht.name);
+    if (dht) {
+      dev.push(dht.name);
+    }
   }
 
   if (room.devices.rgb[0] != "") {
     const rgb = await Rgb.findOne({ _id: room.devices.rgb[0] });
-    dev.push(rgb.name);
+    if (rgb) {
+      dev.push(rgb.name);
+    }
   }
 
   if (room.devices.alarm[0] != "") {
     const alarm = await Alarm.findOne({ _id: room.devices.alarm[0] });
-    dev.push(alarm.name);
+    if (alarm) {
+      dev.push(alarm.name);
+    }
   }
 
   if (room.devices.light[0] != "") {
     const light = await Light.findOne({ _id: room.devices.light[0] });
-    dev.push(light.name);
+    if (light) {
+      dev.push(light.name);
+    }
   }
 
   if (room.devices.ultrason[0] != "") {
     const ultrason = await Ultrason.findOne({ _id: room.devices.ultrason[0] });
-    dev.push(ultrason.name);
+    if (ultrason) {
+      dev.push(ultrason.name);
+    }
   }
 
   if (room.devices.gsense[0] != "") {
     const gsense = await Gsense.findOne({ _id: room.devices.gsense[0] });
-    dev.push(gsense.name);
+    if (gsense) {
+      dev.push(gsense.name);
+    }
   }
 
   if (room.devices.dht[0] == "") {
     const dht = await Dht.findOne({ tokenId: user.tokenId, used: false });
-
-    devA.push(dht.name);
+    if (dht) {
+      devA.push(dht.name);
+    }
   }
 
   if (room.devices.gsense[0] == "") {
     const gsense = await Gsense.findOne({ tokenId: user.tokenId, used: false });
-    devA.push(gsense.name);
+    if (gsense) {
+      devA.push(gsense.name);
+    }
   }
 
   if (room.devices.alarm[0] == "") {
     const alarm = await Alarm.findOne({ tokenId: user.tokenId, used: false });
-
-    devA.push(alarm.name);
+    if (alarm) {
+      devA.push(alarm.name);
+    }
   }
 
   if (room.devices.rgb[0] == "") {
     const rgb = await Rgb.findOne({ tokenId: user.tokenId, used: false });
-
-    devA.push(rgb.name);
+    if (rgb) {
+      devA.push(rgb.name);
+    }
   }
 
   if (room.devices.light[0] == "") {
     const light = await Light.findOne({ tokenId: user.tokenId, used: false });
-
-    devA.push(light.name);
+    if (light) {
+      devA.push(light.name);
+    }
   }
 
   if (room.devices.ultrason[0] == "") {
@@ -935,8 +940,9 @@ router.post("/modeR", async function(req, res) {
       tokenId: user.tokenId,
       used: false
     });
-
-    devA.push(ultrason.name);
+    if (ultrason) {
+      devA.push(ultrason.name);
+    }
   }
 
   res.status(200).send({
