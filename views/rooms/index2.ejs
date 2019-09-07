@@ -690,6 +690,10 @@ if(getrooms[0].devices.gsense[0] != ""){
   <div id="dialogBox" style="display: none;">
       <div id="chartContainer" class="dialog" style="height: 500px; width: 100%;"></div>
   </div>
+
+  <div id="dialogBox2" style="display: none;">
+    <div id="chartContainer2" class="dialog" style="height: 500px; width: 100%;"></div>
+</div>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -861,11 +865,14 @@ if(getrooms[0].devices.gsense[0] != ""){
 </div>
 
          <br>
+         <br>
+
+         <br>
 
           <div id="setTime" class="checkbox-container gr">
               <div class="row" >
                   <div class="col" >
-                      <p style="width:70px;"> <strong>SET TIME</strong> </p>
+                      <p style="width:70px;"> <strong>Set time</strong> </p>
 
               <input type="checkbox"  id="timee"  />
 
@@ -938,7 +945,7 @@ if(getrooms[0].devices.gsense[0] != ""){
       $("#e").dialog({
         buttons: [
         {
-          text: "OK",
+          text: "Select",
           click : function(){
             document.getElementById("kko").children[0].children[0].innerHTML =  $("#weekCal").weekLine('getSelected');
 
@@ -949,18 +956,46 @@ if(getrooms[0].devices.gsense[0] != ""){
         }],
         modal : true,
         draggable: false,
+        responsive : true,
+        fluid: true, //new option
+
         resizable: false,
         position : { my: "center", at: "center", of: "#id69" },
         show: 500
       });
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[5].style.padding = "12px";
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[5].style.paddingBottom = "10px"
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[5].style.paddingLeft = "25px" ; 
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[5].style.paddingRight = "25px" ; 
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[5].style.paddingTop = "10px" ; 
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[5].style.textTransform = "none"
+document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[2].style.background ="#595386";
+
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[5].style.margin = "10px";
+
+document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[2].style.background = "#595386";
+
+
     });
 
 document.getElementById("okk").addEventListener("click",function(){
+
+
+
+
+
+
+
+
+
   document.getElementById("example").value = "add time" ;
   $("#ex").dialog({
     buttons: [
     {
-      text: "OK",
+      text: "Select",
       click : function(){
 var time = document.getElementById("example").value;
 $("#ex").dialog("close");
@@ -971,18 +1006,51 @@ document.getElementById("okk").children[0].children[0].innerHTML = time;
     }],
     modal : true,
     draggable: false,
+    responsive : true,
+    fluid: true, //new option
+
+
+
     resizable: false,
     position : { my: "center", at: "center", of: "#id69" },
     show: 500
   });
+
+
+
+//bouton select time 
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.padding = "12px";
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.paddingBottom = "10px"
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.paddingLeft = "25px" ; 
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.paddingRight = "25px" ; 
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.paddingTop = "10px" ; 
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.textTransform = "none"
+document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[1].style.background ="#595386";
+
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.margin = "10px";
+
+document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[1].style.background = "#595386";
+
+
+
+
+
+
  // document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[1].style.display = "none";
   document.getElementsByClassName("ui-dialog-buttonset")[0].style.marginRight = "40%";
+
 });
     function wow(){
+
       return false;
     }
 
       $("#timee").click(function() {
+
         var time,repeat = "";
     
         $("#weekCal").weekLine();
@@ -993,7 +1061,10 @@ document.getElementById("okk").children[0].children[0].innerHTML = time;
        
         draggable: false,
         resizable: false,
-        title: "SET TIME",
+        responsive : true,
+        title: "Set time",
+        fluid: true, //new option
+
         width: 700,
         modal: true,
         show: 500,
@@ -1021,11 +1092,54 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
     
     }]
       });
-      document.getElementsByClassName("ui-dialog-buttonset")[0].children[0].style.background = "#8BB7D9" ;
-      document.getElementsByClassName("ui-dialog-buttonset")[0].children[0].style.color = "black";
-      document.getElementById("ui-id-1").style.margin = "0 0 0 40%";
+
+      document.getElementsByClassName("ui-button-icon ui-icon ui-icon-closethick")[0].addEventListener("click", function(){
+
+
+        document.getElementById("timee").checked = falsew
+
+
+      });
+
+
+
+
+
+
+      document.getElementsByClassName("ui-dialog-buttonset")[0].children[0].style.background = "#595386" ;
+      document.getElementsByClassName("ui-dialog-buttonset")[0].children[0].style.color = "white";
       document.getElementsByClassName("ui-dialog-buttonset")[0].style.marginRight ="45%";
-      document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.background = '#8bb7d9';
+      document.getElementsByClassName("ui-dialog-buttonset")[0].style.borderRadius =  "25%";
+
+// botton select teh time add 
+
+
+
+
+
+
+
+
+
+
+      // bouton Done teh set time 
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.padding = "12px";
+      document.getElementsByClassName("ui-dialog-title")[0].style.color = "white";
+
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.paddingBottom = "10px"
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.paddingLeft = "25px" ; 
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.paddingRight = "25px" ; 
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.paddingTop = "10px" ; 
+
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")	[1].style.textTransform = "none"
+      document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.background ="#595386";
+
+
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.margin = "10px";
+      
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.marginLeft = "35%"
+      document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.background = "#595386";
+
     }
     });
 
@@ -1121,8 +1235,22 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
   
                 </select>
             </div> 
-  
-  
+            <div id="days" class="selectcontainer" style="display : none">
+              <select name="selectdays" id="selectdays" class="form-control">
+                  <option value="1" >Sunday</option>
+                  <option value="2" >Monday</option>
+                  <option value="3" >Tuesday</option>
+                <option value="4" >Wednesday</option>
+                <option value="6">Thursday</option>
+                <option value="7">Friday</option>
+                <option value="8">Saturday</option>
+
+                </select>
+              </div>
+  <div id="modifyTime">
+    <input type="text" id="examplex">
+
+  </div>
             <button type="submit">Modify Routine</button>
              <button type="button" onclick="document.getElementById('id12').style.display='none'" class="ghost">Cancel</button>
   
@@ -1721,6 +1849,7 @@ else {
               document.getElementById("temp"+i).style.height = "150px";
 
             } else {
+
               document.getElementById("temp"+i).style.height = "0px";
             }
           getrooms[i].devices.dht.forEach(function(id) {
@@ -1736,6 +1865,7 @@ else {
                   document.getElementById("charts" + i).src =
                     "../../../Sweet-chart/mychart/dht.html";
                 } else {
+                  document.getElementsByClassName("container-secure")[0].style.marginTop = "0px";
                   document.getElementById("temp"+i).style.height = "0";
                 }
                 b = elm.value;
@@ -1790,6 +1920,8 @@ else {
                   
                 }else{
                   document.getElementById("motions"+i).style.display = "none" ; 
+                  document.getElementById("temp"+i).style.height = "150px" ; 
+
                 }
               }
             });
@@ -1872,11 +2004,21 @@ else {
       </script>
     <script>
     $(document).on('ready', function() {
+
+
+
+if (screen.width < 600 ){
+ var doc =  document.getElementById("chartContainer");
+}
+
+
       $( "#example" ).timeDropper({
         format : "HH-mm" , 
         setCurrentTime : true
       });
-
+      $( "#examplex" ).timeDropper({
+        format : "HH-mm" 
+      });
 
 if (getrooms.length == 0) {
   if (screen.width < 700) {
@@ -2117,7 +2259,25 @@ chan = pusher.bind('ultrason' , function(data){
  }
     }
   }
-})
+});
+
+
+chan = pusher.bind('scenario' , function(data){
+
+
+  Swal.fire(
+      'routine activated!',
+      'Your routine has been activated.',
+      'info'
+    ).then((result) => {
+      if (result.value) {
+        setTimeout(function(){
+          location.reload() ;
+        },50)
+      }});
+
+
+});
 
 
 
@@ -2415,7 +2575,12 @@ saha.click();
       placeholder:"modify the color for the routine card",
       max:1
     });
-
+    var selectdays= new SelectBeauty({
+      el: '#selectdays',
+      length: 7,
+      placeholder:"Choose the days to repeat your routine",
+      max:7
+    });
   </script>
 
   <script>
@@ -2504,20 +2669,47 @@ function activeRoutine(i){
 
   if (document.getElementById("toggle"+i).checked == false) {
     var id = scenario[i]._id;
+    if ((scenario[i].time == "") && (scenario[i].repeat =="")){
 
-    $.ajax({
-      type: "POST",
-      data: JSON.stringify({ id: id }),
-      contentType: "application/json",
-      dataType: "json",
-      url: "/api/rooms/desactiveRoutine"+document.location.search,
-      success: function(data) {
-        setTimeout(function(){
-          location.reload()
-         },700)      }
-    });    
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ id: id }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/desactiveRoutine"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },900)      }
+      });  
+
+    } else if ((scenario[i].time != "") && (scenario[i].repeat !="")){
+      
+      
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ id: id }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/desactiveRoutine"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },900)      }
+      });
+
+    }
+
+
+  
   } else{
+
     var id = scenario[i]._id;
+
+
+
+if ((scenario[i].time == "") && (scenario[i].repeat =="")){
+
     //verefie if another scenario is checked 
     $.ajax({
       type: "POST",
@@ -2536,8 +2728,7 @@ function activeRoutine(i){
   }
   else {
   // if no check it 
-
-      var id = scenario[i]._id;
+  var id = scenario[i]._id;
             $.ajax({
               type: "POST",
               data: JSON.stringify({ id: id}),
@@ -2547,25 +2738,25 @@ function activeRoutine(i){
               success: function(data) {
                 setTimeout(function(){
                   location.reload()
-                 },800)      }
+                 },900)      }
             });
-      
-      
-      
-      
-      
-          
-  
-  
-  
   }
-  
-  
-  
-  
-              }
+  }
     });  
   
+}
+else if ((scenario[i].time != "") && (scenario[i].repeat !="")){
+  Swal.fire({
+    type: 'info',
+    html: '<h2>This routine will be automatic activated on :'+ scenario[i].time +'</h2>',
+  });
+  document.getElementById("toggle"+i).checked = false ;
+}
+
+
+
+
+
 
   }
 
@@ -2605,6 +2796,22 @@ function activeRoutine(i){
         document.getElementById("nameRoutineMod").placeholder = scenario[Number(j)].name ; 
                 document.getElementById('id12').style.display='block' ; 
                 document.getElementById('id12').lang = j ;
+                if ((scenario[j].time != "") && (scenario[j].repeat !="")){
+                  document.getElementById("days").style.display = "block";
+                  document.getElementById("examplex").value ="";
+                  document.getElementById("examplex").placeholder = "CHOOSE THE TIME TO ACTIVATE YOUR ROUTINE";
+                  document.getElementById("modifyTime").style.display = "block";
+
+
+
+
+                }else {
+                  document.getElementById("days").style.display = "none"
+                  document.getElementById("modifyTime").style.display = "none"
+
+
+                }
+
 
         for (var i = getrooms.length ;  i<document.getElementsByClassName("select-beauty")[9].children[1].children.length ; i++){
           document.getElementsByClassName("select-beauty")[9].children[1].children[i].innerText = "" ; 
@@ -2698,9 +2905,13 @@ function modifyRoutine(){
     var devicesOn = new Object();
  var devicesOff = new Object();
  var rooms = new Array() ; 
-var color =""
+var color ="";
  const i = Number(document.getElementById("id12").lang) ; 
  const id = scenario[i]._id ; 
+var time ="";
+var repeat = new Array();
+var update = false ;
+
 
 
 
@@ -2726,12 +2937,20 @@ for (var j =0 ; j<Object.entries(modifydeviceoffsroutines.selected).length;j++){
   var ok = Object.entries(modifydeviceoffsroutines.selected)[j][1].text ;
   devicesOff[ok] = true ; 
 }
- 
+ if (Object.entries(selectdays.selected).length != 0){
+ time = document.getElementById("examplex").value ; 
+update = true ; 
+ }
+for (var j =0 ; j<Object.entries(selectdays.selected).length;j++){
+  var ok = Object.entries(selectdays.selected)[j][1].text.slice(0,3) ;
+  repeat.push(ok);
+}
+
   
    //  document.getElementsByClassName("container-routines 0")[0].children[0].innerHTML
    $.ajax({
     type: "POST",
-    data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , id : id }),
+    data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , id : id , time : time , repeat : repeat , update : update }),
     contentType: "application/json",
     dataType: "json",
     url: "/api/rooms/modifyRoutine"+document.location.search,
@@ -2756,20 +2975,6 @@ function addRoutine(){
 var time =   document.getElementById("id69").children[0].children[1].children[0].children[0].children[0].innerHTML;
 var repeat =   document.getElementById("id69").children[2].children[1].children[0].children[0].children[0].innerHTML;
 
-
-
-
-
-
-
- if (t.checked == true){
-console.log({
-  time : time,
-  repeat : repeat
-});
- }
-
-
   const rooms = new Array() ; 
  const name =  document.getElementById("nameRoutine").value; 
  const color = Object.entries(selectcolorsroutines.selected)[0][1].text ;
@@ -2788,9 +2993,44 @@ rooms.push(elm[1].text) ;
 
 
 
+     if (t.checked == false){
+       var t = "";
+       var r ="";
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , time:t , repeat: r }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/addRoutine"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },400)},
+           error : function(err){
+            console.log(err)
+          }
+      });
+       }else {
+         
+        $.ajax({
+          type: "POST",
+          data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color ,time: time , repeat : repeat }),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/rooms/addRoutine"+document.location.search,
+          success: function(data) {
+            setTimeout(function(){
+              location.reload()
+             },400)},
+             error : function(err){
+              console.log(err)
+            }
+        });
+       }
 
 
 
+   
 
 }
 
@@ -2885,7 +3125,10 @@ while (document.getElementById("slick-slide0"+i)) {
 			});
 		},
 		closeOnEscape: true,
-		draggable: false,
+    draggable: false,
+    responsive : true,
+    fluid: true, //new option
+
 		resizable: false,
 		title: "Temperature and Humidity",
     width: 900,
@@ -2893,7 +3136,7 @@ while (document.getElementById("slick-slide0"+i)) {
 		modal: true,
 		show: 500
 	});
-	$(".ui-widget-overlay").css({"background-color": "#ef7ef7"});
+	$(".ui-widget-overlay").css({"background-color": " rgba(0, 0, 0, 0.4)"});
     // Create the chart
   Highcharts.stockChart("chartContainer", {
     chart: {
@@ -3044,6 +3287,11 @@ while (document.getElementById("slick-slide0"+i)) {
         }]
     }
   });
+  document.getElementsByClassName("highcharts-title")[0].children[0].style.fontSize = "25px" ; 
+  document.getElementsByClassName("highcharts-title")[0].children[0].style.marginBottom = "5px";
+  document.getElementsByClassName("highcharts-title")[0].children[0].style.fontWeight = "bold";
+
+  document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.display = "none" ; 
 
     }
 
@@ -3051,15 +3299,19 @@ while (document.getElementById("slick-slide0"+i)) {
     function showGaz() {
 
 
-      $("#dialogBox").dialog({
+      $("#dialogBox2").dialog({
         open: function(event,ui) {
           $(".ui-widget-overlay").bind("click", function(event,ui) {         
-            $("#dialogBox").dialog("close");
+            $("#dialogBox2").dialog("close");
           });
         },
         closeOnEscape: true,
         draggable: false,
         resizable: false,
+        responsive : true,
+        fluid: true, //new option
+
+
         title: "Temperature and Humidity",
         width: 900,
         high : 700,
@@ -3068,7 +3320,7 @@ while (document.getElementById("slick-slide0"+i)) {
       });
       $(".ui-widget-overlay").css({"background-color": "#ef7ef7"});
         // Create the chart
-      Highcharts.stockChart("chartContainer", {
+      Highcharts.stockChart("chartContainer2", {
         chart: {
           events: {
             load: function() {
@@ -3193,26 +3445,10 @@ while (document.getElementById("slick-slide0"+i)) {
                 },
                 chartOptions: {
                     legend: {
-                        align: 'center',
-                        verticalAlign: 'bottom',
-                        layout: 'horizontal'
-                    },
-                    yAxis: {
-                        labels: {
-                            align: 'left',
-                            x: 0,
-                            y: -5
-                        },
-                        title: {
-                            text: null
-                        }
-                    },
-                    subtitle: {
-                        text: null
-                    },
-                    credits: {
-                        enabled: false
+                      enabled : false
                     }
+                    
+                   
                 }
             }]
         }
@@ -3309,6 +3545,9 @@ $.ajax({
   });
   
    }
+
+
+
 
   </script>
   <script src="../../../fancy/timedropper.js"></script>

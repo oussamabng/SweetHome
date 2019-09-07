@@ -1,0 +1,4016 @@
+<!DOCTYPE html>
+<!-- saved from url=(0194)http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#ex -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script id="_pusher_script_2" src="https://stats.pusher.com/timeline/v2/jsonp/2?session=OTIyMTg2NDk1&amp;bundle=MQ%3D%3D&amp;key=Mjg4NzRmMmYzYmRmMDJiNzg3ZTU%3D&amp;lib=anM%3D&amp;version=NC40LjA%3D&amp;cluster=ZXU%3D&amp;features=WyJ3cyJd&amp;timeline=W3siY2lkIjo3LCJlcnJvciI6IltvYmplY3QgRXZlbnRdIiwidGltZXN0YW1wIjoxNTY3NDc1NjYwNTE1fSx7ImNpZCI6Nywic3RhdGUiOiJjbG9zZWQiLCJwYXJhbXMiOnsiY29kZSI6MTAwNiwicmVhc29uIjoiIiwid2FzQ2xlYW4iOmZhbHNlfSwidGltZXN0YW1wIjoxNTY3NDc1NjYwNTE1fSx7ImNpZCI6MTAsInRyYW5zcG9ydCI6IndzcyIsInRpbWVzdGFtcCI6MTU2NzQ3NTY5MDI3NH0seyJjaWQiOjEwLCJzdGF0ZSI6ImluaXRpYWxpemVkIiwidGltZXN0YW1wIjoxNTY3NDc1NjkwMjc0fSx7ImNpZCI6MTAsInN0YXRlIjoiY29ubmVjdGluZyIsInRpbWVzdGFtcCI6MTU2NzQ3NTY5MDI3N30seyJjaWQiOjExLCJ0cmFuc3BvcnQiOiJ4aHJfc3RyZWFtaW5ncyIsInRpbWVzdGFtcCI6MTU2NzQ3NTY5MjI2M30seyJjaWQiOjExLCJzdGF0ZSI6ImluaXRpYWxpemVkIiwidGltZXN0YW1wIjoxNTY3NDc1NjkyMjYzfSx7ImNpZCI6MTEsInN0YXRlIjoiY29ubmVjdGluZyIsInRpbWVzdGFtcCI6MTU2NzQ3NTY5MjI2Nn0seyJjaWQiOjEyLCJ0cmFuc3BvcnQiOiJ4aHJfcG9sbGluZ3MiLCJ0aW1lc3RhbXAiOjE1Njc0NzU2OTYyMTN9LHsiY2lkIjoxMiwic3RhdGUiOiJpbml0aWFsaXplZCIsInRpbWVzdGFtcCI6MTU2NzQ3NTY5NjIxM30seyJjaWQiOjEyLCJzdGF0ZSI6ImNvbm5lY3RpbmciLCJ0aW1lc3RhbXAiOjE1Njc0NzU2OTYyMTl9LHsiY2lkIjoxMSwic3RhdGUiOiJjbG9zZWQiLCJwYXJhbXMiOnsiY29kZSI6MTAwNiwicmVhc29uIjoiQ29ubmVjdGlvbiBpbnRlcnJ1cHRlZCAodW5kZWZpbmVkKSIsIndhc0NsZWFuIjpmYWxzZX0sInRpbWVzdGFtcCI6MTU2NzQ3NTcwMzkwN30seyJjaWQiOjEyLCJzdGF0ZSI6ImNsb3NlZCIsInBhcmFtcyI6eyJjb2RlIjoxMDA2LCJyZWFzb24iOiJDb25uZWN0aW9uIGludGVycnVwdGVkICh1bmRlZmluZWQpIiwid2FzQ2xlYW4iOmZhbHNlfSwidGltZXN0YW1wIjoxNTY3NDc1NzAzOTA4fV0%3D" type="text/javascript" charset="UTF-8" async=""></script>
+  <title>Rooms!</title> 
+    
+  <link href="./Rooms!_files/hopscotch.min.css" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="./Rooms!_files/font-awesome.min.css">
+
+
+  <link href="./Rooms!_files/timedropper.css" rel="stylesheet">
+  
+  
+  <link rel="stylesheet" href="./Rooms!_files/cleanslate.css">
+  <link rel="stylesheet" href="./Rooms!_files/jquery.weekLine.css">
+
+
+  <link rel="stylesheet" href="./Rooms!_files/toastr.min.css">
+  <link rel="stylesheet" type="text/css" href="./Rooms!_files/slick.css">
+  <link rel="stylesheet" type="text/css" href="./Rooms!_files/slick-theme.css">
+ 
+  <link rel="stylesheet" href="./Rooms!_files/sweetalert2.css">
+	<script src="./Rooms!_files/sweetalert2.all.js"></script><style>@charset "UTF-8";@-webkit-keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-shown{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;overflow-y:hidden;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{flex-direction:row}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:static;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon::before{display:flex;align-items:center;font-size:2em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon::before{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{flex-basis:auto!important;height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 .0625em #fff,0 0 0 .125em rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:2em 2em;transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;-webkit-transform-origin:0 1.5em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}@-webkit-keyframes swal2-toast-show{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg)}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg)}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg)}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg)}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg)}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg)}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-shown{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent}body.swal2-no-backdrop .swal2-shown>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-shown.swal2-top{top:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-top-left,body.swal2-no-backdrop .swal2-shown.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-top-end,body.swal2-no-backdrop .swal2-shown.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-shown.swal2-center{top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-left,body.swal2-no-backdrop .swal2-shown.swal2-center-start{top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-end,body.swal2-no-backdrop .swal2-shown.swal2-center-right{top:50%;right:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom{bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom-left,body.swal2-no-backdrop .swal2-shown.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swal2-shown.swal2-bottom-right{right:0;bottom:0}.swal2-container{display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:.625em;overflow-x:hidden;background-color:transparent;-webkit-overflow-scrolling:touch}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-container.swal2-fade{transition:background-color .1s}.swal2-container.swal2-shown{background-color:rgba(0,0,0,.4)}.swal2-popup{display:none;position:relative;box-sizing:border-box;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:flex;flex-direction:column;align-items:center}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{z-index:1;flex-wrap:wrap;align-items:center;justify-content:center;width:100%;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:"";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;top:0;right:0;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;transition:color .1s ease-out;border:none;border-radius:0;outline:initial;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{-webkit-transform:none;transform:none;background:0 0;color:#f27474}.swal2-content{z-index:1;justify-content:center;margin:0;padding:0;color:#545454;font-size:1.125em;font-weight:300;line-height:normal;word-wrap:break-word}#swal2-content{text-align:center}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-webkit-input-placeholder,.swal2-input::-webkit-input-placeholder,.swal2-textarea::-webkit-input-placeholder{color:#ccc}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder,.swal2-input::-ms-input-placeholder,.swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:inherit}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:inherit;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;zoom:normal;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;zoom:normal;border:.25em solid transparent;border-radius:50%;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon::before{display:flex;align-items:center;height:92%;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning::before{content:"!"}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info::before{content:"i"}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question::before{content:"?"}.swal2-icon.swal2-question.swal2-arabic-question-mark::before{content:"؟"}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:3.75em 3.75em;transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 3.75em;transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.875em;width:1.5625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-animate-success-icon .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-animate-error-icon{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-animate-error-icon .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}@-webkit-keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}</style>
+  
+<script src="./Rooms!_files/highstock.js"></script>
+<script src="./Rooms!_files/exporting.js"></script>
+<script src="./Rooms!_files/export-data.js"></script>
+  <script src="./Rooms!_files/pusher.min.js"></script>
+
+  <link href="./Rooms!_files/css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./Rooms!_files/style.css">
+  <link rel="icon" type="image/png" href="http://localhost:3000/views/designs/favicon.png" sizes="32x32">
+  <meta name="theme-color" content="#585f82">
+  <link rel="apple-touch-icon" href="http://localhost:3000/views/designs/touch-apple.png">
+
+  <script src="./Rooms!_files/toastr.min.js"></script>
+
+  <script>  
+
+      function flip() {
+        $(".card").toggleClass("flipped");
+      }
+    </script>
+
+
+    <script>
+      var doughnut = 0;
+      var chawrma = 1;
+      window.setInterval(function() {
+        doughnut = doughnut + 1;
+        var pizza = 0;
+        pizza = doughnut % 20;
+
+        if (pizza == 0) {
+          flip();
+          chawrma = 1;
+        } else {
+          if (chawrma == 1) {
+            flip();
+            chawrma = 0;
+          }
+        }
+      }, 1000);
+    </script>
+<style>#td-clock-0 .td-clock {color:#555;background: #FFF; box-shadow: 0 0 0 1px #1977CC,0 0 0 8px rgba(0, 0, 0, 0.05); } #td-clock-0 .td-clock .td-time span.on { color:#1977CC} #td-clock-0 .td-clock:before { border-color: #1977CC} #td-clock-0 .td-select:after { box-shadow: 0 0 0 1px #1977CC } #td-clock-0 .td-clock:before,#td-clock-0 .td-select:after {background: #FFF;} #td-clock-0 .td-lancette {border: 2px solid #1977CC; opacity:0.1}#td-clock-0 .td-lancette div:after { background: #1977CC;} #td-clock-0 .td-bulletpoint div:after { background:#1977CC; opacity:0.1}</style><style>#td-clock-1 .td-clock {color:#555;background: #FFF; box-shadow: 0 0 0 1px #1977CC,0 0 0 8px rgba(0, 0, 0, 0.05); } #td-clock-1 .td-clock .td-time span.on { color:#1977CC} #td-clock-1 .td-clock:before { border-color: #1977CC} #td-clock-1 .td-select:after { box-shadow: 0 0 0 1px #1977CC } #td-clock-1 .td-clock:before,#td-clock-1 .td-select:after {background: #FFF;} #td-clock-1 .td-lancette {border: 2px solid #1977CC; opacity:0.1}#td-clock-1 .td-lancette div:after { background: #1977CC;} #td-clock-1 .td-bulletpoint div:after { background:#1977CC; opacity:0.1}</style></head>
+<body onload="loader()" style="">
+
+
+<!--------------------------------------------------------------->
+
+
+
+
+    <div class="row">
+        <!---hadi ga3 t3 animation t3 kol w7da -->
+        <section class="container" id="logout">
+          <div class="card flipped">
+                                      <div class="front">
+                                  <div class="column">
+                                   <img id="front" onclick="document.getElementById(&#39;id01&#39;).style.display=&#39;block&#39;" src="./Rooms!_files/login.png" title="logout">
+                                  </div>                          
+                            </div>
+                    <div class="back"> 
+                            <div class="column">
+                               <img id="front" onclick="document.getElementById(&#39;id01&#39;).style.display=&#39;block&#39;" src="./Rooms!_files/login1.png" title="logout">
+                      
+                            </div>
+                    </div>
+          </div></section>
+        <!--hna tkml lwla g3 t3 nav bar t3 login-->
+        <!--zwaja tbda hna-->
+        <section class="container">
+                <div class="card flipped" id="notify">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="not(this)" src="./Rooms!_files/notifications.png" title="notification" id="notify">                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                    <img onclick="not(this)" src="./Rooms!_files/notifications1.png" title="notification" id="notifyx">                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--talta tbda hna-->
+        <section class="container">
+          <div class="card flipped" id="showRoutines">
+            
+            <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById(&#39;id09&#39;).style.display=&#39;block&#39;" src="./Rooms!_files/settings.png" title="settings">
+                                  </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                    <img onclick="document.getElementById(&#39;id09&#39;).style.display=&#39;block&#39;" src="./Rooms!_files/settings1.png" title="settings">                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--rab3a hna--> 
+        <section class="container">
+                <div class="card flipped" id="add-tour">
+                        <div class="front">
+                                <div calss="column">
+                                    <img onclick="document.getElementById(&#39;id03&#39;).style.display=&#39;block&#39;" src="./Rooms!_files/add.png" title="add romm">
+                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                     <img onclick="addRoom(this)" src="./Rooms!_files/add1.png" title="add room">
+                                </div>
+                           </div>
+                </div>
+
+            </section>
+        <!--talia ga3 hna-->
+        <section class="container">
+                <div class="card flipped" id="help-tour">
+                        <div class="front">
+                                <div calss="column">
+                                  <img onclick="document.getElementById(&#39;id13&#39;).style.display=&#39;block&#39;" src="./Rooms!_files/help.png" title="help" id="help-tour">                                </div>
+
+                        </div>
+                        <div class="back">
+                                <div calss="column">
+                                  <img onclick="libya(this)" src="./Rooms!_files/help1.png" title="help" id="help-tour">                                </div>
+                           </div>
+                </div>
+
+            </section>
+      
+</div>  
+<!------------------------------------------------------------>
+<div id="ArmingMode">
+
+<div id="hah" class="row">
+    <p><strong>Arming Mode</strong></p>
+  </div>
+<div id="hih" class="row" style="display: block;">
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
+      <label class="onoffswitch-label" for="myonoffswitch">
+         <span class="onoffswitch-inner"></span>
+           <span class="onoffswitch-switch"></span>
+     </label>
+  </div>
+</div>
+</div>
+
+<!--  Modal notifications    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <!--hadi l fenetre li tkhrjlk f login-->
+<div id="id01" class="modal">
+        
+
+        <form class="modal-content animate" action="http://localhost:3000/">
+          <div class="imgcontainer">
+            <img src="./Rooms!_files/sweet.png" class="bo">
+            <img src="./Rooms!_files/key.png" alt="Avatar" class="avatar">
+            <h1>your home will stay sweet when you're away!</h1>
+          
+                
+            <button id="logoutPage" type="submit">logout</button>
+            
+          
+          
+            
+          
+                    <button type="button" onclick="document.getElementById(&#39;id01&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+           
+                  </div> 
+            </form>
+    </div>
+      <!--script hada t3 ki tclicki barra window youkhrj-->
+     
+      <div id="id13" class="modal">
+
+        <div class="imgcontainer">
+        <form class="modal-content animate" action="javascript:;">
+      
+      
+      
+            <h1>Take a tour around the app! </h1>
+            <p>confused or new user? follow the walkthrough to know all the elements and to use the app to its maximum</p>
+      
+          
+          <br>
+          <button id="libya" type="button" class="btn btn-primary">Start </button>
+
+      
+    
+      <br>
+      <h1>Any qestions ?</h1>
+      <p>Send us an email and we will reply as soon as possible!</p>
+          <input id="nameSend" type="text" placeholder="Name">
+          <input id="emailSend" type="text" placeholder="Email">
+          <input id="subjectSend" type="text" placeholder="Subject">
+          <textarea id="messageSend" placeholder="Message" maxlength="2000"></textarea>
+          <button id="send" type="button">Send</button>
+      
+                    <button type="button" onclick="document.getElementById(&#39;id13&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+           
+            
+            <br>       
+            </form>
+      </div>
+      </div>
+      <script src="./Rooms!_files/jquery-1.10.2.js"></script>
+      <script src="./Rooms!_files/hopscotch.js"></script>
+            
+      <script>
+
+
+          document.getElementById("send").addEventListener("click" ,function(){
+
+
+            var name = document.getElementById("nameSend").value;
+            var email = document.getElementById("emailSend").value;
+            var subject = document.getElementById("subjectSend").value;
+            var message = document.getElementById("messageSend").value;
+            
+            
+            if ( (name=="") || (email=="") || (subject=="") || (message =="")    ){
+            
+              Swal.fire({
+                position : "center",
+                type :"error",
+                          title: "<small style=' color: black'><strong>Add all the informations please</strong></small>" ,
+                          showConfirmButton : true ,
+                        
+                        })
+            
+            
+            } else{
+            
+            $.ajax({
+              url : "/reset/send",
+              method :"POST",
+              data : JSON.stringify({ name : name , email : email , subject : subject , message : message}),
+              contentType: "application/json",
+              dataType: "json",
+              success : function (data){
+            
+                Swal.fire(
+                  'Email sent successfully.',
+                  'success'
+                ).then(function(result){
+                  if (result.value){
+                    location.reload() ; 
+                  }
+                })
+              },error :  function(err){
+                console.log(err)
+              }
+            })
+            
+            
+            }
+            
+              });
+
+
+
+
+
+
+
+
+$('#myonoffswitch').change(function(){
+  var value = this.checked ;
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({
+     value : value
+    }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/ArmingMode"+document.location.search,
+    success: function(data) {
+      console.log(data);
+    }
+  });
+
+})
+
+        function libya(){
+          var typeX = {}
+          var motionX = {}
+          var chartX = {}
+          var rgbX = {}
+          var gazX= {}
+          
+
+          if (getrooms.length == 1){
+            j=0
+          }else if (getrooms !=1) {
+            var j= document.getElementsByClassName("slick-active")[0].children[0].children[0].children[0].id.substring(4);
+
+          }
+
+
+
+
+          document.getElementById('id13').style.display='block'
+          if (screen.width < 700) {
+            var r = 120;
+            var a = "bottom";
+            var b = -195;
+            var c = 220;
+            var x = -120;
+            var y = 130;
+            var u = -45;
+            var i = 55;
+            var w = -10;
+            var v = 30;
+            var p = -240;
+            var o = 270;
+          } else {
+            var r = 100;
+            var a = "left";
+            var b = 15;
+            var c = 60;
+            var x = 15;
+            var y = 60;
+            var u = 15;
+            var i = 60;
+            var w = 15;
+            var v = 60;
+            var p = 15;
+            var o = 60;
+          }
+if(getrooms.length !=0 ){
+  typeX = {
+    target: "type"+j,
+    placement: a,
+    title: "Name and type of your room",
+    content:
+      "here you will find the name and the type of your room; if you're on a phone or a tablet , grab and swipe left and right to navigate between your rooms!"
+  }
+} 
+if(getrooms.length !=0 ){
+  if (getrooms[0].devices.ultrason[0] != ""){
+  motionX ={
+    target: 'motions'+j,
+    placement: a,
+    title: 'Door detector',
+    content: "here you can check if the door of the room if open or close!",
+  }
+}
+}
+if(getrooms.length !=0 ){
+
+if (getrooms[0].devices.dht[0] != ""){
+  chartX = {
+    target: "charts"+j,
+    placement: a,
+    title: "Temperature and humidity ",
+    content:
+      "keep track of your room's temperature and humidity, click on it to check the detailed chart over time!"
+  }
+}
+}
+
+if(getrooms.length !=0 ){
+
+if (getrooms[0].devices.rgb[0] != "") {
+  rgbX =  {
+    target: "rgb"+j,
+    placement: a,
+    title: "Control your lights",
+    content:
+      "turn on or off by clicking on the light bulb, and have fun changing your light color with the rgb color wheel"
+  }
+}}
+if(getrooms.length !=0 ){
+
+if(getrooms[0].devices.gsense[0] != ""){
+  gazX = {
+    target: "gaz"+j,
+    placement: a,
+    title: "Gas leak?",
+    content:
+      "keep an eye on different gas levels on your room , don't worry  you will have a notification if there is any gas leak!"
+  }}
+} 
+
+
+    var tour = {
+      id: "hello-hopscotch",
+      steps: [
+        {
+          target: "test",
+          title: "Hello and welcome!",
+          content:
+            "welcome to your Sweet app, where you can control your whole home easily , by controlling each room by itself! each room has its own card with the devices working in it!",
+          placement: "top",
+          yOffset: r,
+          xOffset: 15,
+          arrowOffset: 60 , 
+         
+        },
+  
+        typeX,
+       rgbX,
+        chartX,
+       motionX,
+      gazX,
+      {
+        target: "ArmingMode",
+        placement: "bottom",
+        title: "Arming mode",
+        content:
+          "Active or Desactive motion sensor for the home .. active it when you are leaving home and desactivate when you are back .",
+        yOffset: 0,
+        xOffset: b-50,
+        arrowOffset: c
+      },
+        {
+          target: "add-tour",
+          placement: "bottom",
+          title: "Add a new room",
+          content:
+            "create a new room here by naming it , choosing a type and Selecting the devices that you installed in it ",
+          yOffset: 100,
+          xOffset: b,
+          arrowOffset: c
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          title: "Routines",
+          content:
+            "all of us have routines that we repeat every day , well you don't have to anymore! ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          content:
+            "Add your routine , name it and give it a themed color, and select devices that will do certain actions when the routine is activated! ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "showRoutines",
+          placement: "bottom",
+          content:
+            "for example : whenever you are going to sleep you have to turn all the lights off and turn on the alarm for motion sensors , well... why do it by hand when you only have to press one button if you add a sleep routine here? (cool, right?) ",
+          yOffset: 100,
+          xOffset: x,
+          arrowOffset: y
+        },
+        {
+          target: "notify",
+          placement: "bottom",
+          title: "Notifications",
+          content:
+            "all of the notifications sent to you by the app are listed here , if you miss one you can check it , and if you handled the situation , you can delete the notification with the lil 'x' on the right of each one ",
+          yOffset: 100,
+          xOffset: u,
+          arrowOffset: i
+        },
+        {
+          target: "logout",
+          placement: "bottom",
+          title: "Logout!",
+          content:
+            "if you want to sign off from your account , you can do it here !  ",
+          yOffset: 100,
+          xOffset: w,
+          arrowOffset: v
+        },
+        {
+          target: "help-tour",
+          placement: "bottom",
+         
+          content:
+            "have fun using your Sweet app in your Sweet home, if you have any questions, fill free to sen us an email with the form that you will find here!",
+          yOffset: 100,
+          xOffset: p,
+          arrowOffset: o
+        }
+      ],
+      showPrevButton: true,
+      scrollTopMargin: 100
+    }
+  
+      document.getElementById("libya").addEventListener("click", function() {
+        document.getElementById('id13').style.display='none' ; 
+
+        if (!hopscotch.isActive) {
+
+        hopscotch.startTour(tour);
+        }
+
+
+      });
+    };
+
+
+</script>
+        <!--  id13   -->
+
+
+ <!--hadi window li tkhrjlk f notifications khssha script li gtlk 3lih , khmmt ndirha kol type t3 notification b color-->
+ <div id="id02" class="modal">
+    <div class="imgcontainernotif">
+            <form class="modal-content animate">
+                <h1>notifications</h1>
+                <ul id="notifi">
+               
+               <li id="gz0" class="gaz">high gaz is detected<a title="Delete notification" style="margin-left:100px;"> Thu Aug 22 2019 21:27:19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a><span onclick="deleteNot(0)" class="closenoti" title="delete notification" style=" margin-top:10px">×</span> </li><li id="ult2" class="ultrason">door action happend<a title="Delete notification" style="margin-left:100px;"> Tue Aug 27 2019 21:39:08 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a><span onclick="deleteNot(2)" class="closenoti" title="delete notification" style=" margin-top:10px">×</span> </li></ul>
+               
+               
+                            <button type="button" onclick="document.getElementById(&#39;id02&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+                          </form>
+                        </div>
+  </div>
+
+
+
+
+
+
+   <div id="id03" class="modal">
+        
+
+      <form class="modal-content animate" action="javascript:;" onsubmit="create(this)">
+          <div class="imgcontainer">
+          <h1>Add a new room</h1>
+
+          <input id="nameRoom" type="text" placeholder="choose a name for the room">
+          <div class="selectcontainer">
+          <select name="select-type" id="select-type" class="form-control" multiple="multiple" style="display: none;">
+              <option value="1" icon="kitchen">kitchen</option>
+              <option value="2" icon="hallway">hallway</option>
+              <option value="3" icon="office">office</option>
+              <option value="4" icon="bedroom">bedroom</option>
+              <option value="5" icon="livingroom">livingRoom</option>
+              
+      
+            </select>
+          <div class="select-beauty" data-instance="#select-type">
+			<button class="button-sb button-sb-block">choose type</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw kitchen"></i> kitchen</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw hallway"></i> hallway</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw office"></i> office</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw bedroom"></i> bedroom</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="5"><i class="iw livingroom"></i> livingRoom</a>
+				</li>
+			
+			</ul>
+		</div></div> 
+          <select name="select-devices" id="select-devices" class="form-control" multiple="multiple" style="display: none;">
+            <option style="display: none;" value="0">dht</option>
+            <option style="display: none;" value="1">rgb</option>
+            <option style="display: none;" value="2">gsense</option>
+            <option style="display: none;" value="3">ultrason</option>
+            <option style="display: none;" value="4">alarm</option>
+            <option style="display: none;" value="5">light</option>
+            <option style="display: none;" value="6">light</option>
+            <option style="display: none;" value="7">light</option>
+            <option style="display: none;" value="8">light</option>
+            <option style="display: none;" value="9">light</option>
+
+
+              
+      
+            </select>
+          <div class="select-beauty" data-instance="#select-devices">
+			<button class="button-sb button-sb-block">choose the devices used in the room</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="0"><i class="iw undefined"></i> dht</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> rgb</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> gsense</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> ultrason</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> alarm</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="5"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="8"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="9"><i class="iw undefined"></i> light</a>
+				</li>
+			
+			</ul>
+		</div></div> 
+          
+          
+          <button id="createRoom" type="submit">Create Room</button>
+           <button type="button" onclick="document.getElementById(&#39;id03&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+         
+                </form></div> 
+          
+  
+
+
+
+
+
+
+
+
+  <div id="id05" class="modal">
+        
+
+    <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoom(this)">
+      <div class="imgcontainer">  
+          <h1>Modify this room</h1>
+
+          <input id="modify" type="text" placeholder="oussama 7at old name t3 room hna">
+          <div class="selectcontainer">
+          <select name="select-devicesdelet" id="select-devicesdelet" class="form-control" multiple="multiple" style="display: none;">
+            <option value="0">dht</option>
+            <option value="1">rgb</option>
+            <option value="2">gsense</option>
+            <option value="3">ultrason</option>
+            <option value="4">alarm</option>
+            <option value="5">light</option>
+            <option value="6">light</option>
+            <option value="7">light</option>
+            <option value="8">light</option>
+            <option value="9">light</option>
+            <option value="10">light</option>
+            <option value="11">light</option>
+            <option value="12">light</option>
+            <option value="13">light</option>
+            <option value="14">light</option>
+
+              
+      
+            </select>
+          <div class="select-beauty" data-instance="#select-devicesdelet">
+			<button class="button-sb button-sb-block">choose devices to delete from the room</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="0"><i class="iw undefined"></i> dht</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> rgb</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> gsense</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> ultrason</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> alarm</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="5"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="8"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="9"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="10"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="11"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="12"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="13"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="14"><i class="iw undefined"></i> light</a>
+				</li>
+			
+			</ul>
+		</div></div> 
+          <div class="selectcontainer">
+          <select name="select-devicestoadd" id="select-devicestoadd" class="form-control" multiple="multiple" style="display: none;">
+            <option value="0">dht</option>
+              <option value="1">rgb</option>
+              <option value="2">gsense</option>
+              <option value="3">ultrason</option>
+              <option value="4">alarm</option>
+              <option value="5">light</option>
+              <option value="6">light</option>
+              <option value="7">light</option>
+              <option value="8">light</option>
+              <option value="9">light</option>
+              <option value="10">light</option>
+              <option value="11">light</option>
+              <option value="12">light</option>
+              <option value="13">light</option>
+              <option value="14">light</option>
+      
+            </select>
+          <div class="select-beauty" data-instance="#select-devicestoadd">
+			<button class="button-sb button-sb-block">choose new devices to add to the room</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="0"><i class="iw undefined"></i> dht</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> rgb</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> gsense</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> ultrason</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> alarm</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="5"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="8"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="9"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="10"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="11"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="12"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="13"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="14"><i class="iw undefined"></i> light</a>
+				</li>
+			
+			</ul>
+		</div></div> 
+          
+          
+          <button id="modifi" type="submit">Modify Room</button>
+           <button type="button" onclick="document.getElementById(&#39;id05&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+         
+                </div> 
+          </form>
+  </div>
+
+
+
+  <div id="dialogBox" style="display: none;">
+      <div id="chartContainer" class="dialog" style="height: 500px; width: 100%;"></div>
+  </div>
+  <link rel="stylesheet" href="./Rooms!_files/jquery-ui.css">
+  <script src="./Rooms!_files/jquery-ui.js"></script>
+
+  <div id="id06" class="modal">
+        
+
+    <form class="modal-content animate detailed" action="http://localhost:3000/action_page.php"> <!---   temperature.html----->
+     
+      <iframe src="./Rooms!_files/temperature.html" class="detailed-graph" frameborder="0" scrolling="no" id=" "></iframe>
+      <br>
+      <br> 
+      <br>
+      <button type="button" onclick="document.getElementById(&#39;id06&#39;).style.display=&#39;none&#39;" class="ghost" style="width:25%;">Exit</button>
+
+    </form>
+    
+
+</div>
+
+
+
+
+
+<div id="id07" class="modal">
+      
+
+  <form class="modal-content animate detailed" action="http://localhost:3000/action_page.php">
+   
+    <iframe src="./Rooms!_files/gaz1.html" class="detailed-graph" frameborder="0" scrolling="no" id="detailed"></iframe>
+
+    <br>
+    <br>
+    <br>
+    <button type="button" onclick="document.getElementById(&#39;id07&#39;).style.display=&#39;none&#39;" class="ghost" style="width:25%;">Exit</button>
+  </form>
+
+</div>
+
+
+<!--confirmation pop up-->
+<div id="id08" class="modal">
+
+
+    <form class="modal-content animate detailed delete-confirmation">     
+        <br>
+        <br>
+       Delete this room?
+     <br>
+     <br>
+        <button type="submit">Delete</button>
+        <button type="button" onclick="document.getElementById(&#39;id08&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+        <br>
+        <br>
+        <br> 
+  
+     </form>
+    
+  
+  </div>
+
+
+
+  <!---------------------------------------------->
+<div id="id09" class="modal" style="display: block;">
+
+    <div class="imgcontainerroutines">
+  <form class="modal-content animate">
+  
+    <h1>Routines</h1>
+    <section id="routines"><div class="dropdown-routine"><div class="dropbtnroutine"><img src="./Rooms!_files/settings2.png" onclick="myFunctionRoutine(0)" class="dropbtnroutine"></div><div id="myDropdownroutine0" class="dropdown-content-routine"> <a onclick="deleteConf(0)">Delete this routine</a><a onclick="okBb(0)">Modify this routine</a></div></div><div></div><div class="container-routines 0"><h3 id="namrRoutine0">no ultrason</h3><div class="checkbox-container yellow"><input onclick="activeRoutine(0)" type="checkbox" id="toggle0"><label for="toggle0"></label><div class="active-circle"></div></div></div><div class="dropdown-routine"><div class="dropbtnroutine"><img src="./Rooms!_files/settings2.png" onclick="myFunctionRoutine(1)" class="dropbtnroutine"></div><div id="myDropdownroutine1" class="dropdown-content-routine"> <a onclick="deleteConf(1)">Delete this routine</a><a onclick="okBb(1)">Modify this routine</a></div></div><div></div><div class="container-routines 1"><h3 id="namrRoutine1">nuit</h3><div class="checkbox-container purple"><input onclick="activeRoutine(1)" type="checkbox" id="toggle1"><label for="toggle1"></label><div class="active-circle"></div></div></div></section>
+  
+    <img src="./Rooms!_files/addroutine.png" onclick="clickBb(this)" style="width:40px">
+  <br>
+  <br>
+    <button type="button" onclick="document.getElementById(&#39;id09&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+    <br>
+    <br>
+    <br>
+  </form>
+  
+  </div>
+  </div>
+  
+  
+  
+  <div id="id10" class="modal" style="display: block;">
+  
+  
+      <form class="modal-content animate" action="javascript:;" onsubmit="addRoutine(this)">
+        <div class="imgcontainer">
+          <h1>Add a new routine</h1>
+  
+          <input id="nameRoutine" type="text" placeholder="choose a name for the routine">
+          <div class="selectcontainer">
+              <select name="select-type" id="select-color-routines" class="form-control" multiple="multiple" style="display: none;">
+                  <option value="1" icon="red-icon">red</option>
+                  <option value="2" icon="purple-icon">purple</option>
+                  <option value="3" icon="yellow-icon">yellow</option>
+                  <option value="4" icon="green-icon">green</option>
+                  <option value="5" icon="bleu-icon">bleu</option>
+  
+  
+                </select>
+
+
+
+          <div class="select-beauty" data-instance="#select-color-routines">
+			<button class="button-sb button-sb-block">choose a color for the routine card</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw red-icon"></i> red</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw purple-icon"></i> purple</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw yellow-icon"></i> yellow</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw green-icon"></i> green</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="5"><i class="iw bleu-icon"></i> bleu</a>
+				</li>
+			
+			</ul>
+		</div></div>
+          <div class="selectcontainer">
+          <select name="select-type" id="select-room-routines" class="form-control" multiple="multiple" style="display: none;">
+           <option value="0">bleu</option>
+            <option style="display: none;" value="1">bleu</option>
+            <option style="display: none;" value="2">bleu</option>
+            <option style="display: none;" value="3">bleu</option>
+            <option style="display: none;" value="4">bleu</option>
+            <option style="display: none;" value="5">bleu</option>
+            <option style="display: none;" value="6">bleu</option>
+            <option style="display: none;" value="7">bleu</option>
+            <option style="display: none;" value="8">bleu</option>
+            <option style="display: none;" value="9">bleu</option>
+            <option style="display: none;" value="10">bleu</option>
+            <option style="display: none;" value="11">bleu</option>
+            <option style="display: none;" value="12">bleu</option>
+            <option style="display: none;" value="13">bleu</option>
+            <option style="display: none;" value="14">bleu</option>
+            <option style="display: none;" value="15">bleu</option>
+            <option style="display: none;" value="16">bleu</option>
+            <option style="display: none;" value="17">x</option> 
+
+
+              
+             </select>
+          <div class="select-beauty" data-instance="#select-room-routines">
+			<button class="button-sb button-sb-block">choose rooms that will follow this routine</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="0">oussama bedroom</a>
+				</li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+				<li></li>
+			
+			</ul>
+		</div></div>
+          <div class="selectcontainer">
+          <select name="select-devices" id="select-devices-routines-on" class="form-control" multiple="multiple" style="display: none;">
+              <option value="1">dht</option>
+              <option value="2">rgb</option>
+              <option value="3">gsense</option>
+              <option value="4">ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+
+
+  
+  
+            </select>
+          <div class="select-beauty" data-instance="#select-devices-routines-on">
+			<button class="button-sb button-sb-block">choose devices to go on when this routine is activated</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> dht</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> rgb</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> gsense</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> ultrason</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> alarm</a>
+				</li>
+			
+			</ul>
+		</div></div>
+          <div class="selectcontainer">
+            <select name="select-devices" id="select-devices-routines-off" class="form-control" multiple="multiple" style="display: none;">
+              <option value="1">dht</option>
+              <option value="2">rgb</option>
+              <option value="3">gsense</option>
+              <option value="4">ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+              </select>
+          <div class="select-beauty" data-instance="#select-devices-routines-off">
+			<button class="button-sb button-sb-block">choose devices to go off when this routine is activated</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> dht</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> rgb</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> gsense</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> ultrason</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> alarm</a>
+				</li>
+			
+			</ul>
+		</div></div> 
+
+
+<br>
+          <div style="background-color:#d4edda; border-color:#c3e6cb; display:none;" id="timeAd">
+              <h4 style="font-size :1.5rem;margin-bottom:.5rem;font-weight:500;line-height:1.2;margin-top:0;" class="alert-heading"><i class="fa fa-check"></i> time added!</h4>
+                    <p style="width:170px; color:#706d6d;margin-left:32%;">When its 11:11 am  routine will be activated    Every Mon,Fri</p>
+
+
+
+
+</div>
+
+         <br>
+         <br>
+
+         <br>
+
+          <div id="setTime" class="checkbox-container gr">
+              <div class="row">
+                  <div class="col">
+                      <p style="width:70px;"> <strong>Set time</strong> </p>
+
+              <input type="checkbox" id="timee">
+
+              <label title="do you want to specefic when to active and when repeat it ?" for="timee" checked="false"></label>
+                    </div>
+                 
+
+                </div>
+
+          </div>
+
+
+          
+            
+            <br>
+            <br>
+
+
+          <button id="routine">Add routine</button>
+           <button type="button" onclick="document.getElementById(&#39;id10&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+  
+                </div> 
+          </form>
+  </div>
+  
+  
+
+
+
+  <div id="e" class="modal fade" role="dialog">
+      <div class="modal-dialog">  
+        <span id="weekCal" class="weekDays cleanslate"><a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#0">Sun</a><a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#1">Mon</a><a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#2">Tue</a><a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#3">Wed</a><a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#4">Thu</a><a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#5">Fri</a><a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#6">Sat</a></span>
+    
+</div>
+  </div>
+  <script>
+
+    document.getElementById("kko").addEventListener("click",function(){
+
+      $("#e").dialog({
+        buttons: [
+        {
+          text: "Select",
+          click : function(){
+            document.getElementById("kko").children[0].children[0].innerHTML =  $("#weekCal").weekLine('getSelected');
+
+    $("#e").dialog("close");
+
+
+          }
+        }],
+        modal : true,
+        draggable: false,
+        resizable: false,
+        position : { my: "center", at: "center", of: "#id69" },
+        show: 500
+      });
+    });
+
+document.getElementById("okk").addEventListener("click",function(){
+
+
+
+
+
+
+
+
+
+  document.getElementById("example").value = "add time" ;
+  $("#ex").dialog({
+    buttons: [
+    {
+      text: "Select",
+      click : function(){
+var time = document.getElementById("example").value;
+$("#ex").dialog("close");
+document.getElementById("okk").children[0].children[0].innerHTML = time; 
+
+
+      }
+    }],
+    modal : true,
+    draggable: false,
+    resizable: false,
+    position : { my: "center", at: "center", of: "#id69" },
+    show: 500
+  });
+//bouton select time 
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.padding = "12px";
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.paddingBottom = "10px"
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.paddingLeft = "25px" ; 
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.paddingRight = "25px" ; 
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.paddingTop = "10px" ; 
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.textTransform = "none"
+document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[1].style.background ="#595386";
+
+
+document.getElementsByClassName("ui-button ui-corner-all ui-widget")[3].style.margin = "10px";
+
+document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[1].style.background = "#595386";
+
+
+
+
+
+
+ // document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[1].style.display = "none";
+  document.getElementsByClassName("ui-dialog-buttonset")[0].style.marginRight = "40%";
+
+});
+    function wow(){
+
+      return false;
+    }
+
+      $("#timee").click(function() {
+
+        var time,repeat = "";
+    
+        $("#weekCal").weekLine();
+         
+        if (this.checked == true){
+        
+    	$("#id69").dialog({
+       
+        draggable: false,
+        resizable: false,
+        title: "Set time",
+        width: 700,
+        modal: true,
+        show: 500,
+        buttons: [
+    {
+      text: "Done",
+      click : function(){
+        $("#id69").dialog("close");
+
+   document.getElementById("setTime").style.display = "none";
+   document.getElementById("timeAd").style.display = "block" ;
+
+var o =  document.getElementById("id69").children[2].children[1].children[0].children[0].children[0].innerHTML;
+if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
+  o = "everyday"
+}else if (o == "Fri,Sat"){
+  o = "every weekends"
+
+}else {
+  o = "every "+o;
+}
+   document.getElementById("timeAd").children[1].innerHTML = "When its " +document.getElementById("id69").children[0].children[1].children[0].children[0].children[0].innerHTML+ "               this routine will be activated "+o; 
+
+      }
+    
+    }]
+      });
+      document.getElementsByClassName("ui-dialog-buttonset")[0].children[0].style.background = "#595386" ;
+      document.getElementsByClassName("ui-dialog-buttonset")[0].children[0].style.color = "white";
+      document.getElementsByClassName("ui-dialog-buttonset")[0].style.marginRight ="45%";
+      document.getElementsByClassName("ui-dialog-buttonset")[0].style.borderRadius =  "25%";
+
+// botton select teh time add 
+
+
+
+
+
+
+
+
+
+
+      // bouton Done teh set time 
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.padding = "12px";
+      document.getElementsByClassName("ui-dialog-title")[0].style.color = "white";
+
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.paddingBottom = "10px"
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.paddingLeft = "25px" ; 
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.paddingRight = "25px" ; 
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.paddingTop = "10px" ; 
+
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")	[1].style.textTransform = "none"
+      document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.background ="#595386";
+
+
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.margin = "10px";
+      
+      document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.marginLeft = "35%"
+      document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.background = "#595386";
+
+    }
+    });
+
+  </script>
+  
+  <div name="" id="id11" class="modal">
+  
+  
+      <form class="modal-content animate detailed delete-confirmation" action="javascript:;" onsubmit="deleteRoutine(this)">
+       
+          <br>
+          <br>
+         Delete this routine?
+       <br>
+          <button type="submit">Delete</button>
+          <button type="button" onclick="document.getElementById(&#39;id11&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+          <br>
+          <br>
+          <br> 
+  
+       </form>
+      
+  
+    </div>
+  
+  
+    <div lang="test" id="id12" class="modal">
+  
+  
+        <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoutine(this)">
+          <div class="imgcontainer">
+            <h1>Modify this routine</h1>
+  
+            <input id="nameRoutineMod" type="text" placeholder="">
+            <div class="selectcontainer">
+                <select name="select-type" id="modify-color-routines" class="form-control" multiple="multiple" style="display: none;">
+                    <option value="1" icon="red-icon">red</option>
+                    <option value="2" icon="purple-icon">purple</option>
+                    <option value="3" icon="yellow-icon">yellow</option>
+                    <option value="4" icon="green-icon">green</option>
+                    <option value="5" icon="bleu-icon">bleu</option>
+  
+  
+  
+                  </select>
+            <div class="select-beauty" data-instance="#modify-color-routines">
+			<button class="button-sb button-sb-block">modify the color for the routine card</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw red-icon"></i> red</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw purple-icon"></i> purple</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw yellow-icon"></i> yellow</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw green-icon"></i> green</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="5"><i class="iw bleu-icon"></i> bleu</a>
+				</li>
+			
+			</ul>
+		</div></div>
+            <div class="selectcontainer">
+            <select name="select-type" id="modify-room-routines" class="form-control" multiple="multiple" style="display: none;">
+                <option value="0">bleu</option>
+            <option style="display: none;" value="1">bleu</option>
+            <option style="display: none;" value="2">bleu</option>
+            <option style="display: none;" value="3">bleu</option>
+            <option style="display: none;" value="4">bleu</option>
+            <option style="display: none;" value="5">bleu</option>
+            <option style="display: none;" value="6">bleu</option>
+            <option style="display: none;" value="7">bleu</option>
+            <option style="display: none;" value="8">bleu</option>
+            <option style="display: none;" value="9">bleu</option>
+            <option style="display: none;" value="10">bleu</option>
+            <option style="display: none;" value="11">bleu</option>
+            <option style="display: none;" value="12">bleu</option>
+            <option style="display: none;" value="13">bleu</option>
+            <option style="display: none;" value="14">bleu</option>
+            <option style="display: none;" value="15">bleu</option>
+            <option style="display: none;" value="16">bleu</option>
+            <option style="display: none;" value="17">x</option>
+  
+  
+              </select>
+            <div class="select-beauty" data-instance="#modify-room-routines">
+			<button class="button-sb button-sb-block">modify the rooms that will follow this routine</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="0">oussama bedroom</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="5"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="8"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="9"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="10"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="11"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="12"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="13"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="14"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="15"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="16"><i class="iw undefined"></i> bleu</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="17"><i class="iw undefined"></i> x</a>
+				</li>
+			
+			</ul>
+		</div></div>
+
+            <div class="selectcontainer">
+            <select name="select-devices" id="modify-devices-routines-on" class="form-control" multiple="multiple" style="display: none;">
+                <option value="1">dht</option>
+                <option value="2">rgb</option>
+                <option value="3">gsense</option>
+              <option value="4">ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+              </select>
+            <div class="select-beauty" data-instance="#modify-devices-routines-on">
+			<button class="button-sb button-sb-block">modify devices to go on when this routine is activated</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> dht</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> rgb</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> gsense</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> ultrason</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> alarm</a>
+				</li>
+			
+			</ul>
+		</div></div>
+            <div class="selectcontainer">
+              <select name="select-devices" id="modify-devices-routines-off" class="form-control" multiple="multiple" style="display: none;">
+                   <option value="1">dht</option>
+                <option value="2">rgb</option>
+                &lt;<option value="3">gsense</option>
+              <option value="4">ultrason</option>
+              <option value="6">light</option>
+              <option value="7">alarm</option>
+  
+  
+                </select>
+            <div class="select-beauty" data-instance="#modify-devices-routines-off">
+			<button class="button-sb button-sb-block">modify devices to go off when this routine is activated</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> dht</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> rgb</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> gsense</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> ultrason</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> light</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> alarm</a>
+				</li>
+			
+			</ul>
+		</div></div> 
+            <div id="days" class="selectcontainer" style="display : none">
+              <select name="selectdays" id="selectdays" class="form-control" multiple="multiple" style="display: none;">
+                  <option value="1">Sunday</option>
+                  <option value="2">Monday</option>
+                  <option value="3">Tuesday</option>
+                <option value="4">Wednesday</option>
+                <option value="6">Thursday</option>
+                <option value="7">Friday</option>
+                <option value="8">Saturday</option>
+
+                </select>
+              <div class="select-beauty" data-instance="#selectdays">
+			<button class="button-sb button-sb-block">Choose the days to repeat your routine</button>
+			<ul class="hide">
+				
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="1"><i class="iw undefined"></i> Sunday</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="2"><i class="iw undefined"></i> Monday</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="3"><i class="iw undefined"></i> Tuesday</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="4"><i class="iw undefined"></i> Wednesday</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="6"><i class="iw undefined"></i> Thursday</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="7"><i class="iw undefined"></i> Friday</a>
+				</li>
+			
+				<li>
+					<a href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#" data-value="8"><i class="iw undefined"></i> Saturday</a>
+				</li>
+			
+			</ul>
+		</div></div>
+  <div id="modifyTime">
+    <input type="text" id="examplex" readonly="" class="td-input">
+
+  </div>
+            <button type="submit">Modify Routine</button>
+             <button type="button" onclick="document.getElementById(&#39;id12&#39;).style.display=&#39;none&#39;" class="ghost">Cancel</button>
+  
+                  </div> 
+            </form>
+    </div>
+  
+  <script>
+     
+      document.getElementById("showRoutines").addEventListener("click", function() {
+        if  (document.getElementById('routines').innerHTML == "") {
+
+        
+            for (i=0;i<scenario.length;i++){
+              showroutines(i);
+             
+
+
+            }
+          }
+          });    
+  function showroutines(i){
+    var b=("'block'"); 
+    var a=("'id12'");
+    var y=("'id11'");
+ var id = scenario[i]._id ; 
+ var name = scenario[i].name ; 
+    document.getElementById('routines').innerHTML +='<div class="dropdown-routine">'+
+                                                        '<div class="dropbtnroutine">'+
+                                                       '<img  src="../../../icons/settings2.png"  onclick="myFunctionRoutine('+i+')" class="dropbtnroutine">'+
+                                                       '</div>'+
+                                                       '<div id="myDropdownroutine'+i+'" class="dropdown-content-routine">'+
+                                                         ' <a onclick="deleteConf('+i+')">Delete this routine</a>'+
+                                                          '<a onclick="okBb('+i+')" >Modify this routine</a>'+
+         
+                                                        '</div>'+
+                                                          '</div>'+
+                                                          '<div>';
+                                                           
+                                                      
+    if(scenario[i].color=="red"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container red">'+
+                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                              '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="bleu"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container bleu">'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                            '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="yellow"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container yellow">'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                            '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="purple"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                           '<div class="checkbox-container purple">'+
+                                                            '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                            '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+  if(scenario[i].color=="green"){
+        document.getElementById('routines').innerHTML +='<div class="container-routines '+i+'">'+
+                                                           '<h3 id="namrRoutine'+i+'">'+scenario[i].name+'</h3>'+
+                                                             '<div class="checkbox-container green">'+
+                                                              '<input onclick="activeRoutine('+i+')" type="checkbox"  id="toggle'+i+'"  />'+
+                                                              '<label for="toggle'+i+'"></label>'+
+                                                          '<div class="active-circle"></div>'+
+                                                          '</div>'+
+                                                           '</div>';
+      
+  }
+
+  setTimeout(function(){
+ 
+    if (scenario[i].checked == true){
+      if (  document.getElementById("toggle"+i)){
+        document.getElementById("toggle"+i).checked = true ;
+      }
+    }else  if (scenario[i].checked == false){
+      if (  document.getElementById("toggle"+i)){
+        document.getElementById("toggle"+i).checked = false ;
+      }
+    
+
+    }
+  },10);
+  }
+  </script>
+  <script>
+    function not() {
+
+      
+      document.getElementById('id02').style.display='block'
+      
+if (document.getElementById('notifyx').src =="http://localhost:3000/designs/notifications1.gif" ) {
+    document.getElementById('notifyx').src = "../../../designs/notifications1.png" ;
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ check  : true }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/check"+document.location.search,
+      success: function(data) {
+  }
+});
+}
+    }
+
+
+  function myFunctionRoutine(i) {
+
+
+
+
+if (scenario[i].checked == true){
+  Swal.fire({
+    type: 'info',
+    html: '<h2>please disable this routine before modify it</h2>',
+  })
+
+}
+else{
+  document.getElementById("myDropdownroutine"+i).classList.toggle("show");
+}
+
+
+
+
+
+
+          }
+          
+          // Close the dropdown if the user clicks outside of it
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtnroutine')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }       
+  </script>
+  
+  
+  
+  
+  
+  
+
+
+           <script>
+                // Get the modal
+                var modal1 = document.getElementById('id01');
+            
+
+              
+              // When the user clicks anywhere outside of the modal, close it
+              window.onclick = function(event) {
+                if (event.target =! modal1) {
+                  modal1.style.display = "none";
+              }
+              }
+              </script>
+<!----------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="regular slider slick-initialized slick-slider" id="test" style="margin-top: 0;"><div class="slick-list draggable" style="padding: 0px 50px;"><div class="slick-track" style="opacity: 1; width: 5000px; transform: translate3d(408px, 0px, 0px);"><div class="slick-slide slick-current slick-center" data-slick-index="0" aria-hidden="true"><div><div class="cardroom" style="margin-top: 50px; width: 100%; display: inline-block;"><section class="container-name" id="type0"><div class="dropdown"><div class="dropbtn"><img src="./Rooms!_files/settings(1).png" onclick="myFunction(0)" class="dropbtn"></div><div id="myDropdown0" class="dropdown-content"> <a onclick="deleteRoom(0)" tabindex="-1">Delete this room</a><a onclick="modeR(0)" tabindex="-1">Modify this room</a></div></div><img src="./Rooms!_files/bedroom.png" style="width:50px;margin-left:160px;margin-top:10px;"><p>oussama bedroom</p></section><section class="ok" style=" width:100%; height:150px;" frameborder="0" scrolling="no"><iframe class="container-rgb" id="rgb0" frameborder="0" scrolling="no" src="./Rooms!_files/rgb.html"></iframe><section class="container-light" id="light0" style="text-align: left; " frameborder="0" scrolling="no"><img title="5d5dae84c81c5d1f6f98bca5" src="./Rooms!_files/off.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test(0)"></section></section><div id="temp0" style="position: relative; height: 0px;"><div id="overlay-charts" onclick="showTemp(this)"> </div><iframe id="charts0" frameborder="0" scrolling="no" class="iframechart" src="./Rooms!_files/dht.html"></iframe></div><section class="container-secure" id="motions0"><img class="gifgif" id="motions" src="./Rooms!_files/closeDoor.png" style="height: 100px ; width: 100px; margin-left:10px;  "></section><div id="gazz" style="position:relative;"><div id="overlay-charts" onclick="showGaz(this)"> </div><iframe class="container-gaz" id="gaz0" frameborder="0" scrolling="no" src="./Rooms!_files/gaz.html"></iframe></div></div></div></div></div></div></section>
+
+  
+
+
+
+<div style="display: none;">
+                              <button type="submit" id="pushTest"></button>
+                          
+                          </div>
+
+
+  <div style="display: none;">
+    <h1 id="getrooms">
+      [{"devices":{"dht":["5d615abe8789d449ec134d18"],"rgb":["5d5dae99c81c5d1f6f98bca6"],"ultrason":["5d5daeaac81c5d1f6f98bca7"],"alarm":["5d5dae52c81c5d1f6f98bca3"],"gsense":["5d644bd1c8a378378879bcc6"],"light":["5d5dae84c81c5d1f6f98bca5"]},"name":"oussama bedroom","_id":"5d645bfdcf3e5056e6198ef5","userId":"5cfa74da704f72238aebdbf1","typeRoom":"bedroom","__v":0}]
+    </h1>
+    <h1 id="dht">
+      [{"value":{"temperature":[],"humidity":[],"time":null},"used":false,"_id":"5d5aefd6e8d85c1347375870","name":"dht-oussama","tokenId":"ouss","__v":0},{"value":{"temperature":[],"humidity":[],"time":null},"used":true,"_id":"5d615abe8789d449ec134d18","name":"dht-12","tokenId":"ouss","__v":0},{"value":{"temperature":[],"humidity":[],"time":null},"used":false,"_id":"5d615ad08789d449ec134d1a","name":"dht-2","tokenId":"ouss","__v":0},{"value":{"temperature":[],"humidity":[],"time":null},"used":false,"_id":"5d615ae28789d449ec134d1b","name":"dht-1","tokenId":"ouss","__v":0}]
+    </h1>
+    <h1 id="rgb">
+      [{"used":false,"_id":"5d5aefd6e8d85c1347375871","state":false,"color":"#ff0000","name":"rgb-oussama","tokenId":"ouss","__v":268},{"used":true,"_id":"5d5dae99c81c5d1f6f98bca6","state":false,"color":"#ff0000","name":"rgb-12","tokenId":"ouss","__v":91},{"used":false,"_id":"5d6158ac8789d449ec134d16","state":false,"color":"#ff0000","name":"rgb-1","tokenId":"ouss","__v":91},{"used":false,"_id":"5d6158b18789d449ec134d17","state":false,"color":"#ff0000","name":"rgb-2","tokenId":"ouss","__v":91}]
+    </h1>
+    <h1 id="alarm">
+      [{"data":"motion","value":false,"used":false,"_id":"5d5aefd6e8d85c1347375872","name":"alarm-oussama","tokenId":"ouss","__v":0},{"data":"motion","value":false,"used":true,"_id":"5d5dae52c81c5d1f6f98bca3","name":"alarm-12","tokenId":"ouss","__v":0},{"data":"motion","value":false,"used":false,"_id":"5d615afc8789d449ec134d1c","name":"alarm-2","tokenId":"ouss","__v":0},{"data":"motion","value":false,"used":false,"_id":"5d615b018789d449ec134d1d","name":"alarm-1","tokenId":"ouss","__v":0}]
+    </h1>
+
+    <h1 id="gsense">
+      [{"value":{"smoke":[null],"lpg":[],"methane":[null],"propane":[null],"lpgb":[""],"time":"2001-01-31T23:00:00.000Z"},"used":false,"_id":"5d5aefd6e8d85c1347375873","name":"gsense-oussama","tokenId":"ouss","__v":1},{"value":{"smoke":[null],"lpg":[],"methane":[null],"propane":[null],"lpgb":[""],"time":"2001-01-31T23:00:00.000Z"},"used":true,"_id":"5d644bd1c8a378378879bcc6","name":"gsense-1","tokenId":"ouss","__v":1},{"value":{"smoke":[null],"lpg":[],"methane":[null],"propane":[null],"lpgb":[""],"time":"2001-01-31T23:00:00.000Z"},"used":false,"_id":"5d644bdbc8a378378879bcc7","name":"gsense-2","tokenId":"ouss","__v":1}]
+    </h1>
+    <h1 id="ultrason">
+      [{"value":false,"used":false,"_id":"5d5aefd6e8d85c1347375875","name":"ultrason-oussama","tokenId":"ouss","__v":0},{"value":false,"used":true,"_id":"5d5daeaac81c5d1f6f98bca7","name":"ultrason-12","tokenId":"ouss","__v":0},{"value":true,"used":false,"_id":"5d613b1efa42de1df1c7c125","name":"ultrason-1","tokenId":"ouss","__v":0},{"value":true,"used":false,"_id":"5d613b69fa42de1df1c7c12b","name":"ultrason-2","tokenId":"ouss","__v":0}]
+    </h1>
+    <h1 id="light">
+      [{"value":false,"used":false,"_id":"5d5aefd6e8d85c1347375874","name":"light-oussama","tokenId":"ouss","__v":0},{"value":false,"used":true,"_id":"5d5dae84c81c5d1f6f98bca5","name":"light-12","tokenId":"ouss","__v":0},{"value":false,"used":false,"_id":"5d613af7fa42de1df1c7c123","name":"light-1","tokenId":"ouss","__v":0},{"value":true,"used":false,"_id":"5d613b5bfa42de1df1c7c129","name":"light-2","tokenId":"ouss","__v":0}]
+    </h1>
+    <h1 id="notifications">
+      [{"a":{"val":false,"id":"5d5aefd6e8d85c1347375872"},"_id":"5d5efaa7b55d9d5d67e13152","type":"gaz","content":"high gaz is detected","time":"Thu Aug 22 2019 21:27:19","userId":"5cfa74da704f72238aebdbf1","__v":0},{"a":{"val":false,"id":"5d5aefd6e8d85c1347375872","nameRoom":"oussama"},"_id":"5d61378e43ff9f33a6f88490","content":"undefined detected","time":"Sat Aug 24 2019 14:11:42","userId":"5cfa74da704f72238aebdbf1","__v":0},{"a":{"val":false,"id":"5d5aefd6e8d85c1347375875","nameRoom":"couzina"},"_id":"5d6594ec033cb56c1a3a0a7d","type":"ultrason","content":"door action happend","time":"Tue Aug 27 2019 21:39:08","userId":"5cfa74da704f72238aebdbf1","__v":0}]
+    </h1>
+    <h1 id="scz">
+        [{"devicesOff":{"ultrason":false},"rooms":["oussama bedroom"],"time":"15-21","repeat":"Sun,Mon,Tue,Wed,Thu,Fri,Sat","update":false,"_id":"5d6bd39f08eb3d106bbc358f","name":"no ultrason","color":"yellow","userId":"5cfa74da704f72238aebdbf1","checked":false,"__v":0},{"devicesOff":{"rgb":false,"light":false},"rooms":["oussama bedroom"],"time":"","repeat":"","update":false,"_id":"5d6bd44308eb3d106bbc3590","name":"nuit","color":"purple","userId":"5cfa74da704f72238aebdbf1","checked":false,"__v":0}]
+      </h1>
+      <h1 id="devx">
+          {"devices":["rgb-oussama","dht-oussama","gsense-oussama","light-oussama","alarm-oussama","ultrason-oussama"]}
+        </h1>
+        <h1 id="check">
+          true
+        </h1>
+        <h1 id="ar">
+            true
+          </h1>
+       
+  </div>
+
+
+<div id="ftco-loader" class="fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle></svg></div>
+
+
+  <link rel="stylesheet" href="./Rooms!_files/jquery-ui(1).css">
+   <script src="./Rooms!_files/slick.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="./Rooms!_files/sweetalert.min.css">
+<script src="./Rooms!_files/sweetalert.min.js"></script>
+  <script>
+
+    var onOff =  function () {
+      var id = this.title;
+      if (this.src == "http://localhost:3000/icons/on.png" ){
+
+        $.ajax({
+          url: "/api/rooms/light"+document.location.search,
+          method: "POST",
+          data: JSON.stringify({ id: id, value: false }),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(data) {
+            console.log(data);
+
+          }
+        });  
+        this.src = "../../../icons/off.png";     
+
+      }else if (this.src == "http://localhost:3000/icons/off.png") {
+        $.ajax({
+          url: "/api/rooms/light"+document.location.search,
+          method: "POST",
+          data: JSON.stringify({ id: id, value: true }),
+          contentType: "application/json",
+          dataType: "json",
+          success: function(data) {
+          }
+        });
+        this.src = "../../../icons/on.png"
+        
+      }
+
+
+     
+
+
+
+
+      }
+
+      var getrooms = JSON.parse(document.getElementById("getrooms").innerHTML);
+      var check = JSON.parse(document.getElementById("check").innerHTML);
+        var ar = JSON.parse(document.getElementById("ar").innerHTML);
+        
+      
+
+      var allrgb = JSON.parse(document.getElementById("rgb").innerHTML);
+      var alldht = JSON.parse(document.getElementById("dht").innerHTML);
+      var allgsense = JSON.parse(document.getElementById("gsense").innerHTML);
+      var alllight = JSON.parse(document.getElementById("light").innerHTML);
+      var notifications = JSON.parse(document.getElementById("notifications").innerHTML);
+      var scenario = JSON.parse(document.getElementById("scz").innerHTML);
+      var allultrason = JSON.parse(
+        document.getElementById("ultrason").innerHTML
+      );
+
+      var allalarm = JSON.parse(document.getElementById("alarm").innerHTML);
+      var devicesX = JSON.parse(document.getElementById("devx").innerHTML);
+    function showRooms(i) {
+          var v=("'id06'");
+        b=("'block'")
+        var w=("'id07'");
+              
+        document.getElementById('test').innerHTML+=
+                
+        '<div class="cardroom" style="margin-top: 50px">'+
+            '<section class="container-name" id="type'+i+'" >'+
+             
+            '</section>'+
+
+              
+
+        
+
+                  
+                 '<section class="ok" style=" width:100%; height:150px;" frameBorder="0" scrolling="no">'+
+
+                    '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
+            
+                        '</iframe>'+
+                        '<section class="container-light" id="light'+i+'" style="text-align: left; " frameBorder="0" scrolling="no">'+
+            
+                            '</section>'+
+                        
+                  '</section>'+
+
+
+
+
+            '<div id="temp'+i+'" style="position:relative;">'+
+                '<div id="overlay-charts" onclick="showTemp(this)" > '+
+              '</div>'+
+          
+            '<iframe   id="charts'+i+'" frameBorder="0" scrolling="no" class="iframechart" >'+
+            
+            '</iframe>'+
+            '</div>'+
+            
+            '<section class="container-secure" id="motions'+i+'">'+
+            
+            '</section>'+
+            '<div id="gazz" style="position:relative;">'+
+                '<div id="overlay-charts" onclick="showGaz(this)" > '+
+                    '</div>'+
+            '<iframe class="container-gaz" id="gaz'+i+'" frameBorder="0" scrolling="no" class="iframechart">'+
+            
+            '</iframe>'+
+            '</div>'+
+        '</div>'
+        ;
+                
+                
+            }
+      
+      function addType(i){
+          var a=("'id05'");
+          b=("'block'");
+          var y=("'id08'");
+          //var id = getrooms[i]._id ; 
+
+          document.getElementById('type'+i).innerHTML+=  '<div class="dropdown">'+
+                                                        '<div class="dropbtn">'+
+                                                      '<img src="../../../icons/settings.png"  onclick="myFunction('+i+')" class="dropbtn">'+
+                                                      '</div>'+
+                                                      '<div id="myDropdown'+i+'" class="dropdown-content">'+
+                                                        ' <a  onclick="deleteRoom('+i+')">Delete this room</a>'+
+                                                          '<a onclick="modeR('+i+')" >Modify this room</a>'+
+        
+                                                        '</div>'+
+                                                          '</div>';
+
+
+                                                          if (getrooms[i].typeRoom == "kitchen") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/hat.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "bedroom") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/bedroom.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "livingRoom") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/livingroom.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "office") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/office.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+                                                          if (getrooms[i].typeRoom == "hallway") {
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              '<img src="../../../icons/hallway.png" style="width:50px;margin-left:160px;margin-top:10px;">';
+                                                            document.getElementById("type" + i).innerHTML +=
+                                                              "<p>" + getrooms[i].name + "</p>";
+                                                          }
+          
+      }
+function test(i){
+  
+   var id = document.getElementById("light"+i).children[0].title ; 
+   var src = document.getElementById("light"+i).children[0].src ; 
+   if (src == "http://localhost:3000/icons/on.png" ){
+
+    $.ajax({
+      url: "/api/rooms/light"+document.location.search,
+      method: "POST",
+      data: JSON.stringify({ id: id, value: false }),
+      contentType: "application/json",
+      dataType: "json",
+      success: function(data) {
+
+      }
+    });  
+    document.getElementById("light"+i).children[0].src = "../../../icons/off.png";     
+
+  }else if (src == "http://localhost:3000/icons/off.png") {
+    $.ajax({
+      url: "/api/rooms/light"+document.location.search,
+      method: "POST",
+      data: JSON.stringify({ id: id, value: true }),
+      contentType: "application/json",
+      dataType: "json",
+      success: function(data) {
+console.log(data);
+      }
+    });
+    document.getElementById("light"+i).children[0].src = "../../../icons/on.png";
+    
+  }
+
+
+
+}
+
+      function addLight(i){
+        if (getrooms[i].devices.light[0] != ""){
+
+        
+        getrooms[i].devices.light.forEach(function(id) {
+          alllight.forEach(function(elm) {
+if (id == elm._id){
+  if (elm.used == true){
+    if (elm.value == true){
+      document.getElementById("light"+i).innerHTML += '<img title="'+id+'" src="../../../icons/on.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test('+i+')" >'; 
+     //var daw =  document.createElement("section") ;
+     //daw.id= "OnOff" ; 
+     //daw.style.width = "20px";
+    // var im = document.createElement("img");
+     //daw.appendChild(im)
+    // im.title = id ; 
+   
+     //im.className = "rgbview";
+     //im.src ="../../../icons/on.png" ;
+     //im.style = "width:50px;margin-left:30px;margin-top:50px;" ; 
+     //im.onclick = onOff ; 
+//document.getElementById("light"+i).appendChild(im);
+
+    
+    }else if (elm.value == false){
+      document.getElementById("light"+i).innerHTML += '<img  title="'+id+'" src="../../../icons/off.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test('+i+')" >'; 
+
+      //var daw =  document.createElement("section") ;
+      //daw.id= "OnOff" ; 
+      //daw.style.width = "20px";
+      //var im = document.createElement("img");
+      //daw.appendChild(im)
+   //   im.title = id ; 
+     // im.className = "rgbview";
+     
+      //im.src ="../../../icons/off.png" ;
+      //im.style = "width:50px;margin-left:20px;margin-top:50px;" ; 
+// im.onclick = onOff ; 
+    }
+ //document.getElementById("light"+i).appendChild(im);    }
+  }else {
+    document.getElementById("light"+i).style.display = "none";
+    document.getElementById("light"+i).style.marginTop = 0;
+    document.getElementsByClassName("ok")[i].style.display = "none"
+  }
+}
+          });
+        });
+      }else {
+        document.getElementById("light"+i).style.display = "none";
+        document.getElementById("light"+i).style.marginTop = 0;
+        document.getElementsByClassName("ok")[i].style.display = "none"
+
+
+      }
+      }
+
+
+
+
+      function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : null;
+      }
+
+      function addRGB(i){
+        
+if (getrooms[i].devices.light[0] != ""){
+
+
+
+        if (getrooms[i].devices.rgb[0] == ""){
+          document.getElementById("rgb"+i).style.display = "none";
+ 
+        }else {
+       
+allrgb.forEach(function(elm){
+  
+  if (getrooms[i].devices.rgb[0] == elm._id){
+
+    if (elm.used){
+
+      document.getElementById("rgb"+i).src = "../../../rgb.html";
+      setTimeout(function(){
+        document.getElementById("rgb"+i).contentDocument.defaultView.window.document.children[0].children[1].children[0].children[0].name =  elm._id ; 
+      document.getElementById("rgb"+i).contentDocument.defaultView.document.getElementById("info").innerHTML = 
+        'R:' + ('000' + hexToRgb(elm.color).r).substr(-3) +
+        'G:' + ('000' + hexToRgb(elm.color).g).substr(-3) + 
+        'B:' + ('000' + hexToRgb(elm.color).b).substr(-3);      
+    },2000);
+  }
+    else {
+      document.getElementById("rgb"+i).style.display = "none";
+
+    }
+  }
+});
+        }
+}
+else {
+  document.getElementById("rgb"+i).style.display = "none";
+ 
+
+}
+     
+      
+        }
+      
+
+
+        function addCharts(i) {
+          if (getrooms[i].devices.dht[0] == ""){
+            document.getElementById("temp"+i).style.height = "0px";
+            document.getElementById("charts"+i).style.display = "none";
+      //loca      document.getElementById("motions"+i).style.marginTop = 0;
+
+          
+
+            document.getElementById("temp"+i).children[0].style.display = "none"
+            
+          } else {
+            if (getrooms.length != 1) {
+              document.getElementById("temp"+i).style.height = "150px";
+
+            } else {
+
+              document.getElementById("temp"+i).style.height = "0px";
+            }
+          getrooms[i].devices.dht.forEach(function(id) {
+            alldht.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  setTimeout(function() {
+                    document.getElementById(
+                      "charts" + i
+                    ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
+                      elm.value;
+                  }, 1500);
+                  document.getElementById("charts" + i).src =
+                    "../../../Sweet-chart/mychart/dht.html";
+                } else {
+                  document.getElementsByClassName("container-secure")[0].style.marginTop = "0px";
+                  document.getElementById("temp"+i).style.height = "0";
+                }
+                b = elm.value;
+              }
+            });
+          });
+        }
+        
+        }
+        function addMotion(i) {
+          if (getrooms[i].devices.ultrason[0] == ""){
+            document.getElementById("motions"+i).style.display = "none";
+
+            if (getrooms[i].devices.dht[0] ==""){
+
+              document.getElementById("temp"+i).style.height = "0px";
+
+            } else {
+              document.getElementById("temp"+i).style.height = "125px";
+
+            }
+            
+          } else {
+            if (getrooms[i].devices.dht[0] ==""){
+
+              document.getElementById("motions"+i).style.margin = "0px"
+            }
+
+          getrooms[i].devices.ultrason.forEach(function(id) {
+            allultrason.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  if (elm.value == true){
+
+                  
+                    document.getElementById("motions" + i).innerHTML +=
+                      '<img class="gifgif" id="motions" src="../../icons/openDoor.png" style="height: 100px ; width: 100px; margin-left:10px;"; >';
+                    
+                    if (getrooms.length != 1 ){
+                      document.getElementById("motions"+i).style.margin = 0;
+
+                    }
+
+                  }else {
+                    document.getElementById("motions" + i).innerHTML +=
+                    '<img class="gifgif" id="motions" src="../../icons/closeDoor.png" style="height: 100px ; width: 100px; margin-left:10px;  " >';
+                    if (getrooms.length != 1 ){
+                      document.getElementById("motions"+i).style.margin = 0;
+
+                    }
+                  }
+                  
+                }else{
+                  document.getElementById("motions"+i).style.display = "none" ; 
+                  document.getElementById("temp"+i).style.height = "150px" ; 
+
+                }
+              }
+            });
+          });
+        }
+      }
+        function addGaz(i) {
+          if (getrooms[i].devices.gsense[0] == ""){
+            document.getElementById("gaz"+i).style.display = "none"
+          
+
+            document.getElementById("gazz").children[0].style.display = "none"
+            
+          } else {
+          getrooms[i].devices.gsense.forEach(function(id) {
+            allgsense.forEach(function(elm) {
+              if (id == elm._id) {
+                if (elm.used == true) {
+                  setTimeout(function() {
+                    // document.getElementById(
+                    // "gaz" + i
+                    // ).contentDocument.defaultView.massPopChart.data.datasets[0].data =
+                    // elm.value;
+                  }, 5000);
+                  document.getElementById("gaz" + i).src +=
+                    "../../Sweet-chart/mychart/gaz.html";
+                } else {
+                  document.getElementById("gaz"+i).style.display = "none";
+                }
+              }
+            });
+          });
+        }
+        }
+    
+
+
+      
+    </script>
+    <script>
+      
+
+         
+  function showntifications(i){
+        if(notifications[i].type=="motion") {
+        document.getElementById('notifi').innerHTML += '<li id="mouvement'+i+'"   class="motion">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+        
+  }
+  if(notifications[i].type=="ultrason") {
+    document.getElementById('notifi').innerHTML += '<li id="ult'+i+'"   class="ultrason">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+    
+}
+        if(notifications[i].type=="temperature"){
+          document.getElementById('notifi').innerHTML += '<li  id="tmp'+i+'"  class="temperature">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+      
+      
+      }
+        
+        
+        if(notifications[i].type=="gaz") {
+          document.getElementById('notifi').innerHTML += '<li id="gz'+i+'" class="gaz">' +notifications[i].content+ '<a    title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+       
+      }
+      
+      
+  }
+      </script>
+      <script>
+          function loader() {
+          document.getElementById("hih").style.display = "block";
+            document.getElementById("myonoffswitch").checked = ar ; 
+            setTimeout(function() { 
+              if($('#ftco-loader').length > 0) {
+                $('#ftco-loader').removeClass('show');
+              }
+            }, 1  );
+          };
+
+
+      </script>
+    <script>
+    $(document).on('ready', function() {
+      $( "#example" ).timeDropper({
+        format : "HH-mm" , 
+        setCurrentTime : true
+      });
+      $( "#examplex" ).timeDropper({
+        format : "HH-mm" 
+      });
+
+if (getrooms.length == 0) {
+  if (screen.width < 700) {
+    var r = 120;
+    var a = "bottom";
+    var b = -195;
+    var c = 220;
+    var x = -120;
+    var y = 130;
+    var u = -45;
+    var i = 55;
+    var w = -10;
+    var v = 30;
+    var p = -240;
+    var o = 270;
+  } else {
+    var r = 100;
+    var a = "left";
+    var b = 15;
+    var c = 60;
+    var x = 15;
+    var y = 60;
+    var u = 15;
+    var i = 60;
+    var w = 15;
+    var v = 60;
+    var p = 15;
+    var o = 60;
+  }
+  var tour =  {
+    id :  "hello-hopscotch" , 
+     steps : [
+     {
+       target: "help-tour",
+       placement: "bottom",
+       delay : 800,  
+       content:
+         "new user ? check our help page ..",
+       yOffset: 100,
+       xOffset: p,
+       arrowOffset: o,
+     } ,
+     ],
+     showNextButton : false ,
+     showCloseButton : true , 
+       }
+    
+  if (!hopscotch.isActive) {
+
+    hopscotch.startTour(tour);
+    }
+} 
+
+
+
+if (check) {
+  document.getElementById('notifyx').src = "../../../designs/notifications1.png"
+} else  {
+  document.getElementById('notifyx').src = "../../../designs/notifications1.gif"
+
+}
+      
+
+      for (var i = 0; i < getrooms.length; i++){
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+      showRooms(i);
+      addType(i); 
+      addRGB(i);
+      addLight(i);
+      addCharts(i); 
+      addGaz(i);
+      biz(i); 
+      addMotion(i);
+      rek(i) ;
+
+
+    }
+    if (notifications){
+      for (var j=0;j<notifications.length;j++){
+        showntifications(j);
+      }
+    }
+
+    if (notifications){
+      notifications.forEach(function(elm){
+     
+        if (elm.a.val == true){
+          document.getElementById("notifyx").src = "../../../designs/notifications1.gif" ; 
+          $.ajax({
+            type: "POST",
+            data: JSON.stringify({ check  : false }),
+            contentType: "application/json",
+            dataType: "json",
+            url: "/api/rooms/check"+document.location.search,
+            success: function(data) {
+        }
+      });
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({
+          id : elm._id
+        }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/val"+document.location.search,
+        success: function(name) {
+
+        }
+      });
+          if(elm.type == "motion") {
+  
+  
+  
+  
+          if(!("Notification" in window)){
+            alert("this browser does not support notif");
+        }else if (Notification.permission == "granted"){
+          var options = {
+            body: "motion was detected on the room :"+elm.a.nameRoom,
+            icon: "../../../notifications1.gif",
+            requireInteraction: true     
+          }
+            var notification = new Notification("alarm" ,options );
+            
+        } 
+       
+  
+      }
+       
+    }
+        });
+    }
+   
+    
+  });
+   
+    </script>
+    
+    <script>
+         function myFunction(i) {
+          document.getElementById("myDropdown"+i).classList.toggle("show");
+         document.getElementById("modify").placeholder =  document.getElementById("type"+i).children[2].innerHTML;
+          //console.log(document.getElementsByClassName("dropbtn")[])   ;     // Close the dropdown if the user clicks outside of it
+
+        }
+        
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }       
+        </script>
+
+  <script>
+    var a;
+    if (getrooms.length > 3) {
+      a = true;
+    } else {
+      a = false;
+    }
+   
+    $(document).on('ready', function() {
+     
+  $(".regular").slick({
+    dots: true,
+  infinite: a,
+  speed: 300,
+  slidesToShow: 1,
+  centerMode: true,
+  variableWidth: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+      });
+      
+  
+</script>
+<script>
+    Pusher.logToConsole = true;
+
+var pusher = new Pusher('28874f2f3bdf02b787e5', {
+  cluster: 'eu',
+  forceTLS: true
+});
+
+var chan = pusher.subscribe('inserted');
+
+
+chan = pusher.bind('ultrason' , function(data){
+
+
+
+
+
+  for(var i=0 ; i< getrooms.length ; i++){
+    if ((document.getElementsByClassName("container-name")[i].children[2].innerText) == data.name ) {
+     if (data.value == true){
+      document.getElementById("motions"+i).children[0].src = "../../../icons/openDoor.png" ; 
+     } else {
+      document.getElementById("motions"+i).children[0].src = "../../../icons/closeDoor.png" ; 
+ }
+    }
+  }
+});
+
+
+chan = pusher.bind('scenario' , function(data){
+
+
+  Swal.fire(
+      'routine activated!',
+      'Your routine has been activated.',
+      'info'
+    ).then((result) => {
+      if (result.value) {
+        setTimeout(function(){
+          location.reload() ;
+        },50)
+      }});
+
+
+});
+
+
+
+
+chan =  pusher.bind('alarm', function(data) {
+     var id =  data.id ;
+   
+     const name = "haha";
+const saha  = document.getElementById("pushTest");
+
+
+
+
+
+
+
+
+
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Alarm On !! ',
+  text: data.message,
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, stop it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+
+
+
+
+
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({
+        id : id
+      }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/notifications"+document.location.search,
+      success: function(name) {
+nombre = 0;
+
+if (getrooms.length == 1){
+  document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
+
+
+}else
+{
+
+for(var i = 0 ; i < getrooms.length; i++){
+
+if (document.getElementById("slick-slide0"+ i ).attributes["aria-hidden"].value == "false"){ 
+  if (name[0] == document.getElementById("type"+i).children[1].innerHTML  ){
+    nombre = getrooms.length;
+    break;
+  }
+  else {
+    nombre = i  ;
+    //document.getElementsByClassName("slick-next")[0].click();
+    break ; 
+  }
+
+}
+}
+$('.regular').slick('slickSetOption', 'speed', 50, true);
+a =nombre; 
+b = 10;
+
+console.log("length : "+ getrooms.length);
+t = setInterval(function(){
+  
+    if (a < getrooms.length )  {
+
+      if (name[0] == document.getElementById("type"+a).children[2].innerHTML )
+    {
+      document.getElementById('notifyx').src == "../../../designs/notifications1.gif" ;
+      learInterval(t);
+  } 
+
+
+  else{ 
+    document.getElementsByClassName("slick-next")[0].click();
+    a++;
+  }
+} 
+else {
+    a = 0 ; 
+    }
+
+  
+
+
+
+},200);
+      }
+    }
+  
+// hna
+//document.getElementsByClassName("slick-next")[0].firstChild.data
+ 
+    }) ; 
+
+
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ check  : false }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/check"+document.location.search,
+      success: function(data) {
+  }
+});
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({
+    id : data.elm
+  }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/val"+document.location.search,
+  success: function(name) {console.log(name)}
+});
+   
+
+    Swal.fire(
+      'Stoped!',
+      'Your Alarm has been stoped.',
+      'success'
+    ).then((result) => {
+      if (result.value) {
+        setTimeout(function(){
+          location.reload() ;
+        },50)
+      }});
+
+
+
+
+
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    Swal.fire(
+      'Cancelled',
+      'Your alarm still ringing  !',
+      'error'
+    ).then((result) => {
+      if (result.value) {
+        setTimeout(function(){
+          location.reload() ;
+        },50)
+      }});
+
+
+  
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+saha.click();
+
+
+
+});
+</script>
+<script src="./Rooms!_files/select-beauty.js"></script>
+<script>
+		var selectType = new SelectBeauty({
+			el: '#select-type',
+			length: 6,
+      placeholder:"choose type",
+			max: 1
+		});
+
+    var selectDevices = new SelectBeauty({
+			el: '#select-devices',
+			length: 20,
+      placeholder:"choose the devices used in the room",
+			max:6
+    });
+ 
+    var selectdevicestodelelet = new SelectBeauty({
+			el: '#select-devicesdelet',
+			length: 6,
+      placeholder:"choose devices to delete from the room",
+			max:6
+    });
+  
+    var selectdevicestoadd = new SelectBeauty({
+			el: '#select-devicestoadd',
+			length: 6,
+      placeholder:"choose new devices to add to the room",
+      max:6
+    
+      
+    });
+    
+
+    var selectdeviceoffsroutines = new SelectBeauty({
+      el: '#select-devices-routines-off',
+      length: 6,
+      placeholder:"choose devices to go off when this routine is activated",
+      max:6
+    });
+    var selectdevicesonroutines = new SelectBeauty({
+      el: '#select-devices-routines-on',
+      length: 6,
+      placeholder:"choose devices to go on when this routine is activated",
+      max:6
+    });
+  
+    var selectroomsroutines= new SelectBeauty({
+      el: '#select-room-routines',
+      length: 1,
+      placeholder:"choose rooms that will follow this routine",
+      max:10
+    });
+    var selectcolorsroutines= new SelectBeauty({
+      el: '#select-color-routines',
+      length: 6,
+      placeholder:"choose a color for the routine card",
+      max:1
+    });
+    var modifydeviceoffsroutines = new SelectBeauty({
+      el: '#modify-devices-routines-off',
+      length: 6,
+      placeholder:"modify devices to go off when this routine is activated",
+      max:6
+    });
+    var modifydevicesonroutines = new SelectBeauty({
+      el: '#modify-devices-routines-on',
+      length: 6,
+      placeholder:"modify devices to go on when this routine is activated",
+      max:6
+    });
+  
+    var modifyroomsroutines= new SelectBeauty({
+      el: '#modify-room-routines',
+      length: 6,
+      placeholder:"modify the rooms that will follow this routine",
+      max:10
+    });
+    var modifycolorsroutines= new SelectBeauty({
+      el: '#modify-color-routines',
+      length: 6,
+      placeholder:"modify the color for the routine card",
+      max:1
+    });
+    var selectdays= new SelectBeauty({
+      el: '#selectdays',
+      length: 7,
+      placeholder:"Choose the days to repeat your routine",
+      max:7
+    });
+  </script>
+
+  <script>
+
+    function modeR(i){
+      document.getElementById('id05').style.display='block' ; 
+      id = getrooms[i]._id ; 
+$.ajax({
+  method : "POST"  ,
+  data : JSON.stringify ({ id : id }),
+  "url" : "/api/rooms/modeR"+document.location.search,
+  contentType: "application/json",
+  dataType: "json",
+  success : function(data){
+
+  
+    for (var j = 0; j < data.devicesToDelete.length; j++){
+    
+      document.getElementsByClassName("select-beauty")[2].children[1].children[j].children[0].dataset.value = j ;
+      document.getElementsByClassName("select-beauty")[2].children[1].children[j].children[0].innerText = data.devicesToDelete[j] ;
+      selectdevicestodelelet.tempData[j].text = data.devicesToDelete[j] ; 
+  
+    }
+    for (var k = data.devicesToDelete.length ;   k< Object.entries(selectdevicestodelelet.tempData).length  ; k++){
+
+      document.getElementsByClassName("select-beauty")[2].children[1].children[k].innerText = "" ; 
+
+
+
+    }
+    for (var j = 0; j < data.devicesToAdd.length; j++){
+    
+      document.getElementsByClassName("select-beauty")[3].children[1].children[j].children[0].dataset.value = j ;
+      document.getElementsByClassName("select-beauty")[3].children[1].children[j].children[0].innerText = data.devicesToAdd[j] ;
+      selectdevicestoadd.tempData[j].text = data.devicesToAdd[j] ; 
+  
+    }
+    for (var k = data.devicesToAdd.length ;   k< Object.entries(selectdevicestoadd.tempData).length  ; k++){
+
+      document.getElementsByClassName("select-beauty")[3].children[1].children[k].innerText = "" ; 
+
+
+
+    }
+
+
+
+
+
+  }
+})
+
+
+    }
+
+
+function addRoom(){
+
+  document.getElementById('id03').style.display='block' ;
+  if (devicesX){
+  for (j = 0; j < devicesX.devices.length; j++){
+
+    document.getElementsByClassName("select-beauty")[1].children[1].children[j].children[0].dataset.value = j ;
+    document.getElementsByClassName("select-beauty")[1].children[1].children[j].children[0].innerText = devicesX.devices[j] ;
+    selectDevices.tempData[j].text = devicesX.devices[j] ; 
+
+  }
+  for(k  = devicesX.devices.length ; k < Object.entries(selectDevices.tempData).length ; k++){
+    document.getElementsByClassName("select-beauty")[1].children[1].children[k].innerText = "" ; 
+
+
+  }
+} else {
+  for(f  = 0 ; f < Object.entries(selectDevices.tempData).length ; f++){
+    document.getElementsByClassName("select-beauty")[1].children[1].children[f].innerText = "" ; 
+
+
+  }
+
+}
+
+
+}
+
+function activeRoutine(i){
+
+  if (document.getElementById("toggle"+i).checked == false) {
+    var id = scenario[i]._id;
+    if ((scenario[i].time == "") && (scenario[i].repeat =="")){
+
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ id: id }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/desactiveRoutine"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },900)      }
+      });  
+
+    } else if ((scenario[i].time != "") && (scenario[i].repeat !="")){
+      
+      
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ id: id }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/desactiveRoutine"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },900)      }
+      });
+
+    }
+
+
+  
+  } else{
+
+    var id = scenario[i]._id;
+
+
+
+if ((scenario[i].time == "") && (scenario[i].repeat =="")){
+
+    //verefie if another scenario is checked 
+    $.ajax({
+      type: "POST",
+      data: JSON.stringify({ id: id }),
+      contentType: "application/json",
+      dataType: "json",
+      url: "/api/rooms/ver"+document.location.search,
+      success: function(data) {
+  
+  if (data.ver == true){ //if yes send a notification to uncheck
+    Swal.fire({
+      type: 'info',
+      html: '<h2>disable the routine that is already active before activing this one</h2>',
+    })
+        document.getElementById("toggle"+i).checked = false;
+  }
+  else {
+  // if no check it 
+  var id = scenario[i]._id;
+            $.ajax({
+              type: "POST",
+              data: JSON.stringify({ id: id}),
+              contentType: "application/json",
+              dataType: "json",
+              url: "/api/rooms/activeRoutine"+document.location.search,
+              success: function(data) {
+                setTimeout(function(){
+                  location.reload()
+                 },900)      }
+            });
+  }
+  }
+    });  
+  
+}
+else if ((scenario[i].time != "") && (scenario[i].repeat !="")){
+  Swal.fire({
+    type: 'info',
+    html: '<h2>This routine will be automatic activated on :'+ scenario[i].time +'</h2>',
+  });
+  document.getElementById("toggle"+i).checked = false ;
+}
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+}
+
+
+      function clickBb(){
+        document.getElementById('id10').style.display='block' ; 
+        for (var i = getrooms.length ;  i<document.getElementsByClassName("select-beauty")[5].children[1].children.length ; i++){
+          document.getElementsByClassName("select-beauty")[5].children[1].children[i].innerText = "" ; 
+        }
+       
+      }
+      function okBb(j){
+        document.getElementById("nameRoutineMod").placeholder = scenario[Number(j)].name ; 
+                document.getElementById('id12').style.display='block' ; 
+                document.getElementById('id12').lang = j ;
+                if ((scenario[j].time != "") && (scenario[j].repeat !="")){
+                  document.getElementById("days").style.display = "block";
+                  document.getElementById("examplex").value ="";
+                  document.getElementById("examplex").placeholder = "CHOOSE THE TIME TO ACTIVATE YOUR ROUTINE";
+                  document.getElementById("modifyTime").style.display = "block";
+
+
+
+
+                }else {
+                  document.getElementById("days").style.display = "none"
+                  document.getElementById("modifyTime").style.display = "none"
+
+
+                }
+
+
+        for (var i = getrooms.length ;  i<document.getElementsByClassName("select-beauty")[9].children[1].children.length ; i++){
+          document.getElementsByClassName("select-beauty")[9].children[1].children[i].innerText = "" ; 
+        }
+      }
+      function deleteConf(i){
+        document.getElementById("id11").style.display='block' ; 
+        document.getElementById("id11").name = i ; 
+      }
+  
+ function deleteRoutine(){
+  document.getElementById("id11").style.display='none' ; 
+  document.getElementById("id12").style.display = "none";
+  var i =  document.getElementById("id11").name ; 
+
+var name = document.getElementsByClassName("container-routines "+i)[0].children[0].innerHTML ;
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ name : name  , i : i }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/deleteRoutine"+document.location.search,
+  success: function(data) {
+  document.getElementsByClassName("container-routines "+data.i)[0].style.display = "none" ; 
+  document.getElementById("id11").style.display='none' ; 
+  document.getElementById("id12").style.display = "none";
+
+ setTimeout(function(){
+      location.reload()
+     },400)
+     }
+  
+});
+
+ }
+    function rek(i){
+   
+      document.getElementsByClassName("select-beauty")[5].children[1].children[i].children[0].dataset.value = i ;
+      document.getElementsByClassName("select-beauty")[5].children[1].children[i].children[0].innerText = getrooms[i].name ;
+      selectroomsroutines.tempData[i].text = getrooms[i].name ; 
+
+
+      
+
+ 
+    }
+    function biz(i){
+       document.getElementsByClassName("select-beauty")[9].children[1].children[i].children[0].dataset.value = i ;
+      document.getElementsByClassName("select-beauty")[9].children[1].children[i].children[0].innerText = getrooms[i].name ;
+      modifyroomsroutines.tempData[i].text = getrooms[i].name ; 
+    }
+function deleteNot(j){
+if (notifications.length !=0){
+  var id  = notifications[j]._id ; 
+  var type  = notifications[j].type ; 
+
+
+
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({ id: id , type : type , i :j }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/deleteNot"+document.location.search,
+    success: function(data) {
+   if (data.type == "motion") {
+     document.getElementById("mouvement"+data.i).style.display = "none";
+   } else if (data.type == "temperature") {
+    document.getElementById("tmp"+data.i).style.display = "none";
+  } else if (data.type == "gaz") {
+    document.getElementById("gz"+data.i).style.display = "none";
+  } else if (data.type == "ultrason"){
+    document.getElementById("ult"+data.i).style.display = "none";
+  }
+  
+  }
+  });
+}
+
+
+
+
+
+}
+function modifyRoutine(){
+
+
+
+
+
+    var devicesOn = new Object();
+ var devicesOff = new Object();
+ var rooms = new Array() ; 
+var color ="";
+ const i = Number(document.getElementById("id12").lang) ; 
+ const id = scenario[i]._id ; 
+var time ="";
+var repeat = new Array();
+var update = false ;
+
+
+
+
+var name = document.getElementById("nameRoutineMod").value ;
+
+if ( name == ""){
+  name = document.getElementById("nameRoutineMod").placeholder
+
+} 
+if (Object.entries(modifycolorsroutines.selected).length != 0){ 
+var color = Object.entries(modifycolorsroutines.selected)[0][1].text ;
+}
+
+for (var j =0 ; j<Object.entries(modifyroomsroutines.selected).length;j++){
+  var elm = Object.entries(modifyroomsroutines.selected)[j] ;
+  rooms.push(elm[1].text) ; 
+}
+for (var j =0 ; j<Object.entries(modifydevicesonroutines.selected).length;j++){
+  var ok = Object.entries(modifydevicesonroutines.selected)[j][1].text ;
+  devicesOn[ok] = true ; 
+}
+for (var j =0 ; j<Object.entries(modifydeviceoffsroutines.selected).length;j++){
+  var ok = Object.entries(modifydeviceoffsroutines.selected)[j][1].text ;
+  devicesOff[ok] = true ; 
+}
+ if (Object.entries(selectdays.selected).length != 0){
+ time = document.getElementById("examplex").value ; 
+update = true ; 
+ }
+for (var j =0 ; j<Object.entries(selectdays.selected).length;j++){
+  var ok = Object.entries(selectdays.selected)[j][1].text.slice(0,3) ;
+  repeat.push(ok);
+}
+
+  
+   //  document.getElementsByClassName("container-routines 0")[0].children[0].innerHTML
+   $.ajax({
+    type: "POST",
+    data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , id : id , time : time , repeat : repeat , update : update }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/modifyRoutine"+document.location.search,
+    success: function(data) {
+      setTimeout(function(){
+        location.reload()
+       },400)} , 
+       error : function(err){
+         console.log(err)
+       }
+  });
+  
+
+
+
+}
+
+function addRoutine(){
+ var devicesOn = new Object();
+ var devicesOff = new Object();
+ var t = document.getElementById("timee") ; 
+var time =   document.getElementById("id69").children[0].children[1].children[0].children[0].children[0].innerHTML;
+var repeat =   document.getElementById("id69").children[2].children[1].children[0].children[0].children[0].innerHTML;
+
+  const rooms = new Array() ; 
+ const name =  document.getElementById("nameRoutine").value; 
+ const color = Object.entries(selectcolorsroutines.selected)[0][1].text ;
+ Object.entries(selectroomsroutines.selected).forEach(function(elm){
+rooms.push(elm[1].text) ; 
+ });
+
+ Object.entries(selectdevicesonroutines.selected).forEach(function(elm){
+  var ok = elm[1].text ; 
+  devicesOn[ok] = true ; 
+   });
+   Object.entries(selectdeviceoffsroutines.selected).forEach(function(elm){
+    var ok = elm[1].text ; 
+    devicesOff[ok] = false ; 
+     });
+
+
+
+     if (t.checked == false){
+       var t = "";
+       var r ="";
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , time:t , repeat: r }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/addRoutine"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },400)},
+           error : function(err){
+            console.log(err)
+          }
+      });
+       }else {
+         
+        $.ajax({
+          type: "POST",
+          data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color ,time: time , repeat : repeat }),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/rooms/addRoutine"+document.location.search,
+          success: function(data) {
+            setTimeout(function(){
+              location.reload()
+             },400)},
+             error : function(err){
+              console.log(err)
+            }
+        });
+       }
+
+
+
+   
+
+}
+
+
+
+      function create(){
+        
+        var dev = new Array();       
+        var type = new Array();
+
+
+        if (Object.entries(selectType.selected).length !=0){
+          var type = Object.entries(selectType.selected)[0][1].text
+        } 
+
+  const name = document.getElementById("nameRoom").value ; 
+   
+  Object.entries(selectDevices.selected).forEach(function(elm){
+    if (elm) {
+      dev.push(elm[1].text)
+    }
+  })
+
+if ((type.length == 0) || (name == "") || (dev.length == 0)){
+  Swal.fire({
+    type: 'error',  animation: true,
+    allowEscapeKey: true,
+    html: '<div>'+
+      '<h3 style="color:red">Error !</h3>'+
+    '<p style="color:black; align-text:center"><strong>please add all information to add the room</strong><p/>'+
+'</div>'
+      ,showConfirmButton: false,
+  })}else{
+  
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify({ type: type , name : name , devices : dev }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/add"+document.location.search,
+    success: function(data) {
+
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ type: data.type , name : data.name , devices : data.arr }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/room"+document.location.search,
+        success: function(data) {
+
+
+Swal.fire({
+  position: 'top-end',
+  type: 'success',
+  title: 'Your room has been added',
+  showConfirmButton: false,
+  timer: 1500
+})
+           
+          setTimeout(function(){
+            location.reload()
+           },1500)      
+        }
+      });
+
+
+          }
+  });
+}
+ 
+
+
+    }
+
+    function getName(){
+      i = 0 ;
+while (document.getElementById("slick-slide0"+i)) {
+  if (document.getElementById("slick-slide0"+i).attributes["aria-hidden"].value == "false"){
+    return document.getElementById("slick-slide02").children[0].children[0].innerText
+  }
+}
+    }
+   
+
+
+    function  showTemp() {
+
+	$("#dialogBox").dialog({
+		open: function(event,ui) {
+			$(".ui-widget-overlay").bind("click", function(event,ui) {         
+				$("#dialogBox").dialog("close");
+			});
+		},
+		closeOnEscape: true,
+		draggable: false,
+		resizable: false,
+		title: "Temperature and Humidity",
+    width: 900,
+    high : 700,
+		modal: true,
+		show: 500
+	});
+	$(".ui-widget-overlay").css({"background-color": " rgba(0, 0, 0, 0.4)"});
+    // Create the chart
+  Highcharts.stockChart("chartContainer", {
+    chart: {
+      events: {
+        load: function() {
+          // set up the updating of the chart each second
+            var series = this.series[0];
+                  var series2 = this.series[1];
+                  setInterval(function() {
+                    var x = new Date().getTime(), // current time
+                      y = Math.random();
+                    z = Math.random();
+                    series.addPoint([x, y], false, true);
+                    series2.addPoint([x, z], true, true);
+                  }, 1000);
+        }
+      }
+    },
+
+    time: {
+      useUTC: false
+    },
+
+    rangeSelector: {
+      buttons: [
+        {
+          count: 1,
+          type: "minute",
+          text: "1M"
+        },
+        {
+          count: 5,
+          type: "minute",
+          text: "5M"
+        },
+        {
+          type: "all",
+          text: "All"
+        }
+      ],
+      inputEnabled: false,
+      selected: 0
+    },
+
+    title: {
+      text: "Temperature and Humidity Chart"
+    }, yAxis: [
+                {
+                    opposite:false , 
+                  title: {
+                    text: "Temperature (C°)'"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#8c1531"
+                    }
+                  ]
+                },
+                {
+                  title: {
+                    text: "Humidity (%)"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#808080"
+                    }
+                  ]
+                }
+              ],
+
+    exporting: {
+      enabled: false
+    },
+
+    series: [
+      {
+        name: "Temperature",  marker: {
+                  enabled: true,
+                  radius: 5,
+                  fillColor: "#0cc9c6"
+                },
+        data: (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+          }
+          return data;
+        })()
+      } , 
+      {
+        name : "Humidity" ,
+          marker: {
+                  enabled: true,
+                  radius: 5,
+                  fillColor: "#b904d1"
+                },
+                            yAxis: 1,
+        data : (function() {
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
+
+          for (i = -999; i <= 0; i += 1) {
+            data.push([time + i * 1000, Math.round(Math.random() * 800) + 150]);
+          }
+          return data;
+        })()
+
+      }
+    ] , 
+     responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 600
+            },
+            chartOptions: {
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal'
+                },
+                yAxis: {
+                    labels: {
+                        align: 'left',
+                        x: 0,
+                        y: -5
+                    },
+                    title: {
+                        text: null
+                    }
+                },
+                subtitle: {
+                    text: null
+                },
+                credits: {
+                    enabled: false
+                }
+            }
+        }]
+    }
+  });
+  document.getElementsByClassName("highcharts-title")[0].children[0].style.fontSize = "25px" ; 
+  document.getElementsByClassName("highcharts-title")[0].children[0].style.marginBottom = "5px";
+  document.getElementsByClassName("highcharts-title")[0].children[0].style.fontWeight = "bold";
+
+  document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.display = "none" ; 
+
+    }
+
+
+    function showGaz() {
+
+
+      $("#dialogBox").dialog({
+        open: function(event,ui) {
+          $(".ui-widget-overlay").bind("click", function(event,ui) {         
+            $("#dialogBox").dialog("close");
+          });
+        },
+        closeOnEscape: true,
+        draggable: false,
+        resizable: false,
+        title: "Temperature and Humidity",
+        width: 900,
+        high : 700,
+        modal: true,
+        show: 500
+      });
+      $(".ui-widget-overlay").css({"background-color": "#ef7ef7"});
+        // Create the chart
+      Highcharts.stockChart("chartContainer", {
+        chart: {
+          events: {
+            load: function() {
+              // set up the updating of the chart each second
+                var series = this.series[0];
+                      var series2 = this.series[1];
+                      setInterval(function() {
+                        var x = new Date().getTime(), // current time
+                          y = Math.random();
+                        z = Math.random();
+                        series.addPoint([x, y], false, true);
+                        series2.addPoint([x, z], true, true);
+                      }, 1000);
+            }
+          }
+        },
+    
+        time: {
+          useUTC: false
+        },
+    
+        rangeSelector: {
+          buttons: [
+            {
+              count: 1,
+              type: "minute",
+              text: "1M"
+            },
+            {
+              count: 5,
+              type: "minute",
+              text: "5M"
+            },
+            {
+              type: "all",
+              text: "All"
+            }
+          ],
+          inputEnabled: false,
+          selected: 0
+        },
+    
+        title: {
+          text: "Temperature and Humidity Chart"
+        }, yAxis: [
+                    {
+                        opposite:false , 
+                      title: {
+                        text: "Temperature (C°)'"
+                      },
+                      plotLines: [
+                        {
+                          value: 0,
+                          width: 1,
+                          color: "#8c1531"
+                        }
+                      ]
+                    },
+                    {
+                      title: {
+                        text: "Humidity (%)"
+                      },
+                      plotLines: [
+                        {
+                          value: 0,
+                          width: 1,
+                          color: "#808080"
+                        }
+                      ]
+                    }
+                  ],
+    
+        exporting: {
+          enabled: false
+        },
+    
+        series: [
+          {
+            name: "Temperature",  marker: {
+                      enabled: true,
+                      radius: 5,
+                      fillColor: "#0cc9c6"
+                    },
+            data: (function() {
+              // generate an array of random data
+              var data = [],
+                time = new Date().getTime(),
+                i;
+    
+              for (i = -999; i <= 0; i += 1) {
+                data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+              }
+              return data;
+            })()
+          } , 
+          {
+            name : "Humidity" ,
+              marker: {
+                      enabled: true,
+                      radius: 5,
+                      fillColor: "#b904d1"
+                    },
+                                yAxis: 1,
+            data : (function() {
+              // generate an array of random data
+              var data = [],
+                time = new Date().getTime(),
+                i;
+    
+              for (i = -999; i <= 0; i += 1) {
+                data.push([time + i * 1000, Math.round(Math.random() * 800) + 150]);
+              }
+              return data;
+            })()
+    
+          }
+        ] , 
+         responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        align: 'center',
+                        verticalAlign: 'bottom',
+                        layout: 'horizontal'
+                    },
+                    yAxis: {
+                        labels: {
+                            align: 'left',
+                            x: 0,
+                            y: -5
+                        },
+                        title: {
+                            text: null
+                        }
+                    },
+                    subtitle: {
+                        text: null
+                    },
+                    credits: {
+                        enabled: false
+                    }
+                }
+            }]
+        }
+      });
+    
+        }
+
+
+        function deleteRoom(i){
+        var name =   document.getElementById("type"+i).children[2].innerHTML ; 
+        $.ajax({
+          type: "DELETE",
+          data: JSON.stringify({ name : name , i : i}),
+          contentType: "application/json",
+          dataType: "json",
+          url: "/api/rooms/delete"+document.location.search,
+          success: function(data) {
+            document.getElementsByClassName("cardroom")[i].style.display = "none";
+setTimeout(function(){
+if (i !=0){
+  document.getElementsByClassName("slick-prev")[0].click() ; 
+
+}else{
+  document.getElementsByClassName("slick-next")[0].click() ; 
+
+}
+},700)
+            Swal.fire({
+              position: 'top-end',
+              type: 'success',
+              title: 'Your room has been deleted succesfully',
+              showConfirmButton: false,
+              timer: 1200
+            })
+                       
+            setTimeout(function(){
+            location.reload()
+              },1400)
+                       
+              }
+      });
+    }
+
+   function modifyRoom(){
+     name =  document.getElementById("modify").placeholder ;
+
+var newName = document.getElementById("modify").placeholder ;
+if (document.getElementById("modify").value != ""){
+  newName = document.getElementById("modify").value
+}
+
+    var devAdd = new Array() ; 
+    var devDel = new Array() ; 
+Object.entries(selectdevicestoadd.selected).forEach(function(elm){
+if (elm){
+  
+  var name = elm[1].text ; 
+  devAdd.push(name) ; 
+}
+
+}); 
+Object.entries(selectdevicestodelelet.selected).forEach(function(elm){
+  if (elm){
+    var name = elm[1].text ; 
+    devDel.push(name)  
+  }
+});
+$.ajax({
+    type: "POST",
+    data: JSON.stringify({ name : name , newName : newName , devAdd : devAdd , devDel : devDel }),
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/modify"+document.location.search,
+    success: function(data) {
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({ name : data.name , newName : data.newName , arr : data.arr }),
+        contentType: "application/json",
+        dataType: "json",
+        url: "/api/rooms/delDev"+document.location.search,
+        success: function(data) {
+          setTimeout(function(){
+            location.reload()
+           },400)        
+      }
+    
+        
+      });
+      
+   
+  }
+
+    
+  });
+  
+   }
+
+  </script>
+  <script src="./Rooms!_files/timedropper.js"></script>
+  <script src="./Rooms!_files/jquery.weekLine.min.js"></script> 
+
+
+<div class="td-wrap td-n2 td-fadeout" id="td-clock-0"><div class="td-overlay"></div><div class="td-clock" style="top: 479.953px; left: 674.625px;"><div class="td-deg td-n" style="transform: rotate(323deg);"><div class="td-select td-alert"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 35.4" enable-background="new 0 0 100 35.4" xml:space="preserve" style="stroke:#1977CC"><g><path fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M98.1,33C85.4,21.5,68.5,14.5,50,14.5S14.6,21.5,1.9,33"></path><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.9" y1="33" x2="1.9" y2="28.6"></line><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.9" y1="33" x2="6.3" y2="33"></line><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="98.1" y1="33" x2="93.7" y2="33"></line><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="98.1" y1="33" x2="98.1" y2="28.6"></line></g></svg></div></div><div class="td-medirian"><span class="td-icon-am td-n">AM</span><span class="td-icon-pm td-n">PM</span></div><div class="td-lancette"><div style="transform: rotate(323deg);"></div><div style="transform: rotate(60deg);"></div></div><div class="td-time"><span class="" data-id="02">02</span>:<span data-id="53" class="on">53</span></div></div></div><div class="td-wrap td-n2" id="td-clock-1"><div class="td-overlay"></div><div class="td-clock td-init" style="top: 84px; left: -28px;"><div class="td-deg td-n" style="transform: rotate(31deg);"><div class="td-select"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 35.4" enable-background="new 0 0 100 35.4" xml:space="preserve" style="stroke:#1977CC"><g><path fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M98.1,33C85.4,21.5,68.5,14.5,50,14.5S14.6,21.5,1.9,33"></path><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.9" y1="33" x2="1.9" y2="28.6"></line><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.9" y1="33" x2="6.3" y2="33"></line><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="98.1" y1="33" x2="93.7" y2="33"></line><line fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="98.1" y1="33" x2="98.1" y2="28.6"></line></g></svg></div></div><div class="td-medirian"><span class="td-icon-am td-n">AM</span><span class="td-icon-pm td-n">PM</span></div><div class="td-lancette"><div style="transform: rotate(323deg);"></div><div style="transform: rotate(60deg);"></div></div><div class="td-time"><span class="on" data-id="02">02</span>:<span data-id="53">53</span></div></div></div><div tabindex="-1" role="dialog" style="height: auto; width: 700px; top: 355px; left: 403px; display: block; z-index: 101;" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons" aria-describedby="id69" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix" style="background: rgb(89, 83, 134);"><span id="ui-id-1" class="ui-dialog-title" style="color: white;">Set time</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="id69" style="width: auto; min-height: 16px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+            <div class="row" style="margin:0 0 0 0">
+<div class="col">
+    <p style="margin-right:100%; width: 100px"> <strong> At time</strong></p>
+
+</div>
+<div class="col" style="width: 60px;">
+ <a id="okk" data-toggle="modal" data-target="#ex" href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#ex">  <p style="margin-left:500px; color:#3d5e85"> <strong style="position:absolute">Select</strong></p> </a>   
+
+</div>
+
+            </div>
+
+            <hr>
+            <div class="row" style="margin:0 0 0 0">
+                <div class="col">
+                    <p style="margin-right:100%; width: 100px;"> <strong> Repeat</strong></p>
+                
+                </div>
+                <div class="col" style="width: 60px;">
+                    <a id="kko" data-toggle="modal" data-target="#e" href="http://localhost:3000/api/rooms/all?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2ZhNzRkYTcwNGY3MjIzOGFlYmRiZjEiLCJpYXQiOjE1Njc0NzA1Nzl9.0dhtmFdTlMAW6A109gv17DGmlz4_owaVzhqHEowTP2s#e">  <p style="margin-left:500px; color:#3d5e85"> <strong style="position:absolute">Select</strong></p> </a>   
+                
+                </div>
+                
+                            </div>
+          </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset" style="margin-right: 40%; border-radius: 25%;"><button type="button" class="ui-button ui-corner-all ui-widget" style="background: rgb(89, 83, 134); color: white; padding: 10px 25px; text-transform: none; margin: 10px 10px 10px 35%;">Done</button></div></div></div><div class="ui-widget-overlay ui-front" style="z-index: 100;"></div><div tabindex="-1" role="dialog" style="height: auto; width: 300px; top: 379.078px; left: 602.516px; display: block; z-index: 102;" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons" aria-describedby="ex" aria-labelledby="ui-id-2"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix" style="background: rgb(89, 83, 134); display: block;"><span id="ui-id-2" class="ui-dialog-title">&nbsp;</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="ex" class="modal fade ui-dialog-content ui-widget-content" role="dialog" style="display: block; width: auto; min-height: 16px; max-height: none; height: auto;">
+      <div class="modal-dialog">
+    
+          <input type="text" id="example" readonly="" class="td-input">
+</div>
+  </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget" style="padding: 10px 25px; text-transform: none; margin: 10px;">Select</button></div></div></div><div class="ui-widget-overlay ui-front" style="z-index: 101;"></div></body></html>

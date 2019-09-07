@@ -28,9 +28,6 @@ const notifications = require("./routes/notifications");
 
 //const csrf = require("csurf");
 //var bodyParser = require("body-parser");
-//const cookieParser = require("cookie-parser");
-
-//ok
 
 //var csrfProtection = csrf({ cookie: true });
 //const {User , Dht , Light , Alarm , Rgb , Gsense , Ultrason , Rooms}= require('./models/user');
@@ -72,10 +69,6 @@ app.post("/subscribe", (req, res) => {
 
 // TODO nada
 
-var j = schedule.scheduleJob(" 51 14 * * Thu,Sat", function() {
-  console.log("Time for tea!");
-});
-
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static("public"));
@@ -107,8 +100,386 @@ db.once("open", () => {
   });
   const utrasonCollection = db.collection("ultrasons");
   const alarmCollection = db.collection("alarms");
+  const scenarioCollection = db.collection("scenarios");
+  var arr = [];
+
+  const changeStreamScenario = scenarioCollection.watch();
   const changeStream = alarmCollection.watch();
   const changeStreamUltrason = utrasonCollection.watch();
+
+  changeStreamScenario.on("change", async function(change) {
+    console.log(change.operationType);
+
+    if (change.operationType === "update") {
+      var id = change.documentKey._id;
+      const scenario = await Scenario.findOne({ _id: id });
+      if (scenario.update == true) {
+        var j = schedule.scheduleJob(
+          ` ${scenario.time.slice(3)} ${scenario.time.slice(0, 2)} * * ${
+            scenario.repeat
+          }`,
+          async function() {
+            scenario.rooms.forEach(async function(elm) {
+              const room = await Rooms.findOne({
+                name: elm,
+                userId: scenario.userId
+              });
+
+              Object.entries(scenario.devicesOn).forEach(async function(r) {
+                if (r[0] == "dht") {
+                  if (room) {
+                    room.devices.dht.forEach(async function(e) {
+                      if (e != "") {
+                        const dht = await Dht.findOne({ _id: e });
+                        if (r[1] == true) {
+                          dht.used = true;
+                          await dht.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "rgb") {
+                  if (room) {
+                    room.devices.rgb.forEach(async function(e) {
+                      if (e != "") {
+                        const rgb = await Rgb.findOne({ _id: e });
+                        if (r[1] == true) {
+                          rgb.used = true;
+                          await rgb.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "light") {
+                  if (room) {
+                    room.devices.light.forEach(async function(e) {
+                      if (e != "") {
+                        const light = await Light.findOne({ _id: e });
+                        if (r[1] == true) {
+                          light.used = true;
+
+                          await light.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "ultrason") {
+                  if (room) {
+                    room.devices.ultrason.forEach(async function(e) {
+                      if (e != "") {
+                        const ultrason = await Ultrason.findOne({ _id: e });
+                        if (r[1] == true) {
+                          ultrason.used = true;
+
+                          await ultrason.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "alarm") {
+                  if (room) {
+                    room.devices.alarm.forEach(async function(e) {
+                      if (e != "") {
+                        const alarm = await Alarm.findOne({ _id: e });
+                        if (r[1] == true) {
+                          alarm.used = true;
+                          await alarm.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "gsense") {
+                  if (room) {
+                    room.devices.gsense.forEach(async function(e) {
+                      if (e != "") {
+                        const gsense = await Gsense.findOne({ _id: e });
+                        if (r[1] == true) {
+                          gsense.used = true;
+                          await gsense.save();
+                        }
+                      }
+                    });
+                  }
+                }
+              });
+
+              Object.entries(scenario.devicesOff).forEach(async function(r) {
+                if (r[0] == "dht") {
+                  if (room) {
+                    room.devices.dht.forEach(async function(e) {
+                      if (e != "") {
+                        const dht = await Dht.findOne({ _id: e });
+                        if (r[1] == false) {
+                          dht.used = false;
+                          await dht.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "rgb") {
+                  if (room) {
+                    room.devices.rgb.forEach(async function(e) {
+                      if (e != "") {
+                        const rgb = await Rgb.findOne({ _id: e });
+                        if (r[1] == false) {
+                          rgb.used = false;
+                          await rgb.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "light") {
+                  if (room) {
+                    room.devices.light.forEach(async function(e) {
+                      if (e != "") {
+                        const light = await Light.findOne({ _id: e });
+                        if (r[1] == false) {
+                          light.value = false;
+                          light.used = false;
+                          await light.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "ultrason") {
+                  if (room) {
+                    room.devices.ultrason.forEach(async function(e) {
+                      if (e != "") {
+                        const ultrason = await Ultrason.findOne({ _id: e });
+                        if (r[1] == false) {
+                          console.log("dar ultrason false");
+                          ultrason.used = false;
+                          await ultrason.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "alarm") {
+                  if (room) {
+                    room.devices.alarm.forEach(async function(e) {
+                      if (e != "") {
+                        const alarm = await Alarm.findOne({ _id: e });
+                        if (r[1] == false) {
+                          alarm.used = false;
+                          await alarm.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "gsense") {
+                  if (room) {
+                    room.devices.gsense.forEach(async function(e) {
+                      if (e != "") {
+                        const gsense = await Gsense.findOne({ _id: e });
+                        if (r[1] == false) {
+                          gsense.used = false;
+                          await gsense.save();
+                        }
+                      }
+                    });
+                  }
+                }
+              });
+            });
+            scenario.checked = true;
+            scenario.update = false;
+            await scenario.save();
+
+            pusher.trigger("inserted", "scenario", {
+              //TODO to add //data : change.fullDocument.data
+              message: "pusher scenario"
+            });
+            //end
+          }
+        );
+      }
+    }
+
+    if (change.operationType === "insert") {
+      var id = change.documentKey._id;
+      const scenario = await Scenario.findOne({ _id: id });
+
+      if (scenario.time != "" && scenario.repeat != "") {
+        var j = schedule.scheduleJob(
+          ` ${scenario.time.slice(3)} ${scenario.time.slice(0, 2)} * * ${
+            scenario.repeat
+          }`,
+          async function() {
+            scenario.rooms.forEach(async function(elm) {
+              const room = await Rooms.findOne({
+                name: elm,
+                userId: scenario.userId
+              });
+
+              Object.entries(scenario.devicesOn).forEach(async function(r) {
+                if (r[0] == "dht") {
+                  if (room) {
+                    room.devices.dht.forEach(async function(e) {
+                      if (e != "") {
+                        const dht = await Dht.findOne({ _id: e });
+                        if (r[1] == true) {
+                          dht.used = true;
+                          await dht.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "rgb") {
+                  if (room) {
+                    room.devices.rgb.forEach(async function(e) {
+                      if (e != "") {
+                        const rgb = await Rgb.findOne({ _id: e });
+                        if (r[1] == true) {
+                          rgb.used = true;
+                          await rgb.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "light") {
+                  if (room) {
+                    room.devices.light.forEach(async function(e) {
+                      if (e != "") {
+                        const light = await Light.findOne({ _id: e });
+                        if (r[1] == true) {
+                          light.used = true;
+
+                          await light.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "ultrason") {
+                  if (room) {
+                    room.devices.ultrason.forEach(async function(e) {
+                      if (e != "") {
+                        const ultrason = await Ultrason.findOne({ _id: e });
+                        if (r[1] == true) {
+                          ultrason.used = true;
+
+                          await ultrason.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "alarm") {
+                  if (room) {
+                    room.devices.alarm.forEach(async function(e) {
+                      if (e != "") {
+                        const alarm = await Alarm.findOne({ _id: e });
+                        if (r[1] == true) {
+                          alarm.used = true;
+                          await alarm.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "gsense") {
+                  if (room) {
+                    room.devices.gsense.forEach(async function(e) {
+                      if (e != "") {
+                        const gsense = await Gsense.findOne({ _id: e });
+                        if (r[1] == true) {
+                          gsense.used = true;
+                          await gsense.save();
+                        }
+                      }
+                    });
+                  }
+                }
+              });
+
+              Object.entries(scenario.devicesOff).forEach(async function(r) {
+                if (r[0] == "dht") {
+                  if (room) {
+                    room.devices.dht.forEach(async function(e) {
+                      if (e != "") {
+                        const dht = await Dht.findOne({ _id: e });
+                        if (r[1] == false) {
+                          dht.used = false;
+                          await dht.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "rgb") {
+                  if (room) {
+                    room.devices.rgb.forEach(async function(e) {
+                      if (e != "") {
+                        const rgb = await Rgb.findOne({ _id: e });
+                        if (r[1] == false) {
+                          rgb.used = false;
+                          await rgb.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "light") {
+                  if (room) {
+                    room.devices.light.forEach(async function(e) {
+                      if (e != "") {
+                        const light = await Light.findOne({ _id: e });
+                        if (r[1] == false) {
+                          light.value = false;
+                          light.used = false;
+                          await light.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "ultrason") {
+                  if (room) {
+                    room.devices.ultrason.forEach(async function(e) {
+                      if (e != "") {
+                        const ultrason = await Ultrason.findOne({ _id: e });
+                        if (r[1] == false) {
+                          console.log("dar ultrason false");
+                          ultrason.used = false;
+                          await ultrason.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "alarm") {
+                  if (room) {
+                    room.devices.alarm.forEach(async function(e) {
+                      if (e != "") {
+                        const alarm = await Alarm.findOne({ _id: e });
+                        if (r[1] == false) {
+                          alarm.used = false;
+                          await alarm.save();
+                        }
+                      }
+                    });
+                  }
+                } else if (r[0] == "gsense") {
+                  if (room) {
+                    room.devices.gsense.forEach(async function(e) {
+                      if (e != "") {
+                        const gsense = await Gsense.findOne({ _id: e });
+                        if (r[1] == false) {
+                          gsense.used = false;
+                          await gsense.save();
+                        }
+                      }
+                    });
+                  }
+                }
+              });
+            });
+            scenario.checked = true;
+            await scenario.save();
+
+            pusher.trigger("inserted", "scenario", {
+              //TODO to add //data : change.fullDocument.data
+              message: "pusher scenario"
+            });
+            //end
+          }
+        );
+      }
+    }
+  });
 
   changeStreamUltrason.on("change", async function(change) {
     if (change.operationType === "replace") {
@@ -140,39 +511,43 @@ db.once("open", () => {
   });
 
   changeStream.on("change", async function(change) {
-    if (
-      change.operationType === "replace" &&
-      change.fullDocument.value == true
-    ) {
-      var user = await User.findOne({ tokenId: change.fullDocument.tokenId });
+    var id = change.documentKey._id;
+    console.log({ id: id });
+    var alarm = await Alarm.findOne({ _id: id });
+    if (change.operationType === "update" && alarm.value == true) {
+      var user = await User.findOne({ tokenId: alarm.tokenId });
       user.check = false;
+      var bool = false;
       var rooms = await Rooms.find({ userId: user._id });
-      rooms.forEach(async function(room) {
-        if (room.devices.alarm[0] == change.fullDocument._id) {
+      for (var i = 0; i < rooms.length; i++) {
+        if (bool) {
+          break;
+        } else if (rooms[i].devices.alarm[0] == id) {
           var notif = new Notification({
-            type: change.fullDocument.data,
-            content: change.fullDocument.data + " detected",
+            type: alarm.data,
+            content: alarm.data + " detected",
             time: new Date().toString().substring(0, 24),
             userId: user._id,
             a: {
               val: true,
-              id: change.fullDocument._id,
-              nameRoom: room.name
+              id: id,
+              nameRoom: rooms[i].name
             }
           });
           pusher.trigger("inserted", "alarm", {
             //TODO to add //data : change.fullDocument.data
             message:
-              change.fullDocument.data +
+              alarm.data +
               " detected on the room : " +
-              room.name +
+              rooms[i].name +
               ", would you like to stop it ?",
-            id: change.fullDocument._id,
+            id: alarm._id,
             elm: notif._id
           });
           await notif.save();
+          bool = true;
         }
-      });
+      }
 
       await user.save();
     }

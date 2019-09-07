@@ -282,14 +282,7 @@ span.psw {
   border-radius: 1%;
   height: 75%;
 }
-.modal-c {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #554269;
-  width: 40%; /* Could be more or less, depending on screen size */
-  border-radius: 1%;
-  height: 90%;
-}
+
 /* The Close Button (x) */
 .close {
   position: absolute;
@@ -1197,8 +1190,8 @@ select {
 
 .checkbox-container.gr .active-circle,
 .checkbox-container.gr input:checked + label {
-  background-color: #554269;
-  box-shadow: inset 20px 0 0 0 #554269;
+  background-color: #2ecc71;
+  box-shadow: inset 20px 0 0 0 #2ecc71;
 
 }
 

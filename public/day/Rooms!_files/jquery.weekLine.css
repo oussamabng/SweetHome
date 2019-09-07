@@ -3,9 +3,8 @@
 .weekDays a {
   padding: 2px 3px !important;
   color: Gray !important;
-  background: linear-gradient(to bottom, white 0%, white 100%) repeat scroll 0 0
-    white !important;
-
+  background: linear-gradient(to bottom, #ffffff 0%, #8bb7d9 100%) repeat scroll
+    0 0 #000000 !important;
   text-decoration: none !important;
   font-family: "courier new" !important;
 }

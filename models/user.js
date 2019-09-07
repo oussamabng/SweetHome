@@ -112,7 +112,9 @@ const ScenarioSchema = new mongoose.Schema({
   color: { type: String },
   rooms: { type: [String] },
   userId: { type: String },
-
+  time: { type: String, default: "" },
+  repeat: { type: String, default: "" },
+  update: { type: Boolean, default: false },
   devicesOn: {
     rgb: { type: Boolean },
     dht: { type: Boolean },

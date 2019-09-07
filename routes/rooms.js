@@ -86,7 +86,7 @@ router.post("/add", async function(req, res) {
       type: req.body.type,
       name: req.body.name
     });
-  }, 500);
+  }, 900);
 
   //await room.save();
   //await user.save();
@@ -426,16 +426,32 @@ router.post("/addRoutine", async function(req, res) {
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   try {
-    const routine = new Scenario({
-      name: req.body.name,
-      rooms: req.body.rooms,
-      color: req.body.color,
-      devicesOn: req.body.devicesOn,
-      devicesOff: req.body.devicesOff,
-      userId: decoded._id,
-      checked: false
-    });
-    await routine.save();
+    if (req.body.time != "") {
+      console.log("added");
+      const routine = new Scenario({
+        name: req.body.name,
+        rooms: req.body.rooms,
+        color: req.body.color,
+        devicesOn: req.body.devicesOn,
+        devicesOff: req.body.devicesOff,
+        userId: decoded._id,
+        checked: false,
+        time: req.body.time,
+        repeat: req.body.repeat
+      });
+      await routine.save();
+    } else {
+      const routine = new Scenario({
+        name: req.body.name,
+        rooms: req.body.rooms,
+        color: req.body.color,
+        devicesOn: req.body.devicesOn,
+        devicesOff: req.body.devicesOff,
+        userId: decoded._id,
+        checked: false
+      });
+      await routine.save();
+    }
   } catch (error) {
     res.status(404).send({ message: "err add routine", err: error }); //anglais mkwd laghlb
   }
@@ -448,12 +464,32 @@ router.post("/modifyRoutine", async function(req, res) {
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   const sc = await Scenario.findOne({ _id: req.body.id });
   const arr = ["red", "purple", "yellow", "green", "bleu"];
+  console.log({
+    time: req.body.time,
+    repeat: req.body.repeat
+  });
   try {
     arr.forEach(function(elm) {
       if (elm == req.body.color) {
         sc.color = req.body.color;
       }
     });
+    sc.update = req.body.update;
+    if (req.body.time != "") {
+      sc.time = req.body.time;
+    }
+    var repeat = req.body.repeat;
+    if (repeat.length != 0) {
+      var s = "";
+      for (var i = 0; i < repeat.length; i++) {
+        if (i == repeat.length - 1) {
+          s = s + repeat[i];
+        } else {
+          s = s + repeat[i] + ",";
+        }
+      }
+      sc.repeat = s;
+    }
     sc.name = req.body.name;
     if (req.body.rooms.length != 0) {
       sc.rooms = req.body.rooms;
@@ -468,10 +504,22 @@ router.post("/modifyRoutine", async function(req, res) {
 
     await sc.save();
   } catch (error) {
-    res.status(404).send({ message: "err add routine", err: error }); //anglais mkwd laghlb
+    console.log(error);
   }
 
   res.status(200).send({ message: "modify routine  succesfully" }); //anglais mkwd laghlb
+});
+// ********************************************************//
+
+router.post("/routineTime", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const scenario = await Scenario.findOne({ _id: req.body.id });
+
+  scenario.checked = req.body.val;
+  await scenario.save();
+
+  res.status(200).send({ message: " routineTime post  succesfully" }); //anglais mkwd laghlb
 });
 // ********************************************************//
 
