@@ -33,8 +33,7 @@ router.post("/add", async function(req, res) {
     dht: [""],
     gsense: [""],
     ultrason: [""],
-    light: [""],
-    alarm: [""]
+    light: [""]
   };
   // tableau li rslthoulak te3 Devices bsh ykoun user mkhyr manah li bgha ykhdem bihom
 
@@ -64,11 +63,6 @@ router.post("/add", async function(req, res) {
         light.used = true;
         arr.light[0] = light._id;
         await light.save();
-      } else if (elm[0] == "a") {
-        var alarm = await Alarm.findOne({ name: elm, tokenId: user.tokenId });
-        alarm.used = true;
-        arr.alarm[0] = alarm._id;
-        await alarm.save();
       } else if (elm[0] == "g") {
         var gsense = await Gsense.findOne({ name: elm, tokenId: user.tokenId });
         gsense.used = true;
@@ -165,13 +159,6 @@ router.post("/modify", async function(req, res) {
           arr.gsense = true;
           await gsense.save();
         });
-      } else if (e[0] == "a") {
-        room.devices.alarm.forEach(async function(elm) {
-          var alarm = await Alarm.findOne({ _id: elm });
-          alarm.used = false;
-          arr.alarm = true;
-          await alarm.save();
-        });
       }
     });
 
@@ -240,18 +227,6 @@ router.post("/modify", async function(req, res) {
         room.devices.gsense.push(gsense._id);
         await room.save();
         await gsense.save();
-      } else if (e[0] == "a") {
-        var alarm = await Alarm.findOne({ name: e, tokenId: user.tokenId });
-        var room = await Rooms.findOne({
-          name: req.body.name,
-          userId: decoded._id
-        });
-        alarm.used = true;
-        room.devices.alarm = new Array();
-        room.devices.alarm.push(alarm._id);
-        await room.save();
-
-        await alarm.save();
       }
     });
   } catch (error) {
@@ -511,6 +486,25 @@ router.post("/modifyRoutine", async function(req, res) {
 });
 // ********************************************************//
 
+router.post("/state", async function(req, res) {
+  const token = req.query.token;
+  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const user = await User.findOne({ _id: decoded._id });
+  try {
+    const room = await Rooms.findOne({ _id: req.body.id, userId: user._id });
+    const rgb = await Rgb.findOne({
+      _id: room.devices.rgb[0],
+      tokenId: user.tokenId
+    });
+
+    rgb.state = req.body.state;
+    await rgb.save();
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.status(200).send({ message: " routineTime post  succesfully" }); //anglais mkwd laghlb
+});
 router.post("/routineTime", async function(req, res) {
   const token = req.query.token;
   const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
@@ -920,13 +914,6 @@ router.post("/modeR", async function(req, res) {
     }
   }
 
-  if (room.devices.alarm[0] != "") {
-    const alarm = await Alarm.findOne({ _id: room.devices.alarm[0] });
-    if (alarm) {
-      dev.push(alarm.name);
-    }
-  }
-
   if (room.devices.light[0] != "") {
     const light = await Light.findOne({ _id: room.devices.light[0] });
     if (light) {
@@ -959,13 +946,6 @@ router.post("/modeR", async function(req, res) {
     const gsense = await Gsense.findOne({ tokenId: user.tokenId, used: false });
     if (gsense) {
       devA.push(gsense.name);
-    }
-  }
-
-  if (room.devices.alarm[0] == "") {
-    const alarm = await Alarm.findOne({ tokenId: user.tokenId, used: false });
-    if (alarm) {
-      devA.push(alarm.name);
     }
   }
 
@@ -1087,11 +1067,7 @@ router.delete("/delete", async function(req, res) {
     rgb.used = false;
     await rgb.save();
   }
-  if (room.devices.alarm[0] != "") {
-    const alarm = await Alarm.findOne({ _id: room.devices.alarm[0] });
-    alarm.used = false;
-    await alarm.save();
-  }
+
   if (room.devices.ultrason[0] != "") {
     const ultrason = await Ultrason.findOne({ _id: room.devices.ultrason[0] });
     ultrason.used = false;

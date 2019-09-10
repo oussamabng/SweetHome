@@ -473,7 +473,16 @@ function register(){
 
 		var email = document.getElementById("emailRegister").value;
 		var username = document.getElementById("usernameRegister").value;
-		var password = document.getElementById("passwordRegister").value;
+		if (username.length < 5 ){
+			Swal.fire({
+				position : "center",
+									title: "<small style=' color: black'><strong>the username must be at least 5 caracters.</strong></small>" ,
+									showConfirmButton : false ,
+									background : '#ee5f5b'
+								
+								});
+		}else {
+			var password = document.getElementById("passwordRegister").value;
 		var token = document.getElementById("tokenIdRegister").value;
 		if ( (username=="") || (password=="") || (token =="") || (email=="") )  {
 			Swal.fire({
@@ -498,12 +507,13 @@ function register(){
 			dataType: "json",
 			url: "/api/signIn",
 			success: function(data) {
-			
-
-				Swal.fire(
-					'Profile created successfully.',
-					'success'
-				).then(function(result){
+				Swal.fire({
+					position : "center",
+					type :"info",
+										title: "<small style=' color: black'><strong>Account created successfully!</strong></small>" ,
+										showConfirmButton : true ,
+									
+									}).then(function(result){
 					if (result.value){
 
 			$.ajax({
@@ -542,6 +552,8 @@ function register(){
 		});
 	}
 
+		}
+		
 }
 
 

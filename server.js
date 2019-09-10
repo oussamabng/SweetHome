@@ -482,16 +482,18 @@ db.once("open", () => {
   });
 
   changeStreamUltrason.on("change", async function(change) {
-    if (change.operationType === "replace") {
-      const user = await User.findOne({ tokenId: change.fullDocument.tokenId });
+    if (change.operationType === "update") {
+      var id = change.documentKey._id;
+      var ultrason = await Ultrason.findeOne({ _id: id });
+      const user = await User.findOne({ tokenId: ultrason.tokenId });
       var room = await Rooms.find({ userId: user._id });
       room.forEach(async function(elm) {
-        if (elm.devices.ultrason[0] == change.fullDocument._id) {
+        if (elm.devices.ultrason[0] == id) {
           pusher.trigger("inserted", "ultrason", {
             //TODO to add //data : change.fullDocument.data
-            id: change.fullDocument._id,
+            id: id,
             name: elm.name,
-            value: change.fullDocument.value
+            value: ultrason.value
           });
           // notif = new Notification({
           // type: "ultrason",

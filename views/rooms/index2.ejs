@@ -153,7 +153,7 @@
                 <div class="card" id="help-tour">
                         <div class="front">
                                 <div calss="column">
-                                  <img onclick="document.getElementById('id13').style.display='block'" src="../../../designs/help.png" title="help" id="help-tour">                                </div>
+                                  <img onclick="libya(this)" src="../../../designs/help.png" title="help" id="help-tour">                                </div>
 
                         </div>
                         <div class="back">
@@ -338,19 +338,8 @@ $('#myonoffswitch').change(function(){
           var chartX = {}
           var rgbX = {}
           var gazX= {}
-          
-
-          if (getrooms.length == 1){
-            j=0
-          }else if (getrooms !=1) {
-            var j= document.getElementsByClassName("slick-active")[0].children[0].children[0].children[0].id.substring(4);
-
-          }
-
-
-
-
-          document.getElementById('id13').style.display='block'
+var j=0 ;
+document.getElementById('id13').style.display='block'
           if (screen.width < 700) {
             var r = 120;
             var a = "bottom";
@@ -378,7 +367,18 @@ $('#myonoffswitch').change(function(){
             var p = 15;
             var o = 60;
           }
+console.log(getrooms.length);
+          if (getrooms.length == 1){
+            j=0
+          }
+
+
+
+
+          
 if(getrooms.length !=0 ){
+  var j = document.getElementsByClassName("slick-active")[0].children[0].id.substring(20)
+
   typeX = {
     target: "type"+j,
     placement: a,
@@ -640,7 +640,7 @@ if(getrooms[0].devices.gsense[0] != ""){
             <option value="1" >rgb</option>
             <option value="2" >gsense</option>
             <option value="3" >ultrason</option>
-            <option value="4">alarm</option>
+            <option value="4" >alarm</option>
             <option value="5">light</option>
             <option value="6">light</option>
             <option value="7">light</option>
@@ -833,7 +833,6 @@ if(getrooms[0].devices.gsense[0] != ""){
               <option value="3" >gsense</option>
               <option value="4" >ultrason</option>
               <option value="6">light</option>
-              <option value="7">alarm</option>
 
 
   
@@ -847,7 +846,6 @@ if(getrooms[0].devices.gsense[0] != ""){
               <option value="3" >gsense</option>
               <option value="4" >ultrason</option>
               <option value="6">light</option>
-              <option value="7">alarm</option>
   
   
               </select>
@@ -1064,8 +1062,8 @@ document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-head
         responsive : true,
         title: "Set time",
         fluid: true, //new option
-
-        width: 700,
+width : 'auto',
+        maxWidth: 1200,
         modal: true,
         show: 500,
         buttons: [
@@ -1073,7 +1071,8 @@ document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-head
       text: "Done",
       click : function(){
         $("#id69").dialog("close");
-
+        document.getElementsByClassName("ui-button-icon ui-icon ui-icon-closethick")[2].addEventListener("click" , function(){
+console.log('ok');        })
    document.getElementById("setTime").style.display = "none";
    document.getElementById("timeAd").style.display = "block" ;
 
@@ -1096,7 +1095,7 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
       document.getElementsByClassName("ui-button-icon ui-icon ui-icon-closethick")[0].addEventListener("click", function(){
 
 
-        document.getElementById("timee").checked = falsew
+        document.getElementById("timee").checked = false
 
 
       });
@@ -1218,7 +1217,6 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
                 <option value="3" >gsense</option>
               <option value="4" >ultrason</option>
               <option value="6">light</option>
-              <option value="7">alarm</option>
   
   
               </select>
@@ -1230,7 +1228,6 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
                 <<option value="3" >gsense</option>
               <option value="4" >ultrason</option>
               <option value="6">light</option>
-              <option value="7">alarm</option>
   
   
                 </select>
@@ -1582,6 +1579,10 @@ else{
         b=("'block'")
         var w=("'id07'");
               
+
+        
+
+
         document.getElementById('test').innerHTML+=
                 
         '<div class="cardroom" style="margin-top: 50px">'+
@@ -1599,6 +1600,13 @@ else{
                     '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
             
                         '</iframe>'+
+
+
+                        
+'<div class="switch demo">'+
+	' <input id="rgbOnOff'+i+'" type="checkbox" onclick="rgbC('+i+')" ><label></label>'+
+   '</div>'+
+                        
                         '<section class="container-light" id="light'+i+'" style="text-align: left; " frameBorder="0" scrolling="no">'+
             
                             '</section>'+
@@ -1721,6 +1729,7 @@ console.log(data);
 }
 
       function addLight(i){
+        var oo =false ;
         if (getrooms[i].devices.light[0] != ""){
 
         
@@ -1760,21 +1769,33 @@ if (id == elm._id){
 // im.onclick = onOff ; 
     }
  //document.getElementById("light"+i).appendChild(im);    }
-  }else {
+  }else  {
+    oo = true ; 
+
+    document.getElementsByClassName("ok")[2].style.display = "none";
     document.getElementById("light"+i).style.display = "none";
     document.getElementById("light"+i).style.marginTop = 0;
-    document.getElementsByClassName("ok")[i].style.display = "none"
+  }
+}
+          });
+          allrgb.forEach(function(elm){
+if (getrooms[i].devices.rgb == elm._id){
+  if ((elm.used == false) && (oo == true)) {
+    document.getElementsByClassName("ok")[i].style.display = "none";
+  } else {
+    document.getElementsByClassName("ok")[i].style.display = "block";
+
   }
 }
           });
         });
       }else {
-        document.getElementById("light"+i).style.display = "none";
+       document.getElementById("light"+i).style.display = "none";
         document.getElementById("light"+i).style.marginTop = 0;
-        document.getElementsByClassName("ok")[i].style.display = "none"
-
-
-      }
+           //document.getElementsByClassName("ok")[2].style.display = "none";
+     //pisskisser
+document.getElementsByClassName("ok")[2].style.height = "0";
+}
       }
 
 
@@ -1791,13 +1812,12 @@ if (id == elm._id){
 
       function addRGB(i){
         
-if (getrooms[i].devices.light[0] != ""){
-
 
 
         if (getrooms[i].devices.rgb[0] == ""){
           document.getElementById("rgb"+i).style.display = "none";
- 
+          document.getElementById("rgbOnOff"+i).offsetParent.style.display = "none"
+
         }else {
        
 allrgb.forEach(function(elm){
@@ -1815,24 +1835,39 @@ allrgb.forEach(function(elm){
         'B:' + ('000' + hexToRgb(elm.color).b).substr(-3);      
     },2000);
   }
-    else {
+    else {       
+      document.getElementsByClassName("ok")[i].style.display = "none"
       document.getElementById("rgb"+i).style.display = "none";
+   //   document.getElementById("rgbOnOff"+i).offsetParent.style.display = "none"
 
     }
   }
 });
         }
-}
-else {
-  document.getElementById("rgb"+i).style.display = "none";
- 
 
-}
      
       
         }
       
+function rgbOnOff(i){
+if ( document.getElementById("rgbOnOff0").checked == true){
+  for (var j=0; j<allrgb.length; j++){
+    if (getrooms[i].devices.rgb[0] == allrgb[j]._id){
+      document.getElementById("rgbOnOff0").checked = false 
+    }
+  }
+} else {
+  for (var j=0; j<allrgb.length; j++){
+    if (getrooms[i].devices.rgb[0] == allrgb[j]._id){
+      document.getElementById("rgbOnOff0").checked = true 
+    }
+  }
+}
 
+
+
+
+}
 
         function addCharts(i) {
           if (getrooms[i].devices.dht[0] == ""){
@@ -1962,7 +1997,21 @@ else {
       
     </script>
     <script>
-      
+      function rgbC(i){
+var on = document.getElementById("rgbOnOff"+i) ;
+var id = getrooms[i]._id ; 
+$.ajax({
+  type: "POST",
+  data: JSON.stringify({ state  : on.checked , id : id }),
+  contentType: "application/json",
+  dataType: "json",
+  url: "/api/rooms/state"+document.location.search,
+  success: function(data) {
+    console.log({msg : "rgb state changed "})
+}
+});
+       
+      }
 
          
   function showntifications(i){
@@ -2095,17 +2144,18 @@ if (check) {
 
 
 
-
       showRooms(i);
-      addType(i); 
+      addType(i);
+      addLight(i); 
       addRGB(i);
-      addLight(i);
       addCharts(i); 
       addGaz(i);
+      rgbOnOff(i);
+
       biz(i); 
       addMotion(i);
       rek(i) ;
-
+      document.getElementsByClassName("modal-content animate")[9].style.height ="100%" ; 
 
     }
     if (notifications){
@@ -2170,6 +2220,11 @@ if (check) {
     </script>
     
     <script>
+
+
+
+
+
          function myFunction(i) {
           document.getElementById("myDropdown"+i).classList.toggle("show");
          document.getElementById("modify").placeholder =  document.getElementById("type"+i).children[2].innerHTML;
@@ -2259,6 +2314,10 @@ chan = pusher.bind('ultrason' , function(data){
  }
     }
   }
+
+
+
+
 });
 
 
@@ -2598,6 +2657,7 @@ $.ajax({
 
   
     for (var j = 0; j < data.devicesToDelete.length; j++){
+    
     
       document.getElementsByClassName("select-beauty")[2].children[1].children[j].children[0].dataset.value = j ;
       document.getElementsByClassName("select-beauty")[2].children[1].children[j].children[0].innerText = data.devicesToDelete[j] ;
@@ -3129,16 +3189,17 @@ while (document.getElementById("slick-slide0"+i)) {
     responsive : true,
     fluid: true, //new option
 
-		resizable: false,
+    resizable: false,
+  width : 'auto',
 		title: "Temperature and Humidity",
-    width: 900,
+    maxWidth: 700,
     high : 700,
 		modal: true,
 		show: 500
 	});
 	$(".ui-widget-overlay").css({"background-color": " rgba(0, 0, 0, 0.4)"});
     // Create the chart
-  Highcharts.stockChart("chartContainer", {
+  var chart = Highcharts.stockChart("chartContainer", {
     chart: {
       events: {
         load: function() {
@@ -3287,6 +3348,10 @@ while (document.getElementById("slick-slide0"+i)) {
         }]
     }
   });
+  if (window.screen.width < 600){
+    console.log(chart.classeName )
+  
+  }
   document.getElementsByClassName("highcharts-title")[0].children[0].style.fontSize = "25px" ; 
   document.getElementsByClassName("highcharts-title")[0].children[0].style.marginBottom = "5px";
   document.getElementsByClassName("highcharts-title")[0].children[0].style.fontWeight = "bold";
@@ -3312,13 +3377,13 @@ while (document.getElementById("slick-slide0"+i)) {
         fluid: true, //new option
 
 
-        title: "Temperature and Humidity",
+        title: "Gaz",
         width: 900,
         high : 700,
         modal: true,
         show: 500
       });
-      $(".ui-widget-overlay").css({"background-color": "#ef7ef7"});
+      $(".ui-widget-overlay").css({"background-color": "rgba(0, 0, 0, 0.4)"});
         // Create the chart
       Highcharts.stockChart("chartContainer2", {
         chart: {
@@ -3547,6 +3612,43 @@ $.ajax({
    }
 
 
+   // on window resize run function
+$(window).resize(function () {
+  fluidDialog();
+});
+
+// catch dialog if opened within a viewport smaller than the dialog width
+$(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+  fluidDialog();
+});
+
+function fluidDialog() {
+  var $visible = $(".ui-dialog:visible");
+  // each open dialog
+  $visible.each(function () {
+      var $this = $(this);
+      var dialog = $this.find(".ui-dialog-content").data("ui-dialog");
+      // if fluid option == true
+      if (dialog.options.fluid) {
+        document.getElementById("id69").children[0].children[1].children[0].children[0].style.marginTop="35%" ; 
+        document.getElementById("id69").children[0].children[1].children[0].children[0].style.marginLeft="40%" ; 
+        document.getElementById("id69").children[2].children[1].children[0].children[0].style.marginTop = "35%"
+        document.getElementById("id69").children[2].children[1].children[0].children[0].style.marginLeft = "40%"
+          var wWidth = $(window).width();
+          // check window width against dialog width
+          if (wWidth < (parseInt(dialog.options.maxWidth) + 50))  {
+              // keep dialog from filling entire screen
+              $this.css("max-width", "90%");
+          } else {
+              // fix maxWidth bug
+              $this.css("max-width", dialog.options.maxWidth + "px");
+          }
+          //reposition dialog
+          dialog.option("position", dialog.options.position);
+      }
+  });
+
+}
 
 
   </script>

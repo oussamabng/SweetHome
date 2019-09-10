@@ -86,7 +86,7 @@ GSenseSchema = new mongoose.Schema({
 
 const RGBSchema = new mongoose.Schema({
   name: String,
-  state: { type: Boolean },
+  state: { type: Boolean , default : false},
   color: { type: String },
   used: { type: Boolean, default: false },
   tokenId: String

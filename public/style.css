@@ -39,6 +39,10 @@ img {
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
+.onoffswitch.dala3 {
+  transform: rotate(-90deg);
+  margin-left: 85%;
+}
 .card div {
   height: 100%;
   width: 100%;
@@ -750,26 +754,100 @@ input[type="range"]::-moz-range-thumb:active {
   height: 100px;
   margin-left: 85%;
 }
+#hah {
+  margin-top: 0;
+  margin-left: 25%;
+}
+#hih {
+  margin-bottom: 10%;
+
+  margin-left: 25%;
+}
 /************************************/
 
 @media only screen and (max-width: 600px) {
+  /* DEMO */
+  /* GLOBALS */
+
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .switch {
+    margin-right: 10%;
+    margin-top: 5%;
+
+    position: relative;
+  }
+
+  .switch label {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .switch input {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  /* DEMO */
+
+  .switch.demo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .switch.demo label {
+    background: #cbc7bc;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 0 white, 0 0 0 1px #999,
+      0 0 5px 1px rgba(0, 0, 0, 0.2), 0 2px 0 rgba(255, 255, 255, 0.6),
+      inset 0 10px 1px #e5e5e5, inset 0 11px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -45px 3px #ddd;
+  }
+
+  .switch.demo input:checked ~ label {
+    background: #caa376;
+    box-shadow: inset 0 1px 0 white, 0 0 0 1px rgb(100, 33, 33),
+      0 0 5px 1px rgba(0, 0, 0, 0.2), inset 0 -10px 0 #aaa,
+      0 2px 0 rgba(255, 255, 255, 0.1), inset 0 45px 3px #e0e0e0,
+      0 8px 6px rgba(0, 0, 0, 0.18);
+  }
+
+  /* end check */
+
   #ArmingMode {
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-    background: rgb(146, 230, 202);
+    background: #50add2;
     transition: 0.3s;
     display: inline-block;
-    width: 15 0px;
-    height: 100px;
-    margin-left: 25%;
+    width: 150px;
+    height: 90px;
+    margin-left: 30%;
     margin-top: 10%;
   }
   #hah {
-
-    margin-left: 18%;
+    margin-left: 20%;
   }
   #hih {
-    margin-left: 18%;
+    bottom: 90%;
+    margin-left: 20%;
   }
   .cardroom {
     margin: 5%;
@@ -1191,17 +1269,11 @@ select {
   z-index: 1;
 }
 
-
-
-
-
 .checkbox-container.gr .active-circle,
 .checkbox-container.gr input:checked + label {
   background-color: #554269;
   box-shadow: inset 20px 0 0 0 #554269;
-
 }
-
 
 .checkbox-container.green .active-circle,
 .checkbox-container.green input:checked + label {
@@ -1368,7 +1440,6 @@ select {
   display: none;
 }
 .onoffswitch-label {
-
   display: block;
   overflow: hidden;
   cursor: pointer;
@@ -1577,3 +1648,125 @@ textarea {
 }
 
 /* check box
+
+
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.switch {
+  position: relative;
+  margin-left: 90%;
+  margin-top: 8%;
+}
+
+.switch label {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+}
+
+.switch input {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* DEMO */
+/* GLOBALS */
+
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.switch {
+  margin-left: 90%;
+  margin-top: 10%;
+
+  position: relative;
+}
+
+.switch label {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.switch input {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* DEMO */
+
+.switch.demo {
+  width: 35px;
+  height: 70px;
+}
+
+.switch.demo label {
+  background: #cbc7bc;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 0 white, 0 0 0 1px #999,
+    0 0 5px 1px rgba(0, 0, 0, 0.2), 0 2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 10px 1px #e5e5e5, inset 0 11px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -45px 3px #ddd;
+}
+
+.switch.demo label:after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -25px;
+  bottom: -20px;
+  right: -25px;
+  background: #ccc;
+  background: -moz-linear-gradient(#ddd, #bbb);
+  background: -ms-linear-gradient(#ddd, #bbb);
+  background: -o-linear-gradient(#ddd, #bbb);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#ddd), to(#bbb));
+  background: -webkit-linear-gradient(#ddd, #bbb);
+  background: linear-gradient(#ddd, #bbb);
+  z-index: -1;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.15), 0 3px 3px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.switch.demo input:checked ~ label {
+  background: #caa376;
+  box-shadow: inset 0 1px 0 white, 0 0 0 1px rgb(100, 33, 33),
+    0 0 5px 1px rgba(0, 0, 0, 0.2), inset 0 -10px 0 #aaa,
+    0 2px 0 rgba(255, 255, 255, 0.1), inset 0 45px 3px #e0e0e0,
+    0 8px 6px rgba(0, 0, 0, 0.18);
+}
