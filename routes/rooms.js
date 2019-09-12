@@ -3,6 +3,7 @@ const config = require("config");
 const express = require("express");
 const router = express.Router();
 const auth = require("../middlwares/auth");
+const store = require("store");
 
 const {
   User,
@@ -22,9 +23,9 @@ const _ = require("lodash");
 // ********************************************************//
 //*****************************************************//
 //add room
-router.post("/add", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/add", auth, async function(req, res) {
+  // const token = req.query.token;
+  const decoded = req.userId;
   const user = await User.findOne({ _id: decoded._id });
   //const _rooms = await Rooms.find({ userId: decoded._id });
 
@@ -87,10 +88,10 @@ router.post("/add", async function(req, res) {
 });
 
 //teh RGB ROute ^^
-router.post("/rgb", async function(req, res) {
-  var token = req.query.token;
+router.post("/rgb", auth, async function(req, res) {
+  // var token = req.query.token;
 
-  var decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  var decoded = req.userId;
 
   var rgb = await Rgb.findOne({ _id: req.body.id });
 
@@ -104,9 +105,8 @@ router.post("/rgb", async function(req, res) {
 });
 // TODO modify devices ................................................................;
 
-router.post("/modify", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/modify", auth, async function(req, res) {
+  const decoded = req.userId;
   var user = await User.findOne({ _id: decoded._id });
   var arr = {
     dht: false,
@@ -244,10 +244,7 @@ router.post("/modify", async function(req, res) {
 });
 
 //**************************************** */
-router.post("/light", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
-
+router.post("/light", auth, async function(req, res) {
   var light = await Light.findOne({ _id: req.body.id });
 
   light.value = req.body.value;
@@ -260,9 +257,8 @@ router.post("/light", async function(req, res) {
 // ********************************************************//
 // ********************************************************//
 
-router.post("/desactiveRoutine", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/desactiveRoutine", auth, async function(req, res) {
+  const decoded = req.userId;
 
   const scenario = await Scenario.findOne({
     _id: req.body.id,
@@ -318,13 +314,13 @@ router.post("/desactiveRoutine", async function(req, res) {
 // ********************************************************//
 // ********************************************************//
 // TODO a changer plus tard arr
-router.post("/notifications", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/notifications", auth, async function(req, res) {
+  const decoded = req.userId;
   var arr = [];
 
   const alarm = await Alarm.findOne({ _id: req.body.id });
   alarm.value = false;
+  alarm.type = "auto";
   alarm.save();
 
   const room = await Rooms.find();
@@ -339,9 +335,8 @@ router.post("/notifications", async function(req, res) {
 });
 
 // ********************************************************//
-router.post("/val", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/val", auth, async function(req, res) {
+  const decoded = req.userId;
 
   const notif = await Notification.findOne({ _id: req.body.id });
   if (notif) {
@@ -351,9 +346,8 @@ router.post("/val", async function(req, res) {
   res.status(200).send({ msg: "val succes" });
 });
 // ********************************************************//
-router.post("/ArmingMode", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/ArmingMode", auth, async function(req, res) {
+  const decoded = req.userId;
 
   const user = await User.findOne({ _id: decoded._id });
   const ar = await ArmingMode.findOne({ tokenId: user.tokenId });
@@ -366,9 +360,9 @@ router.post("/ArmingMode", async function(req, res) {
 
 // ********************************************************//
 
-router.post("/getnotifications", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/getnotifications", auth, async function(req, res) {
+  const decoded = req.userId;
+
   const notification = new Notification({
     type: req.body.type,
     content: req.body.content,
@@ -382,9 +376,9 @@ router.post("/getnotifications", async function(req, res) {
   });
 });
 
-router.post("/deleteNot", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/deleteNot", auth, async function(req, res) {
+  const decoded = req.userId;
+
   //const token = req.query.token;
 
   //const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
@@ -397,9 +391,8 @@ router.post("/deleteNot", async function(req, res) {
 
 // ********************************************************//
 // ********************************************************//
-router.post("/addRoutine", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/addRoutine", auth, async function(req, res) {
+  const decoded = req.userId;
   try {
     if (req.body.time != "") {
       console.log("added");
@@ -434,9 +427,9 @@ router.post("/addRoutine", async function(req, res) {
   res.status(200).send({ message: "add routine  succesfully" }); //anglais mkwd laghlb
 });
 // ********************************************************//
-router.post("/modifyRoutine", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/modifyRoutine", auth, async function(req, res) {
+  const decoded = req.userId;
+
   const sc = await Scenario.findOne({ _id: req.body.id });
   const arr = ["red", "purple", "yellow", "green", "bleu"];
   console.log({
@@ -486,9 +479,9 @@ router.post("/modifyRoutine", async function(req, res) {
 });
 // ********************************************************//
 
-router.post("/state", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/state", auth, async function(req, res) {
+  const decoded = req.userId;
+
   const user = await User.findOne({ _id: decoded._id });
   try {
     const room = await Rooms.findOne({ _id: req.body.id, userId: user._id });
@@ -505,9 +498,9 @@ router.post("/state", async function(req, res) {
 
   res.status(200).send({ message: " routineTime post  succesfully" }); //anglais mkwd laghlb
 });
-router.post("/routineTime", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/routineTime", auth, async function(req, res) {
+  const decoded = req.userId;
+
   const scenario = await Scenario.findOne({ _id: req.body.id });
 
   scenario.checked = req.body.val;
@@ -517,9 +510,9 @@ router.post("/routineTime", async function(req, res) {
 });
 // ********************************************************//
 
-router.post("/activeRoutine", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/activeRoutine", auth, async function(req, res) {
+  const decoded = req.userId;
+
   const scenario = await Scenario.findOne({ _id: req.body.id });
 
   scenario.rooms.forEach(async function(elm) {
@@ -686,11 +679,11 @@ router.post("/activeRoutine", async function(req, res) {
 });
 
 // ********************************************************//
-router.get("/all", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.get("/all", auth, async function(req, res) {
+  //const token = req.query.token;
+  //const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
   var value;
-  const user = await User.findOne({ _id: decoded._id });
+  const user = await User.findOne({ _id: req.userId._id });
   const check = user.check;
   var devices = new Array();
 
@@ -714,10 +707,10 @@ router.get("/all", async function(req, res) {
   const light = await Light.find({
     tokenId: user.tokenId
   });
-  const routine = await Scenario.find({ userId: decoded._id });
-  const notification = await Notification.find({ userId: decoded._id });
+  const routine = await Scenario.find({ userId: req.userId._id });
+  const notification = await Notification.find({ userId: req.userId._id });
 
-  const _rooms = await Rooms.find({ userId: decoded._id });
+  const _rooms = await Rooms.find({ userId: req.userId._id });
 
   const dht1 = await Dht.findOne({
     tokenId: user.tokenId,
@@ -774,6 +767,7 @@ router.get("/all", async function(req, res) {
     rooms: JSON.stringify(_rooms),
     dht: JSON.stringify(dht),
     rgb: JSON.stringify(rgb),
+
     light: JSON.stringify(light),
     gsense: JSON.stringify(gsense),
     alarm: JSON.stringify(alarm),
@@ -788,10 +782,15 @@ router.get("/all", async function(req, res) {
 // get rooms
 //router.get("/", auth, async function(req, res) {
 //console.log(req.userId);
+router.get("/logout", auth, async function(req, res) {
+  store.remove("token");
+  res.status(200);
+  res.send({ msg: "logout send" });
+});
 
-router.post("/room", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/room", auth, async function(req, res) {
+  const decoded = req.userId;
+
   const room = new Rooms({
     userId: decoded._id,
     name: req.body.name,
@@ -804,9 +803,8 @@ router.post("/room", async function(req, res) {
 });
 
 //const rooms = await Rooms.find({ userId: req.userId._id });
-router.post("/ver", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/ver", auth, async function(req, res) {
+  const decoded = req.userId;
 
   var scenario = await Scenario.find({ userId: decoded._id });
 
@@ -826,9 +824,8 @@ router.post("/ver", async function(req, res) {
 //console.log(rooms);
 //res.send(rooms);
 //});
-router.post("/check", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/check", auth, async function(req, res) {
+  const decoded = req.userId;
 
   const user = await User.findOne({ _id: decoded._id });
   user.check = req.body.check;
@@ -838,9 +835,8 @@ router.post("/check", async function(req, res) {
   res.status(200).send({ message: "check post   succes" }); //anglais mkwd laghlb
 });
 // ********************************************************//
-router.post("/delDev", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/delDev", auth, async function(req, res) {
+  const decoded = req.userId;
 
   const room = await Rooms.findOne({
     name: req.body.name,
@@ -891,9 +887,9 @@ router.post("/delDev", async function(req, res) {
 });
 //*****************************************************//
 
-router.post("/modeR", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/modeR", auth, async function(req, res) {
+  const decoded = req.userId;
+
   const user = await User.findOne({ _id: decoded._id });
   var dev = new Array();
   var devA = new Array();
@@ -982,8 +978,8 @@ router.post("/modeR", async function(req, res) {
 
 //get devices for add room
 router.get("/devices", auth, async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+  const decoded = req.userId;
+
   let dev = {
     dhts: [],
     alarms: [],
@@ -1028,9 +1024,9 @@ router.get("/devices", auth, async function(req, res) {
   //send array of devices
 });
 
-router.post("/deleteRoutine", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.post("/deleteRoutine", auth, async function(req, res) {
+  const decoded = req.userId;
+
   const i = req.body.i;
   const routine = await Scenario.deleteOne({ name: req.body.name });
 
@@ -1039,21 +1035,9 @@ router.post("/deleteRoutine", async function(req, res) {
 // ********************************************************//
 //*****************************************************//
 
-//update room
-router.put("/:id", async function(req, res) {
-  //const user = await User.findOne({ _id : req.userId});*
-  const room = await Rooms.findOne({ _id: req.params.id });
-  room.name = req.body.name;
-  room.typeRoom = req.body.typeRoom;
-  const result = await room.save();
-
-  res.send(result);
-});
-
 //delete room
-router.delete("/delete", async function(req, res) {
-  const token = req.query.token;
-  const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+router.delete("/delete", auth, async function(req, res) {
+  const decoded = req.userId;
 
   var room = await Rooms.findOne({ name: req.body.name, userId: decoded._id });
 

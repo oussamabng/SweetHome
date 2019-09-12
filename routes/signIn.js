@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
+const store = require("store");
+
 const {
   User,
   Dht,
@@ -42,6 +44,8 @@ router.post("/", async (req, res) => {
   await bndm.save();
 
   const token = jwt.sign({ _id: bndm._id }, config.get("jwtPrivateKey"));
+  const store = require("token", { token: token });
+
   res
     .header("x-auth-token", token)
     .send(_.pick(bndm, ["_id", "username", "email"]));

@@ -1,3 +1,5 @@
+@import "https://code.highcharts.com/css/highcharts.css";
+
 html,
 body {
   font-family: "Roboto", sans-serif;
@@ -610,7 +612,24 @@ input[type="range"]::-moz-range-thumb:active {
   box-shadow: 0 0px 0px 8px rgba(0, 0, 0, 0.4);
   background-color: #52e0dd;
 }
+.highcharts-title {
+  fill: rgb(126, 38, 38);
+  font-size: 30px;
+  font-weight: bold;
+}
+.ui-dialog-titlebar {
+  background: rgb(89, 83, 134);
+}
+ui-button {
+  background: rgb(89, 83, 134);
+}
+
+.selectcontainer {
+  width: 80%;
+}
 .ok {
+  width: 100%;
+  height: 180px;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
   -o-perspective: 800px;
@@ -766,6 +785,28 @@ input[type="range"]::-moz-range-thumb:active {
 /************************************/
 
 @media only screen and (max-width: 600px) {
+  .onoffswitch.rgb {
+    top: 67px;
+    bottom: 150px;
+    left: -7px;
+    z-index: 0;
+  }
+  .ok {
+    width: 90%;
+    height: 180px;
+    padding: 2px 16px;
+    border: 5;
+    box-shadow: 0 0px 0px 8px rgba(0, 0, 0, 0.4);
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: 5px 0px 0px 0px rgba(0, 0, 0, 0.2);
+  }
+
   /* DEMO */
   /* GLOBALS */
 
@@ -807,8 +848,9 @@ input[type="range"]::-moz-range-thumb:active {
   /* DEMO */
 
   .switch.demo {
-    width: 20px;
-    height: 20px;
+    margin-right: "70px";
+    width: 90px;
+    height: 90px;
   }
 
   .switch.demo label {
@@ -857,14 +899,14 @@ input[type="range"]::-moz-range-thumb:active {
     width: 95%;
   }
   .container-light {
-    position: absolute;
     width: 20%;
     height: auto;
     left: 20px;
-    bottom: 50px;
-    z-index: 10;
+    bottom: 40%;
+    z-index: 0;
     background: rgba(0, 0, 0, 0);
   }
+
   .detailed-graph {
     text-align: center;
     margin-left: -10px;
@@ -901,19 +943,17 @@ input[type="range"]::-moz-range-thumb:active {
   }
   .container-rgb {
     width: 90%;
-    height: auto;
-    position: relative;
+    height: 100%;
+    background-color: #50add2;
+
     -webkit-perspective: 800px;
     -moz-perspective: 800px;
     -o-perspective: 800px;
     perspective: 800px;
-    padding: 2px 16px;
-    border: 5;
-    background-color: #50add2;
+
     white-space: nowrap;
     overflow-x: hidden;
     overflow-y: hidden;
-    box-shadow: 5px 0px 0px 0px rgba(0, 0, 0, 0.2);
   }
   .container-charts {
     width: 90%;
@@ -1119,8 +1159,6 @@ select {
 }
 
 .closenoti {
-  position: absolute;
-
   color: #000;
   font-size: 35px;
   font-weight: bold;
@@ -1142,6 +1180,7 @@ select {
   position: relative;
   align-content: center;
 }
+
 .cardnoti {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   transition: 0.3s;
@@ -1411,8 +1450,60 @@ select {
   /* margin: 1px 10px 1px 0px; */
   vertical-align: middle;
 }
-
+#nameRoutine {
+  width: 80%;
+}
+#select-type {
+  width: 100%;
+}
+#nameRoutineMod {
+  width: 80%;
+}
+#modifyTime {
+  width: 80%;
+}
+.p69 {
+  margin-right: 100%;
+  width: 100px;
+}
+.p96 {
+  margin-left: 500px;
+  color: #3d5e85;
+}
+.daw {
+  width: 60px;
+  margin-left: 30px;
+  margin-top: 50%;
+}
+.onoffswitch.rgb {
+  margin-top: 23%;
+  margin-left: 57%;
+}
+#modify {
+  width: 80%;
+}
 @media (max-width: 600px) {
+  #modify {
+    width: 50%;
+  }
+  .daw {
+    width: 60px;
+    margin-left: 30px;
+    margin-top: 50%;
+  }
+  .p96 {
+    margin-left: 170px;
+    color: #3d5e85;
+  }
+  .p69 {
+    width: 50px;
+  }
+  #nameRoutine {
+    width: 100%;
+  }
+  #nameRoutineMod {
+    width: 100%;
+  }
   .imgcontainerroutines {
     flex-direction: column;
   }
@@ -1436,6 +1527,7 @@ select {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
 .onoffswitch-checkbox {
   display: none;
 }

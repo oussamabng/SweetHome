@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "scope": "/",
+
+  "icons": [
+    {
+      "src": "/sweet-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/login.png",
+      "type": "image/png",
+      "sizes": "200x200"
+    }
+  ],
+  "start_url": "/home",
+  "background_color": "#95A3EA",
+  "display": "standalone",
+  "theme_color": "#808ABC",
+  "orientation": "portrait-primary"
+}

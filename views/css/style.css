@@ -377,6 +377,7 @@ mark,
   .list-inline-item:not(:last-child) {
     margin-right: 0.5rem; }
 
+   
 .initialism {
   font-size: 90%;
   text-transform: uppercase; }
@@ -3133,7 +3134,8 @@ input[type="button"].btn-block {
     background-color: #fff;
     -webkit-transform: translateX(0.75rem);
     -ms-transform: translateX(0.75rem);
-    transform: translateX(0.75rem); }
+    transform: translateX(0.75rem);
+      }
   .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
     background-color: rgba(0, 123, 255, 0.5); }
 
@@ -8402,6 +8404,10 @@ h1, h2, h3, h4, h5,
     overflow: hidden;
     text-align: center; }
     @media (max-width: 991.98px) {
+      .one-third.align-self-end.order-md-last.img-fluid{
+        top:480px;
+        right:-20px;  
+      }
       .hero-wrap .slider-text {
         text-align: center;
         height: 750px; } }
@@ -8994,11 +9000,6 @@ h1, h2, h3, h4, h5,
         background-color: #735DD0;
       }
       
-      @media (max-width: 840px) {
-        body {
-          flex-direction: column;
-        }
-      }
    
       .ftco-candidates .owl-dots .owl-dot.active {
         background: #ff6347 !important; }
@@ -10114,3 +10115,38 @@ textarea.form-control {
       /* margin: 1px 10px 1px 0px; */
       vertical-align: middle;
     }
+    .forgetmypss{
+      color:white!important; 
+      margin-left:100px
+    }
+    .daw{
+      width:50px;margin-left:30px;margin-top:50px; 
+       }
+ 
+    @media (max-width: 840px) {
+      
+     
+      .row.d-flex{
+        text-align: center;
+        display: block;
+        justify-content: center;
+      }
+      .nichen{
+        display:block;
+        align-content: center;
+      }
+      .forgetmypss{
+        display: inline-block;
+        color:white!important;
+        margin-left:0px;
+      }
+      .ftco-search{
+        top:-30px;
+      }
+  
+      
+      body {
+        flex-direction: column;
+      }
+    }
+

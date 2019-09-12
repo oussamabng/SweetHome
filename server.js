@@ -484,31 +484,33 @@ db.once("open", () => {
   changeStreamUltrason.on("change", async function(change) {
     if (change.operationType === "update") {
       var id = change.documentKey._id;
-      var ultrason = await Ultrason.findeOne({ _id: id });
-      const user = await User.findOne({ tokenId: ultrason.tokenId });
-      var room = await Rooms.find({ userId: user._id });
-      room.forEach(async function(elm) {
-        if (elm.devices.ultrason[0] == id) {
-          pusher.trigger("inserted", "ultrason", {
-            //TODO to add //data : change.fullDocument.data
-            id: id,
-            name: elm.name,
-            value: ultrason.value
-          });
-          // notif = new Notification({
-          // type: "ultrason",
-          // content: "door action happend",
-          //time: new Date().toString().substring(0, 24),
-          // userId: user._id,
-          // a: {
-          //  val: true,
-          //   id: change.fullDocument._id,
-          // nameRoom: elm.name
-          // }
-          //});
-          //  await notif.save();
-        }
-      });
+      var ultrason = await Ultrason.findOne({ _id: id });
+      if (ultrason) {
+        const user = await User.findOne({ tokenId: ultrason.tokenId });
+        var room = await Rooms.find({ userId: user._id });
+        room.forEach(async function(elm) {
+          if (elm.devices.ultrason[0] == id) {
+            pusher.trigger("inserted", "ultrason", {
+              //TODO to add //data : change.fullDocument.data
+              id: id,
+              name: elm.name,
+              value: ultrason.value
+            });
+            // notif = new Notification({
+            // type: "ultrason",
+            // content: "door action happend",
+            //time: new Date().toString().substring(0, 24),
+            // userId: user._id,
+            // a: {
+            //  val: true,
+            //   id: change.fullDocument._id,
+            // nameRoom: elm.name
+            // }
+            //});
+            //  await notif.save();
+          }
+        });
+      }
     }
   });
 
@@ -561,13 +563,17 @@ app.get("/", function(req, res) {
   res.redirect("/home");
 });
 
-app.get(
-  "/home",
-  //, csrfProtection
-  function(req, res) {
-    res.render("index");
+app.get("/home", function(req, res) {
+  if (req.query.tokenid) {
+    console.log("jaaa");
   }
-);
+  res.render("index");
+});
+app.get("/signup", function(req, res) {
+  var tokenid = req.query.tokenid;
+
+  res.redirect("/?tokenid=" + tokenid);
+});
 
 app.use("/api/auth", auth);
 app.use("/api/signIn", signIn);

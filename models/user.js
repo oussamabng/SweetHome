@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const config = require("config");
 const jwt = require("jsonwebtoken");
+const store = require("store");
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -67,7 +68,8 @@ alarmSchema = new mongoose.Schema({
   },
   value: { type: Boolean, default: false },
   used: { type: Boolean, default: false },
-  tokenId: String
+  tokenId: String,
+  type: { type: String, enum: ["auto", "man"], default: "auto" }
 });
 
 GSenseSchema = new mongoose.Schema({
@@ -86,7 +88,7 @@ GSenseSchema = new mongoose.Schema({
 
 const RGBSchema = new mongoose.Schema({
   name: String,
-  state: { type: Boolean , default : false},
+  state: { type: Boolean, default: false },
   color: { type: String },
   used: { type: Boolean, default: false },
   tokenId: String

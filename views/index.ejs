@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Sweet Home! sweetest way to control your home</title>
+    <title>Sweet Home!</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
@@ -12,6 +12,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.css">
+	<script rel="manifest" src="manifest.json"></script>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     
@@ -35,7 +37,7 @@
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar"style="align-content: center">
 	    <div class="container" style="align-content: center">
-	      <a class="navbar-brand" href="index.html"style="align-content: center"><img style="" src="images/sweet.png" class="logo"></a>
+	      <a class="navbar-brand" href="home"style="align-content: center"><img style="" src="images/sweet.png" class="logo"></a>
 	     
 	    </div>
 	  </nav>
@@ -45,10 +47,11 @@
     <div class="hero-wrap js-fullheight">
       <div class="overlay"></div>
       <div class="container-fluid px-0">
-      	<div class="row d-md-flex no-gutters slider-text align-items-end js-fullheight justify-content-end">
-	      	<img class="one-third align-self-end order-md-last img-fluid" src="images/flat_design_house__disney_up__by_therealmrme_dah9b89.png" alt="">
+      	<div id="darna" class="row d-md-flex no-gutters slider-text align-items-end js-fullheight justify-content-end">
+	      	<img  class="one-third align-self-end order-md-last img-fluid" src="images/flat_design_house__disney_up__by_therealmrme_dah9b89.png" alt="">
 	        <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
 	        	<div class="text mt-5">
+							<br><br><br>
 	            <h1 class="mb-5">The sweetest way to control your home!</h1>
 
 							<div class="ftco-search">
@@ -86,15 +89,13 @@
 								              </div>
 											</div>
 											<div class="remember-me">
-												<div style=" margin-right:80px"  class="custom-control custom-checkbox custom-control-inline mb-3">
+												<div  class="custom-control custom-checkbox custom-control-inline mb-3">
 
 													<input type="checkbox"  id="customCheckboxInline1" name="customCheckboxInline1" class="custom-control-input">
-													<label style="color:white" class="custom-control-label" for="customCheckboxInline1">
-														Remember Me
-													</label>
+													<label style="color:white" class="custom-control-label" for="customCheckboxInline1">Remember Me</label>
 
 												</div>
-												<a  style="color:white; margin-left:100px" onclick="document.getElementById('id01').style.display='block'">Forgot password?  </a>
+												<a  class="forgetmypss"  onclick="document.getElementById('id01').style.display='block'">Forgot password?  </a>
 
 											</div>
 											
@@ -172,14 +173,19 @@
 				  <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
 					<h2>Forgot your password?</h2>
 					<p>Enter your email password used with youe account to reset it.</p>
-					<div class="row d-flex justify-content-center mt-4 mb-4">
+					<div class="row d-flex justify-content-center mt-4 mb-4 nichen">
 					  <div class="col-md-12">
-						<form  class="subscribe-form">
-						  <div class="form-group d-flex">
-							<input id="emailForgot" type="text" class="form-control" placeholder="Enter email address">
-							<input   type="button" value="Enter" class="submit px-3"  style="margin:5px" onclick="forgot(this)">
-							<input  type="button" 	value="Cancel" class="submit px-3"   style="margin:5px" onclick="document.getElementById('id01').style.display='none'">
+						<form  class="subscribe-form nichen">
+								<div class="form-group d-flex">
+
+								<input id="emailForgot" type="text" class="form-control" placeholder="Enter email address">
+								</div>
+						  <div class="form-group d-flex" style="margin-left: 30%; width:500px">
+							<input   type="button" value="Enter" class="submit px-3"  style="margin-left:20px" onclick="forgot(this)">
+							<input  type="button" 	value="Cancel" class="submit px-3"   style="margin-left:20px" onclick="document.getElementById('id01').style.display='none'">
+							
 						</div>
+						
 					</form>
 				  </div>
 				</div>
@@ -295,6 +301,32 @@
 	<script> 
 	
 	function myFunction() {
+		if (window.screen.width <600 ){
+			document.getElementsByClassName("mb-5")[0].style.fontSize = "24px" ; 
+			document.getElementsByClassName("mb-5")[0].style.marginTop = "35px" ; 
+			document.getElementById("darna").children[0].style.display = "none";
+			document.getElementsByClassName("row no-gutters")[1].style.padding = "0px";
+			document.getElementsByClassName("row no-gutters")[1].style.width = "80%";
+			document.getElementsByClassName("remember-me")[0].style.marginLeft ="20%";
+			document.getElementsByClassName("custom-control custom-checkbox custom-control-inline mb-3")[0].style.fontSize = "15px";
+			document.getElementsByClassName("col-md-12 tab-wrap")[0].style.width = "90%";
+			document.getElementsByClassName("row")[3].style.width = "95%";
+			document.getElementsByClassName("row")[3].style.padding = "0px"
+			document.getElementsByClassName("remember-me")[0].style.fontSize = "12px";
+			document.getElementsByClassName("custom-control custom-checkbox custom-control-inline mb-3")[0].style.fontSize = "12px";
+			document.getElementsByClassName("custom-control custom-checkbox custom-control-inline mb-3")[0].style.marginLeft = "7%"
+			document.getElementsByClassName("remember-me")[0].style.marginLeft = "30%";
+
+			document.getElementsByClassName("form-group d-flex")[1].style.marginLeft = "9%"
+			document.getElementsByClassName("ftco-section services-section bg-primary")[0].style.marginTop = "25%"
+
+
+		}
+		else {
+			console.log({
+				msg :"ur in pc version"
+			})
+		}
 		
   // Get the checkbox
   var checkBox = document.getElementById("toggle");
@@ -531,9 +563,10 @@ function register(){
 							"x-auth-token": data.token
 						}
 					});
-					window.location.replace(`/api/rooms/all?token=${data.token}`);
+					window.location.replace(`/api/rooms/all`);
 
-				}
+				},
+
 			}); 
 					}
 				});
@@ -570,12 +603,14 @@ function register(){
 			url: "/api/auth",
 
 			success: function(data) {
+				localStorage.setItem('token',data.token)
+
 				$.ajaxSetup({
 					headers: {
 						"x-auth-token": data.token
 					}
 				});
-				window.location.replace(`/api/rooms/all?token=${data.token}`);
+				window.location.replace("/api/rooms/all");
 
 				//hna
 			},
@@ -620,9 +655,10 @@ position : "center",
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+  <!-- <script src="js/google-map.js"></script> -->
+	<script src="js/main.js"></script>
+
+
   </body>
 </html>

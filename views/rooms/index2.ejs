@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="../../../day/styles/cleanslate.css" />
   <link rel="stylesheet" href="../../../day/styles/jquery.weekLine.css" />
 
-
   <link
   rel="stylesheet"
   href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
@@ -78,6 +77,7 @@
 
 
 <!--------------------------------------------------------------->
+
 
 
 
@@ -201,9 +201,9 @@
      <!--hadi l fenetre li tkhrjlk f login-->
 <div id="id01" class="modal">
         
+    <div class="imgcontainer">
 
-        <form class="modal-content animate"  action="/"  >
-          <div class="imgcontainer">
+        <form class="modal-content animate"  action="javascript:;"  >
             <img src="../../../designs/sweet.png" class="bo">
             <img src="../../../designs/key.png" alt="Avatar" class="avatar">
             <h1>your home will stay sweet when you're away!</h1>
@@ -216,9 +216,9 @@
             
           
                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="ghost">Cancel</button>
-           
+                  </form>
+                  <br><br>
                   </div> 
-            </form>
     </div>
       <!--script hada t3 ki tclicki barra window youkhrj-->
      
@@ -326,6 +326,7 @@ $('#myonoffswitch').change(function(){
     dataType: "json",
     url: "/api/rooms/ArmingMode"+document.location.search,
     success: function(data) {
+      
       console.log(data);
     }
   });
@@ -367,17 +368,18 @@ document.getElementById('id13').style.display='block'
             var p = 15;
             var o = 60;
           }
-console.log(getrooms.length);
-          if (getrooms.length == 1){
-            j=0
-          }
+
 
 
 
 
           
 if(getrooms.length !=0 ){
-  var j = document.getElementsByClassName("slick-active")[0].children[0].id.substring(20)
+  if (getrooms.length != 1 ){
+    var j = document.getElementsByClassName("slick-active")[0].children[0].id.substring(20)
+  } else {
+    var  j=0;
+  }
 
   typeX = {
     target: "type"+j,
@@ -579,6 +581,7 @@ if(getrooms[0].devices.gsense[0] != ""){
 
       <form class="modal-content animate" action="javascript:;" onsubmit="create(this)">
           <div class="imgcontainer">
+            <br>
           <h1>Add a new room</h1>
 
           <input id="nameRoom" type="text" placeholder="choose a name for the room"  />
@@ -614,6 +617,7 @@ if(getrooms[0].devices.gsense[0] != ""){
           
           <button id="createRoom" type="submit">Create Room</button>
            <button type="button" onclick="document.getElementById('id03').style.display='none'" class="ghost">Cancel</button>
+           <br><br>
          
                 </div> 
           </form>
@@ -628,9 +632,9 @@ if(getrooms[0].devices.gsense[0] != ""){
 
   <div id="id05" class="modal">
         
+      <div class="imgcontainer">  
 
     <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoom(this)">
-      <div class="imgcontainer">  
           <h1>Modify this room</h1>
 
           <input id="modify" type="text" placeholder="oussama 7at old name t3 room hna"  />
@@ -680,9 +684,10 @@ if(getrooms[0].devices.gsense[0] != ""){
           
           <button id="modifi"  type="submit">Modify Room</button>
            <button type="button" onclick="document.getElementById('id05').style.display='none'" class="ghost">Cancel</button>
-         
-                </div> 
           </form>
+
+                </div> 
+                <br><br><br>
   </div>
 
 
@@ -781,12 +786,12 @@ if(getrooms[0].devices.gsense[0] != ""){
   
   <div id="id10" class="modal">
   
-  
+      <div class="imgcontainer">
+
       <form class="modal-content animate"   action="javascript:;" onsubmit="addRoutine(this)">
-        <div class="imgcontainer">
           <h1>Add a new routine</h1>
   
-          <input id="nameRoutine" type="text" placeholder="choose a name for the routine"  />
+          <input id="nameRoutine" type="text" style="" placeholder="choose a name for the routine"  />
           <div class="selectcontainer">
               <select name="select-type" id="select-color-routines" class="form-control">
                   <option value="1" icon="red-icon">red</option>
@@ -885,12 +890,12 @@ if(getrooms[0].devices.gsense[0] != ""){
 
           <div id="id69" style="display: none;">
             <div class="row" style="margin:0 0 0 0">
-<div class="col">
-    <p style="margin-right:100%; width: 100px"> <strong> At time</strong></p>
+<div class="col ">
+    <p class="p69" > <strong>Time</strong></p>
 
 </div>
 <div class="col" style="width: 60px;">
- <a id="okk" data-toggle="modal"  data-target="#ex" href="#ex">  <p style="margin-left:500px; color:#3d5e85"> <strong style="position:absolute">Select</strong></p> </a>   
+ <a id="okk" data-toggle="modal"  data-target="#ex" href="#ex">  <p class="p96" > <strong style="position:absolute">Select</strong></p> </a>   
 
 </div>
 
@@ -899,11 +904,11 @@ if(getrooms[0].devices.gsense[0] != ""){
             <hr>
             <div class="row" style="margin:0 0 0 0">
                 <div class="col">
-                    <p style="margin-right:100%; width: 100px;"> <strong> Repeat</strong></p>
+                    <p class="p69"> <strong> Repeat</strong></p>
                 
                 </div>
                 <div class="col" style="width: 60px;">
-                    <a id="kko" data-toggle="modal" data-target="#e" href="#e">  <p style="margin-left:500px; color:#3d5e85"> <strong style="position:absolute">Select</strong></p> </a>   
+                    <a id="kko" data-toggle="modal" data-target="#e" href="#e">  <p class="p96" > <strong style="position:absolute">Select</strong></p> </a>   
                 
                 </div>
                 
@@ -916,9 +921,12 @@ if(getrooms[0].devices.gsense[0] != ""){
 
           <button id="routine" >Add routine</button>
            <button type="button" onclick="document.getElementById('id10').style.display='none'" class="ghost">Cancel</button>
-  
-                </div> 
+           <br>
+           <br><br>
+           <br>
           </form>
+
+                </div> 
   </div>
   
   <div id="ex" class="modal fade" role="dialog" >
@@ -1004,7 +1012,6 @@ document.getElementById("okk").children[0].children[0].innerHTML = time;
     }],
     modal : true,
     draggable: false,
-    responsive : true,
     fluid: true, //new option
 
 
@@ -1048,6 +1055,11 @@ document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-head
     }
 
       $("#timee").click(function() {
+        
+        var a = 700;
+        if (window.screen.width<600){
+a = 300;
+        }
 
         var time,repeat = "";
     
@@ -1061,9 +1073,7 @@ document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-head
         resizable: false,
         responsive : true,
         title: "Set time",
-        fluid: true, //new option
-width : 'auto',
-        maxWidth: 1200,
+        width : a,
         modal: true,
         show: 500,
         buttons: [
@@ -1091,20 +1101,7 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
     
     }]
       });
-
-      document.getElementsByClassName("ui-button-icon ui-icon ui-icon-closethick")[0].addEventListener("click", function(){
-
-
-        document.getElementById("timee").checked = false
-
-
-      });
-
-
-
-
-
-
+    
       document.getElementsByClassName("ui-dialog-buttonset")[0].children[0].style.background = "#595386" ;
       document.getElementsByClassName("ui-dialog-buttonset")[0].children[0].style.color = "white";
       document.getElementsByClassName("ui-dialog-buttonset")[0].style.marginRight ="45%";
@@ -1139,6 +1136,20 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
       document.getElementsByClassName("ui-button ui-corner-all ui-widget")[1].style.marginLeft = "35%"
       document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.background = "#595386";
 
+      document.getElementsByClassName("ui-button-icon ui-icon ui-icon-closethick")[0].addEventListener("click", function(){
+
+
+        document.getElementById("timee").checked = false
+
+
+      });
+
+
+
+
+
+
+
     }
     });
 
@@ -1167,9 +1178,9 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
   
     <div lang="test" id="id12" class="modal" >
   
-  
+        <div class="imgcontainer">
+
         <form class="modal-content animate" action="javascript:;" onsubmit="modifyRoutine(this)">
-          <div class="imgcontainer">
             <h1>Modify this routine</h1>
   
             <input id="nameRoutineMod" type="text" placeholder=""  />
@@ -1250,9 +1261,9 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
   </div>
             <button type="submit">Modify Routine</button>
              <button type="button" onclick="document.getElementById('id12').style.display='none'" class="ghost">Cancel</button>
-  
-                  </div> 
             </form>
+<br><br><br><br><br><br>
+                  </div> 
     </div>
   
   <script>
@@ -1362,9 +1373,13 @@ if (o ==  "Sun,Mon,Tue,Wed,Thu,Fri,Sat"){
   </script>
   <script>
     function not() {
+    var arr =   document.getElementsByClassName("closenoti");
+    for (var i=0; i<arr.length ; i++){
+      arr[0].style.marginLeft = "10px";
+    }
 
       
-      document.getElementById('id02').style.display='block'
+      document.getElementById('id02').style.display='block';
       
 if (document.getElementById('notifyx').src =="http://localhost:3000/designs/notifications1.gif" ) {
     document.getElementById('notifyx').src = "../../../designs/notifications1.png" ;
@@ -1595,21 +1610,31 @@ else{
         
 
                   
-                 '<section class="ok" style=" width:100%; height:150px;" frameBorder="0" scrolling="no">'+
+                 '<section class="ok" style="" frameBorder="0" scrolling="no">'+
+                 
 
+                  
                     '<iframe class="container-rgb" id="rgb'+i+'" frameBorder="0" scrolling="no">'+
             
                         '</iframe>'+
 
+                        
 
                         
-'<div class="switch demo">'+
-	' <input id="rgbOnOff'+i+'" type="checkbox" onclick="rgbC('+i+')" ><label></label>'+
-   '</div>'+
-                        
-                        '<section class="container-light" id="light'+i+'" style="text-align: left; " frameBorder="0" scrolling="no">'+
+                        '<section class="container-light" id="light'+i+'" style="text-align: left; " frameBorder="0" scrolling="no" >'+
             
                             '</section>'+
+                                '<div class="onoffswitch rgb" >'+
+                                    '<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="rgbOnOff'+i+'" checked>'+
+                                      '<label class="onoffswitch-label" for="rgbOnOff'+i+'" >'+
+                                         '<span class="onoffswitch-inner"></span>'+
+                                           '<span class="onoffswitch-switch"></span>'+
+                                     '</label>'+
+
+                           
+'</div>'+
+
+                           
                         
                   '</section>'+
 
@@ -1628,7 +1653,7 @@ else{
             '<section class="container-secure" id="motions'+i+'">'+
             
             '</section>'+
-            '<div id="gazz" style="position:relative;">'+
+            '<div id="gazz'+i+'" style="position:relative;">'+
                 '<div id="overlay-charts" onclick="showGaz(this)" > '+
                     '</div>'+
             '<iframe class="container-gaz" id="gaz'+i+'" frameBorder="0" scrolling="no" class="iframechart">'+
@@ -1692,42 +1717,39 @@ else{
           
       }
 function test(i){
-  
-   var id = document.getElementById("light"+i).children[0].title ; 
-   var src = document.getElementById("light"+i).children[0].src ; 
-   if (src == "http://localhost:3000/icons/on.png" ){
-
-    $.ajax({
-      url: "/api/rooms/light"+document.location.search,
-      method: "POST",
-      data: JSON.stringify({ id: id, value: false }),
-      contentType: "application/json",
-      dataType: "json",
-      success: function(data) {
-
-      }
-    });  
-    document.getElementById("light"+i).children[0].src = "../../../icons/off.png";     
-
-  }else if (src == "http://localhost:3000/icons/off.png") {
-    $.ajax({
-      url: "/api/rooms/light"+document.location.search,
-      method: "POST",
-      data: JSON.stringify({ id: id, value: true }),
-      contentType: "application/json",
-      dataType: "json",
-      success: function(data) {
-console.log(data);
-      }
-    });
-    document.getElementById("light"+i).children[0].src = "../../../icons/on.png";
     
-  }
+  var id = document.getElementById("light"+i).children[0].title ; 
+  var src = document.getElementById("light"+i).children[0].src ; 
+  if (src == "http://"+ window.location.hostname+":3000/icons/on.png" ){
 
+   $.ajax({
+     url: "/api/rooms/light"+document.location.search,
+     method: "POST",
+     data: JSON.stringify({ id: id, value: false }),
+     contentType: "application/json",
+     dataType: "json",
+     success: function(data) {
 
+     }
+   });  
+   document.getElementById("light"+i).children[0].src = "http://"+ window.location.hostname+":3000/icons/off.png";     
 
+ }else if (src == "http://"+ window.location.hostname+":3000/icons/off.png") {
+   $.ajax({
+     url: "/api/rooms/light"+document.location.search,
+     method: "POST",
+     data: JSON.stringify({ id: id, value: true }),
+     contentType: "application/json",
+     dataType: "json",
+     success: function(data) {
+console.log(data);
+     }
+   });
+   document.getElementById("light"+i).children[0].src = "http://"+ window.location.hostname+":3000/icons/on.png";
+   
+ }
 }
-
+//"http://"+ window.location.hostname+":3000/icons/off.png"
       function addLight(i){
         var oo =false ;
         if (getrooms[i].devices.light[0] != ""){
@@ -1738,7 +1760,7 @@ console.log(data);
 if (id == elm._id){
   if (elm.used == true){
     if (elm.value == true){
-      document.getElementById("light"+i).innerHTML += '<img title="'+id+'" src="../../../icons/on.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test('+i+')" >'; 
+      document.getElementById("light"+i).innerHTML += '<img class="daw" title="'+id+'" src="../../../icons/on.png" style=""  onclick="test('+i+')">'; 
      //var daw =  document.createElement("section") ;
      //daw.id= "OnOff" ; 
      //daw.style.width = "20px";
@@ -1754,7 +1776,7 @@ if (id == elm._id){
 
     
     }else if (elm.value == false){
-      document.getElementById("light"+i).innerHTML += '<img  title="'+id+'" src="../../../icons/off.png" style="width:50px;margin-left:30px;margin-top:50px;" onclick="test('+i+')" >'; 
+      document.getElementById("light"+i).innerHTML += '<img class="daw" title="'+id+'" src="../../../icons/off.png" style=""  onclick="test('+i+')">'; 
 
       //var daw =  document.createElement("section") ;
       //daw.id= "OnOff" ; 
@@ -1772,7 +1794,7 @@ if (id == elm._id){
   }else  {
     oo = true ; 
 
-    document.getElementsByClassName("ok")[2].style.display = "none";
+    document.getElementsByClassName("ok")[i].style.display = "none";
     document.getElementById("light"+i).style.display = "none";
     document.getElementById("light"+i).style.marginTop = 0;
   }
@@ -1794,7 +1816,6 @@ if (getrooms[i].devices.rgb == elm._id){
         document.getElementById("light"+i).style.marginTop = 0;
            //document.getElementsByClassName("ok")[2].style.display = "none";
      //pisskisser
-document.getElementsByClassName("ok")[2].style.height = "0";
 }
       }
 
@@ -1850,10 +1871,10 @@ allrgb.forEach(function(elm){
         }
       
 function rgbOnOff(i){
-if ( document.getElementById("rgbOnOff0").checked == true){
+if ( document.getElementById("rgbOnOff"+i).checked == true){
   for (var j=0; j<allrgb.length; j++){
     if (getrooms[i].devices.rgb[0] == allrgb[j]._id){
-      document.getElementById("rgbOnOff0").checked = false 
+      document.getElementById("rgbOnOff"+i).checked = false 
     }
   }
 } else {
@@ -1968,7 +1989,7 @@ if ( document.getElementById("rgbOnOff0").checked == true){
             document.getElementById("gaz"+i).style.display = "none"
           
 
-            document.getElementById("gazz").children[0].style.display = "none"
+            document.getElementById("gazz"+i).children[0].style.display = "none"
             
           } else {
           getrooms[i].devices.gsense.forEach(function(id) {
@@ -2016,22 +2037,22 @@ $.ajax({
          
   function showntifications(i){
         if(notifications[i].type=="motion") {
-        document.getElementById('notifi').innerHTML += '<li id="mouvement'+i+'"   class="motion">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+        document.getElementById('notifi').innerHTML += '<li id="mouvement'+i+'"   class="motion">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" >&times;</span>'+ ' </li>';
         
   }
   if(notifications[i].type=="ultrason") {
-    document.getElementById('notifi').innerHTML += '<li id="ult'+i+'"   class="ultrason">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
-    
+    document.getElementById('notifi').innerHTML += '<li id="ult'+i+'"   class="ultrason">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ ' &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" >&times;</span>'+ ' </li>';
+    closenoti
 }
         if(notifications[i].type=="temperature"){
-          document.getElementById('notifi').innerHTML += '<li  id="tmp'+i+'"  class="temperature">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+          document.getElementById('notifi').innerHTML += '<li  id="tmp'+i+'"  class="temperature">' +notifications[i].content+ '<a   title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" >&times;</span>'+ ' </li>';
       
       
       }
         
         
         if(notifications[i].type=="gaz") {
-          document.getElementById('notifi').innerHTML += '<li id="gz'+i+'" class="gaz">' +notifications[i].content+ '<a    title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification" style=" margin-top:10px">&times;</span>'+ ' </li>';
+          document.getElementById('notifi').innerHTML += '<li id="gz'+i+'" class="gaz">' +notifications[i].content+ '<a    title="Delete notification" style="margin-left:100px;"> '+ notifications[i].time+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>' + '<span onclick="deleteNot('+i+')"  class="closenoti" title="delete notification">&times;</span>'+ ' </li>';
        
       }
       
@@ -2054,11 +2075,11 @@ $.ajax({
     <script>
     $(document).on('ready', function() {
 
+    
+      
+      document.getElementsByClassName("onoffswitch")[0].children[0].checked = ar.checked ;  
 
 
-if (screen.width < 600 ){
- var doc =  document.getElementById("chartContainer");
-}
 
 
       $( "#example" ).timeDropper({
@@ -2134,16 +2155,6 @@ if (check) {
       for (var i = 0; i < getrooms.length; i++){
         
         
-
-
-
-
-
-
-
-
-
-
       showRooms(i);
       addType(i);
       addLight(i); 
@@ -2155,9 +2166,17 @@ if (check) {
       biz(i); 
       addMotion(i);
       rek(i) ;
+
+
+ 
       document.getElementsByClassName("modal-content animate")[9].style.height ="100%" ; 
 
     }
+
+
+    
+
+     
     if (notifications){
       for (var j=0;j<notifications.length;j++){
         showntifications(j);
@@ -2550,6 +2569,23 @@ saha.click();
 
 
 });
+
+
+
+document.getElementById("logoutPage").addEventListener("click" , function(){
+  console.log("logout route")
+  $.ajax({
+    type: "GET",
+    contentType: "application/json",
+    dataType: "json",
+    url: "/api/rooms/logout"+document.location.search,
+    success: function(data) {
+      console.log("oki")
+      window.location.replace("http://localhost:3000/home")
+          }
+  });  
+
+});
 </script>
 <script src="../../../select-beauty.js"></script>
 <script>
@@ -2650,7 +2686,7 @@ saha.click();
 $.ajax({
   method : "POST"  ,
   data : JSON.stringify ({ id : id }),
-  "url" : "/api/rooms/modeR"+document.location.search,
+  "url" : "/api/rooms/modeR",
   contentType: "application/json",
   dataType: "json",
   success : function(data){
@@ -2736,7 +2772,7 @@ function activeRoutine(i){
         data: JSON.stringify({ id: id }),
         contentType: "application/json",
         dataType: "json",
-        url: "/api/rooms/desactiveRoutine"+document.location.search,
+        url: "/api/rooms/desactiveRoutine",
         success: function(data) {
           setTimeout(function(){
             location.reload()
@@ -2751,7 +2787,7 @@ function activeRoutine(i){
         data: JSON.stringify({ id: id }),
         contentType: "application/json",
         dataType: "json",
-        url: "/api/rooms/desactiveRoutine"+document.location.search,
+        url: "/api/rooms/desactiveRoutine",
         success: function(data) {
           setTimeout(function(){
             location.reload()
@@ -2776,7 +2812,7 @@ if ((scenario[i].time == "") && (scenario[i].repeat =="")){
       data: JSON.stringify({ id: id }),
       contentType: "application/json",
       dataType: "json",
-      url: "/api/rooms/ver"+document.location.search,
+      url: "/api/rooms/ver",
       success: function(data) {
   
   if (data.ver == true){ //if yes send a notification to uncheck
@@ -2794,7 +2830,7 @@ if ((scenario[i].time == "") && (scenario[i].repeat =="")){
               data: JSON.stringify({ id: id}),
               contentType: "application/json",
               dataType: "json",
-              url: "/api/rooms/activeRoutine"+document.location.search,
+              url: "/api/rooms/activeRoutine",
               success: function(data) {
                 setTimeout(function(){
                   location.reload()
@@ -2893,7 +2929,7 @@ $.ajax({
   data: JSON.stringify({ name : name  , i : i }),
   contentType: "application/json",
   dataType: "json",
-  url: "/api/rooms/deleteRoutine"+document.location.search,
+  url: "/api/rooms/deleteRoutine",
   success: function(data) {
   document.getElementsByClassName("container-routines "+data.i)[0].style.display = "none" ; 
   document.getElementById("id11").style.display='none' ; 
@@ -2935,7 +2971,7 @@ if (notifications.length !=0){
     data: JSON.stringify({ id: id , type : type , i :j }),
     contentType: "application/json",
     dataType: "json",
-    url: "/api/rooms/deleteNot"+document.location.search,
+    url: "/api/rooms/deleteNot",
     success: function(data) {
    if (data.type == "motion") {
      document.getElementById("mouvement"+data.i).style.display = "none";
@@ -3013,7 +3049,7 @@ for (var j =0 ; j<Object.entries(selectdays.selected).length;j++){
     data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , id : id , time : time , repeat : repeat , update : update }),
     contentType: "application/json",
     dataType: "json",
-    url: "/api/rooms/modifyRoutine"+document.location.search,
+    url: "/api/rooms/modifyRoutine",
     success: function(data) {
       setTimeout(function(){
         location.reload()
@@ -3061,7 +3097,7 @@ rooms.push(elm[1].text) ;
         data: JSON.stringify({ rooms: rooms , name : name , devicesOff : devicesOff, devicesOn : devicesOn , color :color , time:t , repeat: r }),
         contentType: "application/json",
         dataType: "json",
-        url: "/api/rooms/addRoutine"+document.location.search,
+        url: "/api/rooms/addRoutine",
         success: function(data) {
           setTimeout(function(){
             location.reload()
@@ -3130,7 +3166,7 @@ if ((type.length == 0) || (name == "") || (dev.length == 0)){
     data: JSON.stringify({ type: type , name : name , devices : dev }),
     contentType: "application/json",
     dataType: "json",
-    url: "/api/rooms/add"+document.location.search,
+    url: "/api/rooms/add",
     success: function(data) {
 
       $.ajax({
@@ -3138,7 +3174,7 @@ if ((type.length == 0) || (name == "") || (dev.length == 0)){
         data: JSON.stringify({ type: data.type , name : data.name , devices : data.arr }),
         contentType: "application/json",
         dataType: "json",
-        url: "/api/rooms/room"+document.location.search,
+        url: "/api/rooms/room",
         success: function(data) {
 
 
@@ -3177,23 +3213,27 @@ while (document.getElementById("slick-slide0"+i)) {
 
 
     function  showTemp() {
-
+      var a= 1100
+if (window.screen.width<600){
+a = 300
+}else {
+  a= 1100
+}
 	$("#dialogBox").dialog({
 		open: function(event,ui) {
 			$(".ui-widget-overlay").bind("click", function(event,ui) {         
 				$("#dialogBox").dialog("close");
 			});
-		},
+    },
+    create: function (event, ui) {
+      $(".ui-widget-header").hide();
+  },
 		closeOnEscape: true,
     draggable: false,
-    responsive : true,
-    fluid: true, //new option
 
-    resizable: false,
-  width : 'auto',
+  width : a,
 		title: "Temperature and Humidity",
-    maxWidth: 700,
-    high : 700,
+    high : 900,
 		modal: true,
 		show: 500
 	});
@@ -3348,20 +3388,18 @@ while (document.getElementById("slick-slide0"+i)) {
         }]
     }
   });
-  if (window.screen.width < 600){
-    console.log(chart.classeName )
+ 
   
-  }
-  document.getElementsByClassName("highcharts-title")[0].children[0].style.fontSize = "25px" ; 
-  document.getElementsByClassName("highcharts-title")[0].children[0].style.marginBottom = "5px";
-  document.getElementsByClassName("highcharts-title")[0].children[0].style.fontWeight = "bold";
 
-  document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix")[0].style.display = "none" ; 
 
     }
 
 
     function showGaz() {
+      var a= 1100
+      if (window.screen.width<600){
+      a = 300
+      }      
 
 
       $("#dialogBox2").dialog({
@@ -3370,6 +3408,9 @@ while (document.getElementById("slick-slide0"+i)) {
             $("#dialogBox2").dialog("close");
           });
         },
+        create: function (event, ui) {
+          $(".ui-widget-header").hide();
+      },  
         closeOnEscape: true,
         draggable: false,
         resizable: false,
@@ -3378,7 +3419,7 @@ while (document.getElementById("slick-slide0"+i)) {
 
 
         title: "Gaz",
-        width: 900,
+        width: a,
         high : 700,
         modal: true,
         show: 500
@@ -3529,7 +3570,7 @@ while (document.getElementById("slick-slide0"+i)) {
           data: JSON.stringify({ name : name , i : i}),
           contentType: "application/json",
           dataType: "json",
-          url: "/api/rooms/delete"+document.location.search,
+          url: "/api/rooms/delete",
           success: function(data) {
             document.getElementsByClassName("cardroom")[i].style.display = "none";
 setTimeout(function(){
@@ -3586,14 +3627,14 @@ $.ajax({
     data: JSON.stringify({ name : name , newName : newName , devAdd : devAdd , devDel : devDel }),
     contentType: "application/json",
     dataType: "json",
-    url: "/api/rooms/modify"+document.location.search,
+    url: "/api/rooms/modify",
     success: function(data) {
       $.ajax({
         type: "POST",
         data: JSON.stringify({ name : data.name , newName : data.newName , arr : data.arr }),
         contentType: "application/json",
         dataType: "json",
-        url: "/api/rooms/delDev"+document.location.search,
+        url: "/api/rooms/delDev",
         success: function(data) {
           setTimeout(function(){
             location.reload()
@@ -3608,19 +3649,24 @@ $.ajax({
 
     
   });
+
+
+  document.getElementsByClassName("ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix").forEach(function(elm){
+    elm.style.display = "none"
+      });
   
    }
 
 
    // on window resize run function
-$(window).resize(function () {
-  fluidDialog();
-});
+//$(window).resize(function () {
+  //fluidDialog();
+//});
 
 // catch dialog if opened within a viewport smaller than the dialog width
-$(document).on("dialogopen", ".ui-dialog", function (event, ui) {
-  fluidDialog();
-});
+//$(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+  //fluidDialog();
+//});
 
 function fluidDialog() {
   var $visible = $(".ui-dialog:visible");
@@ -3653,6 +3699,7 @@ function fluidDialog() {
 
   </script>
   <script src="../../../fancy/timedropper.js"></script>
+
   <script src="../../../day/scripts/jquery.weekLine.min.js"></script> 
 </body>
 </html>
