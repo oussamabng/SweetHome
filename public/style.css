@@ -783,13 +783,22 @@ ui-button {
   margin-left: 25%;
 }
 /************************************/
-
+.typeimg {
+  width: 50px;
+  margin-left: 160px;
+  margin-top: 10px;
+}
 @media only screen and (max-width: 600px) {
   .onoffswitch.rgb {
     top: 67px;
     bottom: 150px;
-    left: -7px;
+    left: 2px;
     z-index: 0;
+  }
+  .typeimg {
+    width: 50px;
+    margin-left: 140px;
+    margin-top: 10px;
   }
   .ok {
     width: 90%;
@@ -942,7 +951,7 @@ ui-button {
     background-color: #52e0dd;
   }
   .container-rgb {
-    width: 90%;
+    width: 100%;
     height: 100%;
     background-color: #50add2;
 

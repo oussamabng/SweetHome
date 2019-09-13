@@ -42,7 +42,13 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-    
+		
+		<div style="display: none">
+
+<h1 id="tokenid">
+<%= tokenid %>
+</h1>
+		</div>
 
     <div class="hero-wrap js-fullheight">
       <div class="overlay"></div>
@@ -223,7 +229,7 @@
             <div class="media block-6 services d-block">
               <div class="icon"><img src="images/phone.png" style="width:30%;margin-bottom: 10px"></div>
               <div class="media-body">
-				  
+									SON.parse
                 <h3 class="heading mb-3">Easy to use and costumise</h3>
                 <p>Controll each room on its own , Add new rooms and new devices, and control your home with ease even when you're away.</p>
               </div>
@@ -238,7 +244,7 @@
               </div>
             </div>      
           </div>
-        </div>
+        </div>SON.parse
       </div>
     </section>
 
@@ -299,8 +305,33 @@
 	</section>
 
 	<script> 
-	
+		
+
 	function myFunction() {
+
+
+
+
+setTimeout(function(){
+	tokenid = document.getElementById("tokenid").innerHTML ; 
+	if (tokenid.length>2){
+		document.getElementsByClassName("nav-link")[1].click();
+		document.getElementById("tokenIdRegister").value = tokenid
+	}else {
+console.log("no tokenid ");
+}
+
+
+},500);
+
+
+
+
+
+
+
+
+
 		if (window.screen.width <600 ){
 			document.getElementsByClassName("mb-5")[0].style.fontSize = "24px" ; 
 			document.getElementsByClassName("mb-5")[0].style.marginTop = "35px" ; 

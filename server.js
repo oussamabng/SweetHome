@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const webPush = require("web-push");
 var schedule = require("node-schedule");
+const store = require("store");
 
 const {
   User,
@@ -13,7 +14,8 @@ const {
   Ultrason,
   Rooms,
   Notification,
-  Scenario
+  Scenario,
+  ArmingMode
 } = require("./models/user");
 //const path = require("path");
 const config = require("config");
@@ -101,11 +103,15 @@ db.once("open", () => {
   const utrasonCollection = db.collection("ultrasons");
   const alarmCollection = db.collection("alarms");
   const scenarioCollection = db.collection("scenarios");
-  var arr = [];
+  const lightCollection = db.collection("lights");
+  // const armingmodeCollection = db.collection("armingmodes");
 
+  //var arr = [];
+  const changeStreamLight = lightCollection.watch();
   const changeStreamScenario = scenarioCollection.watch();
   const changeStream = alarmCollection.watch();
   const changeStreamUltrason = utrasonCollection.watch();
+  //const changeStreamArmingMode = armingmodeCollection.watch();
 
   changeStreamScenario.on("change", async function(change) {
     console.log(change.operationType);
@@ -480,6 +486,25 @@ db.once("open", () => {
       }
     }
   });
+  changeStreamLight.on("change", async function(change) {
+    if (change.operationType === "update") {
+      var id = change.documentKey._id;
+      const light = await Light.findOne({ _id: id });
+      if (light) {
+        const user = await User.findOne({ tokenId: light.tokenId });
+        var room = await Rooms.find({ userId: user._id });
+        for (var i = 0; i < room.length; i++) {
+          if (room[i].devices.light[0] == id) {
+            pusher.trigger("inserted", "light", {
+              id: id,
+              value: light.value,
+              i: i
+            });
+          }
+        }
+      }
+    }
+  });
 
   changeStreamUltrason.on("change", async function(change) {
     if (change.operationType === "update") {
@@ -562,15 +587,23 @@ app.use(express.static("views"));
 app.get("/", function(req, res) {
   res.redirect("/home");
 });
+//localhost:3000/home
 
-app.get("/home", function(req, res) {
-  if (req.query.tokenid) {
-    console.log("jaaa");
+http: app.get("/home", function(req, res) {
+  if (store.get("tokenid")) {
+    res.render("index", {
+      tokenid: "test"
+    });
+    store.remove("tokenid");
+  } else {
+    res.render("index", {
+      tokenid: ""
+    });
   }
-  res.render("index");
 });
 app.get("/signup", function(req, res) {
   var tokenid = req.query.tokenid;
+  store.set("tokenid", { tokenid: tokenid });
 
   res.redirect("/?tokenid=" + tokenid);
 });

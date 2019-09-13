@@ -1,0 +1,74 @@
+ API ?
+L’API, pour Application Programming Interface, est la partie du programme qu’on expose officiellement au monde extérieur pour manipuler celui-ci. L’API est au développeur ce que l’User Interface est à l’utilisateur. Cette dernière permet d’entrer des données et de les récupérer la sortie d’un traitement. Initialement, une API regroupe un ensemble de fonctions ou méthodes, leurs signatures et ordre d’usage pour obtenir un résultat
+
+ REST? 
+
+ RESTfull API, l'acronyme de "Representational State Transfer", a pris de plus en plus d'importance ces dernières années, et on retrouve ce type d'architecture dans de nombreux services et réseaux sociaux.
+
+
+
+API REST
+Une API REST se doit d’être sans état ou stateless en anglais. La communication entre le client et le serveur ne doit pas dépendre d’un quelconque contexte provenant du serveur. Ainsi, chaque requête doit contenir l’ensemble des informations nécessaires à son traitement. Cela permet au de traiter indifféremment les requêtes de plusieurs clients via de multiples instances de serveurs.
+
+
+
+Restfull API with NodeJS and MongoDB
+
+NodeJS : 
+
+Node.js est une plateforme logicielle libre en JavaScript orientée vers les applications réseau événementielles hautement concurrentes qui doivent pouvoir monter en charge.
+
+Elle utilise la machine virtuelle V8, la librairie libuv pour sa boucle d'évènements, et implémente sous licence MIT les spécifications CommonJS.
+
+Parmi les modules natifs de Node.js, on retrouve http qui permet le développement de serveur HTTP. Il est donc possible de se passer de serveurs web tels que Nginx ou Apache lors du déploiement de sites et d'applications web développés avec Node.js.
+
+Concrètement, Node.js est un environnement bas niveau permettant l’exécution de JavaScript côté serveur.
+
+Node.js est utilisé notamment comme plateforme de serveur Web, elle est utilisée par Groupon3, Vivaldi, SAP4, LinkedIn5,6, Microsoft7,8, Yahoo!9, Walmart10, Rakuten, Sage et PayPal11,12.
+
+
+MongoDB :
+MongoDB est un système de gestion de base de données orienté documents, répartissable sur un nombre quelconque d'ordinateurs et ne nécessitant pas de schéma prédéfini des données. Il est écrit en C++. 
+
+// hna sagmi errors ..
+On a a choisie node js avec MongoDB car il est non seulement  tres rapide mais aussi facile a travailler avec 
+node js a la capacité de traiter les evenements et les fonctions dune facons asynchrone , il n'attend pas jusqua la fin dune requette pour aller a une autre 
+// dok narslk tswira hotiha hna mor had katba ..
+
+et on a aussi travailler avec Express.js qui est un framework pour application web  for building the API  et mieux gerer les operation CRUD (create , read , update , delete)
+
+Les modules npm quon a travailler avec :
+
+
+JWT : 
+pour lauth on a utiliser le module npm jsonwebtoken qui nous permet de generer des token id pour lauthentication of the user and for verefy the id of the user every time he do an operation or make an event 
+
+Nodemailer : 
+un module qui nous a aider pour envoyer to the user mail of reseting password 
+
+Mongoose : 
+Mongoose helped us to work  with CRUD operation  ... add models or change value of data or delete or modify  in MongoDB
+
+Pusher : 
+Module that handle events and make our API realtime , quand un evenement attendu est fais elle le remets imidiatement to client side 
+
+
+Change Streams :
+a realtime module qui est  sorti dernierment
+helped us to watch Database and pretend any update or modification for exemple we worked with it for the alarm function .. if for exemple it will be motion the api will detect it by thi module and push notifications to the client immiadatly ..
+
+
+schedule : 
+a realtime module that take in params a date and a callback function 
+we've work with this module in routines with time to handle em in the date or the time that had been  choosed by the client 
+
+
+Store : 
+a module that we used to store our token of the user and remove it from in the logout 
+
+
+
+
+//bon dsl alabli ghbantk haka mais laghlb mkch kifeh n3br bah tafahmi khir mn hak mdr lmouhim matadich ge3 di chwya chwya w dok nzid nb3tlakk tsawir tzidihom m3ahom .. 
+//kima chfty fel bdya hdrt 3la  Rest w ala APi w oumbhd ala Rest api w mbhda node w mbhda Mongodb w mbhda express w mbhda les modules te3 node 
+//aya w hadi hya Good luck w sorry again 
