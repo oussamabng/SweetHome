@@ -549,9 +549,11 @@ db.once("open", () => {
       var bool = false;
       var rooms = await Rooms.find({ userId: user._id });
       for (var i = 0; i < rooms.length; i++) {
+        console.log(rooms[i]);
         if (bool) {
           break;
         } else if (rooms[i].devices.alarm[0] == id) {
+          console.log("ha yjib notification");
           var notif = new Notification({
             type: alarm.data,
             content: alarm.data + " detected",
@@ -563,6 +565,7 @@ db.once("open", () => {
               nameRoom: rooms[i].name
             }
           });
+          console.log("notif :" + notif);
           pusher.trigger("inserted", "alarm", {
             //TODO to add //data : change.fullDocument.data
             message:
@@ -573,6 +576,7 @@ db.once("open", () => {
             id: alarm._id,
             elm: notif._id
           });
+          console.log("b3at pusher");
           await notif.save();
           bool = true;
         }

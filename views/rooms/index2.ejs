@@ -858,9 +858,9 @@ if(getrooms[0].devices.gsense[0] != ""){
 
 
 <br>
-          <div style="background-color:#d4edda; border-color:#c3e6cb; display:none;" id="timeAd">
+          <div  id="timeAd">
               <h4 style="font-size :1.5rem;margin-bottom:.5rem;font-weight:500;line-height:1.2;margin-top:0;" class="alert-heading"><i class="fa fa-check"></i> time added!</h4>
-                    <p style="width:170px; color:#706d6d;margin-left:32%;">When its 11:11 am  routine will be activated    Every Mon,Fri</p>
+                    <p class="ziz">When its 11:11 am  routine will be activated    Every Mon,Fri</p>
 
 
 
@@ -1625,7 +1625,7 @@ else{
             
                             '</section>'+
                                 '<div class="onoffswitch rgb" >'+
-                                    '<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="rgbOnOff'+i+'" checked>'+
+                                    '<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="rgbOnOff'+i+'" onclick="rgbC('+i+')" checked>'+
                                       '<label class="onoffswitch-label" for="rgbOnOff'+i+'" >'+
                                          '<span class="onoffswitch-inner"></span>'+
                                            '<span class="onoffswitch-switch"></span>'+
@@ -1642,7 +1642,7 @@ else{
 
 
             '<div id="temp'+i+'" style="position:relative;">'+
-                '<div id="overlay-charts" onclick="showTemp(this)" > '+
+                '<div id="overlay-charts" onclick="showTemp('+i+')" > '+
               '</div>'+
           
             '<iframe   id="charts'+i+'" frameBorder="0" scrolling="no" class="iframechart" >'+
@@ -1654,7 +1654,7 @@ else{
             
             '</section>'+
             '<div id="gazz'+i+'" style="position:relative;">'+
-                '<div id="overlay-charts" onclick="showGaz(this)" > '+
+                '<div id="overlay-charts" onclick="showGaz('+i+')" > '+
                     '</div>'+
             '<iframe class="container-gaz" id="gaz'+i+'" frameBorder="0" scrolling="no" class="iframechart">'+
             
@@ -1837,8 +1837,7 @@ if (getrooms[i].devices.rgb == elm._id){
 
         if (getrooms[i].devices.rgb[0] == ""){
           document.getElementById("rgb"+i).style.display = "none";
-          document.getElementById("rgbOnOff"+i).offsetParent.style.display = "none"
-
+          document.getElementsByClassName("onoffswitch rgb")[i].style.display = "none"
         }else {
        
 allrgb.forEach(function(elm){
@@ -1880,7 +1879,7 @@ if ( document.getElementById("rgbOnOff"+i).checked == true){
 } else {
   for (var j=0; j<allrgb.length; j++){
     if (getrooms[i].devices.rgb[0] == allrgb[j]._id){
-      document.getElementById("rgbOnOff0").checked = true 
+      document.getElementById("rgbOnOff"+j).checked = true 
     }
   }
 }
@@ -2026,7 +2025,7 @@ $.ajax({
   data: JSON.stringify({ state  : on.checked , id : id }),
   contentType: "application/json",
   dataType: "json",
-  url: "/api/rooms/state"+document.location.search,
+  url: "/api/rooms/state",
   success: function(data) {
     console.log({msg : "rgb state changed "})
 }
@@ -2075,7 +2074,6 @@ $.ajax({
     <script>
     $(document).on('ready', function() {
 
-    
       
       document.getElementsByClassName("onoffswitch")[0].children[0].checked = ar.checked ;  
 
@@ -2159,6 +2157,22 @@ if (check) {
       addType(i);
       addLight(i); 
       addRGB(i);
+
+
+
+
+
+if ((getrooms[i].devices.light[0] == "")&&(getrooms[i].devices.rgb[0]=="")){
+  document.getElementsByClassName("ok")[i].style.display = "none";
+}
+
+
+
+
+
+
+
+
       addCharts(i); 
       addGaz(i);
       rgbOnOff(i);
@@ -2166,6 +2180,12 @@ if (check) {
       biz(i); 
       addMotion(i);
       rek(i) ;
+     
+
+
+
+
+
 if (window.screen.width<600){
   document.getElementById("charts"+i).style.width ="90%";
 }
@@ -2386,6 +2406,7 @@ chan = pusher.bind('scenario' , function(data){
 
 
 chan =  pusher.bind('alarm', function(data) {
+  console.log({msg : "alarm psuher"})
      var id =  data.id ;
    
      const name = "haha";
@@ -2412,6 +2433,8 @@ swalWithBootstrapButtons.fire({
   text: data.message,
   type: 'warning',
   showCancelButton: true,
+  cancelButtonColor: "#d6412d", 
+  confirmButtonColor: "#d6412d", 
   confirmButtonText: 'Yes, stop it!',
   cancelButtonText: 'No, cancel!',
   reverseButtons: true
@@ -2472,7 +2495,7 @@ t = setInterval(function(){
 
 
   else{ 
-    document.getElementsByClassName("slick-next")[0].click();
+    document.getElementsByClassName("slick-netruext")[0].click();
     a++;
   }
 } 
@@ -2605,7 +2628,9 @@ document.getElementById("logoutPage").addEventListener("click" , function(){
     dataType: "json",
     url: "/api/rooms/logout"+document.location.search,
     success: function(data) {
-      console.log("oki")
+      if (window.screen.width<600){
+        window.location.replace("/")
+      }else
       window.location.replace("http://localhost:3000/home")
           }
   });  
@@ -3029,7 +3054,6 @@ function modifyRoutine(){
 var color ="";
  const i = Number(document.getElementById("id12").lang) ; 
  const id = scenario[i]._id ; 
-var time ="";
 var repeat = new Array();
 var update = false ;
 
@@ -3059,9 +3083,14 @@ for (var j =0 ; j<Object.entries(modifydeviceoffsroutines.selected).length;j++){
   devicesOff[ok] = true ; 
 }
  if (Object.entries(selectdays.selected).length != 0){
- time = document.getElementById("examplex").value ; 
 update = true ; 
  }
+ if(document.getElementById("modifyTime").style.display == "none"){
+   time = ""
+ }else {
+  var time = document.getElementById("examplex").value ; 
+ }
+
 for (var j =0 ; j<Object.entries(selectdays.selected).length;j++){
   var ok = Object.entries(selectdays.selected)[j][1].text.slice(0,3) ;
   repeat.push(ok);
@@ -3158,6 +3187,8 @@ rooms.push(elm[1].text) ;
 
 
       function create(){
+
+
         
         var dev = new Array();       
         var type = new Array();
@@ -3185,7 +3216,13 @@ if ((type.length == 0) || (name == "") || (dev.length == 0)){
 '</div>'
       ,showConfirmButton: false,
   })}else{
-  
+    Swal.fire({
+      position: 'top-end',
+      type: 'success',
+      title: 'Your room has been added',
+      showConfirmButton: false,
+      timer: 1000
+    }); 
   $.ajax({
     type: "POST",
     data: JSON.stringify({ type: type , name : name , devices : dev }),
@@ -3193,6 +3230,7 @@ if ((type.length == 0) || (name == "") || (dev.length == 0)){
     dataType: "json",
     url: "/api/rooms/add",
     success: function(data) {
+     
 
       $.ajax({
         type: "POST",
@@ -3203,13 +3241,6 @@ if ((type.length == 0) || (name == "") || (dev.length == 0)){
         success: function(data) {
 
 
-Swal.fire({
-  position: 'top-end',
-  type: 'success',
-  title: 'Your room has been added',
-  showConfirmButton: false,
-  timer: 1500
-})
            
           setTimeout(function(){
             location.reload()
@@ -3237,7 +3268,8 @@ while (document.getElementById("slick-slide0"+i)) {
    
 
 
-    function  showTemp() {
+    function  showTemp(k) {
+     var id =  getrooms[k]._id;
       var a= 1100
 if (window.screen.width<600){
 a = 300
@@ -3268,16 +3300,27 @@ a = 300
     chart: {
       events: {
         load: function() {
-          // set up the updating of the chart each second
-            var series = this.series[0];
-                  var series2 = this.series[1];
-                  setInterval(function() {
-                    var x = new Date().getTime(), // current time
-                      y = Math.random();
-                    z = Math.random();
-                    series.addPoint([x, y], false, true);
-                    series2.addPoint([x, z], true, true);
-                  }, 1000);
+          setInterval(function() {
+            var series = chart.series[0];
+            var series2 = chart.series[1];
+            $.ajax({
+              type: "POST",
+              data: JSON.stringify({
+               id : id
+              }),
+              contentType: "application/json",
+              dataType: "json",
+              url: "/api/rooms/showTemp",
+              success: function(data) {
+                var x = new Date().getTime() // current time
+                series.addPoint([x, data.val.temperature], false, true);
+                series2.addPoint([x, data.val.humidity], true, true);
+              }
+            });
+          },2000);ww
+
+                  
+                
         }
       }
     },
@@ -3420,7 +3463,8 @@ a = 300
     }
 
 
-    function showGaz() {
+    function showGaz(k) {
+      var id =  getrooms[k]._id;
       var a= 1100
       if (window.screen.width<600){
       a = 300
@@ -3451,20 +3495,36 @@ a = 300
       });
       $(".ui-widget-overlay").css({"background-color": "rgba(0, 0, 0, 0.4)"});
         // Create the chart
-      Highcharts.stockChart("chartContainer2", {
+      var chart = Highcharts.stockChart("chartContainer2", {
         chart: {
           events: {
             load: function() {
               // set up the updating of the chart each second
-                var series = this.series[0];
-                      var series2 = this.series[1];
+              
+
                       setInterval(function() {
-                        var x = new Date().getTime(), // current time
-                          y = Math.random();
-                        z = Math.random();
-                        series.addPoint([x, y], false, true);
-                        series2.addPoint([x, z], true, true);
-                      }, 1000);
+                        var series = chart.series[0];
+                        var series1 = chart.series[1];
+                        var series2 = chart.series[2];
+                        var series3 = chart.series[3];
+                       
+                        $.ajax({
+                          type: "POST",
+                          data: JSON.stringify({
+                           id : id
+                          }),
+                          contentType: "application/json",
+                          dataType: "json",
+                          url: "/api/rooms/showGaz",
+                          success: function(data) {
+                            var x = new Date().getTime() // current time
+                            series.addPoint([x, data.val.smoke], false, true);
+                            series1.addPoint([x, data.val.methane], true, true);
+                            series2.addPoint([x, data.val.propane], true, true);
+                            series3.addPoint([x, data.val.lpg], true, true);
+                          }
+                        });
+                      },2000);
             }
           }
         },
@@ -3495,12 +3555,12 @@ a = 300
         },
     
         title: {
-          text: "Temperature and Humidity Chart"
+          text: "Gaz Chart"
         }, yAxis: [
                     {
                         opposite:false , 
                       title: {
-                        text: "Temperature (C°)'"
+                        text: "Methane"
                       },
                       plotLines: [
                         {
@@ -3512,7 +3572,7 @@ a = 300
                     },
                     {
                       title: {
-                        text: "Humidity (%)"
+                        text: "Lpg"
                       },
                       plotLines: [
                         {
@@ -3521,7 +3581,32 @@ a = 300
                           color: "#808080"
                         }
                       ]
+                    },
+                    {
+                      opposite:false , 
+                    title: {
+                      text: "Smoke"
+                    },
+                    plotLines: [
+                      {
+                        value: 0,
+                        width: 1,
+                        color: "#8c1531"
+                      }
+                    ]
+                  },
+                  {
+                  title: {
+                    text: "Propane"
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#8c1531"
                     }
+                  ]
+                }
                   ],
     
         exporting: {
@@ -3530,7 +3615,7 @@ a = 300
     
         series: [
           {
-            name: "Temperature",  marker: {
+            name: "smoke",  marker: {
                       enabled: true,
                       radius: 5,
                       fillColor: "#0cc9c6"
@@ -3548,7 +3633,43 @@ a = 300
             })()
           } , 
           {
-            name : "Humidity" ,
+            name: "methane",  marker: {
+                      enabled: true,
+                      radius: 5,
+                      fillColor: "#0cc9c6"
+                    },
+            data: (function() {
+              // generate an array of random data
+              var data = [],
+                time = new Date().getTime(),
+                i;
+    
+              for (i = -999; i <= 0; i += 1) {
+                data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+              }
+              return data;
+            })()
+          } ,
+          {
+            name: "propane",  marker: {
+                      enabled: true,
+                      radius: 5,
+                      fillColor: "#0cc9c6"
+                    },
+            data: (function() {
+              // generate an array of random data
+              var data = [],
+                time = new Date().getTime(),
+                i;
+    
+              for (i = -999; i <= 0; i += 1) {
+                data.push([time + i * 1000, Math.round(Math.random() *2000) + 1000]);
+              }
+              return data;
+            })()
+          } ,
+          {
+            name : "lpg" ,
               marker: {
                       enabled: true,
                       radius: 5,

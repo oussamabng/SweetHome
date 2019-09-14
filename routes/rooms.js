@@ -34,12 +34,18 @@ router.post("/add", auth, async function(req, res) {
     dht: [""],
     gsense: [""],
     ultrason: [""],
-    light: [""]
+    light: [""],
+    alarm: [""]
   };
   // tableau li rslthoulak te3 Devices bsh ykoun user mkhyr manah li bgha ykhdem bihom
 
   req.body.devices.forEach(async function(elm) {
+    console.log(elm);
     try {
+      var alarm = await Alarm.findOne({ tokenId: user.tokenId });
+      alarm.used = true;
+      arr.alarm[0] = alarm._id;
+      await alarm.save();
       if (elm[0] == "d") {
         var dht = await Dht.findOne({ name: elm, tokenId: user.tokenId });
         dht.used = true;
@@ -81,7 +87,7 @@ router.post("/add", auth, async function(req, res) {
       type: req.body.type,
       name: req.body.name
     });
-  }, 900);
+  }, 1800);
 
   //await room.save();
   //await user.save();
@@ -610,6 +616,7 @@ router.post("/activeRoutine", auth, async function(req, res) {
         }
       } else if (r[0] == "rgb") {
         if (room) {
+          console.log("rgb ^^");
           room.devices.rgb.forEach(async function(e) {
             if (e != "") {
               const rgb = await Rgb.findOne({ _id: e });
@@ -1032,6 +1039,38 @@ router.post("/deleteRoutine", auth, async function(req, res) {
 
   res.status(200).send({ message: "delete routine  succesfully", i: i }); //anglais mkwd laghlb
 });
+router.post("/showTemp", auth, async function(req, res) {
+  const room = await Rooms.findOne({ _id: req.body.id });
+  const dht = await Dht.findOne({ _id: room.devices.dht[0] });
+  try {
+    var val = {
+      temperature: dht.value.temperature[dht.value.temperature.length - 1],
+      humidity: dht.value.humidity[dht.value.humidity.length - 1],
+      time: dht.value.time
+    };
+  } catch (error) {
+    console.log("error f temp");
+  } finally {
+    res.status(200).send({ message: "show temp  succesfully", val: val }); //anglais mkwd laghlb
+  }
+});
+router.post("/showGaz", auth, async function(req, res) {
+  const room = await Rooms.findOne({ _id: req.body.id });
+  const gsense = await Gsense.findOne({ _id: room.devices.gsense[0] });
+  try {
+    var val = {
+      smoke: gsense.value.smoke[gsense.value.smoke.length - 1],
+      lpg: gsense.value.lpg[gsense.value.lpg.length - 1],
+      methane: gsense.value.methane[gsense.value.methane.length - 1],
+      propane: gsense.value.propane[gsense.value.propane.length - 1],
+      time: gsense.value.time
+    };
+  } catch {
+    console.log("error f gaz");
+  } finally {
+    res.status(200).send({ message: "show gaz  succesfully", val: val }); //anglais mkwd laghlb
+  }
+});
 // ********************************************************//
 //*****************************************************//
 
@@ -1049,6 +1088,7 @@ router.delete("/delete", auth, async function(req, res) {
   if (room.devices.rgb[0] != "") {
     const rgb = await Rgb.findOne({ _id: room.devices.rgb[0] });
     rgb.used = false;
+    rgb.state = false;
     await rgb.save();
   }
 
@@ -1060,6 +1100,7 @@ router.delete("/delete", auth, async function(req, res) {
   if (room.devices.light[0] != "") {
     const light = await Light.findOne({ _id: room.devices.light[0] });
     light.used = false;
+    light.value = false;
     await light.save();
   }
   if (room.devices.gsense[0] != "") {

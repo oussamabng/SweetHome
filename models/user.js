@@ -53,7 +53,7 @@ const DHTSchema = new mongoose.Schema({
   value: {
     temperature: { type: [Number] },
     humidity: { type: [Number] },
-    time: { type: Date }
+    time: { type: [Number] }
   },
   used: { type: Boolean, default: false },
   tokenId: String
@@ -78,11 +78,11 @@ GSenseSchema = new mongoose.Schema({
   tokenId: String,
 
   value: {
-    smoke: { type: [Number], default: new Array() },
-    lpg: { type: [Number], default: new Array() },
-    methane: { type: [Number], default: new Array() },
-    propane: { type: [Number], default: new Array() },
-    time: { type: Date }
+    smoke: { type: [Number] },
+    lpg: { type: [Number] },
+    methane: { type: [Number] },
+    propane: { type: [Number] },
+    time: { type: [Number] }
   }
 });
 

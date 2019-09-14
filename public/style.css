@@ -788,7 +788,32 @@ ui-button {
   margin-left: 160px;
   margin-top: 10px;
 }
+#nameRoom {
+  width: 80%;
+}
+#timeAd {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  display: none;
+  width: 80%;
+}
+.ziz {
+  width: 170px;
+  color: #706d6d;
+  margin-left: 32%;
+}
 @media only screen and (max-width: 600px) {
+  .ziz {
+    width: 170px;
+    color: #706d6d;
+    margin-left: 32%;
+  }
+  #timeAd {
+    display: none;
+    width: 100%;
+    margin-left: 20%;
+  }
+
   .onoffswitch.rgb {
     top: 67px;
     bottom: 150px;

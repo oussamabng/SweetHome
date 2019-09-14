@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
   await bndm.save();
 
   const token = jwt.sign({ _id: bndm._id }, config.get("jwtPrivateKey"));
-  const store = require("token", { token: token });
+  store.set("token", { token: token });
 
   res
     .header("x-auth-token", token)

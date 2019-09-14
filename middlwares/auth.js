@@ -10,7 +10,6 @@ module.exports = function(req, res, next) {
     if (!token) return res.status(401).send("Access Denied ");
     const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
     req.userId = decoded;
-    console.log("req.userId :", req.userId);
     next();
   } catch (ex) {
     res.status(400).send({ msg: "invalid token" });
